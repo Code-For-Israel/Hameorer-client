@@ -19,7 +19,7 @@ const Main = ({handlePresentModalPress}) => {
         {key: 'plus', title: '', focusedIcon: 'plus-thick'},
         {key: 'content', title: 'תוכן', focusedIcon: 'file-document', unfocusedIcon: 'file-document-outline'},
         {key: 'map', title: 'מפה', focusedIcon: 'map', unfocusedIcon: 'map-outline'},
-        {key: 'uploadExcel', title: 'העלה אקסל', focusedIcon: 'map', unfocusedIcon: 'map-outline'},
+        {key: 'uploadExcel', title: 'העלה אקסל', focusedIcon: 'upload', unfocusedIcon: 'upload-outline'},
 
     ]);
 
