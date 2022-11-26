@@ -1,6 +1,7 @@
 import {Button, Platform, View} from "react-native";
 import {Text} from "react-native-paper";
 import {useState} from "react";
+import {printFormData} from "../../utils/printFormDataObject";
 
 export function UploadExcelMainPage() {
 
@@ -8,37 +9,26 @@ export function UploadExcelMainPage() {
 
     const uploadFile = () => {
         if (imageUpload == null) return;
-        else
-            console.log(imageUpload)
-            console.log(imageUpload.uri)
         const data = new FormData();
-        data.append('file', {
-            name: imageUpload.name,
-            type: imageUpload.type,
-            uri: Platform.OS === 'ios' ?
-                imageUpload.uri.replace('file://', '')
-                : imageUpload.uri,
-        });
-        console.log("got")
-        console.log(data)
+        data.append('name', imageUpload.name);
+        data.append('type', imageUpload.type);
+        data.append('uri', URL.createObjectURL(imageUpload));
 
+        printFormData(data)
+
+        //todo enable this once server is ready - take it to another js file as well
+        // uploadToServer()
     };
 
     const showFileDetails = () => {
         if (imageUpload !== null)
-            return imageUpload.name;
+            return <>File to upload: {imageUpload.name}</>;
         else
-            return ''
+            return <></>
     }
 
 
-    async function uploadToServer() {
-        await Axios.post("https://upload-service-url", data, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        });
-    }
+
 
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -46,7 +36,6 @@ export function UploadExcelMainPage() {
             <input
 
                 type="file"
-                webkitRelativePath
                 onChange={(event) => {
                     setFileUpload(event.target.files[0]);
                 }}
