@@ -8,6 +8,8 @@ import {parseExcelToJson, extractExcel, getExcelColumns} from './parseExcelFile'
 export function UploadExcelMainPage() {
 
     const [fileUpload, setFileUpload] = useState(null);
+    const [parsedData, setParsedData] = useState(null);
+
     const FILE_TYPE_ACCEPTED = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
     const showFileDetails = () => {
         if (fileUpload !== null)
@@ -38,6 +40,7 @@ export function UploadExcelMainPage() {
 
         printFormData(data)
         console.log(excelDataParsedReady)
+        setParsedData(excelDataParsedReady)
 
         //todo enable this once server is ready - take it to another js file as well
         // uploadToServer()
@@ -55,7 +58,9 @@ export function UploadExcelMainPage() {
             />
             <Button title={"העלאה"} onPress={() => uploadFile()}></Button>
             {showFileDetails()}
-
+            <div>
+                {parsedData ? <h1>File parsed - watch console log</h1> : ""}
+            </div>
         </View>
     );
 }
