@@ -13,4 +13,6 @@ npx expo start -w
 
 still in progress but live demo at :
 https://hameorer-sy1.netlify.app
+
+and
 https://althameorer-sy.netlify.app
