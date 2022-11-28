@@ -8,8 +8,8 @@ export function ContentRoute() {
     return (
         // <NavigationContainer>
         <Drawer.Navigator useLegacyImplementation initialRouteName="Home">
-            <Drawer.Screen name="/Home" component={HomePage}/>
-            <Drawer.Screen name="/Notifications" component={NotificationPage}/>
+            <Drawer.Screen name="Home" component={HomePage}/>
+            <Drawer.Screen name="Notifications" component={NotificationPage}/>
         </Drawer.Navigator>
         // </NavigationContainer>
     )

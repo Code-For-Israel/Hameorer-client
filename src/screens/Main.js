@@ -19,17 +19,13 @@ const Main = ({handlePresentModalPress}) => {
         {key: 'plus', title: '', focusedIcon: 'plus-thick'},
         {key: 'content', title: 'תוכן', focusedIcon: 'file-document', unfocusedIcon: 'file-document-outline'},
         {key: 'map', title: 'מפה', focusedIcon: 'map', unfocusedIcon: 'map-outline'},
-        {key: 'uploadExcel', title: 'העלה אקסל', focusedIcon: 'map', unfocusedIcon: 'map-outline'},
+        {key: 'uploadExcel', title: 'העלה אקסל', focusedIcon: 'upload', unfocusedIcon: 'upload-outline'},
 
     ]);
 
     const renderScene = BottomNavigation.SceneMap({
         user: UserPage,
         timeline: TimelinePage,
-
-        //todo delete?
-        // plus: () => <midMenuButton handlePresentModalPress={handlePresentModalPress}/>,
-
         plus: MidMenuButtonComponent,
         content: ContentRoute,
         map: MapPage,
@@ -41,6 +37,7 @@ const Main = ({handlePresentModalPress}) => {
             compact={true}
             onTabPress={(e) => {
                 if (e.route.key === 'plus') {
+                    e.preventDefault()
                     handlePresentModalPress()
                 }
             }}
