@@ -1,10 +1,11 @@
-import {ContentPage} from "../screens/Content/ContentPage";
 import * as React from "react";
+import {ContentPage} from "../screens/Content/ContentPage";
 import {createDrawerNavigator} from "@react-navigation/drawer";
 import {FamilyMemoryPage} from "../screens/Content/FamilyMemory/FamilyMemoryPage";
 import {PersonalDiaryPage} from "../screens/Content/PersonalDiary/PersonalDiaryPage";
 import {CeremonyPage} from "../screens/Content/Ceremony/CeremonyPage";
 import {SelfGuidancePage} from "../screens/Content/SelfGuidance/SelfGuidancePage";
+
 const Drawer = createDrawerNavigator();
 
 export function ContentRoute() {
