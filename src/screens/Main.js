@@ -26,10 +26,6 @@ const Main = ({handlePresentModalPress}) => {
     const renderScene = BottomNavigation.SceneMap({
         user: UserPage,
         timeline: TimelinePage,
-
-        //todo delete?
-        // plus: () => <midMenuButton handlePresentModalPress={handlePresentModalPress}/>,
-
         plus: MidMenuButtonComponent,
         content: ContentRoute,
         map: MapPage,
