@@ -41,6 +41,7 @@ const Main = ({handlePresentModalPress}) => {
             compact={true}
             onTabPress={(e) => {
                 if (e.route.key === 'plus') {
+                    e.preventDefault()
                     handlePresentModalPress()
                 }
             }}
