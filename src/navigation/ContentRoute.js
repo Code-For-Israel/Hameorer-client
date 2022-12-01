@@ -12,8 +12,8 @@ export function ContentRoute() {
     return (
         // <NavigationContainer>
         <Drawer.Navigator useLegacyImplementation initialRouteName="Home">
-            <Drawer.Screen name="עמוד תוכן" component={ContentPage}/>
             <Drawer.Screen name="יומן אישי" component={PersonalDiaryPage}/>
+            <Drawer.Screen name="עמוד תוכן" component={ContentPage}/>
             <Drawer.Screen name="זיכרון משפחתי" component={FamilyMemoryPage}/>
             <Drawer.Screen name="הכנת טקס" component={CeremonyPage}/>
             <Drawer.Screen name="הדרכה עצמית" component={SelfGuidancePage}/>
