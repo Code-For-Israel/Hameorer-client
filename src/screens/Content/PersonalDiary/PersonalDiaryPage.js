@@ -1,5 +1,4 @@
-import { TextInput, View} from "react-native";
-import {Text} from "react-native-paper";
+import {TextInput, View} from "react-native";
 import * as React from "react";
 import {ImageComponent} from '../../../components/ImageComponent/imageComponent'
 
@@ -9,6 +8,7 @@ export function PersonalDiaryPage() {
 
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+
             <TextInput
                 label="טקסט"
                 placeholder="הכנס טקסט"
@@ -19,8 +19,9 @@ export function PersonalDiaryPage() {
                 }}
                 onChangeText={text => setText(text)}
             />
-            <Text>תמונות</Text>
+
             <ImageComponent></ImageComponent>
+
         </View>
     );
 }
