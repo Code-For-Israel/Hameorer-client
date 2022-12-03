@@ -1,5 +1,11 @@
 import React, { useCallback, useMemo, useRef } from 'react';
 // import { View, Text, StyleSheet, Button } from 'react-native';
+
+
+import { FAB } from 'react-native-paper';
+import { StyleSheet, View } from 'react-native';
+
+
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
@@ -18,7 +24,7 @@ const App = () => {
   const bottomSheetModalRef = useRef(null);
   // variables
   // const snapPoints = useMemo(() => ['25%', '50%'], []);
-  const snapPoints = useMemo(() => ['50%','50%'], []);
+  const snapPoints = useMemo(() => ['40%', '40%'], []);
   // callbacks
   const handlePresentModalPress = useCallback(() => {
     bottomSheetModalRef.current?.present();
@@ -36,13 +42,19 @@ const App = () => {
         <GestureHandlerRootView style={{ flex: 1 }}>
           <BottomSheetModalProvider>
             <Main handlePresentModalPress={handlePresentModalPress} />
+            <FAB
+              style={styles.fab}
+              icon="plus"
+              onPress={() => handlePresentModalPress()}
+              
+            />
             <BottomSheetModal
               ref={bottomSheetModalRef}
               index={1}
               snapPoints={snapPoints}
               // onChange={handleSheetChanges}
               backgroundComponent={CustomBackground}
-              enablePanDownToClose={true} 
+              enablePanDownToClose={true}
             >
               {/* the content in difrent component */}
               <SheetBottomMenu closeSheet={closeSheet} />
@@ -55,6 +67,15 @@ const App = () => {
   );
 };
 
+const styles = StyleSheet.create({
+
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    bottom: 80,
+    right: 0,
+  },
+});
 // const styles = StyleSheet.create({
 //   contentContainer: {
 //     flex: 1,

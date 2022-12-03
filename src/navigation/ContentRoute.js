@@ -6,18 +6,22 @@ import {PersonalDiaryPage} from "../screens/Content/PersonalDiary/PersonalDiaryP
 import {CeremonyPage} from "../screens/Content/Ceremony/CeremonyPage";
 import {SelfGuidancePage} from "../screens/Content/SelfGuidance/SelfGuidancePage";
 
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
 
 export function ContentRoute() {
     return (
+<ContentPage/>
         // <NavigationContainer>
-        <Drawer.Navigator useLegacyImplementation initialRouteName="Home">
-            <Drawer.Screen name="יומן אישי" component={PersonalDiaryPage}/>
-            <Drawer.Screen name="עמוד תוכן" component={ContentPage}/>
-            <Drawer.Screen name="זיכרון משפחתי" component={FamilyMemoryPage}/>
-            <Drawer.Screen name="הכנת טקס" component={CeremonyPage}/>
-            <Drawer.Screen name="הדרכה עצמית" component={SelfGuidancePage}/>
-        </Drawer.Navigator>
+        // <Drawer.Navigator 
+        // // useLegacyImplementation initialRouteName="Home"
+        // >
+        //     <Drawer.Screen name="תוכן" component={ContentPage}/>
+        //     <Drawer.Screen name="יומן אישי" component={PersonalDiaryPage}/>
+        //     <Drawer.Screen name="עמוד תוכן" component={ContentPage}/>
+        //     <Drawer.Screen name="זיכרון משפחתי" component={FamilyMemoryPage}/>
+        //     <Drawer.Screen name="הכנת טקס" component={CeremonyPage}/>
+        //     <Drawer.Screen name="הדרכה עצמית" component={SelfGuidancePage}/>
+        // </Drawer.Navigator>
         // </NavigationContainer>
     )
 }
