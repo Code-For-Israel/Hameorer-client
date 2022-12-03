@@ -16,7 +16,8 @@ const CustomBackground = ({
       animatedIndex.value,
       [0, 1],
     //   ["#ffffff", "#a8b5eb"]
-    ["#a8b5eb", "#a8b5eb"]
+    // ["#a8b5eb", "#a8b5eb"]
+    ["#B6CEFF", "#B6CEFF"]
     ),
   }));
   const containerStyle = useMemo(

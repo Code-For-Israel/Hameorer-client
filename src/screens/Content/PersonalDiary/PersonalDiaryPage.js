@@ -1,14 +1,14 @@
-import {TextInput, View} from "react-native";
+import { Text, TextInput, View } from "react-native";
 import * as React from "react";
-import {ImageComponent} from '../../../components/ImageComponent/imageComponent'
+import { ImageComponent } from '../../../components/ImageComponent/imageComponent'
 
 export function PersonalDiaryPage() {
 
     const [text, setText] = React.useState("כאן יהיה טקסט - אפשר לערוך ולרשום מה שרוצים");
 
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text>יומן אישי</Text>
             <TextInput
                 label="טקסט"
                 placeholder="הכנס טקסט"
@@ -19,7 +19,6 @@ export function PersonalDiaryPage() {
                 }}
                 onChangeText={text => setText(text)}
             />
-
             <ImageComponent></ImageComponent>
 
         </View>
