@@ -39,12 +39,17 @@ const SheetBottomMenu = ({ closeSheet }) => {
   )
 
   return (
+    <>
     <FlatList
       data={MenuData}
       renderItem={renderItem}
       keyExtractor={(item) => item.id}
       ItemSeparatorComponent={FlatListItemSeparator}
-    />
+      />
+      {/* <Button
+      onPress={()=>{navigation.navigate('timeline')}}
+      /> */}
+      </>
   )
 }
 

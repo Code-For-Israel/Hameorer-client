@@ -1,28 +1,21 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-// import { View, Text, StyleSheet, Button } from 'react-native';
-
-
+import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet } from 'react-native';
+import { Provider as PaperProvider } from 'react-native-paper';
 import { FAB } from 'react-native-paper';
-import { StyleSheet, View } from 'react-native';
-
-
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
-
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { Provider as PaperProvider } from 'react-native-paper';
-import Main from "./src/screens/Main"
-import SheetBottomMenu from './src/navigation/SheetBottomMenu';
 
 import CustomBackground from "./src/navigation/CustomBackground"
+import SheetBottomMenu from './src/navigation/SheetBottomMenu';
+import Main from "./src/screens/Main"
 
 const App = () => {
   // ref
   const bottomSheetModalRef = useRef(null);
-  // variables
   // const snapPoints = useMemo(() => ['25%', '50%'], []);
   const snapPoints = useMemo(() => ['40%', '40%'], []);
   // callbacks
@@ -46,7 +39,6 @@ const App = () => {
               style={styles.fab}
               icon="plus"
               onPress={() => handlePresentModalPress()}
-              
             />
             <BottomSheetModal
               ref={bottomSheetModalRef}
@@ -68,7 +60,6 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-
   fab: {
     position: 'absolute',
     margin: 16,
@@ -76,16 +67,4 @@ const styles = StyleSheet.create({
     right: 0,
   },
 });
-// const styles = StyleSheet.create({
-//   contentContainer: {
-//     flex: 1,
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//     justifyContent: 'space-around',
-
-//   },
-//   sheetText: {
-//     marginBottom: 3,
-//   }
-// });
 export default App;
