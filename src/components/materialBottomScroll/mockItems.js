@@ -1,13 +1,18 @@
 export const mockItems = [
     {
-        type: "video",
-        title: "Video1",
+        type: "youtube",
+        title: "youtube1",
+        link: "www.youtube.com",
+    },
+    {
+        type: "web",
+        title: "web1",
         link: "www.google.com",
     },
     {
-        type: "video",
-        title: "Video2",
-        link: "www.google.com",
+        type: "youtube",
+        title: "youtube2",
+        link: "www.youtube.com",
     },
     {
         type: "image",
@@ -30,8 +35,8 @@ export const mockItems = [
         link: "www.google.com",
     },
     {
-        type: "video",
-        title: "Video2",
+        type: "youtube",
+        title: "youtube2",
         link: "www.google.com",
     },
     {

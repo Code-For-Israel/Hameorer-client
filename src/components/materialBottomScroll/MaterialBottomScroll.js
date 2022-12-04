@@ -1,4 +1,4 @@
-import {View, StyleSheet, FlatList, ScrollView} from "react-native";
+import {View, StyleSheet, ScrollView, Linking} from "react-native";
 import React from "react";
 import {mockItems} from "./mockItems";
 import IconComponent from "../IconComponent/IconComponent";
@@ -6,14 +6,15 @@ import IconComponent from "../IconComponent/IconComponent";
 
 export function MaterialBottomScroll() {
 
-    //for each time do a diffrent action - video opens in a link, image does something else..
     const onPressAction = (item) => {
-        if (item.type === 'video') {
-            console.log('video')
+        if (item.type === 'youtube') {
+            Linking.openURL('https://youtube.com')
+        } else if (item.type === 'web') {
+            Linking.openURL('https://google.com')
         } else if (item.type === 'image') {
-            console.log('image')
+            console.log('download image')
         } else if (item.type === 'file-document') {
-            console.log('file')
+            console.log('download file')
         } else {
             console.log("unknown")
         }
