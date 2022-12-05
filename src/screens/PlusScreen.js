@@ -1,5 +1,5 @@
 // import { Text, View, StyleSheet } from "react-native";
-import Self from "./sheetScreens/Self";
+import Self from "./sheetScreens/SelfGuide/Self";
 import Ceremony from "./sheetScreens/Ceremony";
 import FamilyMem from "./sheetScreens/FamilyMem";
 import PersonalDiary from "./sheetScreens/PersonalDiary";
@@ -13,22 +13,22 @@ export function PlusScreen() {
       <Stack.Screen
         name="Self"
         component={Self}
-        options={{ headerTitle: "כותרת של הדרכה עצמית", headerLeft: null }}
+        options={{ headerTitle: "כותרת של הדרכה עצמית", headerShown: false }}
       />
       <Stack.Screen
         name="Ceremony"
         component={Ceremony}
-        options={{ headerTitle: "כותרת של הכנת הטקס", headerLeft: null }}
+        options={{ headerTitle: "כותרת של הכנת הטקס", headerShown: false }}
       />
       <Stack.Screen
         name="FamilyMem"
         component={FamilyMem}
-        options={{ headerTitle: "כותרת של זיכרון משפחתי", headerLeft: null }}
+        options={{ headerTitle: "כותרת של זיכרון משפחתי", headerShown: false }}
       />
       <Stack.Screen
         name="PersonalDiary"
         component={PersonalDiary}
-        options={{ headerTitle: "כותרת של יומן אישי", headerLeft: null }}
+        options={{ headerTitle: "כותרת של יומן אישי", headerShown: false }}
       />
     </Stack.Navigator>
   );
