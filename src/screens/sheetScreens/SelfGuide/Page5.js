@@ -1,5 +1,7 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
+import PrevButton from '../../../components/PrevButton'
+import NextButton from '../../../components/NextButton'
 
 
 const Page5 = ({ navigation }) => {
