@@ -31,7 +31,7 @@ const Page4 = ({ navigation }) => {
           />
         </View>
         <View style={styles.ButtonContainer}>
-          <View style={{ width: 100 }}>
+          <View style={{ width: 130 }}>
             <NextButton
               title="שלח למדריך"
               onPress={() => {

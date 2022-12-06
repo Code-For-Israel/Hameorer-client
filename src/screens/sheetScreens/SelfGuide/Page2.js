@@ -43,7 +43,7 @@ const Page2 = ({ navigation }) => {
         </View>
 
         {/* placeholder for עזרים הדרכה */}
-        <View style={{ flexDirection: "row ", marginBottom: 50 }}>
+        <View style={{ flexDirection: "row", marginBottom: 50 }}>
           <View style={{ height: 50, backgroundColor: "#143866", marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
             <Text style={{ color: "#fff" }} >placeholder</Text>
           </View>

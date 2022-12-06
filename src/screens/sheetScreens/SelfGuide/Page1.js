@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, 
+import { View, Text,  
   // StyleSheet, 
   TextInput, SafeAreaView } from 'react-native'
 
@@ -75,7 +75,7 @@ const Page1 = ({ navigation }) => {
           </Text>
         </View>
         {/* placeholder for עזרים הדרכה */}
-        <View style={{ flexDirection: "row ", marginBottom: 50 }}>
+        <View style={{ flexDirection: "row", marginBottom: 50 }}>
           <View style={{ height: 50, backgroundColor: "#143866", marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
             <Text style={{color:"#fff"}} >placeholder</Text>
           </View>
@@ -89,7 +89,6 @@ const Page1 = ({ navigation }) => {
         {/*end of  placeholder for עזרים הדרכה */}
 
         <View style={styles.ButtonContainer}>
-
           <View style={{ width: 100 }}>
             <NextButton
               title="הבא"

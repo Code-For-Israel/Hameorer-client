@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     width: "90%",
     flexDirection: "row",
     // alignItems: "end",
-    justifyContent: "right",
+    justifyContent: "flex-end",
   },
   TextOne: {
     fontSize: 16,
@@ -47,6 +47,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 30,
     textAlign: "right",
+    textAlignVertical: 'top'
   },
   input2: {
     width: "100%",
@@ -61,8 +62,8 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    position: "absolute",
-    bottom: 12
+    // position: "absolute",
+    // bottom: 12
   },
   TextStatus: {
     fontSize: 24,
@@ -72,7 +73,7 @@ export const styles = StyleSheet.create({
   StatusContainer: {
     width: "90%",
     flexDirection: "row-reverse",
-    justifyContent: "right",
+    justifyContent: "flex-start",
     alignItems: "center",
     marginBottom: 20,
   },
