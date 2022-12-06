@@ -1,16 +1,15 @@
 import {
   View,
   Text,
-  Button,
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   TextInput,
 } from "react-native";
 import React, { useState } from "react";
 import PrevButton from "../../../components/PrevButton";
 import NextButton from "../../../components/NextButton";
 import GreenCircleIcon from "../../../components/GreenCircleIcon";
+import { styles } from './PagesStyle'
 
 const Page3 = ({ navigation }) => {
   const [text, setText] = useState("");
@@ -111,67 +110,4 @@ const Page3 = ({ navigation }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  pageContainer: {
-    flex: 1,
-    alignItems: "center",
-    // marginTop: 15,
-    paddingTop: 15,
-    backgroundColor: "#FFFF",
-  },
-  TextContainer: {
-    width: "90%",
-    flexDirection: "row",
-    // alignItems: "end",
-    justifyContent: "right",
-  },
-  textThree: {
-    fontSize: 12,
-    color: "#8B8787",
-    marginBottom: 8,
-  },
-  TextTwo: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#072F5F",
-    marginBottom: 15,
-  },
-  TextInputContainer: {
-    width: "90%",
-  },
-  input: {
-    height: 280,
-    padding: 10,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 10,
-    marginBottom: 30,
-    textAlign: "right",
-  },
-  input2: {
-    width: "100%",
-    padding: 10,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 10,
-    marginBottom: 30,
-    textAlign: "right",
-  },
-  ButtonContainer: {
-    width: "95%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  TextStatus: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginLeft: 20,
-  },
-  StatusContainer : {
-    width: "90%",
-    flexDirection: "row-reverse",
-    justifyContent: "right",
-    alignItems: "center",
-    marginBottom: 20,
-  }
-});
 export default Page3;
