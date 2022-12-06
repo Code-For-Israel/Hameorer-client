@@ -100,7 +100,7 @@ const Page1 = ({ navigation }) => {
 
           <View>
             <Text>
-              עמוד 1 מתוך 5
+              שלב 1 מתוך 5
             </Text>
           </View>
 

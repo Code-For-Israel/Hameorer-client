@@ -70,7 +70,7 @@ const Page2 = ({ navigation }) => {
 
           <View>
             <Text>
-              עמוד 2 מתוך 5
+              שלב 2 מתוך 5
             </Text>
           </View>
 
