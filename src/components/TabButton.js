@@ -6,7 +6,7 @@ const TabButton = ({ onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.tabButton}>
-        <Icon name="add" size={47} color={"#fff"} />
+        <Icon name="add" size={30} color={"#fff"} />
       </View>
     </TouchableOpacity>
   );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     position: "absolute",
     top: -40,
-    // left: -15,
+    left: -30,
     borderRadius: 50,
     justifyContent: "center",
     alignItems: "center",
