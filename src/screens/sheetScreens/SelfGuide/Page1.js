@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, TextInput, SafeAreaView, ScrollView } from 'react-native'
+import { View, Text, Button, 
+  // StyleSheet, 
+  TextInput, SafeAreaView } from 'react-native'
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
 import PrevButton from '../../../components/PrevButton'
 import NextButton from '../../../components/NextButton'
+import { styles } from './PagesStyle'
 
 
 const Page1 = ({ navigation }) => {
@@ -100,7 +103,7 @@ const Page1 = ({ navigation }) => {
 
           <View>
             <Text>
-              עמוד 1 מתוך 5
+              שלב 1 מתוך 5
             </Text>
           </View>
 
@@ -119,61 +122,5 @@ const Page1 = ({ navigation }) => {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  pageContainer: {
-    flex: 1,
-    alignItems: "center",
-    // marginTop: 15,
-    paddingTop: 15,
-    backgroundColor: "#FFFF"
-  },
-  DropContainer: {
-    width: "90%",
-    // marginBottom: 20,
-    zIndex: 100,
-  },
-  DropDownLine: {
-    backgroundColor: "#f5f5f5",
-    marginBottom: 20,
-  },
-  TextContainer: {
-    width: "90%",
-    flexDirection: "row",
-    // alignItems: "end",
-    justifyContent: "right"
-  },
-  TextOne: {
-    fontSize: 16,
-  },
-  TextTwo: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#072F5F",
-    marginBottom: 15,
-  },
-  textThree: {
-    fontSize: 12,
-    color: "#8B8787",
-    marginBottom: 8,
-  },
-  TextInputContainer: {
-    width: "90%",
-  },
-  input: {
-    height: 280,
-    padding: 10,
-    backgroundColor: "#f5f5f5",
-    borderRadius: 10,
-    marginBottom: 30,
-    textAlign: "right",
-  },
-  ButtonContainer: {
-    width: "95%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-})
 
 export default Page1

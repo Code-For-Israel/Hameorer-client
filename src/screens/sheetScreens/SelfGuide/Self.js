@@ -12,11 +12,11 @@ const Stack = createStackNavigator();
 const Self = () => {
     return (
     <Stack.Navigator initialRouteName="Page1">
-      <Stack.Screen name="Page1" component={Page1} options={{ headerTitle: "עמוד ראשון" }} />
-      <Stack.Screen name="Page2" component={Page2} options={{ headerTitle: "עמוד שני" }}/>
-      <Stack.Screen name="Page3" component={Page3} options={{ headerTitle: "עמוד שלישי" }}/>
-      <Stack.Screen name="Page4" component={Page4} options={{ headerTitle: "עמוד רביעי" }}/>
-      <Stack.Screen name="Page5" component={Page5} options={{ headerTitle: "עמוד חמישי" }}/>
+      <Stack.Screen name="Page1" component={Page1} options={{ headerTitle: "הדרכה עצמית" }} />
+      <Stack.Screen name="Page2" component={Page2} options={{ headerTitle: "לספר בסיפור את הנושא כולל היסטוריה וכו’..." }}/>
+      <Stack.Screen name="Page3" component={Page3} options={{ headerTitle: "שאלה / דילמה ערכית מהותית" }}/>
+      <Stack.Screen name="Page4" component={Page4} options={{ headerTitle: "סיכום" }}/>
+      <Stack.Screen name="Page5" component={Page5} options={{ headerTitle: "הוספת תמונת וקבצים" }}/>
     </Stack.Navigator>
   );
 }
