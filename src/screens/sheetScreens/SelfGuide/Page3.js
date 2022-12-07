@@ -2,7 +2,6 @@ import {
   View,
   Text,
   SafeAreaView,
-  StyleSheet,
   TextInput,
 } from "react-native";
 import React, { useState } from "react";
@@ -10,6 +9,7 @@ import PrevButton from "../../../components/PrevButton";
 import NextButton from "../../../components/NextButton";
 import GreenCircleIcon from "../../../components/GreenCircleIcon";
 import { styles } from './PagesStyle'
+import {MaterialBottomScroll} from "../../../components/materialBottomScroll/MaterialBottomScroll";
 
 const Page3 = ({ navigation }) => {
   const [text, setText] = useState("");
@@ -42,45 +42,10 @@ const Page3 = ({ navigation }) => {
           <GreenCircleIcon />
         </View>
 
-        {/* placeholder for עזרים הדרכה */}
-        <View style={{ flexDirection: "row", marginBottom: 50 }}>
-          <View
-            style={{
-              height: 50,
-              backgroundColor: "#143866",
-              marginBottom: 20,
-              marginLeft: 20,
-              marginRight: 20,
-            }}
-          >
-            <Text style={{ color: "#fff" }}>placeholder</Text>
-          </View>
-          <View
-            style={{
-              height: 50,
-              backgroundColor: "#143866",
-              marginBottom: 20,
-              marginLeft: 20,
-              marginRight: 20,
-            }}
-          >
-            <Text style={{ color: "#fff" }}>placeholder</Text>
-          </View>
-          <View
-            style={{
-              height: 50,
-              backgroundColor: "#143866",
-              marginBottom: 20,
-              marginLeft: 20,
-              marginRight: 20,
-            }}
-          >
-            <Text style={{ color: "#fff" }}>placeholder</Text>
-          </View>
-        </View>
-        {/*end of  placeholder for עזרים הדרכה */}
+          <MaterialBottomScroll></MaterialBottomScroll>
 
-        <View style={styles.ButtonContainer}>
+
+          <View style={styles.ButtonContainer}>
           <View style={{ width: 100 }}>
             <NextButton
               title="הבא"

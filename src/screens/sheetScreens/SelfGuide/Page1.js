@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text,  
-  // StyleSheet, 
-  TextInput, SafeAreaView } from 'react-native'
+import { View, Text, TextInput, SafeAreaView } from 'react-native'
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import PrevButton from '../../../components/PrevButton'
 import NextButton from '../../../components/NextButton'
 import { styles } from './PagesStyle'
+import {MaterialBottomScroll} from "../../../components/materialBottomScroll/MaterialBottomScroll";
 
 
 const Page1 = ({ navigation }) => {
@@ -69,24 +67,9 @@ const Page1 = ({ navigation }) => {
             value={text}
           />
         </View>
-        <View style={styles.TextContainer}>
-          <Text style={[styles.TextOne, { marginBottom: 20 }]}>
-            עזרים הדרכה
-          </Text>
-        </View>
-        {/* placeholder for עזרים הדרכה */}
-        <View style={{ flexDirection: "row", marginBottom: 50 }}>
-          <View style={{ height: 50, backgroundColor: "#143866", marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
-            <Text style={{color:"#fff"}} >placeholder</Text>
-          </View>
-          <View style={{ height: 50, backgroundColor: "#143866", marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
-            <Text style={{color:"#fff"}} >placeholder</Text>
-          </View>
-          <View style={{ height: 50, backgroundColor: "#143866", marginBottom: 20, marginLeft: 20, marginRight: 20 }}>
-            <Text style={{color:"#fff"}} >placeholder</Text>
-          </View>
-        </View>
-        {/*end of  placeholder for עזרים הדרכה */}
+
+         <MaterialBottomScroll></MaterialBottomScroll>
+
 
         <View style={styles.ButtonContainer}>
           <View style={{ width: 100 }}>

@@ -1,4 +1,4 @@
-import {View, StyleSheet, ScrollView, Linking} from "react-native";
+import {View, StyleSheet, ScrollView, Linking, Text} from "react-native";
 import React from "react";
 import {mockItems} from "./mockItems";
 import IconComponent from "../IconComponent/IconComponent";
@@ -28,7 +28,11 @@ export function MaterialBottomScroll() {
     }
 
     return (
+
         <View style={styles.container}>
+            <Text style={[styles.TextOne, { marginBottom: 2, width: "95%"}]}>
+                עזרים הדרכה
+            </Text>
             <ScrollView horizontal={true}>
                 {showIcons()}
             </ScrollView>
