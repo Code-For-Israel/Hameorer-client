@@ -1,14 +1,37 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { PageA } from "./PageA";
-import { PageB } from "./PageB";
+import CustomBg from "../components/CustomBg";
+import PageA from "./PageA";
+import PageB from "./PageB";
 
 const Stack = createStackNavigator();
 
-export function ContentScreen() {
+export default function ContentScreen() {
   return (
     <Stack.Navigator initialRouteName="PageA">
-      <Stack.Screen name="PageA" component={PageA} />
-      <Stack.Screen name="PageB" component={PageB} />
+      <Stack.Screen
+        name="PageA"
+        component={PageA}
+        options={{
+          headerTitle: "כותרת של עמוד A",
+          // this is the part of custom background
+          headerTitleAlign: "center",
+          headerBackground: CustomBg,
+          headerTintColor: "#fff",
+          //end of custom background
+        }}
+      />
+      <Stack.Screen
+        name="PageB"
+        component={PageB}
+        options={{
+          headerTitle: "כותרת של עמוד B",
+          // this is the part of custom background
+          headerTitleAlign: "center",
+          headerBackground: CustomBg,
+          headerTintColor: "#fff",
+          //end of custom background
+        }}
+      />
     </Stack.Navigator>
   );
 }
