@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet } from "react-native";
-export function TimelineScreen() {
+export default function TimelineScreen() {
     return (
       <View style={styles.container}>
         <Text>Timeline Screen</Text>

@@ -7,7 +7,7 @@ const sheetLinks = [
   {
     id: "1",
     title: "הדרכה עצמית",
-    screen: "Self",
+    screen: "Page1",
   },
   {
     id: "2",
@@ -24,9 +24,15 @@ const sheetLinks = [
     title: "יומן אישי",
     screen: "PersonalDiary",
   },
+  {
+    id: "5",
+    title: "דמות",
+    screen: "DID",
+  },
+
 ];
 
-export function BottomMenuContent({ onClose }) {
+export default function BottomMenuContent({ onClose }) {
   const navigation = useNavigation();
 
   return (
@@ -36,7 +42,9 @@ export function BottomMenuContent({ onClose }) {
           <TouchableOpacity
             key={item.id}
             onPress={() => {
-              navigation.navigate("More", { screen: item.screen });
+              //this is if the screens are inside the another stack like More in the plusScreen.js
+              // navigation.navigate("More", { screen: item.screen });
+              navigation.navigate(item.screen);
               onClose();
             }}
           ><View style={styles.button}>
@@ -52,11 +60,8 @@ export function BottomMenuContent({ onClose }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
-    // alignItems: "center",
   },
   button: {
-    // backgroundColor: "#1261A0",
     backgroundColor: "#B6CEFF",
     justifyContent: "center",
     alignItems: "center",

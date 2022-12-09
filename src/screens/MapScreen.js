@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet } from "react-native";
-export function MapScreen() {
+export default function MapScreen() {
     return (
       <View style={styles.container}>
         <Text>Map Screen</Text>
