@@ -1,5 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { StatusBar } from 'expo-status-bar';
 
 import HomeTabs from "./src/components/HomeTabs";
 import Page1 from "./src/screens/sheetScreens/SelfGuide/Page1";
@@ -18,6 +19,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
+          <StatusBar style="light" />
       <Stack.Navigator>
         {/* this screen have all the bottom tabs navigation */}
         <Stack.Screen
