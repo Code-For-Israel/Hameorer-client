@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import ProfileScreen from "../screens/ProfileScreen";
@@ -41,7 +41,7 @@ const HomeTabs = () => {
             tabBarLabel: "פרופיל",
             // this is the part of custom background
             headerTitleAlign: "center",
-            headerBackground: (CustomBg),
+            headerBackground: CustomBg,
             headerTintColor: "#fff",
             //end of custom background
             tabBarIcon: ({ color, size }) => (
@@ -60,7 +60,7 @@ const HomeTabs = () => {
             headerTitle: "כאן תהיה הכותרת של ציר זמן",
             tabBarLabel: "ציר זמן",
             headerTitleAlign: "center",
-            headerBackground: (CustomBg),
+            headerBackground: CustomBg,
             headerTintColor: "#fff",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
@@ -80,18 +80,26 @@ const HomeTabs = () => {
               <TouchableOpacity {...props} onPress={handlePress} />
             ),
             tabBarIcon: ({ size }) => (
-              <MaterialCommunityIcons
-                name="plus"
-                color={"#fff"}
-                size={size}
+              <View
                 style={{
-                  marginBottom: 47,
+                  width: 50,
+                  height: 50,
                   backgroundColor: "#FCBF49",
-                  borderRadius: "50%",
-                  padding: 12,
+                  color: "#fff",
+                  position: "absolute",
+                  top: -25,
                   elevation: 10,
+                  borderRadius: 50,
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
-              />
+              >
+                <MaterialCommunityIcons
+                  name="plus"
+                  size={size}
+                  color={"#fff"}
+                />
+              </View>
             ),
           }}
         />
@@ -99,11 +107,11 @@ const HomeTabs = () => {
           name="Content"
           component={ContentScreen}
           options={{
-            headerShown: false ,
+            headerShown: false,
             headerTitle: "כאן תהיה הכותרת של תוכן",
             tabBarLabel: "תוכן",
             headerTitleAlign: "center",
-            headerBackground: (CustomBg),
+            headerBackground: CustomBg,
             headerTintColor: "#fff",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
@@ -121,7 +129,7 @@ const HomeTabs = () => {
             headerTitle: "כאן תהיה הכותרת של מפה",
             tabBarLabel: "מפה",
             headerTitleAlign: "center",
-            headerBackground: (CustomBg),
+            headerBackground: CustomBg,
             headerTintColor: "#fff",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="map" color={color} size={size} />

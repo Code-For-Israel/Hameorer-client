@@ -19,7 +19,7 @@ export default function BottomSheet({ isVisible, children, onClose }) {
 
 const styles = StyleSheet.create({
   modalContent: {
-    height: '33%',
+    height: '45%',
     width: '100%',
     // backgroundColor: '#25292e',
      backgroundColor: '#fff',
