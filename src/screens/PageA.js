@@ -1,6 +1,6 @@
 import { View , Button, Text } from 'react-native'
 
-export function PageA({ navigation }) {
+export default function PageA({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text style={{marginBottom: 15}}>

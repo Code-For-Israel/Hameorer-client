@@ -1,7 +1,7 @@
 import { Modal, View, Text, Pressable, StyleSheet } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-export function BottomSheet({ isVisible, children, onClose }) {
+export default function BottomSheet({ isVisible, children, onClose }) {
   return (
     <Modal animationType="slide" transparent={true} visible={isVisible}>
       <View style={styles.modalContent}>
@@ -19,7 +19,7 @@ export function BottomSheet({ isVisible, children, onClose }) {
 
 const styles = StyleSheet.create({
   modalContent: {
-    height: '33%',
+    height: '45%',
     width: '100%',
     // backgroundColor: '#25292e',
      backgroundColor: '#fff',
