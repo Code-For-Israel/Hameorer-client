@@ -24,22 +24,22 @@ const Page1 = ({ navigation }) => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.pageContainer}>
         <View style={styles.DropContainer}>
-          <DropDownPicker
-            placeholder="נושא:"
+        <DropDownPicker
+            onChangeValue={(value) => {
+              console.log('Chosen val is:', value);
+            }}
             rtl={true}
+            placeholder="נושא:"
+            placeholderStyle={{ textAlign: "right" }}
             open={open}
             value={value}
             items={items}
             setOpen={setOpen}
             setValue={setValue}
             setItems={setItems}
-            onChangeValue={(value) => {
-              console.log("Chosen val is:", value);
-            }}
-            dropDownContainerStyle={{
-              backgroundColor: "#f5f5f5"
-            }}
-            style={styles.DropDownLine}
+            listItemLabelStyle={{ textAlign: "right" }}
+            dropDownContainerStyle={{ backgroundColor: '#f5f5f5'}}
+            style={styles.DropDownLine}                   
           />
         </View>
         <View style={styles.TextContainer}>
