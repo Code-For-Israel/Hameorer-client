@@ -6,12 +6,11 @@ export default function UseFetchGet(url) {
     const token = getTokenAccess().data
 
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         if(token) {
-            setLoading(true);
             const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
             axios
                 .get(url, headers)

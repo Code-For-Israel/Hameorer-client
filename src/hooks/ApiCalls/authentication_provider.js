@@ -6,7 +6,7 @@ export function getTokenAccess() {
     // todo in the future change the body so i get it as input from the user
     // todo use the refresh token in the future for re login
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const headers = {headers: {'Content-Type': 'application/json'}};
 
@@ -14,7 +14,6 @@ export function getTokenAccess() {
     const userLoginBody = {email: 'hameorer1@com.com', password: 'itizk12345'}
 
     useEffect(() => {
-        setLoading(true);
         axios
             .post(url, userLoginBody, headers)
             .then((response) => {
@@ -26,7 +25,7 @@ export function getTokenAccess() {
             .finally(() => {
                 setLoading(false);
             });
-    }, [url]);
+    }, []);
 
     return {data, loading, error}
 }
