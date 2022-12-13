@@ -3,14 +3,14 @@ import {getTokenAccess} from "./authentication_provider";
 import {useEffect, useState} from "react";
 
 export default function useFetchPut(url, body) {
-    const token = getTokenAccess()
+    const token = getTokenAccess().data
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
 
     useEffect(() => {
+        const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
         setLoading(true);
         axios
             .put(url, body, headers)
