@@ -6,7 +6,7 @@ export default function ProfileScreen() {
 
     const {
         data,
-        loading,
+        loading
     } = UseFetchGet('http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/authentication/user/')
 
     const token = getTokenAccess();
@@ -20,8 +20,8 @@ export default function ProfileScreen() {
             <Button title={'click to pull groups'} onPress={() => console.log(data)}></Button>
             {data ? (
                 <>
-                    {data.map(group => {
-                        return (<div key={group.uuid}>{group.firstname +' - '+ group.lastname}</div>)
+                    {data.map(user => {
+                        return (<div key={user.uuid}>{user.firstname +' - '+ user.lastname}</div>)
                     })}
                 </>
             ) : (<> no data</>)}
