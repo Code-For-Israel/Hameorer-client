@@ -100,7 +100,14 @@ export default function App() {
         <Stack.Screen
           name="DID"
           component={DID}
-          options={{ headerTitle: "כותרת דמות" }}
+          options={{
+            headerTitle: "הוספת דמות",
+            // this is the part of custom background
+            headerTitleAlign: "center",
+            headerBackground: CustomBg,
+            headerTintColor: "#fff",
+            //end of custom background
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
