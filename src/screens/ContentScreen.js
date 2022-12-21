@@ -1,7 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import CustomBg from "../components/CustomBg";
-import PageA from "./PageA";
-import PageB from "./PageB";
+import PageA from "./contentStack/PageA";
+import PageB from "./contentStack/PageB";
 
 const Stack = createStackNavigator();
 
