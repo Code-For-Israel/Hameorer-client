@@ -10,9 +10,7 @@ export default function UseFetchPost(url, body) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log("in efect")
         if (token && body) {
-            console.log("if")
             const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
             setLoading(true);
             axios
@@ -27,7 +25,7 @@ export default function UseFetchPost(url, body) {
                     setLoading(false);
                 });
         }
-    }, []);
+    }, [token,body]);
 
     return {data, loading, error};
 }

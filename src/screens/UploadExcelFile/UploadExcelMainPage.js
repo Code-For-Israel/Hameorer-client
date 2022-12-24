@@ -1,12 +1,22 @@
 import {Button, View} from "react-native";
 import {Text} from "react-native-paper";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {parseExcelToJson} from '../../hooks/UploadExcel/ParseExcelFile'
+import UseFetchPost from "../../hooks/ApiCalls/useFetchPost";
 
 
 export function UploadExcelMainPage({setParsedData, parsedData}) {
 
+    const url = 'http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/authentication/group/'
+    const uploadFileConst = UseFetchPost(url, parsedData)
+
     const [fileUpload, setFileUpload] = useState(null);
+
+    useEffect(() => {
+        if (uploadFileConst && uploadFileConst.error)
+            console.log("error", uploadFileConst)
+    }, [uploadFileConst]);
+
 
     const FILE_TYPE_ACCEPTED = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
     const showFileDetails = () => {
@@ -34,8 +44,6 @@ export function UploadExcelMainPage({setParsedData, parsedData}) {
 
         setParsedData(userGroupBody)
 
-        //todo upload to server
-
     }
 
     return (
@@ -51,7 +59,23 @@ export function UploadExcelMainPage({setParsedData, parsedData}) {
             <Button title={"העלאה"} onPress={() => uploadFile()}></Button>
             {showFileDetails()}
             <div>
-                {parsedData ? <h1>File parsed - watch console log</h1> : ""}
+                {parsedData ? <h1>File parsed - watch console log to see if uploaded</h1> : ""}
+                {parsedData && parsedData.users && parsedData.users.length >= 1 ? (
+                    <>
+                        <h1>Items from excel that will be uploaded</h1>
+                        {parsedData.users.map(user => {
+                            return (
+                                <div
+                                    key={user.email}>{user.firstname + ' - ' + user.lastname + ' - ' + user.email}</div>)
+                        })}
+                        {uploadFileConst && uploadFileConst.error ? (
+                            <>
+                                <h1>{uploadFileConst.error.code}</h1>
+                                <h1>{uploadFileConst.error.message}</h1>
+                            </>
+                        ) : (<></>)}
+                    </>
+                ) : (<></>)}
             </div>
         </View>
     );

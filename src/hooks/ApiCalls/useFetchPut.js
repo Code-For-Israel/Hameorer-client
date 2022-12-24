@@ -25,7 +25,7 @@ export default function UseFetchPut(url, body) {
                     setLoading(false);
                 });
         }
-    }, []);
+    }, [token,body]);
 
     return {data, loading, error};
 }

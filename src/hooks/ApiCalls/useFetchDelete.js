@@ -25,7 +25,7 @@ export default function UseFetchDelete(url) {
                     setLoading(false);
                 });
         }
-    }, []);
+    }, [token]);
 
     return {data, loading, error};
 }
