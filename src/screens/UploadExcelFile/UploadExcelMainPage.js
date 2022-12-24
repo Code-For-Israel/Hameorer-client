@@ -74,6 +74,11 @@ export function UploadExcelMainPage({setParsedData, parsedData}) {
                                 <h1>{uploadFileConst.error.message}</h1>
                             </>
                         ) : (<></>)}
+                        {uploadFileConst && uploadFileConst.data ? (
+                            <>
+                                <h1>Data uploaded successfully!</h1>
+                            </>
+                        ) : (<></>)}
                     </>
                 ) : (<></>)}
             </div>
