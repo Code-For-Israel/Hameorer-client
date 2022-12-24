@@ -7,7 +7,7 @@ const sheetLinks = [
   {
     id: "1",
     title: "הדרכה עצמית",
-    screen: "Page1",
+    screen: "SelfGuide",
   },
   {
     id: "2",
