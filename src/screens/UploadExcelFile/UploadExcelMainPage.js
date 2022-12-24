@@ -1,14 +1,12 @@
 import {Button, View} from "react-native";
 import {Text} from "react-native-paper";
 import {useState} from "react";
-import {printFormData} from "../../utils/printFormDataObject";
-import {parseExcelToJson, extractExcel, getExcelColumns} from '../../hooks/UploadExcel/parseExcelFile'
+import {parseExcelToJson} from '../../hooks/UploadExcel/ParseExcelFile'
 
 
-export function UploadExcelMainPage() {
+export function UploadExcelMainPage({setParsedData, parsedData}) {
 
     const [fileUpload, setFileUpload] = useState(null);
-    const [parsedData, setParsedData] = useState(null);
 
     const FILE_TYPE_ACCEPTED = ".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
     const showFileDetails = () => {
@@ -23,27 +21,21 @@ export function UploadExcelMainPage() {
         const fileUrl = URL.createObjectURL(fileUpload)
 
         //create form data
-        const data = new FormData();
-        data.append('name', fileUpload.name);
-        data.append('type', fileUpload.type);
-        data.append('uri', fileUrl);
+        const formData = new FormData();
+        formData.append('name', fileUpload.name);
+        formData.append('type', fileUpload.type);
+        formData.append('uri', fileUrl);
 
         //parse excel into json
         const excelParsedToJsonData = await parseExcelToJson(fileUrl);
-        console.log(excelParsedToJsonData)
-        //get all columns from excel
-        let allColumnsExcel = getExcelColumns(excelParsedToJsonData);
 
-        //create obj with excel data
-        const excelDataParsedReady = extractExcel(allColumnsExcel, excelParsedToJsonData);
+        //create the body of the post request
+        const userGroupBody = {group_name: fileUpload.name, users: excelParsedToJsonData}
 
+        setParsedData(userGroupBody)
 
-        printFormData(data)
-        console.log(excelDataParsedReady)
-        setParsedData(excelDataParsedReady)
+        //todo upload to server
 
-        //todo enable this once server is ready - take it to another js file as well
-        // uploadToServer()
     }
 
     return (

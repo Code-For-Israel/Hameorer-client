@@ -23,11 +23,11 @@ export function getExcelColumns(excelParsedToJsonData) {
 }
 
 export function getGroupName(excelParsedToJsonData) {
-        let row = excelParsedToJsonData[0];
-        for (let key in row) {
-            if (allColumnsExcel.includes(key) === false)
-                allColumnsExcel.push(key)
-        }
+    let row = excelParsedToJsonData[0];
+    for (let key in row) {
+        if (allColumnsExcel.includes(key) === false)
+            allColumnsExcel.push(key)
+    }
 
     return allColumnsExcel;
 }
