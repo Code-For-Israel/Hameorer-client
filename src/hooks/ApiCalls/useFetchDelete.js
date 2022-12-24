@@ -10,20 +10,21 @@ export default function UseFetchDelete(url) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
-        setLoading(true);
-        axios
-            .delete(url, headers)
-            .then((response) => {
-                setData(response.data);
-            })
-            .catch((err) => {
-                setError(err);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-
+        if (token) {
+            const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
+            setLoading(true);
+            axios
+                .delete(url, headers)
+                .then((response) => {
+                    setData(response.data);
+                })
+                .catch((err) => {
+                    setError(err);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        }
     }, []);
 
     return {data, loading, error};
