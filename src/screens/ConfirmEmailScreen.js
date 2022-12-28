@@ -1,27 +1,26 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/core';
-import {useForm} from 'react-hook-form';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import CustomInput from "../components/CustomInput";
+import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/core";
+import { useForm } from "react-hook-form";
 
 const ConfirmEmailScreen = () => {
-  const {control, handleSubmit} = useForm();
+  const { control, handleSubmit } = useForm();
 
   const navigation = useNavigation();
 
-  const onConfirmPressed = data => {
+  const onConfirmPressed = (data) => {
     console.warn(data);
-    navigation.navigate('Home');
+    navigation.navigate("Home");
   };
 
   const onSignInPress = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate("SignIn");
   };
 
   const onResendPress = () => {
-    console.warn('onResendPress');
+    console.warn("onResendPress");
   };
 
   return (
@@ -34,7 +33,7 @@ const ConfirmEmailScreen = () => {
           control={control}
           placeholder="Enter your confirmation code"
           rules={{
-            required: 'Confirmation code is required',
+            required: "Confirmation code is required",
           }}
         />
 
@@ -58,21 +57,21 @@ const ConfirmEmailScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#051C60',
+    color: "#072F5F",
+    fontSize: 26,
+    fontWeight: "bold",
     margin: 10,
   },
   text: {
-    color: 'gray',
+    color: "gray",
     marginVertical: 10,
   },
   link: {
-    color: '#FDB075',
+    color: "#FDB075",
   },
 });
 

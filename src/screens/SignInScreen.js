@@ -1,58 +1,49 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   View,
-  Text,
-  Image,
   StyleSheet,
   useWindowDimensions,
   ScrollView,
-  TextInput,
-} from 'react-native';
-import Logo from '../../../assets/images/Logo_1.png';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/native';
-import {useForm, Controller} from 'react-hook-form';
+  Text,
+} from "react-native";
+import CustomInput from "../components/CustomInput";
+import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
+import { useForm, Controller } from "react-hook-form";
 
 const SignInScreen = () => {
-  const {height} = useWindowDimensions();
+  const { height } = useWindowDimensions();
   const navigation = useNavigation();
 
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
   } = useForm();
 
-  const onSignInPressed = data => {
+  const onSignInPressed = (data) => {
     console.log(data);
     // validate user
-    navigation.navigate('Home');
+    navigation.navigate("Profile");
   };
 
   const onForgotPasswordPressed = () => {
-    navigation.navigate('ForgotPassword');
+    navigation.navigate("ForgotPassword");
   };
 
   const onSignUpPress = () => {
-    navigation.navigate('SignUp');
+    navigation.navigate("SignUp");
   };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Image
-          source={Logo}
-          style={[styles.logo, {height: height * 0.3}]}
-          resizeMode="contain"
-        />
-
+        <Text style={styles.title}>Login</Text>
         <CustomInput
           name="username"
           placeholder="Username"
           control={control}
-          rules={{required: 'Username is required'}}
+          rules={{ required: "Username is required" }}
         />
 
         <CustomInput
@@ -61,10 +52,10 @@ const SignInScreen = () => {
           secureTextEntry
           control={control}
           rules={{
-            required: 'Password is required',
+            required: "Password is required",
             minLength: {
               value: 3,
-              message: 'Password should be minimum 3 characters long',
+              message: "Password should be minimum 3 characters long",
             },
           }}
         />
@@ -76,8 +67,6 @@ const SignInScreen = () => {
           onPress={onForgotPasswordPressed}
           type="TERTIARY"
         />
-
-        <SocialSignInButtons />
 
         <CustomButton
           text="Don't have an account? Create one"
@@ -91,13 +80,20 @@ const SignInScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
-    padding: 20,
+    alignItems: "center",
+
+    padding: 15,
   },
   logo: {
-    width: '70%',
+    width: "70%",
     maxWidth: 300,
     maxHeight: 200,
+  },
+  title: {
+    color: "#072F5F",
+    fontSize: 26,
+    fontWeight: "bold",
+    margin: 10,
   },
 });
 

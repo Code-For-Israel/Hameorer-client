@@ -1,23 +1,22 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/native';
-import {useForm} from 'react-hook-form';
+import React from "react";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
+import CustomInput from "../components/CustomInput";
+import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/native";
+import { useForm } from "react-hook-form";
 
 const NewPasswordScreen = () => {
-  const {control, handleSubmit} = useForm();
+  const { control, handleSubmit } = useForm();
 
   const navigation = useNavigation();
 
-  const onSubmitPressed = data => {
+  const onSubmitPressed = (data) => {
     console.warn(data);
-    navigation.navigate('Home');
+    navigation.navigate("Home");
   };
 
   const onSignInPress = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate("SignIn");
   };
 
   return (
@@ -29,7 +28,7 @@ const NewPasswordScreen = () => {
           placeholder="Code"
           name="code"
           control={control}
-          rules={{required: 'Code is required'}}
+          rules={{ required: "Code is required" }}
         />
 
         <CustomInput
@@ -38,10 +37,10 @@ const NewPasswordScreen = () => {
           control={control}
           secureTextEntry
           rules={{
-            required: 'Password is required',
+            required: "Password is required",
             minLength: {
               value: 8,
-              message: 'Password should be at least 8 characters long',
+              message: "Password should be at least 8 characters long",
             },
           }}
         />
@@ -60,21 +59,21 @@ const NewPasswordScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#051C60',
+    color: "#072F5F",
+    fontSize: 26,
+    fontWeight: "bold",
     margin: 10,
   },
   text: {
-    color: 'gray',
+    color: "gray",
     marginVertical: 10,
   },
   link: {
-    color: '#FDB075',
+    color: "#FDB075",
   },
 });
 

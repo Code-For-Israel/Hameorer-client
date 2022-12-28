@@ -9,6 +9,7 @@ import Ceremony from "./src/screens/sheetScreens/Ceremony";
 import FamilyMem from "./src/screens/sheetScreens/FamilyMem";
 import PersonalDiary from "./src/screens/sheetScreens/PersonalDiary";
 import CustomBg from "./src/components/CustomBg";
+import Navigation from "./src/navigation";
 
 const Stack = createStackNavigator();
 
@@ -20,7 +21,7 @@ export default function App() {
         {/* this screen is for the tabs navigation at the bottom */}
         <Stack.Screen
           name="Home"
-          component={HomeTabs}
+          component={Navigation}
           options={{ headerShown: false }}
         />
         {/* this is for the Bottom Sheet Links menu */}

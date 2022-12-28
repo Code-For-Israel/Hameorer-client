@@ -1,33 +1,32 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/core';
-import {useForm} from 'react-hook-form';
+import React, { useState } from "react";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
+import CustomInput from "../components/CustomInput";
+import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/core";
+import { useForm } from "react-hook-form";
 
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SignUpScreen = () => {
-  const {control, handleSubmit, watch} = useForm();
-  const pwd = watch('password');
+  const { control, handleSubmit, watch } = useForm();
+  const pwd = watch("password");
   const navigation = useNavigation();
 
   const onRegisterPressed = () => {
-    navigation.navigate('ConfirmEmail');
+    navigation.navigate("ConfirmEmail");
   };
 
   const onSignInPress = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate("SignIn");
   };
 
   const onTermsOfUsePressed = () => {
-    console.warn('onTermsOfUsePressed');
+    console.warn("onTermsOfUsePressed");
   };
 
   const onPrivacyPressed = () => {
-    console.warn('onPrivacyPressed');
+    console.warn("onPrivacyPressed");
   };
 
   return (
@@ -40,14 +39,14 @@ const SignUpScreen = () => {
           control={control}
           placeholder="Username"
           rules={{
-            required: 'Username is required',
+            required: "Username is required",
             minLength: {
               value: 3,
-              message: 'Username should be at least 3 characters long',
+              message: "Username should be at least 3 characters long",
             },
             maxLength: {
               value: 24,
-              message: 'Username should be max 24 characters long',
+              message: "Username should be max 24 characters long",
             },
           }}
         />
@@ -56,8 +55,8 @@ const SignUpScreen = () => {
           control={control}
           placeholder="Email"
           rules={{
-            required: 'Email is required',
-            pattern: {value: EMAIL_REGEX, message: 'Email is invalid'},
+            required: "Email is required",
+            pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
           }}
         />
         <CustomInput
@@ -66,10 +65,10 @@ const SignUpScreen = () => {
           placeholder="Password"
           secureTextEntry
           rules={{
-            required: 'Password is required',
+            required: "Password is required",
             minLength: {
               value: 8,
-              message: 'Password should be at least 8 characters long',
+              message: "Password should be at least 8 characters long",
             },
           }}
         />
@@ -79,7 +78,7 @@ const SignUpScreen = () => {
           placeholder="Repeat Password"
           secureTextEntry
           rules={{
-            validate: value => value === pwd || 'Password do not match',
+            validate: (value) => value === pwd || "Password do not match",
           }}
         />
 
@@ -89,17 +88,15 @@ const SignUpScreen = () => {
         />
 
         <Text style={styles.text}>
-          By registering, you confirm that you accept our{' '}
+          By registering, you confirm that you accept our{" "}
           <Text style={styles.link} onPress={onTermsOfUsePressed}>
             Terms of Use
-          </Text>{' '}
-          and{' '}
+          </Text>{" "}
+          and{" "}
           <Text style={styles.link} onPress={onPrivacyPressed}>
             Privacy Policy
           </Text>
         </Text>
-
-        <SocialSignInButtons />
 
         <CustomButton
           text="Have an account? Sign in"
@@ -113,21 +110,21 @@ const SignUpScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#051C60',
+    color: "#072F5F",
+    fontSize: 26,
+    fontWeight: "bold",
     margin: 10,
   },
   text: {
-    color: 'gray',
+    color: "gray",
     marginVertical: 10,
   },
   link: {
-    color: '#FDB075',
+    color: "#FDB075",
   },
 });
 

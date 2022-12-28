@@ -1,22 +1,21 @@
-import React, {useState} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import CustomInput from '../../components/CustomInput';
-import CustomButton from '../../components/CustomButton';
-import SocialSignInButtons from '../../components/SocialSignInButtons';
-import {useNavigation} from '@react-navigation/core';
-import {useForm} from 'react-hook-form';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
+import CustomInput from "../components/CustomInput";
+import CustomButton from "../components/CustomButton";
+import { useNavigation } from "@react-navigation/core";
+import { useForm } from "react-hook-form";
 
 const ForgotPasswordScreen = () => {
-  const {control, handleSubmit} = useForm();
+  const { control, handleSubmit } = useForm();
   const navigation = useNavigation();
 
-  const onSendPressed = data => {
+  const onSendPressed = (data) => {
     console.warn(data);
-    navigation.navigate('NewPassword');
+    navigation.navigate("NewPassword");
   };
 
   const onSignInPress = () => {
-    navigation.navigate('SignIn');
+    navigation.navigate("SignIn");
   };
 
   return (
@@ -29,7 +28,7 @@ const ForgotPasswordScreen = () => {
           control={control}
           placeholder="Username"
           rules={{
-            required: 'Username is required',
+            required: "Username is required",
           }}
         />
 
@@ -47,21 +46,21 @@ const ForgotPasswordScreen = () => {
 
 const styles = StyleSheet.create({
   root: {
-    alignItems: 'center',
+    alignItems: "center",
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#051C60',
+    color: "#072F5F",
+    fontSize: 26,
+    fontWeight: "bold",
     margin: 10,
   },
   text: {
-    color: 'gray',
+    color: "gray",
     marginVertical: 10,
   },
   link: {
-    color: '#FDB075',
+    color: "#FDB075",
   },
 });
 
