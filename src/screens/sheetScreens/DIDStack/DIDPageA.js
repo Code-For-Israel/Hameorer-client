@@ -81,11 +81,11 @@ const DIDPageA = ({ navigation }) => {
               onPress={() => {
                 // console.log("the sub is: ", value)
                 // console.log("the text is:", text)
-                navigation.navigate("DIDPageB");
+                navigation.navigate("DIDPageB",tags);
               }}
             />
           </View>
-          <Text>שלב 1 מתוך 3</Text>
+          <Text style={styles.headText}>שלב 1 מתוך 3</Text>
           <View>
             <Text style={styles.prevText}>הקודם</Text>
           </View>
@@ -170,6 +170,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
   },
+  headText: {
+    fontSize: 16,
+  },
   prevText: {
     opacity: 0,
   },
@@ -196,12 +199,11 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     padding: 20,
     marginTop: 40,
-    // justifyContent: "flex-end",
   },
   tagBox: {
     backgroundColor: "#b4b6b9",
-    paddingHorizontal: 8,
     paddingVertical: 10,
+    paddingHorizontal: 8,
     opacity: 0.9,
     marginLeft: 10,
     marginBottom: 10,
