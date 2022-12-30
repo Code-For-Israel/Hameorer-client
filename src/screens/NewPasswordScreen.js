@@ -22,7 +22,7 @@ const NewPasswordScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Reset your password</Text>
+        <Text style={styles.title}>איפוס סיסמה</Text>
 
         <CustomInput
           placeholder="Code"
@@ -45,7 +45,7 @@ const NewPasswordScreen = () => {
           }}
         />
 
-        <CustomButton text="Submit" onPress={handleSubmit(onSubmitPressed)} />
+        <CustomButton text="שלח" onPress={handleSubmit(onSubmitPressed)} />
 
         <CustomButton
           text="Back to Sign in"

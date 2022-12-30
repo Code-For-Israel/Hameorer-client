@@ -1,7 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
-
 import HomeTabs from "./src/components/HomeTabs";
 import SelfGuid from "./src/screens/sheetScreens/SelfGuide";
 import DID from "./src/screens/sheetScreens/DID";
@@ -19,8 +18,10 @@ export default function App() {
       <StatusBar style="light" />
       <Stack.Navigator>
         {/* this screen is for the tabs navigation at the bottom */}
+
         <Stack.Screen
-          name="Home"
+          name="sign in"
+          headerTitle="sign in"
           component={Navigation}
           options={{ headerShown: false }}
         />
@@ -28,6 +29,11 @@ export default function App() {
         <Stack.Screen
           name="SelfGuide"
           component={SelfGuid}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeTabs}
           options={{ headerShown: false }}
         />
         <Stack.Screen

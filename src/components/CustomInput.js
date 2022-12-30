@@ -50,12 +50,15 @@ const CustomInput = ({
 
 const styles = StyleSheet.create({
   text: {
-    backgroundColor: "white",
     height: 50,
+    color: "gray",
     width: "100%",
-
-    borderColor: "#e8e8e8",
-    borderRadius: 5,
+    padding: 10,
+    backgroundColor: "#f8f8ff",
+    borderRadius: 10,
+    marginBottom: 5,
+    textAlign: "center",
+    textAlignVertical: "top",
     paddingHorizontal: 5,
     marginVertical: 2,
   },

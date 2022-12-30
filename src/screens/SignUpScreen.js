@@ -32,12 +32,10 @@ const SignUpScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Create an account</Text>
-
         <CustomInput
           name="username"
           control={control}
-          placeholder="Username"
+          placeholder="שם משתמש"
           rules={{
             required: "Username is required",
             minLength: {
@@ -53,7 +51,7 @@ const SignUpScreen = () => {
         <CustomInput
           name="email"
           control={control}
-          placeholder="Email"
+          placeholder="אימייל"
           rules={{
             required: "Email is required",
             pattern: { value: EMAIL_REGEX, message: "Email is invalid" },
@@ -62,7 +60,7 @@ const SignUpScreen = () => {
         <CustomInput
           name="password"
           control={control}
-          placeholder="Password"
+          placeholder="סיסמה"
           secureTextEntry
           rules={{
             required: "Password is required",
@@ -73,7 +71,7 @@ const SignUpScreen = () => {
           }}
         />
         <CustomInput
-          name="password-repeat"
+          name="אימות סיסמה"
           control={control}
           placeholder="Repeat Password"
           secureTextEntry
@@ -82,10 +80,7 @@ const SignUpScreen = () => {
           }}
         />
 
-        <CustomButton
-          text="Register"
-          onPress={handleSubmit(onRegisterPressed)}
-        />
+        <CustomButton text="הרשם" onPress={handleSubmit(onRegisterPressed)} />
 
         <Text style={styles.text}>
           By registering, you confirm that you accept our{" "}

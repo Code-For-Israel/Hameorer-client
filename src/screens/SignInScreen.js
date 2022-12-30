@@ -5,15 +5,22 @@ import {
   useWindowDimensions,
   ScrollView,
   Text,
+  AsyncStorage,
 } from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
 import { useForm, Controller } from "react-hook-form";
+import HomeTabs from "../components/HomeTabs";
+import axios from "axios";
 
 const SignInScreen = () => {
   const { height } = useWindowDimensions();
   const navigation = useNavigation();
+  const [errorMessage, setErrorMessage] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     control,
@@ -22,9 +29,40 @@ const SignInScreen = () => {
   } = useForm();
 
   const onSignInPressed = (data) => {
-    console.log(data);
-    // validate user
-    navigation.navigate("Profile");
+    setIsLoading(true);
+
+    // make a request to your backend to get the JWT
+    axios
+      .post("http://your-backend.com/login", {
+        username,
+        password,
+      })
+      .then((response) => {
+        // if the login was successful, the backend should return a JWT
+        // save the JWT in local storage or in redux so that it can be used for subsequent requests
+        if (response.data.token) {
+          AsyncStorage.setItem("jwt", response.data.token)
+            .then(() => {
+              // navigate to the home screen or some other protected route
+              setIsLoading(false);
+            })
+            .catch((error) => {
+              // handle error saving JWT to local storage
+              setIsLoading(false);
+            });
+        } else {
+          // handle login failure
+          setErrorMessage("Invalid username or password");
+          setIsLoading(false);
+        }
+      })
+      .catch((error) => {
+        // handle any errors that occur during the login request
+        setErrorMessage(error.message);
+        setIsLoading(false);
+      });
+
+    navigation.navigate("HomeTabs");
   };
 
   const onForgotPasswordPressed = () => {
@@ -38,17 +76,21 @@ const SignInScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Login</Text>
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
         <CustomInput
           name="username"
-          placeholder="Username"
+          placeholder="שם משתמש"
           control={control}
+          value={username}
+          onChangeText={setUsername}
           rules={{ required: "Username is required" }}
         />
 
         <CustomInput
           name="password"
-          placeholder="Password"
+          placeholder="סיסמה"
+          value={password}
+          onChangeText={setPassword}
           secureTextEntry
           control={control}
           rules={{
@@ -59,8 +101,11 @@ const SignInScreen = () => {
             },
           }}
         />
-
-        <CustomButton text="Sign In" onPress={handleSubmit(onSignInPressed)} />
+        {isLoading ? (
+          <ActivityIndicator size="small" />
+        ) : (
+          <CustomButton text="התחבר" onPress={handleSubmit(onSignInPressed)} />
+        )}
 
         <CustomButton
           text="Forgot password?"

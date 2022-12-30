@@ -35,14 +35,14 @@ const styles = StyleSheet.create({
     width: "25%",
 
     padding: 15,
-    marginVertical: 5,
+    marginVertical: 2,
 
     alignItems: "center",
     borderRadius: 5,
   },
 
   container_PRIMARY: {
-    backgroundColor: "#3B71F3",
+    backgroundColor: "#072F5F",
   },
 
   container_SECONDARY: {

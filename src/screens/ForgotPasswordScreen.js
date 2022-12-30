@@ -21,18 +21,16 @@ const ForgotPasswordScreen = () => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.title}>Reset your password</Text>
-
         <CustomInput
           name="username"
           control={control}
-          placeholder="Username"
+          placeholder="שם משתמש"
           rules={{
             required: "Username is required",
           }}
         />
 
-        <CustomButton text="Send" onPress={handleSubmit(onSendPressed)} />
+        <CustomButton text="שלח" onPress={handleSubmit(onSendPressed)} />
 
         <CustomButton
           text="Back to Sign in"
