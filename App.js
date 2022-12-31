@@ -16,6 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar style="light" />
+      {/* chnge to home */}
       <Stack.Navigator>
         {/* this screen is for the tabs navigation at the bottom */}
         <Stack.Screen
