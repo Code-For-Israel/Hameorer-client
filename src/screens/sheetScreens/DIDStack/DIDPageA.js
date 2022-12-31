@@ -64,11 +64,11 @@ const DIDPageA = ({ navigation }) => {
   };
 
   const toggleTag = (i) => {
-    console.log("toogle this:", i);
+    // console.log("toogle this:", i);
     const newTags = [...tags];
     newTags[i].isClicked = !newTags[i].isClicked;
     setTags(newTags);
-    console.log(tags);
+    // console.log(tags);
   };
 
   return (

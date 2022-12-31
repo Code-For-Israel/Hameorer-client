@@ -1,9 +1,14 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import React, { useState } from "react";
 import NextButton from "../../../components/NextButton";
 import PrevButton from "../../../components/PrevButton";
 import { ProgressBar, Searchbar } from "react-native-paper";
+
+// TODO  : 
+// replace the Figure const to API calls 
+// change to FLATLIST and add load on scroll
+
 
 const figures = [
   {
@@ -28,7 +33,7 @@ const DIDPageB = ({ navigation, route }) => {
   const [figureQuery, setFigureQuery] = useState("");
   const [filteredFigure, setFilteredFigure] = useState(figures);
 
-  const tags = route.params;
+  const tags = route.params
 
   const onChangeSearch = (query) => {
     setFigureQuery(query.target.value);
@@ -38,8 +43,11 @@ const DIDPageB = ({ navigation, route }) => {
       )
     );
   };
+const handleFigurePress = (props) => {
+  navigation.navigate("DIDPageC",{...props, tags});
+}
 
-  console.table(tags);
+  // console.table(tags);
   return (
     <View style={styles.container}>
       <View style={styles.headContainer}>
@@ -49,7 +57,8 @@ const DIDPageB = ({ navigation, route }) => {
             onPress={() => {
               // console.log("the sub is: ", value)
               // console.log("the text is:", text)
-              navigation.navigate("DIDPageC");
+              // navigation.navigate("DIDPageC");
+              handleFigurePress({head:"יאנוש-קורצק",body:"טקסט שתיים שלוש"})
             }}
           />
         </View>
@@ -98,10 +107,12 @@ const DIDPageB = ({ navigation, route }) => {
       <View style={styles.figuresContainr}>
         {filteredFigure.map((item, index) => {
           return (
-            <View key={index} style={styles.figureBox}>
+            <TouchableOpacity key={index} onPress={()=>handleFigurePress(item)}>
+            <View style={styles.figureBox}>
               <Text style={styles.figureHead}>{item.head}</Text>
               <Text style={styles.figureBody}>{item.body}</Text>
             </View>
+            </TouchableOpacity>
           );
         })}
       </View>
