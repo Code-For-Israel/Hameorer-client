@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import React, { useState } from "react";
 import NextButton from "../../../components/NextButton";
@@ -51,8 +51,9 @@ const DIDPageB = ({ navigation, route }) => {
   };
 
   // console.table(tags);
+  
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.headContainer}>
         <View style={{ width: 100 }}>
           <NextButton
@@ -132,7 +133,7 @@ const DIDPageB = ({ navigation, route }) => {
         })}
       </View>
       {/* end of tags */}
-    </View>
+    </ScrollView>
   );
 };
 
