@@ -1,78 +1,78 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import React from "react";
+import {View, Text, StyleSheet, ScrollView} from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
-import { useNavigation } from "@react-navigation/core";
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
+import {useNavigation} from "@react-navigation/native";
 
 const ConfirmEmailScreen = () => {
-  const { control, handleSubmit } = useForm();
+    const {control, handleSubmit} = useForm();
 
-  const navigation = useNavigation();
+    const navigation = useNavigation();
 
-  const onConfirmPressed = (data) => {
-    console.warn(data);
-    navigation.navigate("Home");
-  };
+    const onConfirmPressed = (data) => {
+        console.warn(data);
+        navigation.navigate("Home");
+    };
 
-  const onSignInPress = () => {
-    navigation.navigate("SignIn");
-  };
+    const onSignInPress = () => {
+        navigation.navigate("SignIn");
+    };
 
-  const onResendPress = () => {
-    console.warn("onResendPress");
-  };
+    const onResendPress = () => {
+        console.warn("onResendPress");
+    };
 
-  return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
-        <Text style={styles.title}>Confirm your email</Text>
+    return (
+        <ScrollView showsVerticalScrollIndicator={false}>
+            <View style={styles.root}>
+                <Text style={styles.title}>Confirm your email</Text>
 
-        <CustomInput
-          name="code"
-          control={control}
-          placeholder="Enter your confirmation code"
-          rules={{
-            required: "Confirmation code is required",
-          }}
-        />
+                <CustomInput
+                    name="code"
+                    control={control}
+                    placeholder="Enter your confirmation code"
+                    rules={{
+                        required: "Confirmation code is required",
+                    }}
+                />
 
-        <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)} />
+                <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)}/>
 
-        <CustomButton
-          text="Resend code"
-          onPress={onResendPress}
-          type="SECONDARY"
-        />
+                <CustomButton
+                    text="Resend code"
+                    onPress={onResendPress}
+                    type="SECONDARY"
+                />
 
-        <CustomButton
-          text="Back to Sign in"
-          onPress={onSignInPress}
-          type="TERTIARY"
-        />
-      </View>
-    </ScrollView>
-  );
+                <CustomButton
+                    text="Back to Sign in"
+                    onPress={onSignInPress}
+                    type="TERTIARY"
+                />
+            </View>
+        </ScrollView>
+    );
 };
 
 const styles = StyleSheet.create({
-  root: {
-    alignItems: "center",
-    padding: 20,
-  },
-  title: {
-    color: "#072F5F",
-    fontSize: 26,
-    fontWeight: "bold",
-    margin: 10,
-  },
-  text: {
-    color: "gray",
-    marginVertical: 10,
-  },
-  link: {
-    color: "#FDB075",
-  },
+    root: {
+        alignItems: "center",
+        padding: 20,
+    },
+    title: {
+        color: "#072F5F",
+        fontSize: 26,
+        fontWeight: "bold",
+        margin: 10,
+    },
+    text: {
+        color: "gray",
+        marginVertical: 10,
+    },
+    link: {
+        color: "#FDB075",
+    },
 });
 
 export default ConfirmEmailScreen;
