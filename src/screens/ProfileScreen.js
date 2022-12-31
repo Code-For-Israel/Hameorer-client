@@ -18,11 +18,11 @@ export default function ProfileScreen() {
             <UploadExcelMainPage parsedData={parsedData} setParsedData={setParsedData}></UploadExcelMainPage>
 
             <Text>Profile Screen</Text>
-            <br/>
+            
             <Text>{loading ? "Loading data ........." : "Data Loaded!"}</Text>
-            <br/>
+            
             <Button title={'click to pull groups and console log them'} onPress={() => console.log(data)}></Button>
-            <br/>
+            
         </View>
     );
 }

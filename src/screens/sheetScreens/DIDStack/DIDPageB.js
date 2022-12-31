@@ -5,47 +5,50 @@ import NextButton from "../../../components/NextButton";
 import PrevButton from "../../../components/PrevButton";
 import { ProgressBar, Searchbar } from "react-native-paper";
 
-// TODO  : 
-// replace the Figure const to API calls 
+// TODO  :
+// replace the Figure const to API calls
 // change to FLATLIST and add load on scroll
-
 
 const figures = [
   {
     head: "יאנוש קורצק",
-    body: "יאנוש קורצק הוא שם העט שבו נודע הנריק גולדשמיט רופא מחנך והוגה יהודי. סופר פובליציסט ופעיל חברתי יהודי-פולי הוא נולד בוורשה ב-1818 וחי עד 1942",
+    body:
+      "יאנוש קורצק הוא שם העט שבו נודע הנריק גולדשמיט רופא מחנך והוגה יהודי. סופר פובליציסט ופעיל חברתי יהודי-פולי הוא נולד בוורשה ב-1818 וחי עד 1942"
   },
   {
     head: "אנה פרנק",
-    body: "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש",
+    body:
+      "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש"
   },
   {
     head: "מרים הכטמן",
-    body: "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש",
+    body:
+      "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש"
   },
   {
     head: "ננסי וייק",
-    body: "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש",
-  },
+    body:
+      "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש"
+  }
 ];
 
 const DIDPageB = ({ navigation, route }) => {
   const [figureQuery, setFigureQuery] = useState("");
   const [filteredFigure, setFilteredFigure] = useState(figures);
 
-  const tags = route.params
+  const tags = route.params;
 
-  const onChangeSearch = (query) => {
-    setFigureQuery(query.target.value);
+  const onChangeSearch = query => {
+    setFigureQuery(query);
     setFilteredFigure(
-      figures.filter((item) =>
-        item.head.toLocaleLowerCase().includes(query.target.value.toLowerCase())
-      )
-    );
+      figures
+          .filter((item) => item.head.toLowerCase().includes(query.toLowerCase()))
+          // .slice(0, 20)
+  )
   };
-const handleFigurePress = (props) => {
-  navigation.navigate("DIDPageC",{...props, tags});
-}
+  const handleFigurePress = props => {
+    navigation.navigate("DIDPageC", { ...props, tags });
+  };
 
   // console.table(tags);
   return (
@@ -58,7 +61,10 @@ const handleFigurePress = (props) => {
               // console.log("the sub is: ", value)
               // console.log("the text is:", text)
               // navigation.navigate("DIDPageC");
-              handleFigurePress({head:"יאנוש-קורצק",body:"טקסט שתיים שלוש"})
+              handleFigurePress({
+                head: "יאנוש-קורצק",
+                body: "טקסט שתיים שלוש"
+              });
             }}
           />
         </View>
@@ -86,7 +92,7 @@ const handleFigurePress = (props) => {
           placeholder="חפש דמות"
           inputStyle={styles.SearchbarStyle}
           iconColor="#000"
-          onChange={onChangeSearch}
+          onChangeText={onChangeSearch}
           value={figureQuery}
         />
       </View>
@@ -97,7 +103,9 @@ const handleFigurePress = (props) => {
           if (tag.isClicked) {
             return (
               <View style={styles.tagBox} key={index}>
-                <Text style={styles.tagText}>{tag.value}</Text>
+                <Text style={styles.tagText}>
+                  {tag.value}
+                </Text>
               </View>
             );
           }
@@ -107,11 +115,18 @@ const handleFigurePress = (props) => {
       <View style={styles.figuresContainr}>
         {filteredFigure.map((item, index) => {
           return (
-            <TouchableOpacity key={index} onPress={()=>handleFigurePress(item)}>
-            <View style={styles.figureBox}>
-              <Text style={styles.figureHead}>{item.head}</Text>
-              <Text style={styles.figureBody}>{item.body}</Text>
-            </View>
+            <TouchableOpacity
+              key={index}
+              onPress={() => handleFigurePress(item)}
+            >
+              <View style={styles.figureBox}>
+                <Text style={styles.figureHead}>
+                  {item.head}
+                </Text>
+                <Text style={styles.figureBody}>
+                  {item.body}
+                </Text>
+              </View>
             </TouchableOpacity>
           );
         })}
@@ -126,40 +141,40 @@ export default DIDPageB;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#fff"
   },
   headContainer: {
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
+    paddingHorizontal: 20
   },
   headText: {
-    fontSize: 16,
+    fontSize: 16
   },
   ProgressBarContainer: {
     marginTop: 5,
     width: "90%",
     display: "flex",
-    marginLeft: "5%",
+    marginLeft: "5%"
   },
   ProgressBarStyle: {
     height: 8,
-    backgroundColor: "#ADBCF2",
+    backgroundColor: "#ADBCF2"
   },
   SearchbarStyleContainer: {
     marginHorizontal: 8,
     marginTop: 20,
-    opacity: 0.7,
+    opacity: 0.7
   },
   SearchbarStyle: {
-    textAlign: "right",
+    textAlign: "right"
   },
   tagsContainer: {
     flexDirection: "row-reverse",
     flexWrap: "wrap",
     padding: 10,
-    marginTop: 20,
+    marginTop: 20
   },
   tagBox: {
     backgroundColor: "#FCBF49",
@@ -170,11 +185,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderRadius: 10,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   },
   tagText: {
     fontSize: 18,
-    color: "#fff",
+    color: "#fff"
   },
   figuresContainr: {
     padding: 10
@@ -185,15 +200,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     // marginHorizontal: 5,
     padding: 10,
-    borderRadius: 15,
+    borderRadius: 15
   },
   figureHead: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 5
   },
-  figureBody:{
-    color: "black",
+  figureBody: {
+    color: "black"
   }
-
 });
