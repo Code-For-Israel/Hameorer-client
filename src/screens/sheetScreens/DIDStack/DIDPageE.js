@@ -6,7 +6,7 @@ import { ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const DIDPageC = ({ navigation, route }) => {
+const DIDPageE = ({ navigation, route }) => {
   const figure = route.params;
   //figure.name
   // console.log(figure)
@@ -26,12 +26,12 @@ const DIDPageC = ({ navigation, route }) => {
         <View style={{ width: 100 }}>
           <Text style={styles.nextText}>הבא</Text>
         </View>
-        <Text style={styles.headText}>שלב 3 מתוך 3</Text>
+        <Text style={styles.headText}>שלב 2 מתוך 2</Text>
         <View style={{ width: 100 }}>
           <PrevButton
             title="הקודם"
             onPress={() => {
-              navigation.navigate("DIDPageB", figure.tags);
+              navigation.navigate("DIDPageD");
             }}
           />
         </View>
@@ -50,11 +50,15 @@ const DIDPageC = ({ navigation, route }) => {
           <Icon name="add" size={30} color={"#fff"} />
         </View>
         <View style={styles.detailesContainer}>
-          <Text style={styles.h1}>{figure.head}</Text>
-          <Text style={styles.textBody}>פולין</Text>
+          <Text style={styles.h1}>{figure.fullName}</Text>
+          <Text style={styles.textBody}>{figure.location}</Text>
 
-          <Text style={styles.textSubTitle}>תאריך לידה:</Text>
-          <Text style={styles.textSubTitle}>תאריך פטירה:</Text>
+          <Text style={styles.textSubTitle}>
+            תאריך לידה: {figure.birthDate}
+          </Text>
+          <Text style={styles.textSubTitle}>
+            תאריך פטירה: {figure.deathDate}
+          </Text>
         </View>
       </View>
       {/* end of head Section */}
@@ -80,14 +84,15 @@ const DIDPageC = ({ navigation, route }) => {
         />
       </View>
       {/* sound sample */}
+
+
       <TouchableOpacity onPress={() => {}}>
-        <View style={styles.TextInputContainer}>
-          <Text style={[styles.input, styles.inputSound]}>
-            {sound ? sound.name : "העלה דגימת קול"}
-            <Icon name="upload-file" size={24} color={"#000"} />
-          </Text>
+        <View style={styles.SearchbarStyleContainer}>
+          <Icon name="upload-file" size={28} color={"#000"} />
+          <Text style={styles.SearchStyle}> {sound ? sound.name : "העלה דגימת קול"}</Text>
         </View>
       </TouchableOpacity>
+
       {/* end sound */}
       {/* send btn */}
       <View style={styles.send}>
@@ -98,7 +103,7 @@ const DIDPageC = ({ navigation, route }) => {
   );
 };
 
-export default DIDPageC;
+export default DIDPageE;
 
 const styles = StyleSheet.create({
   container: {
@@ -157,7 +162,7 @@ const styles = StyleSheet.create({
   detailesContainer: {
     display: "flex",
     flexDirection: "column",
-    
+    justifyContent: "right",
   },
   h1: {
     fontSize: 24,
@@ -198,7 +203,26 @@ const styles = StyleSheet.create({
   },
   send: {
     width: 100,
-    marginLeft: 15,
-    marginTop: 5,
+    // marginLeft: 15,
+    marginRight: 15,
+    marginTop: 10,
+    alignSelf: 'flex-end'
+  },
+  SearchbarStyleContainer: {
+    marginBottom: 10,
+    padding: 5,
+    paddingHorizontal: 10,
+    backgroundColor: "#f5f5f5",
+    borderRadius: 10,
+    textAlign: "right",
+    marginHorizontal: 10,
+    marginTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  SearchStyle: {
+    fontSize: 18,
+    color: "#000",
   },
 });

@@ -49,24 +49,25 @@ export function UploadExcelMainPage({setParsedData, parsedData}) {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <Text>עמוד העלאה</Text>
-            <input
+            {/* cant use input tag with react native - need to replace it */}
+            {/* <input
                 type="file"
                 accept={FILE_TYPE_ACCEPTED}
                 onChange={(event) => {
                     setFileUpload(event.target.files[0]);
                 }}
-            />
+            /> */}
             <Button title={"העלאה"} onPress={() => uploadFile()}></Button>
             {showFileDetails()}
-            <div>
+            <View>
                 {parsedData ? <h1>File parsed - watch console log to see if uploaded</h1> : ""}
                 {parsedData && parsedData.users && parsedData.users.length >= 1 ? (
                     <>
                         <h1>Items from excel that will be uploaded</h1>
                         {parsedData.users.map(user => {
                             return (
-                                <div
-                                    key={user.email}>{user.firstname + ' - ' + user.lastname + ' - ' + user.email}</div>)
+                                <View
+                                    key={user.email}>{user.firstname + ' - ' + user.lastname + ' - ' + user.email}</View>)
                         })}
                         {uploadFileConst && uploadFileConst.error ? (
                             <>
@@ -81,7 +82,7 @@ export function UploadExcelMainPage({setParsedData, parsedData}) {
                         ) : (<></>)}
                     </>
                 ) : (<></>)}
-            </div>
+            </View>
         </View>
     );
 }
