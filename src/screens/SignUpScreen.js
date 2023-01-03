@@ -1,20 +1,35 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Text, View, StyleSheet, ScrollView} from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
 import {useForm} from "react-hook-form";
+import UseFetchPost from "./../hooks/ApiCalls/useFetchPost"
 
 const EMAIL_REGEX =
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SignUpScreen = () => {
+
+    const url='http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/authentication/user/\n'
+    const [userRegisterInfo, setUserRegisterInfo] = useState(null);
+    const userRegisterResponse = UseFetchPost(url,userRegisterInfo)
+
     const {control, handleSubmit, watch} = useForm();
     const pwd = watch("password");
     const navigation = useNavigation();
 
-    const onRegisterPressed = () => {
-        navigation.navigate("ConfirmEmail");
+    useEffect(() => {
+        if (userRegisterResponse) {
+            console.log(userRegisterResponse)
+        }
+    }, [userRegisterResponse]);
+
+
+    const onRegisterPressed = (userRegisterInfo) => {
+        console.log(userRegisterInfo)
+        setUserRegisterInfo(userRegisterInfo)
+        // navigation.navigate("ConfirmEmail");
     };
 
     const onSignInPress = () => {

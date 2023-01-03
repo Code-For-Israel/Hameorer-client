@@ -14,17 +14,20 @@ export function getTokenAccess() {
     const userLoginBody = {email: 'hameorer1@com.com', password: 'itizk12345'}
 
     useEffect(() => {
-        axios
-            .post(url, userLoginBody, headers)
-            .then((response) => {
-                setData(response.data.access);
-            })
-            .catch((err) => {
-                setError(err);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        if (userLoginBody) {
+            setLoading(true);
+            axios
+                .post(url, userLoginBody, headers)
+                .then((response) => {
+                    setData(response.data.access);
+                })
+                .catch((err) => {
+                    setError(err);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        }
     }, []);
 
     return {data, loading, error}
@@ -43,19 +46,20 @@ export function getTokenRefresh() {
     const userLoginBody = {email: 'hameorer1@com.com', password: 'itizk12345'}
 
     useEffect(() => {
-        setLoading(true);
-        axios
-            .post(url, userLoginBody, headers)
-            .then((response) => {
-                setData(response.data.refresh);
-            })
-            .catch((err) => {
-                setError(err);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
-    }, [url]);
-
+        if (userLoginBody) {
+            setLoading(true);
+            axios
+                .post(url, userLoginBody, headers)
+                .then((response) => {
+                    setData(response.data.refresh);
+                })
+                .catch((err) => {
+                    setError(err);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        }
+    }, []);
     return {data, loading, error};
 }

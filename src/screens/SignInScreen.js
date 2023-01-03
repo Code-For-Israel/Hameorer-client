@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {
     View,
     StyleSheet,
@@ -11,10 +11,20 @@ import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
 import {useForm} from "react-hook-form";
 import HomeTabs from "../components/HomeTabs";
+import {getTokenAccess} from "../hooks/ApiCalls/authentication_provider";
 
 const SignInScreen = () => {
     const {height} = useWindowDimensions();
+    const [userinfo, setUserinfo] = useState(null);
     const navigation = useNavigation();
+    const getUserToken = getTokenAccess()
+
+    useEffect(() => {
+        if (getUserToken.data) {
+            console.log(getUserToken)
+            console.log(userinfo)
+        }
+    }, [getUserToken]);
 
     const {
         control,
@@ -23,7 +33,8 @@ const SignInScreen = () => {
     } = useForm();
 
     const onSignInPressed = (data) => {
-        console.log(data);
+        setUserinfo(data)
+        console.log(getUserToken);
         // validate user
         navigation.navigate("HomeTabs");
     };
@@ -40,10 +51,10 @@ const SignInScreen = () => {
         <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.root}>
                 <CustomInput
-                    name="username"
-                    placeholder="Username"
+                    name="email"
+                    placeholder="email"
                     control={control}
-                    rules={{required: "Username is required"}}
+                    rules={{required: "email is required"}}
                 />
 
                 <CustomInput
