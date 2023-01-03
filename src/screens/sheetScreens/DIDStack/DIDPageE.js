@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   detailesContainer: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "right",
+    justifyContent: "flex-end",
   },
   h1: {
     fontSize: 24,
