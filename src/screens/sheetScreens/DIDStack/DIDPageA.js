@@ -7,7 +7,8 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import NextButton from "../../../components/NextButton";
-import { ProgressBar, Searchbar } from "react-native-paper";
+import { ProgressBar } from "react-native-paper";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const image = require("../../../../assets/bgdid.png");
 const tagsConst = [
@@ -55,20 +56,12 @@ const tagsConst = [
 ];
 
 const DIDPageA = ({ navigation }) => {
-  const [newFigure, setNewFigure] = useState("");
-  const [figureQuery, setFigureQuery] = useState("");
   const [tags, setTags] = useState(tagsConst);
 
-  const handleIconPress = () => {
-    console.log("pressed plus icon", newFigure);
-  };
-
   const toggleTag = (i) => {
-    // console.log("toogle this:", i);
     const newTags = [...tags];
     newTags[i].isClicked = !newTags[i].isClicked;
     setTags(newTags);
-    // console.log(tags);
   };
 
   return (
@@ -79,9 +72,7 @@ const DIDPageA = ({ navigation }) => {
             <NextButton
               title="הבא"
               onPress={() => {
-                // console.log("the sub is: ", value)
-                // console.log("the text is:", text)
-                navigation.navigate("DIDPageB",tags);
+                navigation.navigate("DIDPageB", tags);
               }}
             />
           </View>
@@ -98,31 +89,31 @@ const DIDPageA = ({ navigation }) => {
             style={styles.ProgressBarStyle}
           />
         </View>
-        {/* first searchbar */}
-        <View style={styles.SearchbarStyleContainer}>
-          <Searchbar
-            placeholder="חפש דמות"
-            inputStyle={styles.SearchbarStyle}
-            iconColor="#000"
-            onChange={(e) => setFigureQuery(e.target.value)}
-            value={figureQuery}
-          />
-        </View>
-        {/*end of first searchbar */}
-        {/* second searchbar */}
+        {/* first, search figure */}
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("DIDPageB", tags);
+          }}
+        >
+          <View style={styles.SearchbarStyleContainer}>
+            <Icon name="search" size={28} color={"#000"} />
+            <Text style={styles.SearchStyle}>חפש דמות</Text>
+          </View>
+        </TouchableOpacity>
+        {/*end of first, search figure */}
+        {/* second newFigure */}
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("DIDPageD", tags);
+          }}
+        >
+          <View style={styles.SearchbarStyleContainer}>
+            <Icon name="add" size={28} color={"#000"} />
+            <Text style={styles.SearchStyle}>צור דמות חדשה</Text>
+          </View>
+        </TouchableOpacity>
 
-        <View style={styles.SearchbarStyleContainer}>
-          <Searchbar
-            placeholder="צור דמות חדשה"
-            inputStyle={styles.SearchbarStyle}
-            iconColor="#000"
-            icon="plus"
-            onIconPress={handleIconPress}
-            value={newFigure}
-            onChange={(e) => setNewFigure(e.target.value)}
-          />
-        </View>
-        {/*end of second searchbar */}
+        {/*end of second newFigure */}
 
         {/* tags section */}
         <View style={styles.tagsContainer}>
@@ -189,10 +180,18 @@ const styles = StyleSheet.create({
   SearchbarStyleContainer: {
     marginHorizontal: 8,
     marginTop: 20,
-    opacity: 0.7,
+    backgroundColor: "#c2c2c2",
+    borderRadius: 5,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    opacity: 0.5,
+    padding: 10,
+    paddingHorizontal: 15,
   },
-  SearchbarStyle: {
-    textAlign: "right",
+  SearchStyle: {
+    fontSize: 18,
+    color: "#000",
   },
   tagsContainer: {
     flexDirection: "row-reverse",
