@@ -3,15 +3,18 @@ import {getTokenAccess} from "./authentication_provider";
 import {useEffect, useState} from "react";
 
 export default function UseFetchDelete(url) {
-    const token = getTokenAccess().data
+    let accessToken
+    const refreshToken = (getToken())
+    if (refreshToken.data)
+        accessToken = refreshToken.data
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (token) {
-            const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
+        if (accessToken) {
+            const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}`}};
             setLoading(true);
             axios
                 .delete(url, headers)
@@ -25,7 +28,7 @@ export default function UseFetchDelete(url) {
                     setLoading(false);
                 });
         }
-    }, [token]);
+    }, [accessToken]);
 
     return {data, loading, error};
 }

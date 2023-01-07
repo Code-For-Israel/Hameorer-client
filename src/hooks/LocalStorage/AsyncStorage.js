@@ -14,16 +14,13 @@ export const setDataLocal = async (value) => {
 export const getDataLocal = async () => {
     try {
         const value = await AsyncStorage.getItem('@storage_Key')
-        console.log("got ", value)
         if (value !== null) {
             return value
-        }
-        else
+        } else
             throw ("no token exists")
     } catch (e) {
-        if (e === "no token")
-            console.log("Error caught - no token")
         console.log(e)
+        console.log("first time user logs in, send him to login page")
         return null
     }
 }
