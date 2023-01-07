@@ -6,6 +6,9 @@ import { ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+import ImageViewer from "../../../components/ImageViewer";
+const PlaceholderImage = require("../../../../assets/fallbackImage.png");
+
 const DIDPageE = ({ navigation, route }) => {
   const figure = route.params;
   //figure.name
@@ -46,9 +49,14 @@ const DIDPageE = ({ navigation, route }) => {
       </View>
       {/* headSection - name dates and + button*/}
       <View style={styles.HeadSection}>
-        <View style={styles.plusContainer}>
-          <Icon name="add" size={30} color={"#fff"} />
-        </View>
+        
+           <View style={styles.imageContainer}>
+           <ImageViewer
+             placeholderImageSource={PlaceholderImage}
+             selectedImage={figure.selectedImage}
+           />
+         </View>
+        
         <View style={styles.detailesContainer}>
           <Text style={styles.h1}>{figure.fullName}</Text>
           <Text style={styles.textBody}>{figure.location}</Text>
@@ -85,11 +93,13 @@ const DIDPageE = ({ navigation, route }) => {
       </View>
       {/* sound sample */}
 
-
       <TouchableOpacity onPress={() => {}}>
         <View style={styles.SearchbarStyleContainer}>
           <Icon name="upload-file" size={28} color={"#000"} />
-          <Text style={styles.SearchStyle}> {sound ? sound.name : "העלה דגימת קול"}</Text>
+          <Text style={styles.SearchStyle}>
+            {" "}
+            {sound ? sound.name : "העלה דגימת קול"}
+          </Text>
         </View>
       </TouchableOpacity>
 
@@ -206,7 +216,7 @@ const styles = StyleSheet.create({
     // marginLeft: 15,
     marginRight: 15,
     marginTop: 10,
-    alignSelf: 'flex-end'
+    alignSelf: "flex-end",
   },
   SearchbarStyleContainer: {
     marginBottom: 10,
@@ -224,5 +234,9 @@ const styles = StyleSheet.create({
   SearchStyle: {
     fontSize: 18,
     color: "#000",
+  },
+  imageContainer: {
+    flex: 1,
+    padding: 1,
   },
 });
