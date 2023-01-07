@@ -23,6 +23,8 @@ export const getToken = () => {
                         })
                         .catch((err) => {
                             setError(err);
+                            if(err.response.statusText==="Unauthorized")
+                                console.log("send user to login page")
                         })
                         .finally(() => {
                             setLoading(false);
@@ -34,6 +36,7 @@ export const getToken = () => {
         ).catch(error => {
             console.log("failed to get the token :( ")
             console.log("navigate to login page.")
+            console.log(error)
         });
     }, []);
 

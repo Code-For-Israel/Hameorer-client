@@ -1,6 +1,6 @@
 import axios from "axios";
-import {getTokenAccess} from "./authentication_provider";
 import {useEffect, useState} from "react";
+import {getToken} from "../LocalStorage/GetToken";
 
 export default function UseFetchPut(url, body) {
     let accessToken
