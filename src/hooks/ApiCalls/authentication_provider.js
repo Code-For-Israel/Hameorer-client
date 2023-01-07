@@ -1,16 +1,16 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {setDataLocal} from "../LocalStorage/AsyncStorage";
+import getSiteUrl from "../../utils/getSiteUrl";
 
 export function getTokenAccess() {
-    // todo in the future move this to cookies
     // todo in the future change the body so i get it as input from the user
-    // todo use the refresh token in the future for re login
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const headers = {headers: {'Content-Type': 'application/json'}};
 
-    const url = 'http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/token/'
+    const url = getSiteUrl() + 'token/'
     const userLoginBody = {email: 'hameorer1@com.com', password: 'itizk12345'}
 
     useEffect(() => {
@@ -18,6 +18,8 @@ export function getTokenAccess() {
             .post(url, userLoginBody, headers)
             .then((response) => {
                 setData(response.data.access);
+                setDataLocal(response.data.refresh).then(() =>
+                    console.log("saved refresh token ", response.data.refresh))
             })
             .catch((err) => {
                 setError(err);
@@ -39,7 +41,7 @@ export function getTokenRefresh() {
     const headers = {headers: {'Content-Type': 'application/json'}};
 
     //todo in the future change this so we get url and username from function getTokenAccess(url,body)
-    const url = 'http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/token/'
+    const url = getSiteUrl() + 'token/'
     const userLoginBody = {email: 'hameorer1@com.com', password: 'itizk12345'}
 
     useEffect(() => {

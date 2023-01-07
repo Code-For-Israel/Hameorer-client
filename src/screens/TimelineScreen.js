@@ -1,13 +1,14 @@
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import getSiteUrl from "../utils/getSiteUrl";
 
 export default function TimelineScreen() {
 
   useEffect(() => {
     try {
       fetch(
-        "http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/stories/",
+        getSiteUrl() + "v1/stories/",
         {
           headers: {
             accept: "application/json",
@@ -28,7 +29,7 @@ export default function TimelineScreen() {
 
 
   const { data, loading } = UseFetchGet(
-    "http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/stories/"
+    getSiteUrl() + "v1/stories/"
   );
   if (data) {
     let arr = [];
