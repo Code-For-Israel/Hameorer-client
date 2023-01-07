@@ -1,17 +1,25 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
-import {getTokenAccess} from "./authentication_provider";
+import {getToken} from "../LocalStorage/GetToken";
 
 export default function UseFetchGet(url) {
-    const token = getTokenAccess().data
+    let accessToken
+    const refreshToken = (getToken())
+    if (refreshToken.data)
+        accessToken = refreshToken.data
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if(token) {
-            const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}};
+        if (accessToken) {
+            const headers = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            };
             axios
                 .get(url, headers)
                 .then((response) => {
@@ -24,7 +32,7 @@ export default function UseFetchGet(url) {
                     setLoading(false);
                 });
         }
-    }, [token]);
+    }, [accessToken]);
 
     return {data, loading, error};
 }
