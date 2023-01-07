@@ -14,7 +14,7 @@ import { ProgressBar, Searchbar } from "react-native-paper";
 // TODO  :
 // replace the Figure const to API calls
 // change to FLATLIST and add load on scroll
-
+// 
 // const figures = [
 //   {
 //     head: "יאנוש קורצק",
