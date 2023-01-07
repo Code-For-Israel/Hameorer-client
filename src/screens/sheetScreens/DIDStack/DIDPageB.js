@@ -45,7 +45,7 @@ const DIDPageB = ({ navigation, route }) => {
   useEffect(() => {
     try {
       fetch(
-        "http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/stories/",
+        getSiteUrl() + "v1/stories/",
         {
           headers: {
             accept: "application/json",

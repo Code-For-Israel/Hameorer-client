@@ -3,10 +3,11 @@ import { Text } from "react-native-paper";
 import { useEffect, useState } from "react";
 import { parseExcelToJson } from "../../hooks/UploadExcel/ParseExcelFile";
 import UseFetchPost from "../../hooks/ApiCalls/useFetchPost";
+import getSiteUrl from "../../utils/getSiteUrl";
 
 export function UploadExcelMainPage({ setParsedData, parsedData }) {
   const url =
-    "http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/authentication/group/";
+    getSiteUrl() + "v1/authentication/group/";
   const uploadFileConst = UseFetchPost(url, parsedData);
 
   const [fileUpload, setFileUpload] = useState(null);

@@ -1,13 +1,14 @@
 import {getDataLocal} from "./AsyncStorage";
 import axios from "axios";
 import {useEffect, useState} from "react";
+import getSiteUrl from "../../utils/getSiteUrl";
 
 export const getToken = () => {
 
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const url = 'http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/token/refresh/'
+    const url = getSiteUrl() + 'token/refresh/'
 
     useEffect(() => {
         getDataLocal().then((refreshToken) => {

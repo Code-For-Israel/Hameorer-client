@@ -3,14 +3,14 @@ import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import {UploadExcelMainPage} from "./UploadExcelFile/UploadExcelMainPage";
 import {useState} from "react";
 import {getToken,} from "../hooks/LocalStorage/GetToken";
-import {getTokenAccess} from "../hooks/ApiCalls/authentication_provider";
+import getSiteUrl from "../utils/getSiteUrl";
 
 export default function ProfileScreen() {
 
     const {
         data,
         loading
-    } = UseFetchGet('http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/authentication/user/')
+    } = UseFetchGet(getSiteUrl() + 'v1/authentication/user/')
 
     const [parsedData, setParsedData] = useState(null);
 
