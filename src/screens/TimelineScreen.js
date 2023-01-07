@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
 import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import React, { useEffect } from "react";
+import getSiteUrl from "../utils/getSiteUrl";
 
 export default function TimelineScreen() {
 
