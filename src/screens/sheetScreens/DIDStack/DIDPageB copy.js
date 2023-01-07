@@ -39,13 +39,12 @@ const figures = [
       "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש"
   }
 ];
-// const figures = [];
 
 const DIDPageB = ({ navigation, route }) => {
   const [filteredFigure, setFilteredFigure] = useState(figures);
   const [figureQuery, setFigureQuery] = useState("");
-  const tags = route.params;
 
+  const tags = route.params;
 
   const onChangeSearch = (query) => {
     setFigureQuery(query);
