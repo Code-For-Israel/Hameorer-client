@@ -2,7 +2,6 @@ import {Text, View, StyleSheet, Button} from "react-native";
 import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import {UploadExcelMainPage} from "./UploadExcelFile/UploadExcelMainPage";
 import {useState} from "react";
-import {getToken,} from "../hooks/LocalStorage/GetToken";
 import getSiteUrl from "../utils/getSiteUrl";
 
 export default function ProfileScreen() {
@@ -24,7 +23,6 @@ export default function ProfileScreen() {
             <Text>{loading ? "Loading data ........." : "Data Loaded!"}</Text>
 
             <Button title={'click to pull groups and console log them'} onPress={() => console.log(data)}></Button>
-            <Button title={'click to get token'} onPress={() => console.log(() => getToken())}></Button>
 
         </View>
     );
