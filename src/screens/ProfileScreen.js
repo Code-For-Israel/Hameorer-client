@@ -14,6 +14,7 @@ export default function ProfileScreen() {
     const [parsedData, setParsedData] = useState(null);
 
     return (
+        
         <View style={styles.container}>
             <UploadExcelMainPage parsedData={parsedData} setParsedData={setParsedData}></UploadExcelMainPage>
 
