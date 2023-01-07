@@ -11,41 +11,67 @@ import NextButton from "../../../components/NextButton";
 import PrevButton from "../../../components/PrevButton";
 import { ProgressBar, Searchbar } from "react-native-paper";
 
-import UseFetchGet from "../../../hooks/ApiCalls/useFetchGet";
-
 // TODO  :
 // replace the Figure const to API calls
 // change to FLATLIST and add load on scroll
 
-const figures = [
-  {
-    head: "יאנוש קורצק",
-    body:
-      "יאנוש קורצק הוא שם העט שבו נודע הנריק גולדשמיט רופא מחנך והוגה יהודי. סופר פובליציסט ופעיל חברתי יהודי-פולי הוא נולד בוורשה ב-1818 וחי עד 1942"
-  },
-  {
-    head: "אנה פרנק",
-    body:
-      "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש"
-  },
-  {
-    head: "מרים הכטמן",
-    body:
-      "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש"
-  },
-  {
-    head: "ננסי וייק",
-    body:
-      "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש"
-  }
-];
+// const figures = [
+//   {
+//     head: "יאנוש קורצק",
+//     body: "יאנוש קורצק הוא שם העט שבו נודע הנריק גולדשמיט רופא מחנך והוגה יהודי. סופר פובליציסט ופעיל חברתי יהודי-פולי הוא נולד בוורשה ב-1818 וחי עד 1942",
+//   },
+//   {
+//     head: "אנה פרנק",
+//     body: "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש",
+//   },
+//   {
+//     head: "מרים הכטמן",
+//     body: "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש",
+//   },
+//   {
+//     head: "ננסי וייק",
+//     body: "ורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. מוסן מנת. להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורך. נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש",
+//   },
+// ];
 // const figures = [];
 
 const DIDPageB = ({ navigation, route }) => {
-  const [filteredFigure, setFilteredFigure] = useState(figures);
+  // const [filteredFigure, setFilteredFigure] = useState(figures);
+  const [figures, setFigures] = useState([])
+  const [filteredFigure, setFilteredFigure] = useState([]);
   const [figureQuery, setFigureQuery] = useState("");
   const tags = route.params;
 
+  useEffect(() => {
+    try {
+      fetch(
+        "http://ec2-3-15-215-70.us-east-2.compute.amazonaws.com:8000/api/v1/stories/",
+        {
+          headers: {
+            accept: "application/json",
+            "X-CSRFToken":
+              "paXGD8R1f0D13WnOVy9x2XZoOx22UIbD4Diu8FuJvoOcsLFjuOzfvNZQSrMUj9V5",
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // console.log("DATAAA IS:", data);
+          let arr = [];
+          data.forEach((element) => {
+            arr.push({
+              head: element.subject.subject,
+              body: element.body.background,
+            });
+          });
+          // console.log("arr", arr);
+           setFigures(arr);
+           setFilteredFigure(arr);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
   const onChangeSearch = (query) => {
     setFigureQuery(query);
