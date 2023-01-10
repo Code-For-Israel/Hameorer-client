@@ -28,3 +28,35 @@ To use My Awesome App, follow these steps:
 ## Live Link
 https://snack.expo.dev/@syahbes/hameorer-01-01-2023
 Live preview for Web, android and IOS
+
+
+11/01
+to fix some issues had to :
+
+first :
+npx expo install react-native-reanimated
+
+then :
+npm install --save-dev @babel/plugin-proposal-export-namespace-from
+
+and add this to babel.config.js
+
+plugins: [    
+  '@babel/plugin-proposal-export-namespace-from',
+  'react-native-reanimated/plugin',
+],
+
+                                                expo start -w
+
+so it would look like this:
+module.exports = function(api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: [    
+      '@babel/plugin-proposal-export-namespace-from',
+      'react-native-reanimated/plugin',
+    ],
+    
+  };
+};
