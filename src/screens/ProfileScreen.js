@@ -3,6 +3,7 @@ import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import {UploadExcelMainPage} from "./UploadExcelFile/UploadExcelMainPage";
 import {useState} from "react";
 import getSiteUrl from "../utils/getSiteUrl";
+import {getTokenAccess} from "../hooks/ApiCalls/authentication_provider";
 
 export default function ProfileScreen() {
 
@@ -12,6 +13,9 @@ export default function ProfileScreen() {
     } = UseFetchGet(getSiteUrl() + 'v1/authentication/user/')
 
     const [parsedData, setParsedData] = useState(null);
+
+    // enable this for getting the login
+    // const x = getTokenAccess()
 
     return (
 
