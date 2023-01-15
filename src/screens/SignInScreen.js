@@ -8,16 +8,16 @@ import {getTokenAccess} from "../hooks/ApiCalls/authentication_provider";
 const SignInScreen = () => {
     const [userinfo, setUserinfo] = useState(null);
     const navigation = useNavigation();
-    const getUserToken = getTokenAccess()
+    const getUserToken = getTokenAccess(userinfo)
     const {register, handleSubmit} = useForm({shouldUseNativeValidation: true});
 
 
     useEffect(() => {
-        if (getUserToken.data) {
-            console.log(getUserToken)
-            console.log(userinfo)
+        if (getUserToken && getUserToken.data) {
+            navigation.navigate("HomeTabs");
         }
     }, [getUserToken]);
+
 
     const onForgotPasswordPressed = () => {
         navigation.navigate("ForgotPassword");
@@ -28,11 +28,7 @@ const SignInScreen = () => {
     };
 
     function onSignInPressed(userFormInfo) {
-        console.log(userFormInfo)
         setUserinfo(userFormInfo)
-        // navigation.navigate("HomeTabs");
-        // todo send the user info to "get token access" function and log in the user
-
     }
 
     return (<ScrollView showsVerticalScrollIndicator={false}>

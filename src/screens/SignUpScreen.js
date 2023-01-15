@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Text, View, StyleSheet, ScrollView} from "react-native";
-import CustomInput from "../components/CustomInput";
+import {Text, StyleSheet, ScrollView} from "react-native";
 import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
 import {useForm} from "react-hook-form";
@@ -11,26 +10,23 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
 
 const SignUpScreen = () => {
 
-    const url = getSiteUrl() + '/v1/authentication/user/'
+    const url = getSiteUrl() + 'v1/authentication/user/'
     const [userRegisterInfo, setUserRegisterInfo] = useState(null);
-    //todo enable in the future const userRegisterResponse = UseFetchPost(url, userRegisterInfo)
-    const {watch, register, handleSubmit, formState: {errors}, setError} = useForm({shouldUseNativeValidation: true});
+    const userRegisterResponse = UseFetchPost(url, userRegisterInfo)
+    const {watch, register, handleSubmit, formState: {errors}} = useForm({shouldUseNativeValidation: true});
 
     const pwd = watch("password");
     const navigation = useNavigation();
 
-    //todo enable in the future
-    // useEffect(() => {
-    //     if (userRegisterResponse) {
-    //         console.log(userRegisterResponse)
-    //     }
-    // }, [userRegisterResponse]);
+    useEffect(() => {
+        if (userRegisterResponse && userRegisterResponse.data) {
+            navigation.navigate("ConfirmEmail");
+        }
+    }, [userRegisterResponse]);
 
 
     const onRegisterPressed = (userInfo) => {
-        console.log(userInfo)
         setUserRegisterInfo(userInfo)
-        //todo-allow this navigation.navigate("ConfirmEmail");
     };
 
     const onSignInPress = () => {
