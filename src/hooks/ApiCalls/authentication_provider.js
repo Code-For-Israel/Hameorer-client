@@ -3,8 +3,36 @@ import {useEffect, useState} from "react";
 import {setDataLocal} from "../LocalStorage/AsyncStorage";
 import getSiteUrl from "../../utils/getSiteUrl";
 
-export function getTokenAccess() {
-    // todo in the future change the body so i get it as input from the user
+export function getTokenAccess(userLoginBody) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const headers = {headers: {'Content-Type': 'application/json'}};
+
+    const url = getSiteUrl() + 'token/'
+
+    useEffect(() => {
+        if (userLoginBody) {
+            axios
+                .post(url, userLoginBody, headers)
+                .then((response) => {
+                    setData(response.data.access);
+                    setDataLocal(response.data.refresh).then(() => console.log("saved refresh token ", response.data.refresh))
+                })
+                .catch((err) => {
+                    setError(err);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
+        }
+    }, [userLoginBody]);
+
+    return {data, loading, error}
+}
+
+// todo in the future remove this - for now you can use to get token automatically
+export function getTokenAccessAutoLogIn() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -18,8 +46,7 @@ export function getTokenAccess() {
             .post(url, userLoginBody, headers)
             .then((response) => {
                 setData(response.data.access);
-                setDataLocal(response.data.refresh).then(() =>
-                    console.log("saved refresh token ", response.data.refresh))
+                setDataLocal(response.data.refresh).then(() => console.log("saved refresh token ", response.data.refresh))
             })
             .catch((err) => {
                 setError(err);
