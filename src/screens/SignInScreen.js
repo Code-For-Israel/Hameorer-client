@@ -3,12 +3,12 @@ import {StyleSheet, ScrollView,} from "react-native";
 import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
 import {useForm} from "react-hook-form";
-import {getTokenAccess} from "../hooks/ApiCalls/authentication_provider";
+import {getTokenAccess, getTokenAccessLogin} from "../hooks/ApiCalls/authentication_provider";
 
 const SignInScreen = () => {
     const [userinfo, setUserinfo] = useState(null);
     const navigation = useNavigation();
-    const getUserToken = getTokenAccess(userinfo)
+    const getUserToken = getTokenAccessLogin(userinfo)
     const {register, handleSubmit} = useForm({shouldUseNativeValidation: true});
 
 

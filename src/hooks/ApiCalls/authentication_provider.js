@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {setDataLocal} from "../LocalStorage/AsyncStorage";
 import getSiteUrl from "../../utils/getSiteUrl";
 
-export function getTokenAccess(userLoginBody) {
+export function getTokenAccessLogin(userLoginBody) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -32,7 +32,7 @@ export function getTokenAccess(userLoginBody) {
 }
 
 // todo in the future remove this - for now you can use to get token automatically
-export function getTokenAccessAutoLogIn() {
+export function getTokenAccess() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
