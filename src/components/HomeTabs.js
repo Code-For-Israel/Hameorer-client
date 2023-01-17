@@ -1,77 +1,81 @@
-import React, {useState} from "react";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import React, { useState } from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import {TouchableOpacity, View} from "react-native";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+import { TouchableOpacity, View } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import ProfileScreen from "../screens/ProfileScreen";
+import MyContentScreen from "../screens/MyContentScreen";
 import TimelineScreen from "../screens/TimelineScreen";
+import TopicsScreen from "../screens/TopicsScreen";
+import MapScreen from "../screens/MapScreen";
+
 import PlusScreen from "../screens/PlusScreen";
 import ContentScreen from "../screens/ContentScreen";
-import MapScreen from "../screens/MapScreen";
 
 import BottomSheet from "./BottomSheet";
 import BottomMenuContent from "./BottomMenuContent";
-import CustomBg from "../components/CustomBg";
+import CustomBg from "./CustomBg";
+
+//icons
+import UserIcon from "./IconsSvg/UserIcon";
+import MyContentIcon from "./IconsSvg/MyContentIcon";
+import TimelineIcon from "./IconsSvg/TimelineIcon";
+import TopicsIcon from "./IconsSvg/TopicsIcon";
+import MapIcon from "./IconsSvg/MapIcon";
 
 const Tab = createBottomTabNavigator();
 
 const HomeTabs = () => {
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const handlePress = () => {
-        setIsModalVisible(true);
-    };
-    const onModalClose = () => {
-        setIsModalVisible(false);
-    };
-    return (
-        <>
-            <Tab.Navigator
-                initialRouteName="Profile"
-                screenOptions={{
-                    tabBarActiveTintColor: "#1261A0",
-                }}
-            >
-                <Tab.Screen
-                    name="Profile"
-                    component={ProfileScreen}
-                    options={{
-                        headerTitle: "כאן תהיה הכותרת של פרופיל",
-                        tabBarLabel: "פרופיל",
-                        // this is the part of custom background
-                        headerTitleAlign: "center",
-                        headerBackground: CustomBg,
-                        headerTintColor: "#fff",
-                        //end of custom background
-                        tabBarIcon: ({color, size}) => (
-                            <MaterialCommunityIcons
-                                name="account"
-                                color={color}
-                                size={size}
-                            />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="Timeline"
-                    component={TimelineScreen}
-                    options={{
-                        headerTitle: "כאן תהיה הכותרת של ציר זמן",
-                        tabBarLabel: "ציר זמן",
-                        headerTitleAlign: "center",
-                        headerBackground: CustomBg,
-                        headerTintColor: "#fff",
-                        tabBarIcon: ({color, size}) => (
-                            <MaterialCommunityIcons
-                                name="timeline-clock"
-                                color={color}
-                                size={size}
-                            />
-                        ),
-                    }}
-                />
-                <Tab.Screen
+  return (
+      <Tab.Navigator
+        initialRouteName="Profile"
+        screenOptions={{
+          tabBarActiveTintColor: "#1261A0"
+        }}
+      >
+        <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            headerTitle: "כאן תהיה הכותרת של פרופיל",
+            tabBarLabel: "פרופיל",
+            // this is the part of custom background
+            headerTitleAlign: "center",
+            headerBackground: CustomBg,
+            headerTintColor: "#fff",
+            //end of custom background
+            tabBarIcon: ({ color, size }) =>
+              <UserIcon color={color} size={size} />
+          }}
+        />
+        <Tab.Screen
+          name="MyContent"
+          component={MyContentScreen}
+          options={{
+            headerTitle: "התוכן שלי",
+            tabBarLabel: "התוכן שלי",
+            headerTitleAlign: "center",
+            headerBackground: CustomBg,
+            headerTintColor: "#fff",
+            tabBarIcon: ({ color, size }) =>
+              <MyContentIcon color={color} size={size} />
+          }}
+        />
+        <Tab.Screen
+          name="Timeline"
+          component={TimelineScreen}
+          options={{
+            headerTitle: "כאן תהיה הכותרת של ציר זמן",
+            tabBarLabel: "ציר זמן",
+            headerTitleAlign: "center",
+            headerBackground: CustomBg,
+            headerTintColor: "#fff",
+            tabBarIcon: ({ color, size }) =>
+              <TimelineIcon color={color} size={size} />
+          }}
+        />
+        {/* <Tab.Screen
                     name="More"
                     component={PlusScreen}
                     options={{
@@ -102,47 +106,36 @@ const HomeTabs = () => {
                             </View>
                         ),
                     }}
-                />
-                <Tab.Screen
-                    name="Content"
-                    component={ContentScreen}
-                    options={{
-                        headerShown: false,
-                        headerTitle: "כאן תהיה הכותרת של תוכן",
-                        tabBarLabel: "תוכן",
-                        headerTitleAlign: "center",
-                        headerBackground: CustomBg,
-                        headerTintColor: "#fff",
-                        tabBarIcon: ({color, size}) => (
-                            <MaterialCommunityIcons
-                                name="file-document"
-                                color={color}
-                                size={size}
-                            />
-                        ),
-                    }}
-                />
-                <Tab.Screen
-                    name="Map"
-                    component={MapScreen}
-                    options={{
-                        headerTitle: "כאן תהיה הכותרת של מפה",
-                        tabBarLabel: "מפה",
-                        headerTitleAlign: "center",
-                        headerBackground: CustomBg,
-                        headerTintColor: "#fff",
-                        tabBarIcon: ({color, size}) => (
-                            <MaterialCommunityIcons name="map" color={color} size={size}/>
-                        ),
-                    }}
-                />
-            </Tab.Navigator>
-            {/* this is for the bottom sheet menu */}
-            <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
-                <BottomMenuContent onClose={onModalClose}/>
-            </BottomSheet>
-        </>
-    );
+                /> */}
+        <Tab.Screen
+          name="Topics"
+          component={TopicsScreen}
+          options={{
+            // headerShown: false,
+            headerTitle: "כאן תהיה הכותרת של נושאים",
+            tabBarLabel: "נושאים",
+            headerTitleAlign: "center",
+            headerBackground: CustomBg,
+            headerTintColor: "#fff",
+            tabBarIcon: ({ color, size }) =>
+              <TopicsIcon color={color} size={size} />
+          }}
+        />
+        <Tab.Screen
+          name="Map"
+          component={MapScreen}
+          options={{
+            headerTitle: "כאן תהיה הכותרת של מפה",
+            tabBarLabel: "מפה",
+            headerTitleAlign: "center",
+            headerBackground: CustomBg,
+            headerTintColor: "#fff",
+            tabBarIcon: ({ color, size }) =>
+              <MapIcon name="map" color={color} size={size} />
+          }}
+        />
+      </Tab.Navigator>
+  );
 };
 
 export default HomeTabs;
