@@ -32,7 +32,8 @@
     "react-native-screens": "~3.18.0",
     "react-native-web": "~0.18.9",
     "xlsx": "^0.18.5",
-    "react-hook-form": "^7.22.1"
+    "react-hook-form": "^7.22.1",
+    "react-native-svg": "13.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
