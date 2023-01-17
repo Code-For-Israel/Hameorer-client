@@ -24,7 +24,7 @@ export const getToken = () => {
                         })
                         .catch((err) => {
                             setError(err);
-                            if(err.response.statusText==="Unauthorized")
+                            if (err.response.statusText === "Unauthorized")
                                 console.log("send user to login page")
                         })
                         .finally(() => {

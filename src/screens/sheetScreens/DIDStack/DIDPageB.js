@@ -1,10 +1,4 @@
-import {
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from "react-native";
+import {ScrollView, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
 
 import React, {useEffect, useState} from "react";
 import NextButton from "../../../components/NextButton";

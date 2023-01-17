@@ -1,9 +1,8 @@
-import {Text, View, StyleSheet, Button} from "react-native";
+import {Button, StyleSheet, Text, View} from "react-native";
 import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import {UploadExcelMainPage} from "./UploadExcelFile/UploadExcelMainPage";
 import {useState} from "react";
 import getSiteUrl from "../utils/getSiteUrl";
-import {getTokenAccess} from "../hooks/ApiCalls/authentication_provider";
 
 export default function ProfileScreen() {
 

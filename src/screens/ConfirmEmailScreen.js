@@ -1,5 +1,5 @@
 import React from "react";
-import {View, Text, StyleSheet, ScrollView} from "react-native";
+import {ScrollView, StyleSheet, Text, View} from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import {useForm} from "react-hook-form";
@@ -24,33 +24,33 @@ const ConfirmEmailScreen = () => {
     };
 
     return (<ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.root}>
-                <Text style={styles.title}>Confirm your email</Text>
+        <View style={styles.root}>
+            <Text style={styles.title}>Confirm your email</Text>
 
-                <CustomInput
-                    name="code"
-                    control={control}
-                    placeholder="Enter your confirmation code"
-                    rules={{
-                        required: "Confirmation code is required",
-                    }}
-                />
+            <CustomInput
+                name="code"
+                control={control}
+                placeholder="Enter your confirmation code"
+                rules={{
+                    required: "Confirmation code is required",
+                }}
+            />
 
-                <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)}/>
+            <CustomButton text="Confirm" onPress={handleSubmit(onConfirmPressed)}/>
 
-                <CustomButton
-                    text="Resend code"
-                    onPress={onResendPress}
-                    type="SECONDARY"
-                />
+            <CustomButton
+                text="Resend code"
+                onPress={onResendPress}
+                type="SECONDARY"
+            />
 
-                <CustomButton
-                    text="Back to Sign in"
-                    onPress={onSignInPress}
-                    type="TERTIARY"
-                />
-            </View>
-        </ScrollView>);
+            <CustomButton
+                text="Back to Sign in"
+                onPress={onSignInPress}
+                type="TERTIARY"
+            />
+        </View>
+    </ScrollView>);
 };
 
 const styles = StyleSheet.create({

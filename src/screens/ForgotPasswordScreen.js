@@ -1,5 +1,5 @@
 import React from "react";
-import {View, StyleSheet, ScrollView} from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
@@ -19,25 +19,25 @@ const ForgotPasswordScreen = () => {
     };
 
     return (<ScrollView showsVerticalScrollIndicator={false}>
-            <View style={styles.root}>
-                <CustomInput
-                    name="username"
-                    control={control}
-                    placeholder="שם משתמש"
-                    rules={{
-                        required: "Username is required",
-                    }}
-                />
+        <View style={styles.root}>
+            <CustomInput
+                name="username"
+                control={control}
+                placeholder="שם משתמש"
+                rules={{
+                    required: "Username is required",
+                }}
+            />
 
-                <CustomButton text="שלח" onPress={handleSubmit(onSendPressed)}/>
+            <CustomButton text="שלח" onPress={handleSubmit(onSendPressed)}/>
 
-                <CustomButton
-                    text="Back to Sign in"
-                    onPress={onSignInPress}
-                    type="TERTIARY"
-                />
-            </View>
-        </ScrollView>);
+            <CustomButton
+                text="Back to Sign in"
+                onPress={onSignInPress}
+                type="TERTIARY"
+            />
+        </View>
+    </ScrollView>);
 };
 
 const styles = StyleSheet.create({
