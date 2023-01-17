@@ -2,25 +2,27 @@ import React from "react";
 import {View, Text, TextInput, StyleSheet} from "react-native";
 import {Controller} from "react-hook-form";
 
-const CustomInput = ({control, name, rules, placeholder, secureTextEntry}) => {
+const CustomInput = ({control, name, placeholder, secureTextEntry,}) => {
     return (
         <Controller
             control={control}
             name={name}
-            rules={rules}
-            render={({field: { onBlur}, fieldState: {error},}) => (<>
-                <View
-                    style={[styles.container, {borderColor: error ? "red" : "white"}]}>
+            render={({field: {value, onChange, onBlur}, fieldState: {error},}) => (<>
+                <View style={[styles.container, {borderColor: error ? "red" : "white"}]}>
                     <TextInput
                         style={[styles.text]}
+                        defaultValue={value}
+                        onChangeText={onChange}
                         onBlur={onBlur}
                         placeholder={placeholder}
                         secureTextEntry={secureTextEntry}
                     />
                 </View>
-                {error && (<Text style={{color: "red", alignSelf: "center", alignContent: "center",}}>
-                    {error.message || "Error"}
-                </Text>)}
+                {error && (
+                    <Text style={{color: "red", alignSelf: "center", alignContent: "center",}}>
+                        {error.message || "Error"}
+                    </Text>
+                )}
             </>)}
         />);
 };
@@ -38,9 +40,8 @@ const styles = StyleSheet.create({
         textAlignVertical: "top",
         paddingHorizontal: 5,
         marginVertical: 2,
-    },
-    container: {
-        width: "100%",
+    }, container: {
+        width: "25%",
         marginVertical: 5,
         justifyContent: "center",
         alignItems: "center",
