@@ -49,7 +49,7 @@ export function UploadExcelMainPage({setParsedData, parsedData}) {
     return (
         <>
             {
-                <View style={{flex: 1, alignItems: "center", justifyContent: "center"}}>
+                <View style={{alignItems: "center", justifyContent: "center"}}>
                     <Text>עמוד העלאה</Text>
                     <Text>cant use input tag with react native - need to replace it</Text>
                     <input

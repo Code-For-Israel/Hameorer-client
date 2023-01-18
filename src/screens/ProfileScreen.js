@@ -1,41 +1,88 @@
-import {Button, StyleSheet, Text, View} from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
-import {UploadExcelMainPage} from "./UploadExcelFile/UploadExcelMainPage";
-import {useState} from "react";
+import { UploadExcelMainPage } from "./UploadExcelFile/UploadExcelMainPage";
+import { useState } from "react";
 import getSiteUrl from "../utils/getSiteUrl";
+import BottomSheet from "../components/BottomSheet";
+import BottomMenuContent from "../components/BottomMenuContent";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-web";
 
 export default function ProfileScreen() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const {
-        data,
-        loading
-    } = UseFetchGet(getSiteUrl() + 'v1/authentication/user/')
+  const handlePress = () => {
+    setIsModalVisible(true);
+  };
+  const onModalClose = () => {
+    setIsModalVisible(false);
+  };
 
-    const [parsedData, setParsedData] = useState(null);
+  const { data, loading } = UseFetchGet(
+    getSiteUrl() + "v1/authentication/user/"
+  );
 
-    // enable this for getting the login
-    // const x = getTokenAccess()
+  const [parsedData, setParsedData] = useState(null);
 
-    return (
+  // enable this for getting the login
+  // const x = getTokenAccess()
 
-        <View style={styles.container}>
-            {/*<UploadExcelMainPage parsedData={parsedData} setParsedData={setParsedData}></UploadExcelMainPage>*/}
-
-            <Text>Profile Screen</Text>
-
-            <Text>{loading ? "Loading data ........." : "Data Loaded!"}</Text>
-
-            <Button title={'click to pull groups and console log them'} onPress={() => console.log(data)}></Button>
-
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity onPress={handlePress} style={{position: "absolute",
+            bottom: 20,
+            right: 20,}}>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            width: 50,
+            height: 50,
+            borderRadius: 50,
+            backgroundColor: "#FCBF49",
+            color: "#fff",
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 3.84,
+            elevation: 5,
+            
+            
+          }}
+        >
+          <MaterialCommunityIcons name="plus" size={25} color={"#fff"} />
         </View>
-    );
+      </TouchableOpacity>
+
+      <Text>Profile Screen</Text>
+
+      <UploadExcelMainPage
+        parsedData={parsedData}
+        setParsedData={setParsedData}
+      />
+      <Text>
+        {loading ? "Loading data ........." : "Data Loaded!"}
+      </Text>
+
+      <Button
+        title={"click to pull groups and console log them"}
+        onPress={() => console.log(data)}
+      />
+
+      <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
+        <BottomMenuContent onClose={onModalClose} />
+      </BottomSheet>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-    },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
 });
-  
