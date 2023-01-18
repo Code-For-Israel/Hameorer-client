@@ -19,7 +19,7 @@ export default function ProfileScreen() {
     return (
 
         <View style={styles.container}>
-            <UploadExcelMainPage parsedData={parsedData} setParsedData={setParsedData}></UploadExcelMainPage>
+            {/*<UploadExcelMainPage parsedData={parsedData} setParsedData={setParsedData}></UploadExcelMainPage>*/}
 
             <Text>Profile Screen</Text>
 
