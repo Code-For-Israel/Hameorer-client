@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
         height: 50,
         color: "gray",
         width: "100%",
+        maxWidth: '400px',
         padding: 10,
         backgroundColor: "#f8f8ff",
         borderRadius: 10,
@@ -41,7 +42,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         marginVertical: 2,
     }, container: {
-        width: "25%",
+        width: "100%",
+        maxWidth: '400px',
         marginVertical: 5,
         justifyContent: "center",
         alignItems: "center",
