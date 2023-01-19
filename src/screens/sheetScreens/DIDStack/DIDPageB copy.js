@@ -112,7 +112,7 @@ const DIDPageB = ({navigation, route}) => {
                 })}
             </View>
 
-            <View style={styles.figuresContainr}>
+            <View style={styles.figuresContainer}>
                 {filteredFigure.map((item, index) => {
                     return (
                         <TouchableOpacity
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: "#fff",
     },
-    figuresContainr: {
+    figuresContainer: {
         padding: 10,
     },
     figureBox: {

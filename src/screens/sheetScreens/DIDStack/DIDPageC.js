@@ -49,7 +49,7 @@ const DIDPageC = ({navigation, route}) => {
                 <View style={styles.plusContainer}>
                     <Icon name="add" size={30} color={"#fff"}/>
                 </View>
-                <View style={styles.detailesContainer}>
+                <View style={styles.detailsContainer}>
                     <Text style={styles.h1}>{figure.head}</Text>
                     <Text style={styles.textBody}>פולין</Text>
 
@@ -58,7 +58,7 @@ const DIDPageC = ({navigation, route}) => {
                 </View>
             </View>
             {/* end of head Section */}
-            {/* quate */}
+            {/* quote */}
             <View style={styles.TextInputContainer}>
                 <TextInput
                     placeholder="הוסף ציטוט"
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
 
         elevation: 5,
     },
-    detailesContainer: {
+    detailsContainer: {
         display: "flex",
         flexDirection: "column",
 

@@ -18,7 +18,7 @@ export default function TimelineScreen() {
                 }
             )
                 .then((response) => response.json())
-                .then((data) => console.log("DATAAA IS:", data));
+                .then((data) => console.log("DATA IS:", data));
         } catch (error) {
             console.error(error);
         }
