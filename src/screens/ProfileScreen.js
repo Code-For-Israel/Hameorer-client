@@ -26,32 +26,32 @@ export default function ProfileScreen() {
     // const x = getTokenAccess()
 
     return (<View style={styles.container}>
-        <TouchableOpacity onPress={handlePress} style={{
-            position: "absolute", bottom: 20, right: 20,
-        }}>
-            <View
-                style={{
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: 50,
-                    height: 50,
-                    borderRadius: 50,
-                    backgroundColor: "#FCBF49",
-                    color: "#fff",
-                    shadowColor: "#000",
-                    shadowOffset: {
-                        width: 0, height: 2
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3.84,
-                    elevation: 5,
+        {/*<TouchableOpacity onPress={handlePress} style={{*/}
+        {/*    position: "absolute", bottom: 20, right: 20,*/}
+        {/*}}>*/}
+        {/*    <View*/}
+        {/*        style={{*/}
+        {/*            justifyContent: "center",*/}
+        {/*            alignItems: "center",*/}
+        {/*            width: 50,*/}
+        {/*            height: 50,*/}
+        {/*            borderRadius: 50,*/}
+        {/*            backgroundColor: "#FCBF49",*/}
+        {/*            color: "#fff",*/}
+        {/*            shadowColor: "#000",*/}
+        {/*            shadowOffset: {*/}
+        {/*                width: 0, height: 2*/}
+        {/*            },*/}
+        {/*            shadowOpacity: 0.25,*/}
+        {/*            shadowRadius: 3.84,*/}
+        {/*            elevation: 5,*/}
 
 
-                }}
-            >
-                <MaterialCommunityIcons name="plus" size={25} color={"#fff"}/>
-            </View>
-        </TouchableOpacity>
+        {/*        }}*/}
+        {/*    >*/}
+        {/*        <MaterialCommunityIcons name="plus" size={25} color={"#fff"}/>*/}
+        {/*    </View>*/}
+        {/*</TouchableOpacity>*/}
 
         <Text>Profile Screen</Text>
 
