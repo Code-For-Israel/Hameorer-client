@@ -1,13 +1,12 @@
 import {Button, StyleSheet, Text, View} from "react-native";
 import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
-import {UploadExcelMainPage} from "./UploadExcelFile/UploadExcelMainPage";
 import {useState} from "react";
 import getSiteUrl from "../utils/getSiteUrl";
 import BottomSheet from "../components/BottomSheet";
 import BottomMenuContent from "../components/BottomMenuContent";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
 import {TouchableOpacity} from "react-native-web";
-import {UploadFile} from "./UploadExcelFile/newUpload";
+import {UploadExcelFile} from "./UploadExcelFile/UploadExcelFile";
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -56,9 +55,8 @@ export default function ProfileScreen() {
 
             <Text>Profile Screen</Text>
 
-            {/*<UploadExcelMainPage parsedData={parsedData} setParsedData={setParsedData}/>*/}
+            <UploadExcelFile parsedData={parsedData} setParsedData={setParsedData}></UploadExcelFile>
 
-            <UploadFile></UploadFile>
             <Text>
                 {loading ? "Loading data ........." : "Data Loaded!"}
             </Text>
