@@ -9,7 +9,7 @@ export default function UseFetchGet(url) {
         accessToken = refreshToken.data
 
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -20,6 +20,7 @@ export default function UseFetchGet(url) {
                     'Authorization': `Bearer ${accessToken}`
                 }
             };
+            setLoading(true);
             axios
                 .get(url, headers)
                 .then((response) => {

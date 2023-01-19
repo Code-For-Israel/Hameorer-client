@@ -45,7 +45,7 @@ export default function TimelineScreen() {
                 <Text>Loading...</Text>
             ) : (
                 <>
-                    {data.map((item, index) => {
+                    {data && data.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
                                 <Text>
