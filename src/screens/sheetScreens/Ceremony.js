@@ -2,8 +2,6 @@ import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useEffect, useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
-
 import { useSelector, useDispatch } from "react-redux";
 import {
   loginThunk,
@@ -23,38 +21,14 @@ const Ceremony = () => {
   const refresh = useSelector(selectRefresh);
   const access = useSelector(selectAccess);
 
-  async function WAShandleLogin() {
-    try {
-      const response = await axios.post(
-        "http://3.140.113.123:8000/api/token/",
-        {
-          email: "hameorer2@com.com",
-          password: "shlomi12345",
-        },
-        {
-          headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = response.data;
-      console.log(data);
-    } catch (error) {
-      // handle any errors
-    }
-  }
-
-  const handleLogin = () => {
+    const handleLogin = () => {
     if (email && password) {
       dispatch(loginThunk({ email, password }));
     }
   };
-
   const refreshToken = () => {
     dispatch(refreshAccess(refresh));
   };
-
   const getData = () => {
     dispatch(getStories(access));
   };
@@ -68,7 +42,7 @@ const Ceremony = () => {
           dispatch(setAccess(value));
           dispatch(setLoading(false));
         } else {
-          throw "NO NO NO token exists";
+          throw "There is No Token in Local Storage";
         }
       } catch (e) {
         console.log(e);
@@ -76,15 +50,6 @@ const Ceremony = () => {
     };
     getLocal();
   }, []);
-  //   useEffect(() => {
-  //      getDataLocal().then(
-  //         (token)=> {
-  //             if (token) { dispatch(getStories(token)) }
-  //             else { console.log("NO TOKEN")}
-  //         }
-  //         )
-  //     // console.log(localAccess);
-  //   },[])
 
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
