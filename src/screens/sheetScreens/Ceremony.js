@@ -80,6 +80,13 @@ const Ceremony = () => {
         title="Get data from backend"
         accessibilityLabel="Get Data"
       />
+      <Text>---</Text>
+      <Text>
+        The current state of the user is :
+        {access ? "logged in" : "not logged in"}
+      </Text>
+    
+
     </View>
   );
 };

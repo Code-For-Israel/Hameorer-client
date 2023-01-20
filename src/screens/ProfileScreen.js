@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import { UploadExcelMainPage } from "./UploadExcelFile/UploadExcelMainPage";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import getSiteUrl from "../utils/getSiteUrl";
 import BottomSheet from "../components/BottomSheet";
 import BottomMenuContent from "../components/BottomMenuContent";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native-web";
+
 
 export default function ProfileScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -48,9 +48,7 @@ export default function ProfileScreen() {
             },
             shadowOpacity: 0.25,
             shadowRadius: 3.84,
-            elevation: 5,
-            
-            
+            elevation: 5,          
           }}
         >
           <MaterialCommunityIcons name="plus" size={25} color={"#fff"} />
