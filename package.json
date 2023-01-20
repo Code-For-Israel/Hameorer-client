@@ -17,6 +17,7 @@
     "@react-navigation/native": "^6.0.14",
     "@react-navigation/native-stack": "^6.1.0",
     "@react-navigation/stack": "^6.3.5",
+    "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
     "expo": "~47.0.8",
     "expo-document-picker": "~11.0.1",
@@ -36,6 +37,7 @@
     "react-native-screens": "~3.18.0",
     "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.9",
+    "react-redux": "^8.0.5",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
