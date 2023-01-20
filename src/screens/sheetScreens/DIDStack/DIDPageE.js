@@ -58,7 +58,7 @@ const DIDPageE = ({navigation, route}) => {
                     />
                 </View>
 
-                <View style={styles.detailesContainer}>
+                <View style={styles.detailsContainer}>
                     <Text style={styles.h1}>{figure.fullName}</Text>
                     <Text style={styles.textBody}>{figure.location}</Text>
 
@@ -71,7 +71,7 @@ const DIDPageE = ({navigation, route}) => {
                 </View>
             </View>
             {/* end of head Section */}
-            {/* quate */}
+            {/* quote */}
             <View style={styles.TextInputContainer}>
                 <TextInput
                     placeholder="הוסף ציטוט"
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
 
         elevation: 5,
     },
-    detailesContainer: {
+    detailsContainer: {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",

@@ -73,7 +73,7 @@ const DIDPageD = ({navigation, route}) => {
                 <TextInput
                     placeholder={"שם מלא"}
                     direction="rtl"
-                    style={styles.inputFullname}
+                    style={styles.inputFullName}
                     onChangeText={setFullName}
                     value={fullName}
                 />
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         padding: 10,
     },
-    inputFullname: {
+    inputFullName: {
         padding: 10,
         backgroundColor: "#f5f5f5",
         borderRadius: 10,

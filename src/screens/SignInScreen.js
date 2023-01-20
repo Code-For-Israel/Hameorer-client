@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {ScrollView, StyleSheet, View,} from "react-native";
+import {ScrollView, StyleSheet, Text, View, Button} from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
@@ -8,19 +8,17 @@ import HomeTabs from "../components/HomeTabs";
 import {getTokenAccessLogin} from "../hooks/ApiCalls/authentication_provider";
 
 const SignInScreen = () => {
-    const [userinfo, setUserinfo] = useState(null);
+    const [userinfo, setUserinfo] = useState();
     const navigation = useNavigation();
     const getUserToken = getTokenAccessLogin(userinfo)
 
     useEffect(() => {
         if (getUserToken.data) {
-            console.log(getUserToken)
-            console.log(userinfo)
             navigation.navigate("HomeTabs");
         }
     }, [getUserToken]);
 
-    const {control, handleSubmit, formState: {errors},} = useForm();
+    const {control, handleSubmit,} = useForm();
 
     const onSignInPressed = (data) => {
         setUserinfo(data)
@@ -34,8 +32,14 @@ const SignInScreen = () => {
         navigation.navigate("SignUp");
     };
 
+    const autoLogIn = () =>{
+        setUserinfo({email: 'hameorer1@com.com', password: 'itizk12345'})
+    }
+
     return (<ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.root}>
+            <Text> in the future remove from here the easy log in</Text>
+            <Button onPress={autoLogIn} title="click here to auto login"></Button>
             <CustomInput
                 name="email"
                 placeholder="email"
@@ -55,14 +59,16 @@ const SignInScreen = () => {
                 }}
             />
 
-            <CustomButton text="Sign In" onPress={handleSubmit(onSignInPressed)}/>
+            <CustomButton disable={getUserToken && getUserToken.loading} text="Sign In"
+                          onPress={handleSubmit(onSignInPressed)}/>
 
+            {getUserToken && getUserToken.loading ? (<Text>logging in...</Text>) : (<Text></Text>)}
+            {getUserToken && getUserToken.error ? (<Text>Failed to log in</Text>) : (<Text></Text>)}
             <CustomButton
                 text="Forgot password?"
                 onPress={onForgotPasswordPressed}
                 type="TERTIARY"
             />
-
             <CustomButton
                 text="Don't have an account? Create one"
                 onPress={onSignUpPress}
@@ -78,7 +84,7 @@ const styles = StyleSheet.create({
 
         padding: 15,
     }, logo: {
-        width: "70%", maxWidth: 300, maxHeight: 200,
+        width: "70%"
     }, title: {
         color: "#072F5F", fontSize: 26, fontWeight: "bold", margin: 10,
     },
