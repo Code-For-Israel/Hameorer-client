@@ -1,6 +1,6 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { StatusBar } from "expo-status-bar";
+import {NavigationContainer} from "@react-navigation/native";
+import {createStackNavigator} from "@react-navigation/stack";
+import {StatusBar} from "expo-status-bar";
 
 import HomeTabs from "./src/components/HomeTabs";
 import SelfGuid from "./src/screens/sheetScreens/SelfGuide";
@@ -10,9 +10,6 @@ import FamilyMem from "./src/screens/sheetScreens/FamilyMem";
 import PersonalDiary from "./src/screens/sheetScreens/PersonalDiary";
 import CustomBg from "./src/components/CustomBg";
 import Navigation from "./src/navigation";
-
-import { store } from "./src/redux/store";
-import { Provider } from "react-redux";
 
 const Stack = createStackNavigator();
 

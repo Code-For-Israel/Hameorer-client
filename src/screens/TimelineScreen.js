@@ -18,7 +18,7 @@ export default function TimelineScreen() {
                 }
             )
                 .then((response) => response.json())
-                .then((data) => console.log("DATAAA IS:", data));
+                .then((data) => console.log("DATA IS:", data));
         } catch (error) {
             console.error(error);
         }
@@ -45,7 +45,7 @@ export default function TimelineScreen() {
                 <Text>Loading...</Text>
             ) : (
                 <>
-                    {data.map((item, index) => {
+                    {data && data.map((item, index) => {
                         return (
                             <React.Fragment key={index}>
                                 <Text>

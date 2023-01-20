@@ -8,13 +8,13 @@ import Page4 from "./SelfGuide/Page4";
 import Page5 from "./SelfGuide/Page5";
 import CustomBg from "../../components/CustomBg";
 
-const SelftGuideStack = createStackNavigator();
+const SelfGuideStack = createStackNavigator();
 
 export default function SelfGuid() {
     return (
-        <SelftGuideStack.Navigator>
+        <SelfGuideStack.Navigator>
 
-            <SelftGuideStack.Screen
+            <SelfGuideStack.Screen
                 name="Page1"
                 component={Page1}
                 options={{
@@ -26,7 +26,7 @@ export default function SelfGuid() {
                     //end of custom background
                 }}
             />
-            <SelftGuideStack.Screen
+            <SelfGuideStack.Screen
                 name="Page2"
                 component={Page2}
                 options={{
@@ -36,7 +36,7 @@ export default function SelfGuid() {
                     headerTintColor: "#fff",
                 }}
             />
-            <SelftGuideStack.Screen
+            <SelfGuideStack.Screen
                 name="Page3"
                 component={Page3}
                 options={{
@@ -46,7 +46,7 @@ export default function SelfGuid() {
                     headerTintColor: "#fff",
                 }}
             />
-            <SelftGuideStack.Screen
+            <SelfGuideStack.Screen
                 name="Page4"
                 component={Page4}
                 options={{
@@ -56,7 +56,7 @@ export default function SelfGuid() {
                     headerTintColor: "#fff",
                 }}
             />
-            <SelftGuideStack.Screen
+            <SelfGuideStack.Screen
                 name="Page5"
                 component={Page5}
                 options={{
@@ -66,6 +66,6 @@ export default function SelfGuid() {
                     headerTintColor: "#fff",
                 }}
             />
-        </SelftGuideStack.Navigator>
+        </SelfGuideStack.Navigator>
     );
 }

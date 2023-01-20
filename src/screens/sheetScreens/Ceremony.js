@@ -1,17 +1,5 @@
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
-import React, { useEffect, useState } from "react";
-
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  loginThunk,
-  refreshAccess,
-  selectAccess,
-  selectRefresh,
-  setAccess,
-  setLoading,
-} from "../../redux/userSlice"; //note the path
-import { getStories } from "../../redux/dataSlice";
+import {Text, View} from 'react-native'
+import React from 'react'
 
 const Ceremony = () => {
   const [email, setEmail] = useState("hameorer2@com.com");
@@ -91,11 +79,4 @@ const Ceremony = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  input: {
-    backgroundColor: "#fff",
-    marginBottom: 10,
-  },
-});
-
-export default Ceremony;
+export default Ceremony

@@ -5,7 +5,7 @@ import getSiteUrl from "../../utils/getSiteUrl";
 
 export function getTokenAccessLogin(userLoginBody) {
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const headers = {headers: {'Content-Type': 'application/json'}};
 
@@ -13,6 +13,7 @@ export function getTokenAccessLogin(userLoginBody) {
 
     useEffect(() => {
         if (userLoginBody) {
+            setLoading(true);
             axios
                 .post(url, userLoginBody, headers)
                 .then((response) => {
@@ -34,7 +35,7 @@ export function getTokenAccessLogin(userLoginBody) {
 // todo in the future remove this - for now you can use to get token automatically
 export function getTokenAccess() {
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const headers = {headers: {'Content-Type': 'application/json'}};
 

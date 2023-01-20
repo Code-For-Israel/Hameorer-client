@@ -1,4 +1,12 @@
 # Hameorer App
+Hameorer mobile App 
+
+don't forget to npm install
+and you can run on web with this command:
+npx expo start -w
+
+
+----
 
 Hameorer mobile App 
 
