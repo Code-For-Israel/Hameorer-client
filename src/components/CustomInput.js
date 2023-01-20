@@ -18,8 +18,8 @@ const CustomInput = ({control, name, placeholder, secureTextEntry}) => {
                 />
             </View>
             {error && (<Text style={{color: "red", alignSelf: "center", alignContent: "center",}}>
-                    {error.message || "Error"}
-                </Text>)}
+                {error.message || "Error"}
+            </Text>)}
         </>)}
     />);
 };

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {ScrollView, StyleSheet, Text, View, Button} from "react-native";
+import {Button, ScrollView, StyleSheet, Text, View} from "react-native";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
@@ -32,7 +32,7 @@ const SignInScreen = () => {
         navigation.navigate("SignUp");
     };
 
-    const autoLogIn = () =>{
+    const autoLogIn = () => {
         setUserinfo({email: 'hameorer1@com.com', password: 'itizk12345'})
     }
 
