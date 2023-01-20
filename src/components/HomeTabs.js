@@ -22,7 +22,8 @@ const HomeTabs = () => {
         <Tab.Navigator
             initialRouteName="Profile"
             screenOptions={{
-                tabBarActiveTintColor: "#1261A0"
+                tabBarActiveTintColor: "#1261A0",
+                tabBarIconStyle: {width: 25, paddingLeft: 5},
             }}
         >
             <Tab.Screen
