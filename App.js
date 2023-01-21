@@ -22,7 +22,7 @@ export default function App() {
             <NavigationContainer>
                 <StatusBar style="light"/>
                 {/* chnge to home */}
-                <Stack.Navigator initialRouteName="sign in">
+                <Stack.Navigator initialRouteName="Home">
                     {/* this screen is for the tabs navigation at the bottom */}
                     <Stack.Screen
                         name="Home"
