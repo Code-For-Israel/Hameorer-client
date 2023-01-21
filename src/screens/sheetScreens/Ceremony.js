@@ -31,7 +31,7 @@ const Ceremony = () => {
             try {
                 const value = await AsyncStorage.getItem("@storage_Key");
                 if (value !== null) {
-                    dispatch(getStories(value));
+                    // dispatch(getStories(value));
                     dispatch(setAccess(value));
                     dispatch(setLoading(false));
                 } else {

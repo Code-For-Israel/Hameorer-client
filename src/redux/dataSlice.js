@@ -10,7 +10,7 @@ const initialState = {
 
 export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
   console.log("using the token:", token);
-  const response = await fetch(`${baseUrl}api/v1/stories/subject/`, {
+  const response = await fetch(`${baseUrl}api/v1/stories/`, {
     method: "GET",
     headers: {
       accept: "application/json",
@@ -32,7 +32,7 @@ export const dataSlice = createSlice({
     //login
     builder.addCase(getStories.fulfilled, (state, action) => {
       console.log(action.payload);
-      //   state.serverData = action.payload.???;
+      state.serverData = action.payload
       state.loading = false;
       state.error = null;
     });
