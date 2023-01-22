@@ -1,19 +1,19 @@
 import React from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
-import ProfileScreen from "../screens/ProfileScreen";
-import MyContentScreen from "../screens/MyContentScreen";
-import TimelineScreen from "../screens/TimelineScreen";
-import TopicsScreen from "../screens/TopicsScreen";
-import MapScreen from "../screens/MapScreen";
-import CustomBg from "./CustomBg";
+import ProfileScreen from "./ProfileScreen";
+import MyContentScreen from "./MyContentScreen";
+import TimelineScreen from "./TimelineScreen";
+import TopicsScreen from "./TopicsScreen";
+import MapScreen from "./MapScreen";
+import CustomBg from "../components/CustomBg";
 
 //icons
-import UserIcon from "./IconsSvg/UserIcon";
-import MyContentIcon from "./IconsSvg/MyContentIcon";
-import TimelineIcon from "./IconsSvg/TimelineIcon";
-import TopicsIcon from "./IconsSvg/TopicsIcon";
-import MapIcon from "./IconsSvg/MapIcon";
+import UserIcon from "../components/IconsSvg/UserIcon";
+import MyContentIcon from "../components/IconsSvg/MyContentIcon";
+import TimelineIcon from "../components/IconsSvg/TimelineIcon";
+import TopicsIcon from "../components/IconsSvg/TopicsIcon";
+import MapIcon from "../components/IconsSvg/MapIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +31,7 @@ const HomeTabs = () => {
                 component={ProfileScreen}
                 options={{
                     headerTitle: "כאן תהיה הכותרת של פרופיל",
-                    tabBarLabel: "פרופיל",
+                    tabBarLabel: "העמוד שלי",
                     // this is the part of custom background
                     headerTitleAlign: "center",
                     headerBackground: CustomBg,
@@ -67,38 +67,6 @@ const HomeTabs = () => {
                         <TimelineIcon color={color} size={size}/>
                 }}
             />
-            {/* <Tab.Screen
-                    name="More"
-                    component={PlusScreen}
-                    options={{
-                        tabBarLabel: "",
-                        tabBarButton: (props) => (
-                            <TouchableOpacity {...props} onPress={handlePress}/>
-                        ),
-                        tabBarIcon: ({size}) => (
-                            <View
-                                style={{
-                                    width: 50,
-                                    height: 50,
-                                    backgroundColor: "#FCBF49",
-                                    color: "#fff",
-                                    position: "absolute",
-                                    top: -25,
-                                    elevation: 10,
-                                    borderRadius: 50,
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <MaterialCommunityIcons
-                                    name="plus"
-                                    size={size}
-                                    color={"#fff"}
-                                />
-                            </View>
-                        ),
-                    }}
-                /> */}
             <Tab.Screen
                 name="Topics"
                 component={TopicsScreen}

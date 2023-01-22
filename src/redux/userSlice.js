@@ -8,7 +8,7 @@ const initialState = {
   // pass: "",
   refresh: "",
   access: "",
-  loading: false,
+  loading: true,
   error: null,
 };
 
@@ -52,6 +52,10 @@ export const LoginSlice = createSlice({
       state.access = action.payload;
       state.loading = false;
     },
+    setRefresh: (state, action) => {
+      state.refresh = action.payload;
+      state.loading = false;
+    },
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
@@ -66,8 +70,8 @@ export const LoginSlice = createSlice({
       state.error = null;
       console.log("logged in");
 
-      setDataLocal(action.payload.access).then(() =>
-        console.log("saved access token")
+      setDataLocal(action.payload.refresh).then(() =>
+        console.log("saved Refresh token")
       );
     });
     builder.addCase(loginThunk.pending, (state) => {
@@ -85,6 +89,9 @@ export const LoginSlice = createSlice({
       state.access = action.payload.access;
       state.loading = false;
       state.error = null;
+      setDataLocal(action.payload.access).then(() =>
+        console.log("saved Refresh token")
+      );
     });
     builder.addCase(refreshAccess.pending, (state) => {
       state.loading = true;
@@ -99,11 +106,12 @@ export const LoginSlice = createSlice({
 });
 
 //reducers actions:
-export const { setAccess, setLoading } = LoginSlice.actions;
+export const { setAccess, setRefresh, setLoading } = LoginSlice.actions;
 
 //states
 //export const selectEmail = (state) => state.login.email;
 export const selectRefresh = (state) => state.login.refresh;
 export const selectAccess = (state) => state.login.access;
+export const selectLoading = (state) => state.login.loading;
 
 export default LoginSlice.reducer;

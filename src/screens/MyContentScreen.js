@@ -4,7 +4,7 @@ import React from 'react'
 const MyContentScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>MyContentScreen</Text>
+            <Text>מסך התוכן שלי</Text>
         </View>
     )
 }

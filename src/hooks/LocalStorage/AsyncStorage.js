@@ -2,8 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const setDataLocal = async (value) => {
     try {
-        await AsyncStorage.setItem('@storage_Key', value)
-        console.log("save worked")
+        await AsyncStorage.setItem('refreshToken', value)
+        console.log("Successfully saved to local storage")
         return true
     } catch (e) {
         console.log(e)
@@ -13,7 +13,7 @@ export const setDataLocal = async (value) => {
 
 export const getDataLocal = async () => {
     try {
-        const value = await AsyncStorage.getItem('@storage_Key')
+        const value = await AsyncStorage.getItem('refreshToken')
         if (value !== null) {
             return value
         } else
