@@ -33,9 +33,9 @@ To use My Awesome App, follow these steps:
 3. You can run it on the browser with 'w'
 3. Use the app to do amazing things.
 
-## Live Link
-https://snack.expo.dev/@syahbes/hameorer-01-01-2023
-Live preview for Web, android and IOS
+# Live Link
+https://snack.expo.dev/@syahbes/hameorer-23-01-23
+Live preview for android and IOS
 
 
 11/01
