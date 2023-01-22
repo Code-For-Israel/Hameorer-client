@@ -22,7 +22,8 @@ const MainRouter = () => {
           dispatch(refreshAccess(value));
           // dispatch(setLoading(false));
         } else {
-          throw "Local Storage is without a refresh token";
+          dispatch(setLoading(false));
+          throw "Local Storage is without a refresh token"
         }
       } catch (e) {
         console.log(e);
