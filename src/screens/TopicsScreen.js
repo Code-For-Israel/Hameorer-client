@@ -4,7 +4,7 @@ import React from 'react'
 const TopicsScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>TopicsScreen</Text>
+            <Text>מסך נושאים</Text>
         </View>
     )
 }

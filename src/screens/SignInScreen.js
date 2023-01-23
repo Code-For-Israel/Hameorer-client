@@ -4,7 +4,7 @@ import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import {useNavigation} from "@react-navigation/native";
 import {useForm} from "react-hook-form";
-import HomeTabs from "../components/HomeTabs";
+import HomeTabs from "./HomeTabs";
 import {getTokenAccessLogin} from "../hooks/ApiCalls/authentication_provider";
 
 const SignInScreen = () => {
