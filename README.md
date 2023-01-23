@@ -1,19 +1,14 @@
 # Hameorer App
 Hameorer mobile App 
-
-don't forget to npm install
-and you can run on web with this command:
-npx expo start -w
-
-
 ----
 
 Hameorer mobile App 
 
 Some key features include:
-- Self Guide
-- Feature 2 (TBD)
+- הדרכה עצמית
+- דמות
 - Feature 3 (TBD)
+- Feature 4 (TBD)
 
 ## Installation and Setup
 
@@ -25,18 +20,11 @@ To install and set up Hameorer Client, follow these steps:
 4. Navigate to the `Hameorer-client` directory and install the app dependencies with `npm install`.
 
 ## Usage
-
-To use My Awesome App, follow these steps:
-
-1. Run the app in development mode with `npm start`.
-2. Open the app in the [Expo](https://expo.dev/) client app on your mobile device.
-3. You can run it on the browser with 'w'
-3. Use the app to do amazing things.
-
+for web use
+                                                npx expo start -w
 # Live Link
 https://snack.expo.dev/@syahbes/hameorer-23-01-23
 Live preview for android and IOS
-
 
 11/01
 to fix some issues had to :
@@ -53,8 +41,6 @@ plugins: [
   '@babel/plugin-proposal-export-namespace-from',
   'react-native-reanimated/plugin',
 ],
-
-                                                expo start -w
 
 so it would look like this:
 module.exports = function(api) {
