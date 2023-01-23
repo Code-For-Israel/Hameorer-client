@@ -5,8 +5,8 @@ Hameorer mobile App
 Hameorer mobile App 
 
 Some key features include:
-- הדרכה עצמית
-- דמות
+- Self Guide - הדרכה עצמית
+- DID - דמות
 - Feature 3 (TBD)
 - Feature 4 (TBD)
 
@@ -27,9 +27,21 @@ for web use
                                                 npx expo start -w
 
 
-# Live Link
+## Expo snack preview for android and IOS
 https://snack.expo.dev/@syahbes/hameorer-23-01-23
-Live preview for android and IOS
+
+
+
+
+
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
+#### Notes
 
 11/01
 to fix some issues had to :
