@@ -42,6 +42,7 @@ const DIDPageB = ({ navigation, route }) => {
         body: element.body.background,
         //birth year
         //death year
+        location: element.body.qoute_location
       }));
       setFigures(arr);
       setFilteredFigure(arr);

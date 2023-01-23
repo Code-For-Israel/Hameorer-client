@@ -22,6 +22,26 @@ export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
   return data;
 });
 
+export const setStory = createAsyncThunk(
+  "setStoryThunk",
+  async ({access, story}) => {
+    console.log("Create new story with token:", access);
+    console.log("Create new story with data:", story);
+
+    const response = await fetch(`${baseUrl}api/v1/stories/`, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${access}`,
+      },
+      body: JSON.stringify(story),
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 export const dataSlice = createSlice({
   name: "backendData",
   initialState,
@@ -32,7 +52,7 @@ export const dataSlice = createSlice({
     //login
     builder.addCase(getStories.fulfilled, (state, action) => {
       console.log(action.payload);
-      state.serverData = action.payload
+      state.serverData = action.payload;
       state.loading = false;
       state.error = null;
     });
@@ -40,6 +60,22 @@ export const dataSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(getStories.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+      console.log("getData error:", state.error.message);
+      // notify(state.error.message);
+    });
+    //POST story
+    builder.addCase(setStory.fulfilled, (state, action) => {
+      console.log(action.payload);
+      // state.serverData = action.payload
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(setStory.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(setStory.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
       console.log("getData error:", state.error.message);
