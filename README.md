@@ -21,7 +21,12 @@ To install and set up Hameorer Client, follow these steps:
 
 ## Usage
 for web use
-`                                                npx expo start -w`
+
+
+
+                                                npx expo start -w
+
+
 # Live Link
 https://snack.expo.dev/@syahbes/hameorer-23-01-23
 Live preview for android and IOS
