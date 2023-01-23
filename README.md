@@ -1,8 +1,4 @@
 # Hameorer App
-Hameorer mobile App 
-----
-
-Hameorer mobile App 
 
 Some key features include:
 - Self Guide - הדרכה עצמית
@@ -20,14 +16,14 @@ To install and set up Hameorer Client, follow these steps:
 4. Navigate to the `Hameorer-client` directory and install the app dependencies with `npm install`.
 
 ## Usage
-for web use
+For web :
 
 
 
                                                 npx expo start -w
 
 
-## Expo snack preview for android and IOS
+## Expo snack preview for Android and IOS
 https://snack.expo.dev/@syahbes/hameorer-23-01-23
 
 
