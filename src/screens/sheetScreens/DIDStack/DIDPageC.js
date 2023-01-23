@@ -51,7 +51,7 @@ const DIDPageC = ({navigation, route}) => {
                 </View>
                 <View style={styles.detailsContainer}>
                     <Text style={styles.h1}>{figure.head}</Text>
-                    <Text style={styles.textBody}>פולין</Text>
+                    <Text style={styles.textBody}>{figure.location}</Text>
 
                     <Text style={styles.textSubTitle}>תאריך לידה:</Text>
                     <Text style={styles.textSubTitle}>תאריך פטירה:</Text>
