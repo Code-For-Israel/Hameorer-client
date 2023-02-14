@@ -12,7 +12,7 @@ const DIDStack = createStackNavigator();
 
 export default function DID() {
     return (
-        <DIDStack.Navigator initialRouteName="DIDPageA">
+        <DIDStack.Navigator initialRouteName="DIDPageB">
             <DIDStack.Screen
                 name="DIDPageA"
                 component={DIDPageA}

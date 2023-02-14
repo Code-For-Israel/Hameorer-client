@@ -5,72 +5,52 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
 import React, { useEffect, useState } from "react";
 import NextButton from "../../../components/NextButton";
 import PrevButton from "../../../components/PrevButton";
 import { ProgressBar, Searchbar } from "react-native-paper";
 //redux
 import { useDispatch, useSelector } from "react-redux";
-import { getStories, selectServerData } from "../../../redux/dataSlice";
+import { getSubjects, selectSubjects } from "../../../redux/dataSlice";
 import { selectAccess } from "../../../redux/userSlice";
 
 const DIDPageB = ({ navigation, route }) => {
-  // const [filteredFigure, setFilteredFigure] = useState(figures);
-  const [figures, setFigures] = useState([]);
+  const dispatch = useDispatch();
+  const access = useSelector(selectAccess);
+  const figures = useSelector(selectSubjects);
   const [filteredFigure, setFilteredFigure] = useState([]);
   const [figureQuery, setFigureQuery] = useState("");
-  const tags = route.params;
 
-  const dispatch = useDispatch();
-  const storiesData = useSelector(selectServerData);
-  const access = useSelector(selectAccess);
+  // const tags = route.params;
 
-
-  
   useEffect(() => {
     if (access) {
-      dispatch(getStories(access));
+      dispatch(getSubjects(access));
     }
   }, []);
 
-  
   useEffect(() => {
-    const extractDataFromPull = (data) => {
-      let arr = data?.map((element) => ({
-        head: element.subject.subject,
-        body: element.body.background,
-        //birth year
-        //death year
-        location: element.body.qoute_location
-      }));
-      setFigures(arr);
-      setFilteredFigure(arr);
-    };
-    if (storiesData.length) {
-      extractDataFromPull(storiesData);
+    if (figures.length) {
+      setFilteredFigure(figures);
     }
-  }, [storiesData]);
-
+  }, [figures]);
 
   const onChangeSearch = (query) => {
     setFigureQuery(query);
     setFilteredFigure(
       figures.filter((item) =>
-        item.head.toLowerCase().includes(query.toLowerCase())
+        item.subject.toLowerCase().includes(query.toLowerCase())
       )
       // .slice(0, 20)
     );
   };
   const handleFigurePress = (props) => {
-    navigation.navigate("DIDPageC", { ...props, tags });
+    // navigation.navigate("DIDPageC", { ...props, tags });
+    navigation.navigate("DIDPageC", props);
   };
-
-  // console.table(tags);
-
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.headContainer}>
+      {/* <View style={styles.headContainer}>
         <View style={{ width: 100 }}>
           <NextButton
             title="הבא"
@@ -80,29 +60,25 @@ const DIDPageB = ({ navigation, route }) => {
               // navigation.navigate("DIDPageC");
               handleFigurePress({
                 head: "יאנוש-קורצק",
-                body: "טקסט שתיים שלוש",
+                body: "",
               });
             }}
           />
         </View>
-        <Text style={styles.headText}>שלב 2 מתוך 3</Text>
+        <Text style={styles.headText}>שלב 1 מתוך 2</Text>
         <View style={{ width: 100 }}>
-          <PrevButton
-            title="הקודם"
-            onPress={() => {
-              navigation.navigate("DIDPageA");
-            }}
-          />
+          <View>
+            <Text style={styles.prevText}>הקודם</Text>
+          </View>
         </View>
       </View>
       <View style={styles.ProgressBarContainer}>
-        {/* note that the progress is reversed */}
         <ProgressBar
-          progress={0.33}
+          progress={0.5}
           color={"#D9D9D9"}
           style={styles.ProgressBarStyle}
         />
-      </View>
+      </View> */}
       {/* first searchbar */}
       <View style={styles.SearchbarStyleContainer}>
         <Searchbar
@@ -115,7 +91,7 @@ const DIDPageB = ({ navigation, route }) => {
       </View>
       {/*end of first searchbar */}
       {/* tags section */}
-      <View style={styles.tagsContainer}>
+      {/* <View style={styles.tagsContainer}>
         {tags.map((tag, index) => {
           if (tag.isClicked) {
             return (
@@ -125,8 +101,8 @@ const DIDPageB = ({ navigation, route }) => {
             );
           }
         })}
-      </View>
-
+      </View>*/}
+      {/* end of tags */}
       <View style={styles.figuresContainer}>
         {filteredFigure.map((item, index) => {
           return (
@@ -135,14 +111,18 @@ const DIDPageB = ({ navigation, route }) => {
               onPress={() => handleFigurePress(item)}
             >
               <View style={styles.figureBox}>
-                <Text style={styles.figureHead}>{item.head}</Text>
+                <Text style={styles.figureHead}>{item.subject}</Text>
                 <Text style={styles.figureBody}>{item.body}</Text>
+                {item.birth_date && (
+                  <Text style={styles.figureBody}>
+                    נולד ב: {item.birth_date} , וחי עד: {item.death_date}
+                  </Text>
+                )}
               </View>
             </TouchableOpacity>
           );
         })}
       </View>
-      {/* end of tags */}
     </ScrollView>
   );
 };
@@ -220,5 +200,8 @@ const styles = StyleSheet.create({
   },
   figureBody: {
     color: "black",
+  },
+  prevText: {
+    opacity: 0,
   },
 });

@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
 const baseUrl = "http://3.140.113.123:8000/";
 
 const initialState = {
   serverData: {},
   loading: false,
   error: null,
+  subjects: [],
 };
 
 export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
@@ -22,9 +22,26 @@ export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
   return data;
 });
 
+export const getSubjects = createAsyncThunk(
+  "getSubjectsThunk",
+  async (token) => {
+    console.log("using the token:", token);
+    const response = await fetch(`${baseUrl}api/v1/stories/subject/`, {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 export const setStory = createAsyncThunk(
   "setStoryThunk",
-  async ({access, story}) => {
+  async ({ access, story }) => {
     console.log("Create new story with token:", access);
     console.log("Create new story with data:", story);
 
@@ -49,7 +66,7 @@ export const dataSlice = createSlice({
     //TBD
   },
   extraReducers: (builder) => {
-    //login
+    //get stories
     builder.addCase(getStories.fulfilled, (state, action) => {
       console.log(action.payload);
       state.serverData = action.payload;
@@ -65,6 +82,25 @@ export const dataSlice = createSlice({
       console.log("getData error:", state.error.message);
       // notify(state.error.message);
     });
+   //get Subjects
+   builder.addCase(getSubjects.fulfilled, (state, action) => {
+    console.log(action.payload);
+    state.subjects = action.payload;
+    state.loading = false;
+    state.error = null;
+  });
+  builder.addCase(getSubjects.pending, (state) => {
+    state.loading = true;
+  });
+  builder.addCase(getSubjects.rejected, (state, action) => {
+    state.loading = false;
+    state.error = action.error;
+    console.log("getData error:", state.error.message);
+    // notify(state.error.message);
+  });
+ 
+   
+   
     //POST story
     builder.addCase(setStory.fulfilled, (state, action) => {
       console.log(action.payload);
@@ -89,5 +125,6 @@ export const dataSlice = createSlice({
 //states
 //export const selectEmail = (state) => state.login.email;
 export const selectServerData = (state) => state.backendData.serverData;
+export const selectSubjects = (state) => state.backendData.subjects;
 
 export default dataSlice.reducer;

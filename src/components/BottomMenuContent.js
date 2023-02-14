@@ -19,11 +19,11 @@ const sheetLinks = [
         title: "זכרון משפחתי",
         screen: "FamilyMem",
     },
-    {
-        id: "4",
-        title: "יומן אישי",
-        screen: "PersonalDiary",
-    },
+    // {
+    //     id: "4",
+    //     title: "יומן אישי",
+    //     screen: "PersonalDiary",
+    // },
     {
         id: "5",
         title: "דמות",
