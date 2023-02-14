@@ -13,112 +13,195 @@ import { ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 
 import ImageViewer from "../../../components/ImageViewer";
+import {
+  hideModal,
+  selectVisable,
+  setStory,
+  showModal,
+} from "../../../redux/dataSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAccess } from "../../../redux/userSlice";
+
+import { Modal, Portal, Button, Provider } from "react-native-paper";
+import ThumbUp from "../../../components/IconsSvg/ThumbUp";
+
 const PlaceholderImage = require("../../../../assets/fallbackImage.png");
+const containerStyle = {
+  backgroundColor: "#1261a0",
+  padding: 20,
+  width: 300,
+  margin: "auto",
+};
 
 const DIDPageC = ({ navigation, route }) => {
+  const dispatch = useDispatch();
+  const visible = useSelector(selectVisable);
+  const access = useSelector(selectAccess);
+
   let selectedImage = null;
   const figure = route.params;
   if (figure.media) {
     selectedImage = figure.media[0].http_link;
   }
+  const handleSend = () => {
+    const story = {
+      subject: {
+        type: "figure",
+        subject: figure.subject,
+        date_birth: figure.birth_date,
+        date_death: figure.death_date,
+      },
+      tags: ["_"],
+      body: {
+        background: "",
+        quote_date: "",
+        quote_source: textOrigin,
+        qoute_location: "",
+        qoute_title: "",
+        qoute: text,
+      },
+      // created_by: "None",
+      comments: {
+        one: "comment one",
+        two: "comment two",
+      },
+      status: "pending",
+      media: {
+        one: selectedImage ? selectedImage : "none",
+        two: "media two sound",
+      },
+    };
 
-  console.log(selectedImage);
-
-  console.log(route.params);
-  //figure.name
-  // console.log(figure)
+    dispatch(setStory({ access, story }));
+  };
   const [text, setText] = useState("");
   const [textOrigin, setTextOrigin] = useState("");
   const [sound, setSound] = useState("");
 
-  const handleSend = () => {
-    console.log(figure.subject);
-    console.log("text is: " + text);
-    console.log("text origin: " + textOrigin);
-    console.log("sound is: " + sound);
-  };
-
   return (
-    <ScrollView style={styles.container}>
-      
-      {/* headSection - name dates and + button*/}
-      <View style={styles.HeadSection}>
-        <View style={styles.ImageContainer}>
-          {/* <Icon name="add" size={30} color={"#fff"} /> */}
-          <ImageViewer
-            placeholderImageSource={PlaceholderImage}
-            selectedImage={selectedImage}
-          />
-        </View>
-        <View style={styles.detailsContainer}>
-          <Text style={styles.h1}>{figure.subject}</Text>
-          <Text style={styles.textBody}>{figure.location}</Text>
-
-          <Text style={styles.textSubTitle}>
-            תאריך לידה: {figure.birth_date}
-          </Text>
-          <Text style={styles.textSubTitle}>
-            תאריך פטירה: {figure.death_date}
-          </Text>
-        </View>
-      </View>
-      {/* end of head Section */}
-      {/* quote */}
-      <View style={styles.TextInputContainer}>
-        <TextInput
-          placeholder="הוסף ציטוט"
-          direction="rtl"
-          multiline={true}
-          style={[styles.input, styles.inputBig]}
-          onChangeText={setText}
-          value={text}
-        />
-      </View>
-      {/* origin */}
-      <View style={styles.TextInputContainer}>
-        <TextInput
-          placeholder={"הוסף מקור"}
-          direction="rtl"
-          style={styles.input}
-          onChangeText={setTextOrigin}
-          value={textOrigin}
-        />
-      </View>
-      {/* sound sample */}
-      <TouchableOpacity onPress={() => {}}>
-        <View style={styles.TextInputContainer}>
-          <Text style={[styles.input, styles.inputSound]}>
-            {sound ? sound.name : "העלה דגימת קול"}
-            <Icon name="upload-file" size={24} color={"#000"} />
-          </Text>
-        </View>
-      </TouchableOpacity>
-      {/* end sound */}
-      {/* send btn */}
-      
-      <View style={styles.headContainer}>
-      <View style={styles.send}>
-        <NextButton title={"שליחה"} onPress={handleSend} />
-      </View>
-        <Text style={styles.headText}>שלב 2 מתוך 2</Text>
-        <View style={{ width: 100 }}>
-          <NextButton
-            title="הקודם"
-            onPress={() => {
-              navigation.navigate("DIDPageB", figure.tags);
+    <Provider>
+      <Portal>
+        <Modal
+          visible={visible}
+          onDismiss={() => {
+            dispatch(hideModal());
+          }}
+          contentContainerStyle={containerStyle}
+        >
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              marginBottom: 30,
             }}
+          >
+            <Text style={{ fontSize: 20, color: "#fff", fontWeight: "bold" }}>
+              נשלח למדריך בהצלחה !
+            </Text>
+          </View>
+
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              marginBottom: 10,
+            }}
+          >
+            <ThumbUp />
+          </View>
+        </Modal>
+      </Portal>
+
+      <ScrollView style={styles.container}>
+        {/* headSection - name dates and + button*/}
+        <View style={styles.HeadSection}>
+          <View style={styles.ImageContainer}>
+            {/* <Icon name="add" size={30} color={"#fff"} /> */}
+            <ImageViewer
+              placeholderImageSource={PlaceholderImage}
+              selectedImage={selectedImage}
+            />
+          </View>
+          <View style={styles.detailsContainer}>
+            <Text style={styles.h1}>{figure.subject}</Text>
+            <Text style={styles.textBody}>{figure.location}</Text>
+
+            <Text style={styles.textSubTitle}>
+              תאריך לידה: {figure.birth_date}
+            </Text>
+            <Text style={styles.textSubTitle}>
+              תאריך פטירה: {figure.death_date}
+            </Text>
+          </View>
+        </View>
+        {/* end of head Section */}
+        {/* quote */}
+        <View style={styles.TextInputContainer}>
+          <TextInput
+            placeholder="הוסף ציטוט"
+            direction="rtl"
+            multiline={true}
+            style={[styles.input, styles.inputBig]}
+            onChangeText={setText}
+            value={text}
           />
         </View>
-      </View>
-      <View style={styles.ProgressBarContainer}>
-        {/* note that the progress is reversed */}
-        <ProgressBar
-          progress={0}
-          color={"#D9D9D9"}
-          style={styles.ProgressBarStyle}
-        />
-      </View>
-    </ScrollView>
+        {/* origin */}
+        <View style={styles.TextInputContainer}>
+          <TextInput
+            placeholder={"הוסף מקור"}
+            direction="rtl"
+            style={styles.input}
+            onChangeText={setTextOrigin}
+            value={textOrigin}
+          />
+        </View>
+        {/* sound sample */}
+        <TouchableOpacity onPress={() => {}}>
+          <View style={styles.TextInputContainer}>
+            <Text style={[styles.input, styles.inputSound]}>
+              {sound ? sound.name : "העלה דגימת קול"}
+              <Icon name="upload-file" size={24} color={"#000"} />
+            </Text>
+          </View>
+        </TouchableOpacity>
+        {/* end sound */}
+        {/* send btn */}
+
+        <View style={styles.headContainer}>
+          <View style={styles.send}>
+            <NextButton title={"שליחה"} onPress={handleSend} />
+          </View>
+          <Text style={styles.headText}>שלב 2 מתוך 2</Text>
+          <View style={{ width: 100 }}>
+            <NextButton
+              title="הקודם"
+              onPress={() => {
+                navigation.navigate("DIDPageB", figure.tags);
+              }}
+            />
+          </View>
+        </View>
+        <View style={styles.ProgressBarContainer}>
+          {/* note that the progress is reversed */}
+          <ProgressBar
+            progress={0}
+            color={"#D9D9D9"}
+            style={styles.ProgressBarStyle}
+          />
+        </View>
+        {/* <Button
+          style={{ marginTop: 30 }}
+          onPress={() => {
+            dispatch(showModal());
+          }}
+        >
+          Show
+        </Button> */}
+      </ScrollView>
+    </Provider>
     // end of sound
   );
 };

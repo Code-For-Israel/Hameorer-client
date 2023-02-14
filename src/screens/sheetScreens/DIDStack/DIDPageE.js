@@ -56,7 +56,7 @@ const DIDPageE = ({ navigation, route }) => {
         one: "comment one",
         two: "comment two",
       },
-      approved: false,
+      status: "pending",
       media: {
         one: "media one photo",
         two: "media two sound",

@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   error: null,
   subjects: [],
+  visible: false,
 };
 
 export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
@@ -63,7 +64,12 @@ export const dataSlice = createSlice({
   name: "backendData",
   initialState,
   reducers: {
-    //TBD
+    showModal: (state) => {
+      state.visible = true;
+    },
+    hideModal: (state) => {
+      state.visible = false;
+    },
   },
   extraReducers: (builder) => {
     //get stories
@@ -82,29 +88,27 @@ export const dataSlice = createSlice({
       console.log("getData error:", state.error.message);
       // notify(state.error.message);
     });
-   //get Subjects
-   builder.addCase(getSubjects.fulfilled, (state, action) => {
-    console.log(action.payload);
-    state.subjects = action.payload;
-    state.loading = false;
-    state.error = null;
-  });
-  builder.addCase(getSubjects.pending, (state) => {
-    state.loading = true;
-  });
-  builder.addCase(getSubjects.rejected, (state, action) => {
-    state.loading = false;
-    state.error = action.error;
-    console.log("getData error:", state.error.message);
-    // notify(state.error.message);
-  });
- 
-   
-   
+    //get Subjects
+    builder.addCase(getSubjects.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.subjects = action.payload;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(getSubjects.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getSubjects.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+      console.log("getData error:", state.error.message);
+      // notify(state.error.message);
+    });
+
     //POST story
     builder.addCase(setStory.fulfilled, (state, action) => {
       console.log(action.payload);
-      // state.serverData = action.payload
+      state.visible = true;
       state.loading = false;
       state.error = null;
     });
@@ -120,11 +124,10 @@ export const dataSlice = createSlice({
   },
 });
 
-//reducers action TBD:
-//export const { updateEmail, updatePass } = LoginSlice.actions;
-//states
-//export const selectEmail = (state) => state.login.email;
+export const { showModal, hideModal } = dataSlice.actions;
+
 export const selectServerData = (state) => state.backendData.serverData;
 export const selectSubjects = (state) => state.backendData.subjects;
+export const selectVisable = (state) => state.backendData.visible;
 
 export default dataSlice.reducer;
