@@ -30,7 +30,7 @@ const containerStyle = {
   backgroundColor: "#1261a0",
   padding: 20,
   width: 300,
-  margin: "auto",
+  alignSelf: "center",
 };
 
 const DIDPageC = ({ navigation, route }) => {
