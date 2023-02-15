@@ -49,6 +49,7 @@ const MainNav = () => {
           headerTitleAlign: "center",
           headerBackground: CustomBg,
           headerTintColor: "#fff",
+          headerLeft: "",
           //end of custom background
         }}
       />
