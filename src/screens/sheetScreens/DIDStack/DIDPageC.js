@@ -11,6 +11,8 @@ import NextButton from "../../../components/NextButton";
 import PrevButton from "../../../components/PrevButton";
 import { ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import CustomButton from "../../../components/CustomButton";
+import * as DocumentPicker from "expo-document-picker";
 
 import ImageViewer from "../../../components/ImageViewer";
 import {
@@ -21,6 +23,7 @@ import {
 } from "../../../redux/dataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAccess } from "../../../redux/userSlice";
+import UseFetchPost from "../../../hooks/ApiCalls/useFetchPost"
 
 import {
   Modal,
@@ -39,16 +42,57 @@ const containerStyle = {
   alignSelf: "center",
 };
 
+const ALLOWED_TYPES = [
+  "audio/aac",
+  "audio/mpeg",
+  "audio/ogg",
+  "audio/opus",
+  "audio/3gpp",
+  "audio/webm",
+  "audio/wav",
+];
+
 const DIDPageC = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const visible = useSelector(selectVisable);
   const access = useSelector(selectAccess);
+  const [url, setUrl] = useState(null);
+  const formData = new FormData();
+
+  const uploadFileConst = UseFetchPost(url, formData);
+
+  useEffect(() => {
+    if (uploadFileConst && uploadFileConst.error) console.log(uploadFileConst);
+    if (uploadFileConst) console.log(uploadFileConst);
+  }, [uploadFileConst]);
 
   let selectedImage = null;
   const figure = route.params;
   if (figure.media) {
     selectedImage = figure.media[0].http_link;
   }
+
+  const pickDocument = async () => {
+    let result = await DocumentPicker.getDocumentAsync({ type: ALLOWED_TYPES });
+    if (result.type === "success") {
+      if (ALLOWED_TYPES.includes(result.mimeType) === false)
+        console.log("wrong type of file - only csv and excel");
+      else {
+        const fileUrl = result.uri;
+        //create form data
+        console.log(result.mimeType);
+        console.log(result.file.type);
+        formData.append("type", result.file.type);
+        formData.append("file", fileUrl);
+        
+        setUrl(getSiteUrl() + "v1/media/hameorer-audio/"+result.file.name)
+        console.log(url);
+        
+        console.log("file is ready - now post");
+      }
+    }
+  };
+
   const handleSend = () => {
     const story = {
       subject: {
@@ -194,6 +238,7 @@ const DIDPageC = ({ navigation, route }) => {
                 <Icon name="upload-file" size={24} color={"#000"} />
               </Text>
             </View>
+            <CustomButton text="Upload File" onPress={pickDocument} />
           </TouchableOpacity>
         )}
         {/* end sound */}
