@@ -13,6 +13,7 @@ import { ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import CustomButton from "../../../components/CustomButton";
 import * as DocumentPicker from "expo-document-picker";
+import getSiteUrl from "../../../utils/getSiteUrl";
 
 import ImageViewer from "../../../components/ImageViewer";
 import {
@@ -23,7 +24,6 @@ import {
 } from "../../../redux/dataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAccess } from "../../../redux/userSlice";
-import UseFetchPost from "../../../hooks/ApiCalls/useFetchPost"
 
 import {
   Modal,
@@ -56,15 +56,8 @@ const DIDPageC = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const visible = useSelector(selectVisable);
   const access = useSelector(selectAccess);
-  const [url, setUrl] = useState(null);
   const formData = new FormData();
-
-  const uploadFileConst = UseFetchPost(url, formData);
-
-  useEffect(() => {
-    if (uploadFileConst && uploadFileConst.error) console.log(uploadFileConst);
-    if (uploadFileConst) console.log(uploadFileConst);
-  }, [uploadFileConst]);
+  const baseUrl = getSiteUrl();
 
   let selectedImage = null;
   const figure = route.params;
@@ -72,7 +65,7 @@ const DIDPageC = ({ navigation, route }) => {
     selectedImage = figure.media[0].http_link;
   }
 
-  const pickDocument = async () => {
+  const pickAudio = async () => {
     let result = await DocumentPicker.getDocumentAsync({ type: ALLOWED_TYPES });
     if (result.type === "success") {
       if (ALLOWED_TYPES.includes(result.mimeType) === false)
@@ -80,15 +73,28 @@ const DIDPageC = ({ navigation, route }) => {
       else {
         const fileUrl = result.uri;
         //create form data
-        console.log(result.mimeType);
-        console.log(result.file.type);
         formData.append("type", result.file.type);
-        formData.append("file", fileUrl);
-        
-        setUrl(getSiteUrl() + "v1/media/hameorer-audio/"+result.file.name)
-        console.log(url);
-        
+        const testURL = fileUrl.split(',')[1];
+        formData.append("file", testURL);
+        console.log(testURL);
+        console.log(fileUrl);
+        console.log(result.file.type);
+
+
         console.log("file is ready - now post");
+        
+        const url =baseUrl + "v1/media/hameorer-audio/" + result.file.name + '/';
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${access}`,
+          },
+          formData,
+        });
+
+        console.log(response);
+        return response;
       }
     }
   };
@@ -238,7 +244,7 @@ const DIDPageC = ({ navigation, route }) => {
                 <Icon name="upload-file" size={24} color={"#000"} />
               </Text>
             </View>
-            <CustomButton text="Upload File" onPress={pickDocument} />
+            <CustomButton text="Upload File" onPress={pickAudio} />
           </TouchableOpacity>
         )}
         {/* end sound */}
