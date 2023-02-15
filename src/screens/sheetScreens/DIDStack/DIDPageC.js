@@ -22,7 +22,13 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { selectAccess } from "../../../redux/userSlice";
 
-import { Modal, Portal, Button, Provider } from "react-native-paper";
+import {
+  Modal,
+  Portal,
+  Button,
+  Provider,
+  RadioButton,
+} from "react-native-paper";
 import ThumbUp from "../../../components/IconsSvg/ThumbUp";
 
 const PlaceholderImage = require("../../../../assets/fallbackImage.png");
@@ -77,6 +83,7 @@ const DIDPageC = ({ navigation, route }) => {
   const [text, setText] = useState("");
   const [textOrigin, setTextOrigin] = useState("");
   const [sound, setSound] = useState("");
+  const [checked, setChecked] = useState("quote");
 
   return (
     <Provider>
@@ -137,17 +144,37 @@ const DIDPageC = ({ navigation, route }) => {
           </View>
         </View>
         {/* end of head Section */}
-        {/* quote */}
-        <View style={styles.TextInputContainer}>
-          <TextInput
-            placeholder="הוסף ציטוט"
-            direction="rtl"
-            multiline={true}
-            style={[styles.input, styles.inputBig]}
-            onChangeText={setText}
-            value={text}
+
+        {/* RadioButton */}
+        <View style={styles.checkboxContainer}>
+          <Text style={styles.TextCheckbox}>סוג המדיה: </Text>
+          <Text style={styles.TextCheckbox}>ציטוט</Text>
+          <RadioButton
+            value="quote"
+            status={checked === "quote" ? "checked" : "unchecked"}
+            onPress={() => setChecked("quote")}
+          />
+          <Text style={styles.TextCheckbox}>דגימת קול</Text>
+          <RadioButton
+            value="voice"
+            status={checked === "voice" ? "checked" : "unchecked"}
+            onPress={() => setChecked("voice")}
           />
         </View>
+
+        {/* quote */}
+        {checked === "quote" && (
+          <View style={styles.TextInputContainer}>
+            <TextInput
+              placeholder="הוסף ציטוט"
+              direction="rtl"
+              multiline={true}
+              style={[styles.input, styles.inputBig]}
+              onChangeText={setText}
+              value={text}
+            />
+          </View>
+        )}
         {/* origin */}
         <View style={styles.TextInputContainer}>
           <TextInput
@@ -159,14 +186,16 @@ const DIDPageC = ({ navigation, route }) => {
           />
         </View>
         {/* sound sample */}
-        <TouchableOpacity onPress={() => {}}>
-          <View style={styles.TextInputContainer}>
-            <Text style={[styles.input, styles.inputSound]}>
-              {sound ? sound.name : "העלה דגימת קול"}
-              <Icon name="upload-file" size={24} color={"#000"} />
-            </Text>
-          </View>
-        </TouchableOpacity>
+        {checked === "voice" && (
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.TextInputContainer}>
+              <Text style={[styles.input, styles.inputSound]}>
+                {sound ? sound.name : "העלה דגימת קול"}
+                <Icon name="upload-file" size={24} color={"#000"} />
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
         {/* end sound */}
         {/* send btn */}
 
@@ -217,6 +246,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
+    paddingHorizontal: 20,
+  },
+  checkboxContainer: {
+    marginTop: 10,
+    flexDirection: "row-reverse",
+    justifyContent: "flex-start",
     paddingHorizontal: 20,
   },
   nextText: {
@@ -284,6 +319,9 @@ const styles = StyleSheet.create({
   TextInputContainer: {
     width: "100%",
     paddingHorizontal: 15,
+  },
+  TextCheckbox: {
+    alignSelf: "center",
   },
   input: {
     marginBottom: 10,
