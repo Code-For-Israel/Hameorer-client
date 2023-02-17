@@ -5,10 +5,10 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
+  Pressable,
 } from "react-native";
 import React, { useState } from "react";
 import NextButton from "../../../components/NextButton";
-import PrevButton from "../../../components/PrevButton";
 import { ProgressBar } from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import CustomButton from "../../../components/CustomButton";
@@ -32,14 +32,17 @@ import {
   Provider,
   RadioButton,
 } from "react-native-paper";
-import ThumbUp from "../../../components/IconsSvg/ThumbUp";
+import CloseIcon from "../../../components/IconsSvg/CloseIcon";
+import UploadIcon from "../../../components/IconsSvg/UploadIcon";
+import { Fragment } from "react";
 
 const PlaceholderImage = require("../../../../assets/fallbackImage.png");
 const containerStyle = {
-  backgroundColor: "#1261a0",
-  padding: 20,
+  backgroundColor: "#fff",
+  padding: 10,
   width: 300,
   alignSelf: "center",
+  borderRadius: 15,
 };
 
 const ALLOWED_TYPES = [
@@ -82,7 +85,7 @@ const DIDPageC = ({ navigation, route }) => {
 
 
         console.log("file is ready - now post");
-        
+
         const url =baseUrl + "v1/media/hameorer-audio/" + result.file.name + '/';
         const response = await fetch(url, {
           method: "POST",
@@ -124,7 +127,7 @@ const DIDPageC = ({ navigation, route }) => {
       status: "pending",
       media: {
         one: selectedImage ? selectedImage : "none",
-        two: "media two sound",
+        two: "media two",
       },
     };
 
@@ -145,28 +148,35 @@ const DIDPageC = ({ navigation, route }) => {
           }}
           contentContainerStyle={containerStyle}
         >
-          <View
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "row",
-              marginBottom: 30,
-            }}
-          >
-            <Text style={{ fontSize: 20, color: "#fff", fontWeight: "bold" }}>
-              נשלח למדריך בהצלחה !
-            </Text>
-          </View>
+          <View>
+            <View
+              style={{
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Pressable
+                onPress={() => {
+                  dispatch(hideModal());
+                }}
+              >
+                <CloseIcon />
+              </Pressable>
+            </View>
 
-          <View
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "row",
-              marginBottom: 10,
-            }}
-          >
-            <ThumbUp />
+            <View
+              style={{
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: "10px",
+              }}
+            >
+              <Text>עבודה טובה !</Text>
+              <Text>הציטוט שלך נשלח למשוב,</Text>
+              <Text>תתקבל אצלך הודעה כשהוא יאושר.</Text>
+            </View>
           </View>
         </Modal>
       </Portal>
@@ -195,22 +205,33 @@ const DIDPageC = ({ navigation, route }) => {
         </View>
         {/* end of head Section */}
 
+        <Text style={{ alignSelf: "center", fontSize: 16 }}>
+          אפשר להוסיף ציטוט בכתב או בהקלטת קול,
+        </Text>
+        <Text style={{ alignSelf: "center", fontSize: 16 }}>
+          מה ההעדפה שלך?
+        </Text>
         {/* RadioButton */}
         <View style={styles.checkboxContainer}>
-          <Text style={styles.TextCheckbox}>סוג המדיה: </Text>
-          <Text style={styles.TextCheckbox}>ציטוט</Text>
+          {/* <Text style={styles.TextCheckbox}>סוג המדיה: </Text> */}
+          <Text style={styles.TextCheckbox}>בכתב</Text>
           <RadioButton
             value="quote"
             status={checked === "quote" ? "checked" : "unchecked"}
             onPress={() => setChecked("quote")}
           />
-          <Text style={styles.TextCheckbox}>דגימת קול</Text>
+          <Text style={styles.TextCheckbox}>בהקלטה</Text>
           <RadioButton
             value="voice"
             status={checked === "voice" ? "checked" : "unchecked"}
             onPress={() => setChecked("voice")}
           />
         </View>
+        <Text
+          style={styles.greyText}
+        >
+          *ציטוט בכתב יונפש עם דגימת קול אוטומטית
+        </Text>
 
         {/* quote */}
         {checked === "quote" && (
@@ -223,6 +244,7 @@ const DIDPageC = ({ navigation, route }) => {
               onChangeText={setText}
               value={text}
             />
+
           </View>
         )}
         {/* origin */}
@@ -235,17 +257,23 @@ const DIDPageC = ({ navigation, route }) => {
             value={textOrigin}
           />
         </View>
+        <Text style={styles.greyText}>*יש להוסיף פה את מקור הציטוט: לינק לאתר / שם הספר ועמוד</Text>
         {/* sound sample */}
         {checked === "voice" && (
+          <Fragment>
           <TouchableOpacity onPress={() => {}}>
             <View style={styles.TextInputContainer}>
               <Text style={[styles.input, styles.inputSound]}>
-                {sound ? sound.name : "העלה דגימת קול"}
-                <Icon name="upload-file" size={24} color={"#000"} />
+                {sound ? sound.name : "העלה הקלטת ציטוט"}
+                <UploadIcon />
               </Text>
             </View>
             <CustomButton text="Upload File" onPress={pickAudio} />
           </TouchableOpacity>
+          <Text style={styles.greyText}>
+          *יש להקליט את הציטוט בקול בקול ברור ולהעלות כקובץ
+          </Text>
+          </Fragment>
         )}
         {/* end sound */}
         {/* send btn */}
@@ -272,14 +300,6 @@ const DIDPageC = ({ navigation, route }) => {
             style={styles.ProgressBarStyle}
           />
         </View>
-        {/* <Button
-          style={{ marginTop: 30 }}
-          onPress={() => {
-            dispatch(showModal());
-          }}
-        >
-          Show
-        </Button> */}
       </ScrollView>
     </Provider>
     // end of sound
@@ -301,8 +321,8 @@ const styles = StyleSheet.create({
   },
   checkboxContainer: {
     marginTop: 10,
-    flexDirection: "row-reverse",
-    justifyContent: "flex-start",
+    flexDirection: "row",
+    justifyContent: "center",
     paddingHorizontal: 20,
   },
   nextText: {
@@ -410,4 +430,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.05,
     elevation: 4,
   },
+  greyText:{
+    alignSelf: "center", color: "#8B8787", marginBottom: 10
+  }
 });
