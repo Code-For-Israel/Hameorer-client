@@ -225,8 +225,17 @@ const DIDPageC = ({ navigation, route }) => {
         )}
         {/* end sound */}
         {/* send btn */}
+        
+        <View style={styles.ProgressBarContainer}>
+          {/* note that the progress is reversed */}
+          <ProgressBar
+            progress={0}
+            color={"#D9D9D9"}
+            style={styles.ProgressBarStyle}
+          />
+        </View>
 
-        <View style={styles.headContainer}>
+        <View style={styles.footerContainer}>
           <View style={styles.send}>
             <NextButton title={"שליחה"} onPress={handleSend} />
           </View>
@@ -240,14 +249,7 @@ const DIDPageC = ({ navigation, route }) => {
             />
           </View>
         </View>
-        <View style={styles.ProgressBarContainer}>
-          {/* note that the progress is reversed */}
-          <ProgressBar
-            progress={0}
-            color={"#D9D9D9"}
-            style={styles.ProgressBarStyle}
-          />
-        </View>
+
       </ScrollView>
     </Provider>
     // end of sound
@@ -261,7 +263,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  headContainer: {
+  footerContainer: {
     marginTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
