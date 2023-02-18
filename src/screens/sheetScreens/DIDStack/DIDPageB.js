@@ -49,49 +49,21 @@ const DIDPageB = ({ navigation, route }) => {
     navigation.navigate("DIDPageC", props);
   };
   return (
-    <ScrollView style={styles.container}>
-      {/* <View style={styles.headContainer}>
-        <View style={{ width: 100 }}>
-          <NextButton
-            title="הבא"
-            onPress={() => {
-              // console.log("the sub is: ", value)
-              // console.log("the text is:", text)
-              // navigation.navigate("DIDPageC");
-              handleFigurePress({
-                head: "יאנוש-קורצק",
-                body: "",
-              });
-            }}
+    <>
+      <ScrollView style={styles.container}>
+        {/* first searchbar */}
+        <View style={styles.SearchbarStyleContainer}>
+          <Searchbar
+            placeholder="חפש דמות"
+            inputStyle={styles.SearchbarStyle}
+            iconColor="#000"
+            onChangeText={onChangeSearch}
+            value={figureQuery}
           />
         </View>
-        <Text style={styles.headText}>שלב 1 מתוך 2</Text>
-        <View style={{ width: 100 }}>
-          <View>
-            <Text style={styles.prevText}>הקודם</Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles.ProgressBarContainer}>
-        <ProgressBar
-          progress={0.5}
-          color={"#D9D9D9"}
-          style={styles.ProgressBarStyle}
-        />
-      </View> */}
-      {/* first searchbar */}
-      <View style={styles.SearchbarStyleContainer}>
-        <Searchbar
-          placeholder="חפש דמות"
-          inputStyle={styles.SearchbarStyle}
-          iconColor="#000"
-          onChangeText={onChangeSearch}
-          value={figureQuery}
-        />
-      </View>
-      {/*end of first searchbar */}
-      {/* tags section */}
-      {/* <View style={styles.tagsContainer}>
+        {/*end of first searchbar */}
+        {/* tags section */}
+        {/* <View style={styles.tagsContainer}>
         {tags.map((tag, index) => {
           if (tag.isClicked) {
             return (
@@ -102,28 +74,64 @@ const DIDPageB = ({ navigation, route }) => {
           }
         })}
       </View>*/}
-      {/* end of tags */}
-      <View style={styles.figuresContainer}>
-        {filteredFigure.map((item, index) => {
-          return (
-            <TouchableOpacity
-              key={index}
-              onPress={() => handleFigurePress(item)}
-            >
-              <View style={styles.figureBox}>
-                <Text style={styles.figureHead}>{item.subject}</Text>
-                <Text style={styles.figureBody}>{item.body}</Text>
-                {item.birth_date && (
-                  <Text style={styles.figureBody}>
-                    נולד ב: {item.birth_date} , וחי עד: {item.death_date}
-                  </Text>
-                )}
-              </View>
-            </TouchableOpacity>
-          );
-        })}
+        {/* end of tags */}
+        <View style={styles.figuresContainer}>
+          {filteredFigure.map((item, index) => {
+            return (
+              <TouchableOpacity
+                key={index}
+                onPress={() => handleFigurePress(item)}
+              >
+                <View style={styles.figureBox}>
+                  <Text style={styles.figureHead}>{item.subject}</Text>
+                  <Text style={styles.figureBody}>{item.body}</Text>
+                  {item.birth_date && (
+                    <Text style={styles.figureBody}>
+                      נולד ב: {item.birth_date} , וחי עד: {item.death_date}
+                    </Text>
+                  )}
+                </View>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      </ScrollView>
+
+      <View style={styles.footerContainer}>
+        <View style={styles.ProgressBarContainer}>
+          <ProgressBar
+            progress={0.5}
+            color={"#D9D9D9"}
+            style={styles.ProgressBarStyle}
+          />
+        </View>
+
+        <View
+          style={{
+            width: "100%",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <View style={{ width: 100 }}>
+            <NextButton
+              title="הבא"
+              onPress={() => {
+                handleFigurePress({
+                  head: "בחר דמות",
+                  body: "",
+                });
+              }}
+            />
+          </View>
+          <Text style={styles.headText}>שלב 1 מתוך 2</Text>
+          <View style={{ width: 100 }}>
+            <NextButton title="הקודם" onPress={() => navigation.goBack()} />
+          </View>
+        </View>
       </View>
-    </ScrollView>
+    </>
   );
 };
 
@@ -134,9 +142,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  headContainer: {
-    marginTop: 10,
-    flexDirection: "row",
+  footerContainer: {
+    backgroundColor: "#fff",
+    // marginTop: 10,
+    flexDirection: "column",
     justifyContent: "space-between",
     paddingHorizontal: 20,
   },
@@ -145,6 +154,7 @@ const styles = StyleSheet.create({
   },
   ProgressBarContainer: {
     marginTop: 5,
+    marginBottom: 5,
     width: "90%",
     display: "flex",
     marginLeft: "5%",
