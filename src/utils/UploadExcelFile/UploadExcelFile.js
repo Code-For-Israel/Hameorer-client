@@ -1,10 +1,11 @@
 import React, {useEffect} from "react";
-import {StyleSheet, Text, TouchableOpacity,} from "react-native";
+import {Text, TouchableOpacity,} from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 import CustomButton from "../../components/CustomButton";
 import getSiteUrl from "../getSiteUrl";
 import UseFetchPost from "../../hooks/ApiCalls/useFetchPost";
 import {parseExcelToJson} from "../../hooks/UploadExcel/ParseExcelFile";
+import {styles} from "../../styles/PagesStyle";
 
 const ALLOWED_TYPES = ["application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 'application/vnd.ms-excel', 'text/csv']
 
@@ -70,7 +71,7 @@ export const UploadExcelFile = ({setParsedData, parsedData}) => {
 
     return (
         <>
-            <Text style={styles.file}>Upload CSV File</Text>
+            <Text style={styles.excelFileUpload}>Upload CSV File</Text>
             <TouchableOpacity>
                 <CustomButton
                     text="Upload File"
@@ -83,7 +84,3 @@ export const UploadExcelFile = ({setParsedData, parsedData}) => {
         </>
     );
 };
-
-const styles = StyleSheet.create({
-    file: {color: "black", marginHorizontal: 15,}
-});

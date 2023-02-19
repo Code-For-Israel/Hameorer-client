@@ -4,7 +4,7 @@ import {SafeAreaView, Text, TextInput, View} from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker';
 
 import NextButton from '../../../../components/NextButton'
-import {styles} from './PagesStyle'
+import {styles} from '../../../../styles/PagesStyle'
 import {MaterialBottomScroll} from "../../../../components/materialBottomScroll/MaterialBottomScroll";
 
 

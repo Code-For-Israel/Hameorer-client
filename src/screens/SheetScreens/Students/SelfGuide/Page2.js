@@ -2,7 +2,7 @@ import {SafeAreaView, Text, TextInput, View} from 'react-native'
 import React, {useState} from 'react'
 import PrevButton from '../../../../components/PrevButton'
 import NextButton from '../../../../components/NextButton'
-import {styles} from './PagesStyle'
+import {styles} from '../../../../styles/PagesStyle'
 import {MaterialBottomScroll} from "../../../../components/materialBottomScroll/MaterialBottomScroll";
 
 const Page2 = ({navigation}) => {

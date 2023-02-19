@@ -1,4 +1,5 @@
-import {StyleSheet, Text, View} from "react-native";
+import {Text, View} from "react-native";
+import {styles} from "../../styles/PagesStyle";
 
 export default function MapScreen() {
     return (<View style={styles.container}>
@@ -6,9 +7,4 @@ export default function MapScreen() {
     </View>);
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1, justifyContent: "center", alignItems: "center",
-    },
-});
   

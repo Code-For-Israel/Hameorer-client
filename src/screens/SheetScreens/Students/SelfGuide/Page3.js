@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import PrevButton from "../../../../components/PrevButton";
 import NextButton from "../../../../components/NextButton";
 import GreenCircleIcon from "../../../../components/GreenCircleIcon";
-import {styles} from './PagesStyle'
+import {styles} from '../../../../styles/PagesStyle'
 import {MaterialBottomScroll} from "../../../../components/materialBottomScroll/MaterialBottomScroll";
 
 const Page3 = ({navigation}) => {

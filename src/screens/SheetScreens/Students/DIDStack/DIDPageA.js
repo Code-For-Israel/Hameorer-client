@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import NextButton from "../../../../components/NextButton";
 import {ProgressBar} from "react-native-paper";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import {styles} from "../../../../styles/PagesStyle";
 
 const image = require("../../../../../assets/bgdid.png");
 const tagsConst = [
@@ -61,7 +62,7 @@ const DIDPageA = ({navigation}) => {
     return (
         <View style={styles.container}>
             <ImageBackground source={image} style={styles.image}>
-                <View style={styles.headContainer}>
+                <View style={stylesIn.headContainer}>
                     <View style={{width: 100}}>
                         <NextButton
                             title="הבא"
@@ -70,17 +71,17 @@ const DIDPageA = ({navigation}) => {
                             }}
                         />
                     </View>
-                    <Text style={styles.headText}>שלב 1 מתוך 3</Text>
+                    <Text style={stylesIn.headText}>שלב 1 מתוך 3</Text>
                     <View>
-                        <Text style={styles.prevText}>הקודם</Text>
+                        <Text style={stylesIn.prevText}>הקודם</Text>
                     </View>
                 </View>
-                <View style={styles.ProgressBarContainer}>
+                <View style={stylesIn.ProgressBarContainer}>
                     {/* note that the progress is reversed */}
                     <ProgressBar
                         progress={0.66}
                         color={"#D9D9D9"}
-                        style={styles.ProgressBarStyle}
+                        style={stylesIn.ProgressBarStyle}
                     />
                 </View>
                 {/* first, search figure */}
@@ -89,9 +90,9 @@ const DIDPageA = ({navigation}) => {
                         navigation.navigate("DIDPageB", tags);
                     }}
                 >
-                    <View style={styles.SearchbarStyleContainer}>
+                    <View style={stylesIn.SearchbarStyleContainer}>
                         <Icon name="search" size={28} color={"#000"}/>
-                        <Text style={styles.SearchStyle}>חפש דמות</Text>
+                        <Text style={stylesIn.SearchStyle}>חפש דמות</Text>
                     </View>
                 </TouchableOpacity>
                 {/*end of first, search figure */}
@@ -101,27 +102,27 @@ const DIDPageA = ({navigation}) => {
                         navigation.navigate("DIDPageD", tags);
                     }}
                 >
-                    <View style={styles.SearchbarStyleContainer}>
+                    <View style={stylesIn.SearchbarStyleContainer}>
                         <Icon name="add" size={28} color={"#000"}/>
-                        <Text style={styles.SearchStyle}>צור דמות חדשה</Text>
+                        <Text style={stylesIn.SearchStyle}>צור דמות חדשה</Text>
                     </View>
                 </TouchableOpacity>
 
                 {/*end of second newFigure */}
 
                 {/* tags section */}
-                <View style={styles.tagsContainer}>
+                <View style={stylesIn.tagsContainer}>
                     {tags.map((tag, index) => (
                         <TouchableOpacity onPress={() => toggleTag(index)} key={index}>
                             <View
                                 style={[
-                                    styles.tagBox,
+                                    stylesIn.tagBox,
                                     {backgroundColor: tag.isClicked ? "#FCBF49" : "#b4b6b9"},
                                 ]}
                             >
                                 <Text
                                     style={[
-                                        styles.tagText,
+                                        stylesIn.tagText,
                                         {color: tag.isClicked ? "#fff" : "#000"},
                                     ]}
                                 >
@@ -140,14 +141,8 @@ const DIDPageA = ({navigation}) => {
 
 export default DIDPageA;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    image: {
-        flex: 1,
-        resizeMode: "cover",
-    },
+const stylesIn = StyleSheet.create({
+
     headContainer: {
         // backgroundColor: "#d0b581",
         marginTop: 10,

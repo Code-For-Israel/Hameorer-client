@@ -1,8 +1,9 @@
-import {Button, StyleSheet, Text, View} from "react-native";
+import {Button, Text, View} from "react-native";
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getStories, setStory} from "../../redux/dataSlice";
 import {selectAccess} from "../../redux/userSlice";
+import {styles} from "../../styles/PagesStyle";
 
 const story = {
     subject: {
@@ -44,9 +45,3 @@ const MyContentScreen = () => {
 };
 
 export default MyContentScreen;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1, justifyContent: "center", alignItems: "center",
-    },
-});

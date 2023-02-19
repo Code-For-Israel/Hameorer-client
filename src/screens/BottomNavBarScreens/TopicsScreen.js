@@ -1,5 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native'
+import {Text, View} from 'react-native'
 import React from 'react'
+import {styles} from "../../styles/PagesStyle";
 
 const TopicsScreen = () => {
     return (<View style={styles.container}>
@@ -8,9 +9,3 @@ const TopicsScreen = () => {
 }
 
 export default TopicsScreen
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1, justifyContent: 'center', alignItems: 'center',
-    }
-})

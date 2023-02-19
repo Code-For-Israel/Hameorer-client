@@ -2,6 +2,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import React from "react";
 
 import {useNavigation} from "@react-navigation/native";
+import {styles} from "../styles/PagesStyle";
 
 const sheetLinks = [
     {
@@ -36,7 +37,7 @@ export default function BottomMenuContent({onClose}) {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.container}>
+        <View style={styles.mainContainer}>
             {sheetLinks.map((item) => {
                 return (
                     <TouchableOpacity
@@ -47,7 +48,7 @@ export default function BottomMenuContent({onClose}) {
                             navigation.navigate(item.screen);
                             onClose();
                         }}
-                    ><View style={styles.button}>
+                    ><View style={styles.bottomMenuButton}>
                         <Text style={styles.buttonText}>{item.title}</Text>
                     </View>
                     </TouchableOpacity>
@@ -56,19 +57,3 @@ export default function BottomMenuContent({onClose}) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    button: {
-        backgroundColor: "#B6CEFF",
-        justifyContent: "center",
-        alignItems: "center",
-        marginVertical: 1,
-        padding: 10,
-    },
-    buttonText: {
-        fontSize: 24,
-    }
-});
