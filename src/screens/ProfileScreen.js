@@ -5,7 +5,7 @@ import { useState } from "react";
 import BottomSheet from "../components/BottomSheet";
 import BottomMenuContent from "../components/BottomMenuContent";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { UploadExcelFile } from "./UploadExcelFile/UploadExcelFile";
+import { UploadExcelFile } from "../utils/UploadExcelFile/UploadExcelFile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
 import { setAccess, setRefresh } from "../redux/userSlice";

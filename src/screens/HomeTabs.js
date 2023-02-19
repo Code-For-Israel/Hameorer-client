@@ -2,10 +2,10 @@ import React from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
 import ProfileScreen from "./ProfileScreen";
-import MyContentScreen from "./MyContentScreen";
-import TimelineScreen from "./TimelineScreen";
-import TopicsScreen from "./TopicsScreen";
-import MapScreen from "./MapScreen";
+import MyContentScreen from "./BottomNavBarScreens/MyContentScreen";
+import TimelineScreen from "./BottomNavBarScreens/TimelineScreen";
+import TopicsScreen from "./BottomNavBarScreens/TopicsScreen";
+import MapScreen from "./BottomNavBarScreens/MapScreen";
 import CustomBg from "../components/CustomBg";
 
 //icons
