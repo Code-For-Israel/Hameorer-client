@@ -40,6 +40,22 @@ export const getSubjects = createAsyncThunk(
   }
 );
 
+export const setRecording = createAsyncThunk(
+    "setRecordingThunk",
+    async ({ access, recording, bucket, name }) => {
+
+      const response = await fetch(`${baseUrl}api/v1/media/${bucket}/${name}/`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${access}`,
+        },
+        body: (recording),
+      });
+      const data = await response;
+      return data;
+    }
+);
+
 export const setStory = createAsyncThunk(
   "setStoryThunk",
   async ({ access, story }) => {
@@ -116,6 +132,23 @@ export const dataSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(setStory.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+      console.log("getData error:", state.error.message);
+      // notify(state.error.message);
+    });
+
+    //POST recording
+    builder.addCase(setRecording.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.visible = true;
+      state.loading = false;
+      state.error = null;
+    });
+    builder.addCase(setRecording.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(setRecording.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
       console.log("getData error:", state.error.message);
