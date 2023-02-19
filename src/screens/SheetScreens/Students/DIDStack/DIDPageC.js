@@ -2,9 +2,7 @@ import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, Vi
 import React, {Fragment, useState} from "react";
 import NextButton from "../../../../components/NextButton";
 import {Modal, Portal, ProgressBar, Provider, RadioButton} from "react-native-paper";
-import CustomButton from "../../../../components/CustomButton";
 import * as DocumentPicker from "expo-document-picker";
-import getSiteUrl from "../../../../utils/getSiteUrl";
 
 import ImageViewer from "../../../../components/ImageViewer";
 import {hideModal, selectVisable, setRecording, setStory,} from "../../../../redux/dataSlice";
@@ -37,7 +35,8 @@ const DIDPageC = ({navigation, route}) => {
     const visible = useSelector(selectVisable);
     const access = useSelector(selectAccess);
     let recording = new FormData();
-
+    let bucket = 'hameorer-audio'
+    let name = ''
     let selectedImage = null;
     const figure = route.params;
     if (figure.media) {
@@ -53,10 +52,7 @@ const DIDPageC = ({navigation, route}) => {
                 //create form data
                 recording.append("type", result.file.type);
                 recording.append("file", result.file);
-                let bucket = 'hameorer-audio'
-                let name = result.file.name
-
-                dispatch(setRecording({access, recording, bucket, name}));
+                name = result.file.name;
             }
         }
     };
@@ -89,9 +85,10 @@ const DIDPageC = ({navigation, route}) => {
                 two: "media two",
             },
         };
-
-
-        dispatch(setStory({access, story}));
+        if (checked === 'voice')
+            dispatch(setRecording({access, recording, bucket, name}));
+        else
+            dispatch(setStory({access, story}));
     };
     const [text, setText] = useState("");
     const [textOrigin, setTextOrigin] = useState("");
@@ -221,15 +218,13 @@ const DIDPageC = ({navigation, route}) => {
                 {/* sound sample */}
                 {checked === "voice" && (
                     <Fragment>
-                        <TouchableOpacity onPress={() => {
-                        }}>
+                        <TouchableOpacity onPress={pickAudio}>
                             <View style={styles.TextInputContainer}>
                                 <Text style={[styles.input, styles.inputSound]}>
                                     {sound ? sound.name : "העלה הקלטת ציטוט"}
                                     <UploadIcon/>
                                 </Text>
                             </View>
-                            <CustomButton text="Upload File" onPress={pickAudio}/>
                         </TouchableOpacity>
                         <Text style={styles.greyText}>
                             *יש להקליט את הציטוט בקול בקול ברור ולהעלות כקובץ
