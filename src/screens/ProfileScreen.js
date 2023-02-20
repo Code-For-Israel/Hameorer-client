@@ -13,6 +13,7 @@ import BottomSheet from "../components/BottomSheet";
 import BottomMenuContent from "../components/BottomMenuContent";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { UploadExcelFile } from "./UploadExcelFile/UploadExcelFile";
+import ImageViewer from "../components/ImageViewer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
 import { setAccess, setRefresh } from "../redux/userSlice";
@@ -24,6 +25,7 @@ export default function ProfileScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const dispatch = useDispatch();
 
+  const PlaceholderImage = { url: "../../assets/group.png" };
   const handlePress = () => {
     setIsModalVisible(true);
   };
@@ -92,7 +94,7 @@ export default function ProfileScreen() {
           <MaterialCommunityIcons name="plus" size={25} color={"#fff"} />
         </View>
       </TouchableOpacity>
-
+      <ImageViewer placeholderImageSource={PlaceholderImage} />
       <View>
         <Text style={styles.h1}>הודעות</Text>
       </View>
@@ -118,12 +120,7 @@ export default function ProfileScreen() {
           flexDirection: "row",
           justifyContent: "flex-end",
         }}
-      >
-        <Image
-          style={styles.image1}
-          source={require("../images/200px-Janusz_Korczak.png")}
-        />
-      </View>
+      ></View>
 
       {/* <View style={{ width: 100, alignContent: "center", marginLeft: 20 }}>
         <PrevButton title="Log Out" onPress={logout} />
@@ -150,7 +147,10 @@ const styles = StyleSheet.create({
   },
   image1: {
     position: "absolute",
-
+    width: 100,
+    height: 100,
+    alignContent: "center",
+    marginLeft: 20,
     resizeMode: "contain",
   },
   detailsContainer: {
