@@ -11,122 +11,6 @@
         {
           "subject": {
             "type": "figure",
-            "subject": "יצחק צוקרמן"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "Yyt",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": "Bhbg"
-          },
-          "creation_date": 1676415084.142175,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two sound"
-          },
-          "_id": "63ec106cfa1b3037fe98be86"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "מקוררר",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": "ציטוטוט"
-          },
-          "creation_date": 1676415368.804548,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two sound"
-          },
-          "_id": "63ec1188fa1b3037fe98be87"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "שם הדמות"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "רקע רקע רקע",
-            "quote_date": "1968",
-            "quote_source": "",
-            "qoute_location": "פולין",
-            "qoute_title": "בית ספר לרוח האדם",
-            "qoute": "אינני חושב שיש צורך לנתח את המרד מבחינה צבאית. המדובר הוא במלחמה של פחות מאלף איש נגד צבא אדיר ובלב איש לא היה הפקפוק ביחס לתוצאותיו המעשיות. זה לא נושא ללימוד בבי\"ס צבאי. לא הנשק, לא המבצעים, לא הטקטיקה. אם יש בית ספר ללימוד רוח האדם, הרי שם זה צריך להיות מקצוע ראשי, הדברים החשובים באמת היו טמונים בכוח שגילו צעירים יהודיים אחרי שנים של השפלה, לקום על משמידיהם ולקבוע בעצמם באיזה מוות יבחרו: טרבלינקה או מרד. אינני יודע אם קיימת אמת מידה מקובלת למוד את זה."
-          },
-          "creation_date": 1676456053.995055,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": null,
-          "media": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "_id": "63ecb0757eb0f062c615cbd2"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "שם הדמות"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "רקע רקע רקע",
-            "quote_date": "1968",
-            "quote_source": "",
-            "qoute_location": "פולין",
-            "qoute_title": "בית ספר לרוח האדם",
-            "qoute": "אינני חושב שיש צורך לנתח את המרד מבחינה צבאית. המדובר הוא במלחמה של פחות מאלף איש נגד צבא אדיר ובלב איש לא היה הפקפוק ביחס לתוצאותיו המעשיות. זה לא נושא ללימוד בבי\"ס צבאי. לא הנשק, לא המבצעים, לא הטקטיקה. אם יש בית ספר ללימוד רוח האדם, הרי שם זה צריך להיות מקצוע ראשי, הדברים החשובים באמת היו טמונים בכוח שגילו צעירים יהודיים אחרי שנים של השפלה, לקום על משמידיהם ולקבוע בעצמם באיזה מוות יבחרו: טרבלינקה או מרד. אינני יודע אם קיימת אמת מידה מקובלת למוד את זה."
-          },
-          "creation_date": 1676456751.22098,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": null,
-          "media": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "_id": "63ecb32f7eb0f062c615cbd3"
-        },
-        {
-          "subject": {
-            "type": "figure",
             "subject": "חנה סנש"
           },
           "tags": [
@@ -135,400 +19,87 @@
           "body": {
             "background": "",
             "quote_date": "",
-            "quote_source": "",
-            "qoute_location": "",
+            "quote_source": "גדכדג",
+            "qoute_location": "הונגריה",
             "qoute_title": "",
-            "qoute": "מעניין מאוד"
+            "qoute": "דשכגגדככ"
           },
-          "creation_date": 1676457029.393415,
+          "creation_date": 1676928539.187647,
           "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
           "comments": {
             "one": "comment one",
             "two": "comment two"
           },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two sound"
-          },
-          "_id": "63ecb4457eb0f062c615cbd4"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "שם הדמות"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "רקע רקע רקע",
-            "quote_date": "1968",
-            "quote_source": "",
-            "qoute_location": "פולין",
-            "qoute_title": "בית ספר לרוח האדם",
-            "qoute": "אינני חושב שיש צורך לנתח את המרד מבחינה צבאית. המדובר הוא במלחמה של פחות מאלף איש נגד צבא אדיר ובלב איש לא היה הפקפוק ביחס לתוצאותיו המעשיות. זה לא נושא ללימוד בבי\"ס צבאי. לא הנשק, לא המבצעים, לא הטקטיקה. אם יש בית ספר ללימוד רוח האדם, הרי שם זה צריך להיות מקצוע ראשי, הדברים החשובים באמת היו טמונים בכוח שגילו צעירים יהודיים אחרי שנים של השפלה, לקום על משמידיהם ולקבוע בעצמם באיזה מוות יבחרו: טרבלינקה או מרד. אינני יודע אם קיימת אמת מידה מקובלת למוד את זה."
-          },
-          "creation_date": 1676457227.014317,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": null,
-          "media": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "_id": "63ecb50b7eb0f062c615cbd5"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "שם הדמות"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "רקע רקע רקע",
-            "quote_date": "1968",
-            "quote_source": "",
-            "qoute_location": "פולין",
-            "qoute_title": "בית ספר לרוח האדם",
-            "qoute": "אינני חושב שיש צורך לנתח את המרד מבחינה צבאית. המדובר הוא במלחמה של פחות מאלף איש נגד צבא אדיר ובלב איש לא היה הפקפוק ביחס לתוצאותיו המעשיות. זה לא נושא ללימוד בבי\"ס צבאי. לא הנשק, לא המבצעים, לא הטקטיקה. אם יש בית ספר ללימוד רוח האדם, הרי שם זה צריך להיות מקצוע ראשי, הדברים החשובים באמת היו טמונים בכוח שגילו צעירים יהודיים אחרי שנים של השפלה, לקום על משמידיהם ולקבוע בעצמם באיזה מוות יבחרו: טרבלינקה או מרד. אינני יודע אם קיימת אמת מידה מקובלת למוד את זה."
-          },
-          "creation_date": 1676490365.683893,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": null,
-          "media": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "_id": "63ed367d7eb0f062c615cbd6"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "יאנוש קורצאק"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "oo",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": "popopopop"
-          },
-          "creation_date": 1676581415.19221,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "http://hameorer-img.s3.us-east-2.amazonaws.com/yanushkorchak.jpeg",
-            "two": "media two sound"
-          },
-          "_id": "63ee9a2767f48c1e3bb1c82a"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "חנה סנש"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "ויקיציטוט",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": "בדיקה אחת שתיים שלוש"
-          },
-          "creation_date": 1676584075.191589,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
+          "status": "review",
           "media": {
             "one": "none",
             "two": "media two"
           },
-          "_id": "63eea48b67f48c1e3bb1c82b"
-        },
+          "_id": "63f3e61be15af02661e995ad"
+        }
+      ]
+    },
+    {
+      "firstname": "יוסי",
+      "lastname": "אלבז",
+      "stories": [
         {
           "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
+            "subject": "מחנות"
           },
-          "tags": [
-            "_"
-          ],
           "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": ""
+            "qoute_location": "גיאורגיה",
+            "qoute": "מידע"
           },
-          "creation_date": 1676622264.096061,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two"
-          },
-          "_id": "63ef39b867f48c1e3bb1c82c"
-        },
+          "status": "review"
+        }
+      ]
+    },
+    {
+      "firstname": "רמי",
+      "lastname": "אברהם",
+      "stories": [
         {
           "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
+            "subject": "נושא 3"
           },
-          "tags": [
-            "_"
-          ],
           "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": ""
+            "qoute_location": "ישראל",
+            "qoute": "מידע"
           },
-          "creation_date": 1676622942.372845,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two"
-          },
-          "_id": "63ef3c5e67f48c1e3bb1c82d"
-        },
+          "status": "review"
+        }
+      ]
+    },
+    {
+      "firstname": "יוסי",
+      "lastname": "אלבז",
+      "stories": [
         {
           "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
+            "subject": "מחנות"
           },
-          "tags": [
-            "_"
-          ],
           "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": ""
+            "qoute_location": "גיאורגיה",
+            "qoute": "מידע"
           },
-          "creation_date": 1676622946.625546,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two"
-          },
-          "_id": "63ef3c6267f48c1e3bb1c82e"
-        },
+          "status": "done"
+        }
+      ]
+    },
+    {
+      "firstname": "צלח",
+      "lastname": "יוסף",
+      "stories": [
         {
           "subject": {
-            "type": "figure",
-            "subject": "שם הדמות"
+            "subject": "נושא חדש ממש"
           },
-          "tags": [
-            "_"
-          ],
           "body": {
-            "background": "רקע רקע רקע",
-            "quote_date": "1968",
-            "quote_source": "",
-            "qoute_location": "פולין",
-            "qoute_title": "בית ספר לרוח האדם",
-            "qoute": "אינני חושב שיש צורך לנתח את המרד מבחינה צבאית. המדובר הוא במלחמה של פחות מאלף איש נגד צבא אדיר ובלב איש לא היה הפקפוק ביחס לתוצאותיו המעשיות. זה לא נושא ללימוד בבי\"ס צבאי. לא הנשק, לא המבצעים, לא הטקטיקה. אם יש בית ספר ללימוד רוח האדם, הרי שם זה צריך להיות מקצוע ראשי, הדברים החשובים באמת היו טמונים בכוח שגילו צעירים יהודיים אחרי שנים של השפלה, לקום על משמידיהם ולקבוע בעצמם באיזה מוות יבחרו: טרבלינקה או מרד. אינני יודע אם קיימת אמת מידה מקובלת למוד את זה."
+            "qoute_location": "איראן",
+            "qoute": "מידע"
           },
-          "creation_date": 1676623213.448509,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": null,
-          "media": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "_id": "63ef3d6d67f48c1e3bb1c82f"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "שם הדמות"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "רקע רקע רקע",
-            "quote_date": "1968",
-            "quote_source": "",
-            "qoute_location": "פולין",
-            "qoute_title": "בית ספר לרוח האדם",
-            "qoute": "אינני חושב שיש צורך לנתח את המרד מבחינה צבאית. המדובר הוא במלחמה של פחות מאלף איש נגד צבא אדיר ובלב איש לא היה הפקפוק ביחס לתוצאותיו המעשיות. זה לא נושא ללימוד בבי\"ס צבאי. לא הנשק, לא המבצעים, לא הטקטיקה. אם יש בית ספר ללימוד רוח האדם, הרי שם זה צריך להיות מקצוע ראשי, הדברים החשובים באמת היו טמונים בכוח שגילו צעירים יהודיים אחרי שנים של השפלה, לקום על משמידיהם ולקבוע בעצמם באיזה מוות יבחרו: טרבלינקה או מרד. אינני יודע אם קיימת אמת מידה מקובלת למוד את זה."
-          },
-          "creation_date": 1676623214.740322,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": null,
-          "media": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "_id": "63ef3d6e67f48c1e3bb1c830"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": ""
-          },
-          "creation_date": 1676658020.980295,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two"
-          },
-          "_id": "63efc56467f48c1e3bb1c831"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": "asdadsasd"
-          },
-          "creation_date": 1676755085.907359,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two"
-          },
-          "_id": "63f1408d99d2aaaccd75e48b"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": ""
-          },
-          "creation_date": 1676842590.552837,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two"
-          },
-          "_id": "63f2965e674b6180634a1965"
-        },
-        {
-          "subject": {
-            "type": "figure",
-            "subject": "יצחק צוקרמן"
-          },
-          "tags": [
-            "_"
-          ],
-          "body": {
-            "background": "",
-            "quote_date": "",
-            "quote_source": "adasd",
-            "qoute_location": "",
-            "qoute_title": "",
-            "qoute": ""
-          },
-          "creation_date": 1676847523.603105,
-          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
-          "comments": {
-            "one": "comment one",
-            "two": "comment two"
-          },
-          "status": "pending",
-          "media": {
-            "one": "none",
-            "two": "media two"
-          },
-          "_id": "63f2a9a3e15af02661e995ab"
+          "status": "review"
         }
       ]
     },
@@ -537,14 +108,74 @@
       "email": "hameorer3@com.com",
       "firstname": "Yuval",
       "lastname": "Steimberg",
-      "stories": []
+      "stories": [
+        {
+          "subject": {
+            "type": "figure",
+            "subject": "יוסי סנש"
+          },
+          "tags": [
+            "_"
+          ],
+          "body": {
+            "background": "",
+            "quote_date": "",
+            "quote_source": "כעגכ",
+            "qoute_location": "גרמניה",
+            "qoute_title": "",
+            "qoute": "עעעעעעע"
+          },
+          "creation_date": 1676928539.187647,
+          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
+          "comments": {
+            "one": "comment one",
+            "two": "comment two"
+          },
+          "status": "pending",
+          "media": {
+            "one": "none",
+            "two": "media two"
+          },
+          "_id": "63f3e6123be15af02661e995ad"
+        }
+      ]
     },
     {
       "uuid": "901a4344-d9e1-400a-abda-a1d5600d7f18",
       "email": "hameorer4@com.com",
       "firstname": "Sergi",
       "lastname": "S",
-      "stories": []
+      "stories": [
+        {
+          "subject": {
+            "type": "figure",
+            "subject": "חנה 11111"
+          },
+          "tags": [
+            "_"
+          ],
+          "body": {
+            "background": "",
+            "quote_date": "",
+            "quote_source": "1111111",
+            "qoute_location": "אמריקה",
+            "qoute_title": "",
+            "qoute": "222222"
+          },
+          "creation_date": 1676928539.187647,
+          "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
+          "comments": {
+            "one": "comment one",
+            "two": "comment two"
+          },
+          "status": "done",
+          "media": {
+            "one": "none",
+            "two": "media two"
+          },
+          "_id": "63f3e61be15af02661e995ad"
+        }
+      ]
     }
   ],
   "guides": [

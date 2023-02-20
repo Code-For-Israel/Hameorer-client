@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     loginSubTextView: {flexDirection: "row", justifyContent: "flex-end", alignItems: "center", width: 180,},
     loginSubText: {fontSize: 12, color: "#000",},
     loginBtnText: {color: "#FFF", fontSize: 14,},
-    cardComponent: {width: 270, height: 200, backgroundColor: '#072F5F'},
+    cardComponent: {width: 270, height: 200, backgroundColor: '#072F5F', margin: 2},
     cardComponentText: {color: 'white'},
     cardComponentTopPart: {flexDirection: 'row', display: 'flex', justifyContent: 'space-between'},
     cardComponentInsideTextArea: {

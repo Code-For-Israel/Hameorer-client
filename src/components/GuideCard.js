@@ -36,7 +36,6 @@ const guideCard = ({studentName, subject, country, yearBorn, yearDeath, onPress}
                         </TouchableOpacity>
                     </View>
                 </View>
-
             </Card.Content>
         </Card>
     </View>
