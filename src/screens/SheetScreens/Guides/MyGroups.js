@@ -11,6 +11,8 @@ const PlaceholderImage = require("../../../../assets/fallbackImage.png");
 
 
 const MyGroup = () => {
+    let x = require("./mock_data.json")
+    console.log(x)
     const dispatch = useDispatch();
     const visible = useSelector(selectVisable);
     const access = useSelector(selectAccess);
