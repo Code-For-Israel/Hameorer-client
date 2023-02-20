@@ -11,7 +11,7 @@ export const getToken = () => {
     const url = getSiteUrl() + 'token/refresh/'
 
     useEffect(() => {
-        getDataLocal().then((refreshToken) => {
+        getDataLocal('refreshToken').then((refreshToken) => {
                 if (refreshToken != null) {
                     const body = {refresh: refreshToken}
                     const headers = {headers: {'Content-Type': 'application/json'}};

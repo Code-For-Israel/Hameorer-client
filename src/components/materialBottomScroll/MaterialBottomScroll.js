@@ -1,7 +1,8 @@
-import {Linking, ScrollView, StyleSheet, Text, View} from "react-native";
+import {Linking, ScrollView, Text, View} from "react-native";
 import React from "react";
 import {mockItems} from "./mockItems";
 import IconComponent from "../IconComponent/IconComponent";
+import {styles} from "../../styles/PagesStyle";
 
 export function MaterialBottomScroll() {
     const onPressAction = (item) => {
@@ -19,31 +20,17 @@ export function MaterialBottomScroll() {
     };
 
     const showIcons = () => {
-        return mockItems
-            ? mockItems.map((item, key) => (
-                <IconComponent
-                    key={key}
-                    icon={item.type}
-                    onPressAction={() => onPressAction(item)}
-                ></IconComponent>
-            ))
-            : "";
+        return mockItems ? mockItems.map((item, key) => (<IconComponent
+            key={key}
+            icon={item.type}
+            onPressAction={() => onPressAction(item)}
+        ></IconComponent>)) : "";
     };
 
-    return (
-        <View style={styles.container}>
-            <Text style={[styles.TextOne, {marginBottom: 2, width: "95%"}]}>
-                עזרים הדרכה
-            </Text>
-            <ScrollView horizontal={true}>{showIcons()}</ScrollView>
-        </View>
-    );
+    return (<View style={styles.bottomScrollContainer}>
+        <Text style={{marginBottom: 2, width: "95%"}}>
+            עזרים הדרכה
+        </Text>
+        <ScrollView horizontal={true}>{showIcons()}</ScrollView>
+    </View>);
 }
-
-const styles = StyleSheet.create({
-    container: {
-        // flex: 1,
-        marginBottom: 20,
-        width: "100%",
-    },
-});

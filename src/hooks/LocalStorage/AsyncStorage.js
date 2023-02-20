@@ -1,8 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const setDataLocal = async (value) => {
+export const setDataLocal = async (key, value) => {
     try {
-        await AsyncStorage.setItem('refreshToken', value)
+        await AsyncStorage.setItem(key, value)
         console.log("Successfully saved to local storage")
         return true
     } catch (e) {
@@ -11,16 +11,14 @@ export const setDataLocal = async (value) => {
     }
 }
 
-export const getDataLocal = async () => {
+export const getDataLocal = async (key) => {
     try {
-        const value = await AsyncStorage.getItem('refreshToken')
+        const value = await AsyncStorage.getItem(key)
         if (value !== null) {
             return value
-        } else
-            throw ("no token exists")
+        } else throw ("no key exists: ", key)
     } catch (e) {
         console.log(e)
-        console.log("first time user logs in, send him to login page")
         return null
     }
 }
