@@ -94,7 +94,10 @@ export default function ProfileScreen() {
           <MaterialCommunityIcons name="plus" size={25} color={"#fff"} />
         </View>
       </TouchableOpacity>
-      <ImageViewer placeholderImageSource={PlaceholderImage} />
+      <ImageViewer
+        style={styles.image1}
+        placeholderImageSource={PlaceholderImage}
+      />
       <View>
         <Text style={styles.h1}>הודעות</Text>
       </View>
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
     height: 100,
     alignContent: "center",
     marginLeft: 20,
-    resizeMode: "contain",
+    resizeMode: "",
   },
   detailsContainer: {
     display: "flex",
