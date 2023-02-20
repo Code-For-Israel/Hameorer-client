@@ -1,4 +1,11 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+} from "react-native";
 // import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import { useState } from "react";
 // import getSiteUrl from "../utils/getSiteUrl";
@@ -9,6 +16,9 @@ import { UploadExcelFile } from "./UploadExcelFile/UploadExcelFile";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
 import { setAccess, setRefresh } from "../redux/userSlice";
+import GuideHeader from "../components/GuideHeder";
+import NextButton from "../components/PrevButton";
+import PrevButton from "../components/NextButton";
 
 export default function ProfileScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -45,6 +55,13 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
+      <GuideHeader
+        style={{
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+        }}
+      />
       <TouchableOpacity
         onPress={handlePress}
         style={{
@@ -75,8 +92,43 @@ export default function ProfileScreen() {
           <MaterialCommunityIcons name="plus" size={25} color={"#fff"} />
         </View>
       </TouchableOpacity>
-      <Text style={{ marginBottom: 20  }}>המסך של העמוד שלי</Text>
-      <Button title="Log Out" onPress={logout} />
+
+      <View>
+        <Text style={styles.h1}>הודעות</Text>
+      </View>
+      <View style={{ marginRight: 20 }}>
+        <Text>מאת עמית-12:00</Text>
+        <Text>
+          {" "}
+          עוד יומיים ניפגש לסדנה שנייה בתהליך ההכנה נראה את הסרט ״סיפורו של נער
+          ארטיליאי״ ונדבר מה הופך ילדתמים לחלק מחבורה גזענית
+        </Text>
+      </View>
+
+      <View style={{ width: 200, marginLeft: 20, paddingBottom: 20 }}>
+        <PrevButton title="לחץ לכל ההודעות" />
+      </View>
+
+      <View>
+        <Text style={styles.h1}>סטטוס משימות</Text>
+      </View>
+      <View
+        style={{
+          width: "100%",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+        }}
+      >
+        <Image
+          style={styles.image1}
+          source={require("../images/200px-Janusz_Korczak.png")}
+        />
+      </View>
+
+      {/* <View style={{ width: 100, alignContent: "center", marginLeft: 20 }}>
+        <PrevButton title="Log Out" onPress={logout} />
+      </View> */}
+
       {/* <UploadExcelFile parsedData={parsedData} setParsedData={setParsedData} /> */}
       {/* <Text>{loading ? "Loading data ........." : "Data Loaded!"}</Text>
       <Button
@@ -94,7 +146,22 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    position: "relative",
+  },
+  image1: {
+    position: "absolute",
+
+    resizeMode: "contain",
+  },
+  detailsContainer: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  h1: {
+    fontSize: 24,
+    color: "#072F5F",
+    fontWeight: "bold",
+    marginBottom: 15,
+    marginTop: 15,
   },
 });
