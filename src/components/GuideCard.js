@@ -17,7 +17,7 @@ const guideCard = ({studentName, subject, country, yearBorn, yearDeath, onPress}
                             <MaterialIcons name="mail" color="#fff" size={15}/>
                         </View>
                         <View>
-                            <Text style={styles.cardComponentText}>{studentName}</Text>
+                            <Text style={styles.cardComponentTextWhite}>{studentName}</Text>
                         </View>
                     </View>
                 </View>
@@ -32,7 +32,7 @@ const guideCard = ({studentName, subject, country, yearBorn, yearDeath, onPress}
                         <Text style={styles.cardComponentTextSize}>{yearBorn} <B>:תאריך לידה</B></Text>
                         <Text style={styles.cardComponentTextSize}>{yearDeath} <B>:תאריך פטירה</B></Text>
                         <TouchableOpacity style={styles.cardComponentButton} onPress={onPress}>
-                            <Text style={styles.cardComponentText}>{"לציטוט המלא"}</Text>
+                            <Text style={styles.cardComponentTextWhite}>{"לציטוט המלא"}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
