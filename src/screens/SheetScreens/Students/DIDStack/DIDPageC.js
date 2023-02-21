@@ -71,7 +71,7 @@ const DIDPageC = ({navigation, route}) => {
                 background: "",
                 quote_date: "",
                 quote_source: textOrigin,
-                qoute_location: "הונגריה",
+                qoute_location: "בודפשט",
                 qoute_title: "",
                 qoute: text,
             },
@@ -80,7 +80,7 @@ const DIDPageC = ({navigation, route}) => {
                 one: "comment one",
                 two: "comment two",
             },
-            status: "pending",
+            status: "review",
             media: {
                 one: selectedImage ? selectedImage : "none",
                 two: "media two",
