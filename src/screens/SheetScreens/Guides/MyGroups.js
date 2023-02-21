@@ -1,6 +1,6 @@
 import {ScrollView, StyleSheet, Text, View,} from "react-native";
 import React from "react";
-import {IconButton, MD3Colors, Provider} from "react-native-paper";
+import {Provider} from "react-native-paper";
 import {selectVisable,} from "../../../redux/dataSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAccess} from "../../../redux/userSlice";
@@ -46,25 +46,28 @@ const MyGroup = () => {
                 <View style={stylesIn.HeadSection}>
                     <Text>הקבוצה שלי</Text>
                 </View>
+                <View style={{alignSelf: 'center'}}>
+                    <Text style={stylesIn.groupSubtitle}>ציטוט מונפש</Text>
+                </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
-                        <Text>ממתין למשוב ({pending.length})</Text>
-                        <Icon path={mdiClockTimeFiveOutline} size={1} />
+                        <Text style={styles.cardComponentTextBlack}>ממתין למשוב ({pending.length})</Text>
+                        <Icon path={mdiClockTimeFiveOutline} size={1}/>
                     </View>
                     <HorizonteScrollCards list={pending}></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
-                        <Text>הוחזר מתיקונים ({review.length})</Text>
-                        <Icon path={mdiAutoFix} size={1} />
+                        <Text style={styles.cardComponentTextBlack}>הוחזר מתיקונים ({review.length})</Text>
+                        <Icon path={mdiAutoFix} size={1}/>
 
                     </View>
                     <HorizonteScrollCards list={review}></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
-                        <Text>אושר({done.length})</Text>
-                        <Icon path={mdiCheck} size={1} />
+                        <Text style={styles.cardComponentTextBlack}>אושר({done.length})</Text>
+                        <Icon path={mdiCheck} size={1}/>
                     </View>
                     <HorizonteScrollCards list={done}></HorizonteScrollCards>
                 </View>
@@ -82,4 +85,13 @@ const stylesIn = StyleSheet.create({
         alignSelf: "flex-end",
         justifyContent: "space-between",
     },
+    groupSubtitle: {
+        fontFamily: 'Assistant',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        fontSize: 24,
+        lineHeight: 31,
+        textAlign: 'right',
+        color: '#000000'
+    }
 });

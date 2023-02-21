@@ -9,7 +9,7 @@ const HorizonteScrollCards = ({list}) => {
                                    country={card.location}
                                    studentName={card.fullName}
                                    yearDeath={card.dateDeath}
-                                   yearBorn={card.birthDate}
+                                   yearBorn={card.dateBirth}
                                    onPress={() => console.log("ok")}></GuideCard>)
             })}
         </View>
