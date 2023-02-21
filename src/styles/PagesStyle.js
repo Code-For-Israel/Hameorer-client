@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
 
     cardComponent: {width: 278, height: 203, backgroundColor: '#072F5F', margin: 2},
     cardComponentTextWhite: {fontFamily: 'Assistant', color: 'white', fontSize: 14, fontWeight: 400},
-    cardComponentTextBlack: {fontFamily: 'Assistant', color: 'black', fontSize: 16},
+    cardComponentTextBlack: {fontFamily: 'Assistant', color: 'black', fontSize: 16, paddingTop: 5},
     cardComponentTopPart: {flexDirection: 'row', display: 'flex', justifyContent: 'space-between'},
     cardComponentInsideTextArea: {
         flexDirection: 'row',

@@ -1,6 +1,6 @@
 import {ScrollView, StyleSheet, Text, View,} from "react-native";
 import React from "react";
-import {Provider} from "react-native-paper";
+import {List, Provider} from "react-native-paper";
 import {selectVisable,} from "../../../redux/dataSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAccess} from "../../../redux/userSlice";
@@ -43,23 +43,32 @@ const MyGroup = () => {
     return (
         <Provider>
             <ScrollView style={styles.mainContainer}>
-                <View style={stylesIn.HeadSection}>
-                    <Text>הקבוצה שלי</Text>
+                <View style={stylesIn.HeaderSection}>
+                    <View style={{width: "100%"}}>
+                        <List.Accordion
+                            style={{background: '#D9D9D9', height: 47, textAlignLast: 'right', borderRadius: 5}}
+                            title="הקבוצה שלי"
+                            left={props => <List.Icon {...props} icon="file-edit-outline"/>}>
+                            <List.Item title="חלק 1 שנפתח" style={{textAlignLast: 'right'}}/>
+                            <List.Item title="?חלק 2 שנפתח - מה שמים פה" style={{textAlignLast: 'right'}}/>
+                        </List.Accordion>
+                    </View>
                 </View>
                 <View style={{alignSelf: 'center'}}>
-                    <Text style={stylesIn.groupSubtitle}>ציטוט מונפש</Text>
+                    <Text style={stylesIn.groupSubtitle}>ציטוט מונפש
+                        ({pending.length + review.length + done.length})</Text>
                 </View>
                 <View>
-                    <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
+                    <View style={{flexDirection: 'row', alignSelf: 'flex-end', paddingTop: 5}}>
                         <Text style={styles.cardComponentTextBlack}>ממתין למשוב ({pending.length})</Text>
-                        <Icon path={mdiClockTimeFiveOutline} size={1}/>
+                        <Icon path={mdiClockTimeFiveOutline} size={1} style={{paddingTop: 5, paddingLeft: 2}}/>
                     </View>
                     <HorizonteScrollCards list={pending}></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
                         <Text style={styles.cardComponentTextBlack}>הוחזר מתיקונים ({review.length})</Text>
-                        <Icon path={mdiAutoFix} size={1}/>
+                        <Icon path={mdiAutoFix} size={1} style={{paddingTop: 5, paddingLeft: 2}}/>
 
                     </View>
                     <HorizonteScrollCards list={review}></HorizonteScrollCards>
@@ -67,7 +76,7 @@ const MyGroup = () => {
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
                         <Text style={styles.cardComponentTextBlack}>אושר({done.length})</Text>
-                        <Icon path={mdiCheck} size={1}/>
+                        <Icon path={mdiCheck} size={1} style={{paddingTop: 5, paddingLeft: 2}}/>
                     </View>
                     <HorizonteScrollCards list={done}></HorizonteScrollCards>
                 </View>
@@ -84,6 +93,13 @@ const stylesIn = StyleSheet.create({
         flexDirection: "row",
         alignSelf: "flex-end",
         justifyContent: "space-between",
+    },
+    HeaderSection: {
+        padding: 0,
+        width: '100%',
+        flexDirection: "row",
+        alignSelf: "flex-end",
+        justifyContent: "right",
     },
     groupSubtitle: {
         fontFamily: 'Assistant',
