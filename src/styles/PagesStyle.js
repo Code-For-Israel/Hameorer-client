@@ -8,11 +8,11 @@ export const styles = StyleSheet.create({
     loginSubTextView: {flexDirection: "row", justifyContent: "flex-end", alignItems: "center", width: 180,},
     loginSubText: {fontSize: 12, color: "#000",},
     loginBtnText: {color: "#FFF", fontSize: 14,},
-    cardComponent: {width: 270, height: 200, backgroundColor: '#072F5F', margin: 2},
+    cardComponent: {width: 278, height: 203, backgroundColor: '#072F5F', margin: 2},
     cardComponentText: {color: 'white'},
     cardComponentTopPart: {flexDirection: 'row', display: 'flex', justifyContent: 'space-between'},
     cardComponentInsideTextArea: {
-        flexDirection: 'row', justifyContent: 'space-evenly', backgroundColor: 'white', height: 150, borderRadius: 10
+        flexDirection: 'row', justifyContent: 'space-evenly', backgroundColor: 'white', height: 155, borderRadius: 10
     },
     cardComponentTextSize: {fontSize: 11},
     cardComponentCInsideContainer: {width: 130, padding: 1, aspectRatio: 1, alignSelf: 'center'},

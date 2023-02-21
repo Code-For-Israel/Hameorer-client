@@ -2,7 +2,7 @@ import {ScrollView, StyleSheet, View} from "react-native";
 import GuideCard from "../../../components/GuideCard";
 
 const HorizonteScrollCards = ({list}) => {
-    return <ScrollView horizontal={true}>{<>
+    return <ScrollView horizontal={true} style={{flexDirection: 'row-reverse'}}>{<>
         <View style={stylesIn.HeadSection}>
             {list && list.length > 0 && list.map((card, key) => {
                 return (<GuideCard key={key} subject={card.subject}
@@ -20,7 +20,7 @@ export default HorizonteScrollCards
 
 const stylesIn = StyleSheet.create({
     HeadSection: {
-        padding: 5,
+        padding: 0,
         flexDirection: "row",
         alignSelf: "normal",
         justifyContent: "space-between",
