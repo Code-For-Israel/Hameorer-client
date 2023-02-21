@@ -5,10 +5,13 @@ import {styles} from "../../../styles/PagesStyle";
 import HorizonteScrollCards from "./HorizelScrollCards";
 import Icon from '@mdi/react';
 import {mdiAutoFix, mdiCheck, mdiClockTimeFiveOutline} from '@mdi/js';
+import {useSelector} from "react-redux";
+import {selectAccess} from "../../../redux/userSlice";
 
 const MyGroup = () => {
     const baseUrl = "http://3.140.113.123:8000/";
-    const access = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc3MDIzMDMxLCJpYXQiOjE2NzcwMTk0MzEsImp0aSI6IjBlZGJmMWM5YWEwNTQ0ODk5YTE2MDBkNGM5MGEzMDE3IiwidXNlcl9pZCI6IjFmMDBjMjdkLTM3YWUtNGYzMC1iZmMxLWY2Nzk4MTYyN2Y3OSJ9.A8_OUxMnMq-n271YFdaGm4G64ti0LneFuwXnUB3yHxY"
+    const access = useSelector(selectAccess);
+
     const [isLoading, setLoading] = useState(true);
     const [groupInfo, setGroupInfo] = useState([]);
 
@@ -30,7 +33,6 @@ const MyGroup = () => {
     let done = []
 
     groupInfo && groupInfo.users && groupInfo.users.map((user) => {
-        let story
         if (user && user.stories.length > 0) {
             user.stories.map((story) => {
                 let storyObj = {
@@ -38,7 +40,9 @@ const MyGroup = () => {
                     subject: story.subject.subject,
                     location: story.body.qoute_location,
                     dateBirth: 1902,
-                    dateDeath: 1954
+                    dateDeath: 1954,
+                    _id: story._id,
+                    story: story
                 }
                 if (story.status === 'done')
                     done.push(storyObj)
@@ -57,7 +61,7 @@ const MyGroup = () => {
                     <View style={{width: "100%"}}>
                         <List.Accordion
                             style={{background: '#D9D9D9', height: 47, textAlignLast: 'right', borderRadius: 5}}
-                            title="הקבוצה שלי"
+                            title={groupInfo.group_name}
                             left={props => <List.Icon {...props} icon="file-edit-outline"/>}>
                             <List.Item title="חלק 1 שנפתח" style={{textAlignLast: 'right'}}/>
                             <List.Item title="?חלק 2 שנפתח - מה שמים פה" style={{textAlignLast: 'right'}}/>

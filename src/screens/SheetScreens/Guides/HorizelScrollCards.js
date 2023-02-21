@@ -10,7 +10,9 @@ const HorizonteScrollCards = ({list}) => {
                                    studentName={card?.fullName}
                                    yearDeath={card?.dateDeath}
                                    yearBorn={card?.dateBirth}
-                                   onPress={() => console.log("ok")}></GuideCard>)
+                                   onPress={() => {
+                                       console.log(card.story)
+                                   }}></GuideCard>)
             })}
         </View>
     </>}</ScrollView>;
@@ -20,9 +22,6 @@ export default HorizonteScrollCards
 
 const stylesIn = StyleSheet.create({
     HeadSection: {
-        padding: 0,
-        flexDirection: "row",
-        alignSelf: "normal",
-        justifyContent: "space-between",
+        padding: 0, flexDirection: "row", alignSelf: "normal", justifyContent: "space-between",
     },
 });
