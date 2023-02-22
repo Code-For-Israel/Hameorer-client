@@ -41,6 +41,7 @@ const DIDPageC = ({navigation, route}) => {
     const figure = route.params;
     if (figure.media) {
         selectedImage = figure.media[0].http_link;
+        console.log(figure)
     }
 
     const pickAudio = async () => {
@@ -70,7 +71,7 @@ const DIDPageC = ({navigation, route}) => {
                 background: "",
                 quote_date: "",
                 quote_source: textOrigin,
-                qoute_location: "",
+                qoute_location: "בודפשט",
                 qoute_title: "",
                 qoute: text,
             },
@@ -79,7 +80,7 @@ const DIDPageC = ({navigation, route}) => {
                 one: "comment one",
                 two: "comment two",
             },
-            status: "pending",
+            status: "review",
             media: {
                 one: selectedImage ? selectedImage : "none",
                 two: "media two",
