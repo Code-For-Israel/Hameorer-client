@@ -20,6 +20,7 @@ import { setAccess, setRefresh } from "../redux/userSlice";
 
 import GuideHeader from "../components/GuideHeder";
 import PrevButton from "../components/NextButton";
+import { guideCard } from "../components/guideCard";
 
 export default function ProfileScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -119,6 +120,7 @@ export default function ProfileScreen() {
         <Text style={styles.h1}>סטטוס משימות</Text>
       </View>
 
+      <guideCard />
       <View
         style={{
           width: "100%",
