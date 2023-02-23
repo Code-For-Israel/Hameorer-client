@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 100,
     position: "relative",
+    fontFamily: "Assistant",
     top: 0,
     left: 0,
     justifyContent: "center",
@@ -46,17 +47,17 @@ const styles = StyleSheet.create({
   h1: {
     color: "#fff",
     fontSize: 40,
-    fontFamily: "arial",
+    fontFamily: "Assistant",
     margin: 20,
   },
   h2: {
     color: "#fff",
-    fontFamily: "arial",
+    fontFamily: "Assistant",
     fontSize: 20,
   },
   h3: {
     color: "#fff",
-    fontFamily: "arial",
+    fontFamily: "Assistant",
     fontSize: 14,
   },
   name: {
