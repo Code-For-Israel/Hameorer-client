@@ -34,14 +34,17 @@ const DIDPageC = ({navigation, route}) => {
     const dispatch = useDispatch();
     const visible = useSelector(selectVisable);
     const access = useSelector(selectAccess);
-    let recording = new FormData();
-    let bucket = 'hameorer-audio'
-    let name = ''
+    const bucket = 'hameorer-audio'
+    const [recordingFileName, setRecordingFileName] = useState('');
+    const [recordingData, setRecordingData] = useState(undefined);
+    const [textQuote, setTextQuote] = useState("");
+    const [textOrigin, setTextOrigin] = useState("");
+    const [checkedVoiceOrText, setCheckedVoiceOrText] = useState("quote");
+    const [checkedVoiceType, setCheckedVoiceType] = useState("men");
     let selectedImage = null;
     const figure = route.params;
     if (figure.media) {
         selectedImage = figure.media[0].http_link;
-        console.log(figure)
     }
 
     const pickAudio = async () => {
@@ -50,15 +53,17 @@ const DIDPageC = ({navigation, route}) => {
             if (ALLOWED_TYPES.includes(result.mimeType) === false)
                 console.log("wrong type of file - only csv and excel");
             else {
-                //create form data
-                recording.append("type", result.file.type);
-                recording.append("file", result.file);
-                name = result.file.name;
+                setRecordingFileName(result.file.name);
+                setRecordingData(result.file)
             }
         }
     };
 
     const handleSend = () => {
+        let recording = new FormData();
+        recording.append("type", recordingData.type);
+        recording.append("file", recordingData);
+
         const story = {
             subject: {
                 type: "figure",
@@ -71,9 +76,9 @@ const DIDPageC = ({navigation, route}) => {
                 background: "",
                 quote_date: "",
                 quote_source: textOrigin,
-                qoute_location: "בודפשט",
+                qoute_location: figure.address,
                 qoute_title: "",
-                qoute: text,
+                qoute: textQuote,
             },
             // created_by: "None",
             comments: {
@@ -82,19 +87,17 @@ const DIDPageC = ({navigation, route}) => {
             },
             status: "review",
             media: {
-                one: selectedImage ? selectedImage : "none",
-                two: "media two",
+                image: selectedImage ? selectedImage : "none",
+                sound: recordingFileName ? recordingFileName : 'none',
+                soundType: recordingFileName ? checkedVoiceType : 'none'
             },
         };
-        if (checked === 'voice')
-            dispatch(setRecording({access, recording, bucket, name}));
+        if (checkedVoiceOrText === 'voice')
+            dispatch(setRecording({access, recording, bucket, recordingFileName}));
         else
             dispatch(setStory({access, story}));
     };
-    const [text, setText] = useState("");
-    const [textOrigin, setTextOrigin] = useState("");
-    const [sound, setSound] = useState("");
-    const [checked, setChecked] = useState("quote");
+
 
     return (
         <Provider>
@@ -175,14 +178,14 @@ const DIDPageC = ({navigation, route}) => {
                     <Text style={styles.TextCheckbox}>בכתב</Text>
                     <RadioButton
                         value="quote"
-                        status={checked === "quote" ? "checked" : "unchecked"}
-                        onPress={() => setChecked("quote")}
+                        status={checkedVoiceOrText === "quote" ? "checked" : "unchecked"}
+                        onPress={() => setCheckedVoiceOrText("quote")}
                     />
                     <Text style={styles.TextCheckbox}>בהקלטה</Text>
                     <RadioButton
                         value="voice"
-                        status={checked === "voice" ? "checked" : "unchecked"}
-                        onPress={() => setChecked("voice")}
+                        status={checkedVoiceOrText === "voice" ? "checked" : "unchecked"}
+                        onPress={() => setCheckedVoiceOrText("voice")}
                     />
                 </View>
                 <Text
@@ -192,15 +195,15 @@ const DIDPageC = ({navigation, route}) => {
                 </Text>
 
                 {/* quote */}
-                {checked === "quote" && (
+                {checkedVoiceOrText === "quote" && (
                     <View style={styles.TextInputContainer}>
                         <TextInput
                             placeholder="הוסף ציטוט"
                             direction="rtl"
                             multiline={true}
                             style={[styles.input, styles.inputBig]}
-                            onChangeText={setText}
-                            value={text}
+                            onChangeText={setTextQuote}
+                            value={textQuote}
                         />
 
                     </View>
@@ -217,12 +220,12 @@ const DIDPageC = ({navigation, route}) => {
                 </View>
                 <Text style={styles.greyText}>*יש להוסיף פה את מקור הציטוט: לינק לאתר / שם הספר ועמוד</Text>
                 {/* sound sample */}
-                {checked === "voice" && (
+                {checkedVoiceOrText === "voice" && (
                     <Fragment>
                         <TouchableOpacity onPress={pickAudio}>
                             <View style={styles.TextInputContainer}>
                                 <Text style={[styles.input, styles.inputSound]}>
-                                    {sound ? sound.name : "העלה הקלטת ציטוט"}
+                                    {recordingFileName !== '' ? recordingFileName : "העלה הקלטת ציטוט"}
                                     <UploadIcon/>
                                 </Text>
                             </View>
@@ -230,6 +233,21 @@ const DIDPageC = ({navigation, route}) => {
                         <Text style={styles.greyText}>
                             *יש להקליט את הציטוט בקול בקול ברור ולהעלות כקובץ
                         </Text>
+                        <View style={styles.checkboxContainer}>
+                            {/* <Text style={styles.TextCheckbox}>סוג המדיה: </Text> */}
+                            <Text style={styles.TextCheckbox}>קול של גבר</Text>
+                            <RadioButton
+                                value="men"
+                                status={checkedVoiceType === "men" ? "checked" : "unchecked"}
+                                onPress={() => setCheckedVoiceType("men")}
+                            />
+                            <Text style={styles.TextCheckbox}>קול של אישה</Text>
+                            <RadioButton
+                                value="woman"
+                                status={checkedVoiceType === "woman" ? "checked" : "unchecked"}
+                                onPress={() => setCheckedVoiceType("woman")}
+                            />
+                        </View>
                     </Fragment>
                 )}
                 {/* end sound */}
