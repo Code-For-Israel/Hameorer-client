@@ -3,7 +3,6 @@ import React, {Fragment, useState} from "react";
 import NextButton from "../../../../components/NextButton";
 import {Modal, Portal, ProgressBar, Provider, RadioButton} from "react-native-paper";
 import * as DocumentPicker from "expo-document-picker";
-
 import ImageViewer from "../../../../components/ImageViewer";
 import {hideModal, selectVisable, setRecording, setStory,} from "../../../../redux/dataSlice";
 import {useDispatch, useSelector} from "react-redux";
