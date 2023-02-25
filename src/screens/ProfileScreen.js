@@ -17,6 +17,7 @@ export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const access = useSelector(selectAccess);
     const [userInfo, setUserInfo] = useState([]);
+    const [userDelegation, setUserDelegation] = useState([]);
 
     const getUserInfo = async (access) => {
         const baseUrl = "http://3.140.113.123:8000/";
@@ -32,7 +33,10 @@ export default function ProfileScreen() {
     useEffect(() => {
         if (access)
             getUserInfo(access).then((response) => response.json())
-                .then((json) => setUserInfo(json))
+                .then((json) => {
+                    setUserInfo(json);
+                    setUserDelegation(json.delegation)
+                })
                 .catch((error) => console.error(error))
     }, []);
 
@@ -49,11 +53,8 @@ export default function ProfileScreen() {
     return (
         <View style={styles.container}>
             <GuideHeader
-                style={{
-                    width: "100%",
-                    flexDirection: "row",
-                    justifyContent: "flex-end",
-                }}
+                         userDelegation={userDelegation}
+
             />
 
             <TouchableOpacity
@@ -84,7 +85,7 @@ export default function ProfileScreen() {
                         elevation: 5,
                     }}
                 >
-                    <MaterialCommunityIcons style={{zIndex:2}} name="plus" size={25} color={"#fff"}/>
+                    <MaterialCommunityIcons style={{zIndex: 2}} name="plus" size={25} color={"#fff"}/>
                 </View>
             </TouchableOpacity>
             <View style={styles.image1}>
