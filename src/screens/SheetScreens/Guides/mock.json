@@ -1,0 +1,31 @@
+{
+  "subject": {
+    "type": "figure",
+    "subject": "יצחק צוקרמן"
+  },
+  "tags": [
+    "_"
+  ],
+  "body": {
+    "birth_date": "17/2/1914",
+    "death_date": "12/2/1954",
+    "background": "",
+    "quote_date": "",
+    "quote_source": "מאיפה לקחנו מידע",
+    "qoute_location": "הונגריה",
+    "qoute_title": "",
+    "qoute": "זה הגוף פה כל המידע"
+  },
+  "creation_date": 1676415084.142175,
+  "created_by": "22f8879a-d88f-4e5f-a8f4-a2fa5749acbb",
+  "comments": {
+    "one": "comment one",
+    "two": "comment two"
+  },
+  "status": "pending",
+  "media": {
+    "one": "none",
+    "two": "media two sound"
+  },
+  "_id": "63ec106cfa1b3037fe98be86"
+}

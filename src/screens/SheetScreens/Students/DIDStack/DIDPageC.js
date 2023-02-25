@@ -97,6 +97,7 @@ const DIDPageC = ({navigation, route}) => {
             };
             dispatch(setStory({access, story}));
         }
+        navigation.navigate("Profile");
     };
 
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import MainNav from "./MainNav";
-import MyGroup from "./SheetScreens/Guides/MyGroups";
 import AuthRouter from "./LoginStack/AuthRouter";
 import {
   refreshAccess,
@@ -12,6 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Loading from "./LoginStack/Loading";
+import GuideNav from "./GuideNav";
 
 const MainRouter = () => {
   const loading = useSelector(selectLoading);
@@ -43,7 +43,7 @@ const MainRouter = () => {
     return <Loading />;
   }
   if (access) {
-    return isGuide ? <MyGroup /> : <MainNav />;
+    return isGuide ? <GuideNav /> : <MainNav />;
   } else if (!access) {
     return <AuthRouter />;
   }
