@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 import BottomSheet from "../components/BottomSheet";
 import BottomMenuContent from "../components/BottomMenuContent";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {selectAccess} from "../redux/userSlice";
 
 import GuideHeader from "../components/GuideHeder";
@@ -62,6 +62,7 @@ export default function ProfileScreen() {
                     position: "absolute",
                     bottom: 20,
                     right: 20,
+                    zIndex: 2
                 }}
             >
                 <View
@@ -83,7 +84,7 @@ export default function ProfileScreen() {
                         elevation: 5,
                     }}
                 >
-                    <MaterialCommunityIcons name="plus" size={25} color={"#fff"}/>
+                    <MaterialCommunityIcons style={{zIndex:2}} name="plus" size={25} color={"#fff"}/>
                 </View>
             </TouchableOpacity>
             <View style={styles.image1}>
@@ -115,14 +116,8 @@ export default function ProfileScreen() {
             <View>
                 <Text style={styles.h1}>סטטוס משימות</Text>
             </View>
-            <View
-                style={{
-                    alignContent: "center",
-                    alignItems: "center",
-                    paddingBottom: 10,
-                }}
-            >
-                <HorizelScrollCardsProfile list={userInfo.stories}></HorizelScrollCardsProfile>
+            <View>
+                <HorizelScrollCardsProfile style={{zIndex: 1}} list={userInfo.stories}></HorizelScrollCardsProfile>
             </View>
             <View
                 style={{
