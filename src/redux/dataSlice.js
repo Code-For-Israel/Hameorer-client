@@ -6,6 +6,7 @@ const initialState = {
     serverData: {}, loading: false, error: null, subjects: [], visible: false,
 };
 
+
 export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
     console.log("using the token:", token);
     const response = await fetch(`${baseUrl}api/v1/stories/`, {

@@ -12,7 +12,7 @@
 //     const [loading, setLoading] = useState(false);
 //     const [error, setError] = useState(null);
 
-//     useEffect(() => {
+//     `useEffect(() => {
 //         if (accessToken && body) {
 //             const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}`}};
 //             setLoading(true);
@@ -28,7 +28,7 @@
 //                     setLoading(false);
 //                 });
 //         }
-//     }, [accessToken, body]);
+//     }, [accessToken, body]);`
 
 //     return {data, loading, error};
 // }
