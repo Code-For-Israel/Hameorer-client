@@ -59,42 +59,44 @@ const DIDPageC = ({navigation, route}) => {
     };
 
     const handleSend = () => {
-        let recording = new FormData();
-        recording.append("type", recordingData.type);
-        recording.append("file", recordingData);
 
-        const story = {
-            subject: {
-                type: "figure",
-                subject: figure.subject,
-                date_birth: figure.birth_date,
-                date_death: figure.death_date,
-            },
-            tags: ["_"],
-            body: {
-                background: "",
-                quote_date: "",
-                quote_source: textOrigin,
-                qoute_location: figure.address,
-                qoute_title: "",
-                qoute: textQuote,
-            },
-            // created_by: "None",
-            comments: {
-                one: "comment one",
-                two: "comment two",
-            },
-            status: "review",
-            media: {
-                image: selectedImage ? selectedImage : "none",
-                sound: recordingFileName ? recordingFileName : 'none',
-                soundType: recordingFileName ? checkedVoiceType : 'none'
-            },
-        };
-        if (checkedVoiceOrText === 'voice')
+
+        if (checkedVoiceOrText === 'voice') {
+            let recording = new FormData();
+            recording.append("type", recordingData.type);
+            recording.append("file", recordingData);
             dispatch(setRecording({access, recording, bucket, recordingFileName}));
-        else
+        } else {
+            const story = {
+                subject: {
+                    type: "figure",
+                    subject: figure.subject,
+                    date_birth: figure.birth_date,
+                    date_death: figure.death_date,
+                },
+                tags: ["_"],
+                body: {
+                    background: "",
+                    quote_date: "",
+                    quote_source: textOrigin,
+                    qoute_location: figure.address,
+                    qoute_title: "",
+                    qoute: textQuote,
+                },
+                // created_by: "None",
+                comments: {
+                    one: "comment one",
+                    two: "comment two",
+                },
+                status: "review",
+                media: {
+                    image: selectedImage ? selectedImage : "none",
+                    sound: recordingFileName ? recordingFileName : 'none',
+                    soundType: recordingFileName ? checkedVoiceType : 'none'
+                },
+            };
             dispatch(setStory({access, story}));
+        }
     };
 
 
