@@ -1,6 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import getSiteUrl from "../utils/getSiteUrl";
 
-const baseUrl = "http://3.140.113.123:8000/";
+const baseUrl = getSiteUrl();
 
 const initialState = {
     serverData: {}, loading: false, error: null, subjects: [], visible: false,
@@ -9,7 +10,7 @@ const initialState = {
 
 export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
     console.log("using the token:", token);
-    const response = await fetch(`${baseUrl}api/v1/stories/`, {
+    const response = await fetch(`${baseUrl}v1/stories/`, {
         method: "GET", headers: {
             accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${token}`,
         },
@@ -20,7 +21,7 @@ export const getStories = createAsyncThunk("getStoriesThunk", async (token) => {
 
 export const getSubjects = createAsyncThunk("getSubjectsThunk", async (token) => {
     console.log("using the token:", token);
-    const response = await fetch(`${baseUrl}api/v1/stories/subject/`, {
+    const response = await fetch(`${baseUrl}v1/stories/subject/`, {
         method: "GET", headers: {
             accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${token}`,
         },
@@ -30,7 +31,7 @@ export const getSubjects = createAsyncThunk("getSubjectsThunk", async (token) =>
 });
 
 export const setRecording = createAsyncThunk("setRecordingThunk", async ({access, recording, bucket, recordingFileName}) => {
-    const response = await fetch(`${baseUrl}api/v1/media/${bucket}/${recordingFileName}/`, {
+    const response = await fetch(`${baseUrl}v1/media/${bucket}/${recordingFileName}/`, {
         method: "POST", headers: {
             Authorization: `Bearer ${access}`,
         }, body: (recording),
@@ -43,7 +44,7 @@ export const setStory = createAsyncThunk("setStoryThunk", async ({access, story}
     console.log("Create new story with token:", access);
     console.log("Create new story with data:", story);
 
-    const response = await fetch(`${baseUrl}api/v1/stories/`, {
+    const response = await fetch(`${baseUrl}v1/stories/`, {
         method: "POST", headers: {
             accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${access}`,
         }, body: JSON.stringify(story),

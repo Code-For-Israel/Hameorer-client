@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { setDataLocal } from "../hooks/LocalStorage/AsyncStorage";
+import getSiteUrl from "../utils/getSiteUrl";
 
-const baseUrl = "http://3.140.113.123:8000/";
+const baseUrl = getSiteUrl();
 
 const initialState = {
   // email: "",
@@ -16,7 +17,7 @@ const initialState = {
 export const loginThunk = createAsyncThunk(
   "loginAsyncThunk",
   async ({ email, password }) => {
-    const response = await fetch(`${baseUrl}api/token/`, {
+    const response = await fetch(`${baseUrl}token/`, {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -30,7 +31,7 @@ export const loginThunk = createAsyncThunk(
 );
 //get new access token with refresh
 export const refreshAccess = createAsyncThunk("refresh", async (refresh) => {
-  const response = await fetch(`${baseUrl}api/token/refresh/`, {
+  const response = await fetch(`${baseUrl}token/refresh/`, {
     method: "POST",
     headers: {
       accept: "application/json",

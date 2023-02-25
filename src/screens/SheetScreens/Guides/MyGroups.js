@@ -7,9 +7,10 @@ import Icon from '@mdi/react';
 import {mdiAutoFix, mdiCheck, mdiClockTimeFiveOutline} from '@mdi/js';
 import {useSelector} from "react-redux";
 import {selectAccess} from "../../../redux/userSlice";
+import getSiteUrl from "../../../utils/getSiteUrl";
 
 const MyGroup = () => {
-    const baseUrl = "http://3.140.113.123:8000/";
+    const baseUrl = getSiteUrl();
     const access = useSelector(selectAccess);
 
     const [isLoading, setLoading] = useState(true);
@@ -17,7 +18,7 @@ const MyGroup = () => {
 
     useEffect(() => {
         if (access) {
-            fetch(`${baseUrl}api/v1/authentication/groupinfo`, {
+            fetch(`${baseUrl}v1/authentication/groupinfo`, {
                 method: "GET", headers: {
                     accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${access}`,
                 },

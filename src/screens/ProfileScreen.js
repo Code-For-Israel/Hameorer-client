@@ -12,6 +12,7 @@ import {selectAccess} from "../redux/userSlice";
 import GuideHeader from "../components/GuideHeder";
 import PrevButton from "../components/NextButton";
 import HorizelScrollCardsProfile from "../components/HorizelScrollCardsProfile";
+import getSiteUrl from "../utils/getSiteUrl";
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -20,8 +21,8 @@ export default function ProfileScreen() {
     const [userDelegation, setUserDelegation] = useState([]);
 
     const getUserInfo = async (access) => {
-        const baseUrl = "http://3.140.113.123:8000/";
-        const response = await fetch(`${baseUrl}api/v1/authentication/userinfo`, {
+        const baseUrl = getSiteUrl();
+        const response = await fetch(`${baseUrl}v1/authentication/userinfo`, {
             method: "GET", headers: {
                 accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${access}`,
             },
