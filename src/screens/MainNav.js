@@ -12,8 +12,7 @@ import CustomBg from "../components/CustomBg";
 const Stack = createStackNavigator();
 
 const MainNav = () => {
-  return (
-    <Stack.Navigator initialRouteName="DID">
+    return (<Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
         component={HomeTabs}
