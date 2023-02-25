@@ -14,6 +14,7 @@ const guideCard = ({studentName, subject, country, yearBorn, yearDeath, onPress}
                 <View style={{height: 26}}>
                     <View style={styles.cardComponentTopPart}>
                         <View>
+
                             <MaterialIcons name="mail" color="#fff" size={15}/>
                         </View>
                         <View>

@@ -29,9 +29,8 @@ export const getSubjects = createAsyncThunk("getSubjectsThunk", async (token) =>
     return data;
 });
 
-export const setRecording = createAsyncThunk("setRecordingThunk", async ({access, recording, bucket, name}) => {
-
-    const response = await fetch(`${baseUrl}api/v1/media/${bucket}/${name}/`, {
+export const setRecording = createAsyncThunk("setRecordingThunk", async ({access, recording, bucket, recordingFileName}) => {
+    const response = await fetch(`${baseUrl}api/v1/media/${bucket}/${recordingFileName}/`, {
         method: "POST", headers: {
             Authorization: `Bearer ${access}`,
         }, body: (recording),
