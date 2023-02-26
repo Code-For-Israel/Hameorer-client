@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
+import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
 // import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import {useEffect, useState} from "react";
 
@@ -52,21 +52,11 @@ export default function ProfileScreen() {
 
 
     return (
-        <View style={styles.container}>
-            <GuideHeader
-                         userDelegation={userDelegation}
-
-            />
+        <ScrollView style={styles.container}>
+            <GuideHeader userDelegation={userDelegation}/>
 
             <TouchableOpacity
-                onPress={handlePress}
-                style={{
-                    position: "absolute",
-                    bottom: 20,
-                    right: 20,
-                    zIndex: 2
-                }}
-            >
+                onPress={handlePress} style={{position: "absolute", bottom: 20, right: 20, zIndex: 2}}>
                 <View
                     style={{
                         justifyContent: "center",
@@ -89,9 +79,8 @@ export default function ProfileScreen() {
                     <MaterialCommunityIcons style={{zIndex: 2}} name="plus" size={25} color={"#fff"}/>
                 </View>
             </TouchableOpacity>
-            <View style={styles.image1}>
-                <Image source={PlaceholderImage} style={styles.image}/>
-            </View>
+            <Image source={PlaceholderImage} style={styles.image}/>
+
             <View style={{marginBottom: 20, paddingTop: 5}}>
                 <Text style={styles.h1}>הודעות</Text>
             </View>
@@ -129,21 +118,10 @@ export default function ProfileScreen() {
                 }}
             ></View>
 
-            {/* <View style={{ width: 100, alignContent: "center", marginLeft: 20 }}>
-        <PrevButton title="Log Out" onPress={logout} />
-      </View> */}
-
-            {/* <UploadExcelFile parsedData={parsedData} setParsedData={setParsedData} /> */}
-            {/* <Text>{loading ? "Loading data ........." : "Data Loaded!"}</Text>
-      <Button
-        title={"click to pull groups and console log them"}
-        onPress={() => console.log(data)}
-      />
-*/}
             <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
                 <BottomMenuContent onClose={onModalClose}/>
             </BottomSheet>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -169,9 +147,8 @@ const styles = StyleSheet.create({
         paddingTop: 10,
     },
     image: {
-        flex: 1,
         width: "100%",
-        height: "100%",
+        height: "45vh",
         alignSelf: "center",
     },
     textContainer: {
