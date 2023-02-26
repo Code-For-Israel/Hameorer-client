@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     }, h3: {
         color: "#fff", fontFamily: "Assistant", fontSize: 14,
     }, name: {
-        height: 75, top: 90, left: 140, position: "absolute",
+        height: 75, top: 90, left: 20, position: "absolute",
     }, img: {
         borderRadius: 50, alignContent: "center",
     }, circle: {

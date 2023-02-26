@@ -2,10 +2,10 @@ import React from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 
 import ProfileScreen from "./ProfileScreen";
-import MyContentScreen from "./BottomNavBarScreens/MyContentScreen";
-import TimelineScreen from "./BottomNavBarScreens/TimelineScreen";
-import TopicsScreen from "./BottomNavBarScreens/TopicsScreen";
-import MapScreen from "./BottomNavBarScreens/MapScreen";
+// import MyContentScreen from "./BottomNavBarScreens/MyContentScreen";
+// import TimelineScreen from "./BottomNavBarScreens/TimelineScreen";
+// import TopicsScreen from "./BottomNavBarScreens/TopicsScreen";
+// import MapScreen from "./BottomNavBarScreens/MapScreen";
 import CustomBg from "../components/CustomBg";
 
 //icons
@@ -14,6 +14,7 @@ import MyContentIcon from "../components/IconsSvg/MyContentIcon";
 import TimelineIcon from "../components/IconsSvg/TimelineIcon";
 import TopicsIcon from "../components/IconsSvg/TopicsIcon";
 import MapIcon from "../components/IconsSvg/MapIcon";
+import PageNotReady from "./BottomNavBarScreens/PageNotReady";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +32,7 @@ const HomeTabs = () => {
           component={ProfileScreen}
           options={{
             headerShown: false,
-            headerTitle: "כאן תהיה הכותרת של פרופיל",
+            headerTitle: "פרופיל",
             tabBarLabel: "העמוד שלי",
             // this is the part of custom background
             headerTitleAlign: "center",
@@ -45,7 +46,8 @@ const HomeTabs = () => {
         />
         <Tab.Screen
           name="MyContent"
-          component={MyContentScreen}
+          // component={MyContentScreen}
+          component={PageNotReady}
           options={{
             headerTitle: "התוכן שלי",
             tabBarLabel: "התוכן שלי",
@@ -59,9 +61,10 @@ const HomeTabs = () => {
         />
         <Tab.Screen
           name="Timeline"
-          component={TimelineScreen}
+          // component={TimelineScreen}
+          component={PageNotReady}
           options={{
-            headerTitle: "כאן תהיה הכותרת של ציר זמן",
+            headerTitle: "ציר זמן",
             tabBarLabel: "ציר זמן",
             headerTitleAlign: "center",
             headerBackground: CustomBg,
@@ -73,10 +76,11 @@ const HomeTabs = () => {
         />
         <Tab.Screen
           name="Topics"
-          component={TopicsScreen}
+          // component={TopicsScreen}
+          component={PageNotReady}
           options={{
             // headerShown: false,
-            headerTitle: "כאן תהיה הכותרת של נושאים",
+            headerTitle: "של נושאים",
             tabBarLabel: "נושאים",
             headerTitleAlign: "center",
             headerBackground: CustomBg,
@@ -88,9 +92,10 @@ const HomeTabs = () => {
         />
         <Tab.Screen
           name="Map"
-          component={MapScreen}
+          // component={MapScreen}
+          component={PageNotReady}
           options={{
-            headerTitle: "כאן תהיה הכותרת של מפה",
+            headerTitle: "מפה",
             tabBarLabel: "מפה",
             headerTitleAlign: "center",
             headerBackground: CustomBg,

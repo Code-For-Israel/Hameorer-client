@@ -25,7 +25,7 @@ const MainRouter = () => {
       try {
         const value = await AsyncStorage.getItem("refreshToken");
         if (value !== null) {
-          console.log("dispactching");
+          console.log("checking refresh token");
           dispatch(refreshAccess(value));
           // dispatch(setLoading(false));
         } else {
