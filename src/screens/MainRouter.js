@@ -25,9 +25,8 @@ const MainRouter = () => {
       try {
         const value = await AsyncStorage.getItem("refreshToken");
         if (value !== null) {
-          console.log("checking refresh token");
           dispatch(refreshAccess(value));
-          // dispatch(setLoading(false));
+          dispatch(setLoading(false));
         } else {
           dispatch(setLoading(false));
           throw "Local Storage is without a refresh token";

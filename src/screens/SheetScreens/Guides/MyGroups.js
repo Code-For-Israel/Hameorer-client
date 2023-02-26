@@ -62,7 +62,7 @@ const MyGroup = () => {
                     <View style={{width: "100%"}}>
                         <List.Accordion
                             style={{background: '#D9D9D9', height: 47, textAlignLast: 'right', borderRadius: 5}}
-                            title={groupInfo.group_name}
+                            title={groupInfo?.group_name}
                             left={props => <List.Icon {...props} icon="file-edit-outline"/>}>
                             <List.Item title="חלק 1 שנפתח" style={{textAlignLast: 'right'}}/>
                             <List.Item title="?חלק 2 שנפתח - מה שמים פה" style={{textAlignLast: 'right'}}/>

@@ -1,46 +1,30 @@
 import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
-// import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import {useEffect, useState} from "react";
 
-// import getSiteUrl from "../utils/getSiteUrl";
 import BottomSheet from "../components/BottomSheet";
 import BottomMenuContent from "../components/BottomMenuContent";
 import {MaterialCommunityIcons} from "@expo/vector-icons";
-import {useSelector} from "react-redux";
-import {selectAccess} from "../redux/userSlice";
 
 import GuideHeader from "../components/GuideHeder";
 import PrevButton from "../components/NextButton";
 import HorizelScrollCardsProfile from "../components/HorizelScrollCardsProfile";
+import UseFetchGet from "../hooks/ApiCalls/useFetchGet";
 import getSiteUrl from "../utils/getSiteUrl";
 
 export default function ProfileScreen() {
+
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const access = useSelector(selectAccess);
     const [userInfo, setUserInfo] = useState([]);
     const [userDelegation, setUserDelegation] = useState([]);
-
-    const getUserInfo = async (access) => {
-        const baseUrl = getSiteUrl();
-        const response = await fetch(`${baseUrl}v1/authentication/userinfo`, {
-            method: "GET", headers: {
-                accept: "application/json", "Content-Type": "application/json", Authorization: `Bearer ${access}`,
-            },
-        })
-
-        return response;
-    }
+    const url = getSiteUrl() + "v1/authentication/userinfo"
+    const {data} = UseFetchGet(url)
 
     useEffect(() => {
-        if (access)
-            getUserInfo(access).then((response) => response.json())
-                .then((json) => {
-                    setUserInfo(json);
-                    setUserDelegation(json.delegation)
-                })
-                .catch((error) => console.error(error))
-    }, []);
-
+        if (data) {
+            setUserInfo(data)
+            setUserDelegation(data.delegation)
+        }
+    }, [data])
 
     const PlaceholderImage = require("../../assets/fall.jpeg");
     const handlePress = () => {
@@ -54,7 +38,6 @@ export default function ProfileScreen() {
     return (
         <ScrollView style={styles.container}>
             <GuideHeader userDelegation={userDelegation}/>
-
             <TouchableOpacity
                 onPress={handlePress} style={{position: "absolute", bottom: 20, right: 20, zIndex: 2}}>
                 <View

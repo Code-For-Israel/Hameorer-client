@@ -1,34 +1,28 @@
-// import axios from "axios";
-// import {useEffect, useState} from "react";
-// import {getToken} from "../LocalStorage/GetToken";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {logoutThunk, selectAccess} from "../../redux/userSlice";
 
-// export default function UseFetchPost(url, body) {
-//     let accessToken
-//     const refreshToken = (getToken())
-//     if (refreshToken.data)
-//         accessToken = refreshToken.data
+export default function UseFetchPost(url, body) {
 
-//     const [data, setData] = useState(null);
-//     const [loading, setLoading] = useState(false);
-//     const [error, setError] = useState(null);
+    const access = useSelector(selectAccess);
+    const [isLoading, setLoading] = useState(true);
+    const [data, setData] = useState([]);
+    const dispatch = useDispatch();
 
-//     useEffect(() => {
-//         if (accessToken && body) {
-//             const headers = {headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${accessToken}`}};
-//             setLoading(true);
-//             axios
-//                 .post(url, body, headers)
-//                 .then((response) => {
-//                     setData(response.data);
-//                 })
-//                 .catch((err) => {
-//                     setError(err);
-//                 })
-//                 .finally(() => {
-//                     setLoading(false);
-//                 });
-//         }
-//     }, [accessToken, body]);
 
-//     return {data, loading, error};
-// }
+    useEffect(() => {
+        if (url) {
+            fetch(url, {
+                method: "POST", headers: {
+                    Authorization: `Bearer ${access}`,
+                }, body: (body),
+            })
+                .then((response) => response.json())
+                .then((json) => setData(json))
+                .catch(() => dispatch(logoutThunk()))
+                .finally(() => setLoading(false));
+        }
+    }, []);
+
+    return {data, isLoading}
+}

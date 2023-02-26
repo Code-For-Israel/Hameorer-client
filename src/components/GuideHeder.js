@@ -5,11 +5,10 @@ const PlaceholderImage = require("../../assets/fallbackImage.png");
 const NotificationIcon = require("../../assets/notificationIcon.png");
 
 const GuideHeader = (userDelegation) => {
-    console.log(userDelegation.userDelegation)
     return (<View style={styles.container}>
         <View style={styles.header}>
             <Text style={styles.h1}>משלחת רוגוזין 2023</Text>
-            <Text style={styles.h2}>{userDelegation.userDelegation.group_name}</Text>
+            <Text style={styles.h2}>{userDelegation?.userDelegation?.group_name}</Text>
         </View>
         <View style={styles.notificationIconContainer}>
             <Image source={NotificationIcon} style={styles.notificationIcon}/>
