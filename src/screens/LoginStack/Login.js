@@ -11,8 +11,8 @@ const image = require("../../../assets/loginbg.png");
 const Login = () => {
     // const [email, setEmail] = useState("hameorer1@com.com");
     // const [password, setPassword] = useState("itizk12345");
-    const [email, setEmail] = useState("hameorer2@com.com");
-    const [password, setPassword] = useState("shlomi12345");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const dispatch = useDispatch();
 
     const handleLogin = () => {
