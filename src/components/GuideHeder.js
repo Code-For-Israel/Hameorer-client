@@ -2,7 +2,7 @@ import {Image, StyleSheet, Text, View} from "react-native";
 import React from "react";
 
 const PlaceholderImage = require("../../assets/fallbackImage.png");
-const NotificationIcon = require("../../assets/notificationIcon.png");
+const NotificationIcon = require("../../assets/NotificationIcon.png");
 
 const GuideHeader = (userDelegation) => {
     return (<View style={styles.container}>

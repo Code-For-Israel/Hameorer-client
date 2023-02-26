@@ -15,8 +15,7 @@ export function getExcelColumns(excelParsedToJsonData) {
     for (let i = 0; i < excelParsedToJsonData.length; i++) {
         let row = excelParsedToJsonData[i];
         for (let key in row) {
-            if (allColumnsExcel.includes(key) === false)
-                allColumnsExcel.push(key)
+            if (allColumnsExcel.includes(key) === false) allColumnsExcel.push(key)
         }
     }
     return allColumnsExcel;
@@ -25,8 +24,7 @@ export function getExcelColumns(excelParsedToJsonData) {
 export function getGroupName(excelParsedToJsonData) {
     let row = excelParsedToJsonData[0];
     for (let key in row) {
-        if (allColumnsExcel.includes(key) === false)
-            allColumnsExcel.push(key)
+        if (allColumnsExcel.includes(key) === false) allColumnsExcel.push(key)
     }
 
     return allColumnsExcel;

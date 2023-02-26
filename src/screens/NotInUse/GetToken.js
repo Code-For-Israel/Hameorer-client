@@ -1,4 +1,4 @@
-import {getDataLocal} from "./AsyncStorage";
+import {getDataLocal} from "../../hooks/LocalStorage/AsyncStorage";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import getSiteUrl from "../../utils/getSiteUrl";
