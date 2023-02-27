@@ -1,7 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import GuideCard from '../../../components/GuideCard';
 
 const HorizonteScrollCards = ({ list }) => {
+  const navigation = useNavigation();
+
   return (
     <ScrollView horizontal={true} style={{ flexDirection: 'row-reverse' }}>
       {
@@ -19,7 +22,8 @@ const HorizonteScrollCards = ({ list }) => {
                     yearDeath={card?.dateDeath}
                     yearBorn={card?.dateBirth}
                     onPress={() => {
-                      console.log(card.story);
+                      navigation.navigate('בדיקה לעמוד חדש', card.story )
+                      // console.log(card.story);
                     }}
                   ></GuideCard>
                 );
