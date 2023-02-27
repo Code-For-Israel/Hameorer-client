@@ -1,13 +1,10 @@
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import React from 'react';
 import { Provider } from 'react-native-paper';
-import mock from './mock.json';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 
 const ViewDID = ({ route }) => {
-  // console.log(mock);
-  console.log(route);
 
   return (
     <Provider>
