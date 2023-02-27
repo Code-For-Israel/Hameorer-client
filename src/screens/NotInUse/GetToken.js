@@ -1,13 +1,13 @@
 import { getDataLocal } from '../../hooks/LocalStorage/AsyncStorage';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import getSiteUrl from '../../utils/getSiteUrl';
+import GetSiteUrl from '../../utils/GetSiteUrl';
 
 export const getToken = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const url = getSiteUrl() + 'token/refresh/';
+  const url = GetSiteUrl() + 'token/refresh/';
 
   useEffect(() => {
     getDataLocal('refreshToken')

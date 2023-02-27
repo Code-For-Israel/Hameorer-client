@@ -11,6 +11,18 @@ export const setDataLocal = async (key, value) => {
   }
 };
 
+
+export const removeDataLocal = async (key) => {
+  try {
+    await AsyncStorage.removeItem(key);
+    console.log('Successfully removed from local storage');
+    return true;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+};
+
 export const getDataLocal = async (key) => {
   try {
     const value = await AsyncStorage.getItem(key);

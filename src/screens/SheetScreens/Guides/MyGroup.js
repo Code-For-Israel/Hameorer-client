@@ -7,10 +7,10 @@ import Icon from '@mdi/react';
 import { mdiAutoFix, mdiCheck, mdiClockTimeFiveOutline } from '@mdi/js';
 import { useSelector } from 'react-redux';
 import { selectAccess } from '../../../redux/userSlice';
-import getSiteUrl from '../../../utils/getSiteUrl';
+import GetSiteUrl from '../../../utils/GetSiteUrl';
 
 const MyGroup = () => {
-  const baseUrl = getSiteUrl();
+  const baseUrl = GetSiteUrl();
   const access = useSelector(selectAccess);
 
   const [isLoading, setLoading] = useState(true);

@@ -5,12 +5,12 @@ import CustomButton from '../../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import UseFetchPost from '../../hooks/ApiCalls/useFetchPost';
-import getSiteUrl from '../../utils/getSiteUrl';
+import GetSiteUrl from '../../utils/GetSiteUrl';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 const SignUpScreen = () => {
-  const url = getSiteUrl() + 'v1/authentication/user/';
+  const url = GetSiteUrl() + 'v1/authentication/user/';
   const [userRegisterInfo, setUserRegisterInfo] = useState(null);
   const userRegisterResponse = UseFetchPost(url, userRegisterInfo);
 

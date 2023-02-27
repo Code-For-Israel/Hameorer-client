@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import getSiteUrl from '../utils/getSiteUrl';
+import GetSiteUrl from '../utils/GetSiteUrl';
 
-const baseUrl = getSiteUrl();
+const baseUrl = GetSiteUrl();
 
 const initialState = {
   serverData: {},

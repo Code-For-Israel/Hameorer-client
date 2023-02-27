@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import CustomButton from '../../components/CustomButton';
-import getSiteUrl from '../getSiteUrl';
+import GetSiteUrl from '../GetSiteUrl';
 import UseFetchPost from '../../hooks/ApiCalls/useFetchPost';
 import { parseExcelToJson } from '../../hooks/UploadExcel/ParseExcelFile';
 import { styles } from '../../styles/PagesStyle';
@@ -14,7 +14,7 @@ const ALLOWED_TYPES = [
 ];
 
 export const UploadExcelFile = ({ setParsedData, parsedData }) => {
-  const url = getSiteUrl() + 'v1/authentication/group/';
+  const url = GetSiteUrl() + 'v1/authentication/group/';
   const uploadFileConst = UseFetchPost(url, parsedData);
 
   useEffect(() => {
