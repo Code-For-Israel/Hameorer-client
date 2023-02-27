@@ -1,5 +1,5 @@
-import { ScrollView, StyleSheet, View } from "react-native";
-import GuideCard from "../components/GuideCard";
+import { ScrollView, StyleSheet, View } from 'react-native';
+import GuideCard from '../components/GuideCard';
 
 const HorizonteScrollCards = ({ list }) => {
   return (
@@ -16,7 +16,7 @@ const HorizonteScrollCards = ({ list }) => {
                   studentName={card.fullName}
                   yearDeath={card.dateDeath}
                   yearBorn={card.birthDate}
-                  onPress={() => console.log("ok")}
+                  onPress={() => console.log('ok')}
                 ></GuideCard>
               );
             })}
@@ -32,8 +32,8 @@ export default HorizonteScrollCards;
 const stylesIn = StyleSheet.create({
   HeadSection: {
     padding: 5,
-    flexDirection: "row",
-    alignSelf: "normal",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignSelf: 'normal',
+    justifyContent: 'space-between',
   },
 });

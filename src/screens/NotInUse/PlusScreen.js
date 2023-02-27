@@ -1,16 +1,15 @@
-import {Text, View} from 'react-native'
-import React from 'react'
+import { Text, View } from 'react-native';
+import React from 'react';
 
 const PlusScreen = () => {
-    return (
-        <View>
-            <Text>PlusScreen PAGE</Text>
-        </View>
-    )
-}
+  return (
+    <View>
+      <Text>PlusScreen PAGE</Text>
+    </View>
+  );
+};
 
-export default PlusScreen
-
+export default PlusScreen;
 
 // import { Text, View, StyleSheet } from "react-native";
 // import Self from "./SheetScreens/SelfGuide/Self";

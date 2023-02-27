@@ -1,44 +1,43 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {setDataLocal} from "../hooks/LocalStorage/AsyncStorage";
-import getSiteUrl from "../utils/getSiteUrl";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {setDataLocal} from '../hooks/LocalStorage/AsyncStorage';
+import getSiteUrl from '../utils/getSiteUrl';
 
 const baseUrl = getSiteUrl();
 
 const initialState = {
-    email: "", pass: "", refresh: "", access: "", loading: true, error: null, is_guide: false,
+    email: '', pass: '', refresh: '', access: '', loading: true, error: null, is_guide: false,
 };
 
-export const loginThunk = createAsyncThunk("loginAsyncThunk", async ({email, password}) => {
+export const loginThunk = createAsyncThunk('loginAsyncThunk', async ({email, password}) => {
     const response = await fetch(`${baseUrl}token/`, {
-        method: "POST", headers: {
-            accept: "application/json", "Content-Type": "application/json",
+        method: 'POST', headers: {
+            accept: 'application/json', 'Content-Type': 'application/json',
         }, body: JSON.stringify({email, password}),
     });
     const data = await response.json();
     return data;
 });
 //get new access token with refresh
-export const refreshAccess = createAsyncThunk("refresh", async (refresh) => {
+export const refreshAccess = createAsyncThunk('refresh', async (refresh) => {
     const response = await fetch(`${baseUrl}token/refresh/`, {
-        method: "POST", headers: {
-            accept: "application/json", "Content-Type": "application/json",
+        method: 'POST', headers: {
+            accept: 'application/json', 'Content-Type': 'application/json',
         }, body: JSON.stringify({refresh}),
     });
     if (!response.ok) {
         throw new Error(response.statusText);
     }
     const data = await response.json();
-    await setDataLocal("accessToken", data.access)
+    await setDataLocal('accessToken', data.access);
     return data;
 });
 
 //logout
-export const logoutThunk = createAsyncThunk("logoutAsyncThunk", () => {
-    return;
+export const logoutThunk = createAsyncThunk('logoutAsyncThunk', () => {
 });
 
 export const LoginSlice = createSlice({
-    name: "login", initialState, reducers: {
+    name: 'login', initialState, reducers: {
         setAccess: (state, action) => {
             state.access = action.payload;
             state.loading = false;
@@ -57,8 +56,8 @@ export const LoginSlice = createSlice({
             state.error = null;
             state.is_guide = action.payload.is_guide;
 
-            setDataLocal("refreshToken", action.payload.refresh).then(() => console.log("saved Refresh token"));
-            setDataLocal("accessToken", action.payload.access).then(() => console.log("saved access token"));
+            setDataLocal('refreshToken', action.payload.refresh).then(() => console.log('saved Refresh token'),);
+            setDataLocal('accessToken', action.payload.access).then(() => console.log('saved access token'),);
         });
         builder.addCase(loginThunk.pending, (state) => {
             state.loading = true;
@@ -66,7 +65,7 @@ export const LoginSlice = createSlice({
         builder.addCase(loginThunk.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
-            console.log("LOG-IN error:", state.error.message);
+            console.log('LOG-IN error:', state.error.message);
             // notify(state.error.message);
         });
         //refresh
@@ -75,7 +74,7 @@ export const LoginSlice = createSlice({
             state.access = action.payload.access;
             state.loading = false;
             state.error = null;
-            setDataLocal("refreshToken", action.payload.refresh).then(() => console.log("saved Refresh token"));
+            setDataLocal('refreshToken', action.payload.refresh).then(() => console.log('saved Refresh token'),);
         });
         builder.addCase(refreshAccess.pending, (state) => {
             state.loading = true;
@@ -83,7 +82,7 @@ export const LoginSlice = createSlice({
         builder.addCase(refreshAccess.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
-            console.log("LOG-IN error:", state.error.message);
+            console.log('LOG-IN error:', state.error.message);
             // notify(state.error.message);
         });
         //logout
@@ -94,8 +93,8 @@ export const LoginSlice = createSlice({
             state.error = null;
             state.is_guide = null;
 
-            setDataLocal("refreshToken", null);
-            setDataLocal("accessToken", null);
+            setDataLocal('refreshToken', null);
+            setDataLocal('accessToken', null);
         });
         builder.addCase(logoutThunk.pending, (state) => {
             state.loading = true;
@@ -103,7 +102,7 @@ export const LoginSlice = createSlice({
         builder.addCase(logoutThunk.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
-            console.log("LOG-OUT error:", state.error.message);
+            console.log('LOG-OUT error:', state.error.message);
             // notify(state.error.message);
         });
     },

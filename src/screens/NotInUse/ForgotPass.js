@@ -1,10 +1,12 @@
-import {Text, View} from 'react-native'
-import React from 'react'
+import { Text, View } from 'react-native';
+import React from 'react';
 
 const ForgotPass = () => {
-    return (<View>
-        <Text>ForgotPass</Text>
-    </View>)
-}
+  return (
+    <View>
+      <Text>ForgotPass</Text>
+    </View>
+  );
+};
 
-export default ForgotPass
+export default ForgotPass;

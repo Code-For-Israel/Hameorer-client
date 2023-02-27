@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import YellowStar from "./IconsSvg/YellowStar";
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import YellowStar from './IconsSvg/YellowStar';
 
 const LoginHeader = () => {
   return (
@@ -19,23 +19,23 @@ export default LoginHeader;
 const styles = StyleSheet.create({
   container: {
     height: 240,
-    backgroundColor: "#072F5F",
+    backgroundColor: '#072F5F',
     borderBottomLeftRadius: 50,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   h1: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 40,
     margin: 20,
   },
   h2: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 25,
   },
 });
