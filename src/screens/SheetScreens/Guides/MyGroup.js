@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Provider, List } from 'react-native-paper';
 import { styles } from '../../../styles/PagesStyle';
 import HorizonteScrollCards from './HorizelScrollCards';
-import Icon from '@mdi/react';
-import { mdiAutoFix, mdiCheck, mdiClockTimeFiveOutline } from '@mdi/js';
+// import {Icon} from '@mdi/react';
+// import { mdiAutoFix, mdiCheck, mdiClockTimeFiveOutline } from '@mdi/js';
 import { useSelector } from 'react-redux';
 import { selectAccess } from '../../../redux/userSlice';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
@@ -81,25 +81,25 @@ const MyGroup = () => {
         <View>
           <View style={{ flexDirection: 'row', alignSelf: 'flex-end', paddingTop: 5 }}>
             <Text style={styles.cardComponentTextBlack}>ממתין למשוב ({pending.length})</Text>
-            <Icon
-              path={mdiClockTimeFiveOutline}
-              size={1}
-              style={{ paddingTop: 5, paddingLeft: 2 }}
-            />
+            {/*<Icon*/}
+            {/*  path={mdiClockTimeFiveOutline}*/}
+            {/*  size={1}*/}
+            {/*  style={{ paddingTop: 5, paddingLeft: 2 }}*/}
+            {/*/>*/}
           </View>
           <HorizonteScrollCards list={pending}></HorizonteScrollCards>
         </View>
         <View>
           <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
             <Text style={styles.cardComponentTextBlack}>הוחזר מתיקונים ({review.length})</Text>
-            <Icon path={mdiAutoFix} size={1} style={{ paddingTop: 5, paddingLeft: 2 }} />
+            {/*<Icon path={mdiAutoFix} size={1} style={{ paddingTop: 5, paddingLeft: 2 }} />*/}
           </View>
           <HorizonteScrollCards list={review}></HorizonteScrollCards>
         </View>
         <View>
           <View style={{ flexDirection: 'row', alignSelf: 'flex-end' }}>
             <Text style={styles.cardComponentTextBlack}>אושר({done.length})</Text>
-            <Icon path={mdiCheck} size={1} style={{ paddingTop: 5, paddingLeft: 2 }} />
+            {/*<Icon path={mdiCheck} size={1} style={{ paddingTop: 5, paddingLeft: 2 }} />*/}
           </View>
           <HorizonteScrollCards list={done}></HorizonteScrollCards>
         </View>

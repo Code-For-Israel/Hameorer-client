@@ -34,7 +34,7 @@ const GuideHomeTabs = () => {
         }}
       />
       <Tab.Screen
-        name="בדיקה לעמוד חדש"
+        name="ViewDID"
         component={ViewDID}
         options={{
           headerTitle: 'צפיה במשימה',

@@ -5,8 +5,8 @@ import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 
 const ViewDID = ({ route }) => {
-
-  return (
+  const data = route.params
+  return ( route && data &&
     <Provider>
       <ScrollView style={styles.container}>
         {/* headSection - name dates and + button*/}
@@ -15,15 +15,15 @@ const ViewDID = ({ route }) => {
             {/* <Icon name="add" size={30} color={"#fff"} /> */}
             <ImageViewer
               placeholderImageSource={PlaceholderImage}
-              selectedImage={route.params.media?.image}
+              selectedImage={data.media?.image}
             />
           </View>
           <View style={styles.detailsContainer}>
-            <Text style={styles.h1}>{route.params.subject.subject}</Text>
-            <Text style={styles.textBody}>{route.params.body.qoute_location}</Text>
+            <Text style={styles.h1}>{data.subject.subject}</Text>
+            <Text style={styles.textBody}>{data.body.qoute_location}</Text>
 
-            <Text style={styles.textSubTitle}>תאריך לידה: {route.params.body.birth_date}</Text>
-            <Text style={styles.textSubTitle}>תאריך פטירה: {route.params.body.death_date}</Text>
+            <Text style={styles.textSubTitle}>תאריך לידה: {data.body.birth_date}</Text>
+            <Text style={styles.textSubTitle}>תאריך פטירה: {data.body.death_date}</Text>
           </View>
         </View>
         {/* end of head Section */}
@@ -36,7 +36,7 @@ const ViewDID = ({ route }) => {
               direction="rtl"
               multiline={true}
               style={[styles.input, styles.inputBig]}
-              value={route.params.body.qoute}
+              value={data.body.qoute}
             />
           </View>
         }
@@ -46,7 +46,7 @@ const ViewDID = ({ route }) => {
             disabled={true}
             direction="rtl"
             style={styles.input}
-            value={route.params.body.quote_source}
+            value={data.body.quote_source}
           />
         </View>
         {/* send btn */}

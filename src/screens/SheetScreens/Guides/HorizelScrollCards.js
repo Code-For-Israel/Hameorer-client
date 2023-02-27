@@ -6,7 +6,7 @@ const HorizonteScrollCards = ({ list }) => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView horizontal={true} style={{ flexDirection: 'row-reverse' }}>
+    <ScrollView horizontal={true} style={{ flexDirection: 'row' }}>
       {
         <>
           <View style={stylesIn.HeadSection}>
@@ -22,7 +22,7 @@ const HorizonteScrollCards = ({ list }) => {
                     yearDeath={card?.dateDeath}
                     yearBorn={card?.dateBirth}
                     onPress={() => {
-                      navigation.navigate('בדיקה לעמוד חדש', card.story )
+                      navigation.navigate('ViewDID', card.story )
                       // console.log(card.story);
                     }}
                   ></GuideCard>
