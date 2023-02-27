@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, View } from "react-native";
-import ProfileCard from "../components/profileCard";
+import ProfileCard from "../components/ProfileCard";
 
 const HorizonteScrollCardsProfile = ({ list }) => {
   return (
