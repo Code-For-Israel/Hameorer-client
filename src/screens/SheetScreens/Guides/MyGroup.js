@@ -1,17 +1,16 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Provider, List } from 'react-native-paper';
 import { styles } from '../../../styles/PagesStyle';
 import HorizonteScrollCards from './HorizelScrollCards';
-// import {Icon} from '@mdi/react';
-// import { mdiAutoFix, mdiCheck, mdiClockTimeFiveOutline } from '@mdi/js';
-import { useSelector } from 'react-redux';
-import { selectAccess } from '../../../redux/userSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {logoutThunk, selectAccess} from '../../../redux/userSlice';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 
 const MyGroup = () => {
   const baseUrl = GetSiteUrl();
   const access = useSelector(selectAccess);
+  const dispatch = useDispatch();
 
   const [isLoading, setLoading] = useState(true);
   const [groupInfo, setGroupInfo] = useState([]);
@@ -73,6 +72,8 @@ const MyGroup = () => {
             </List.Accordion>
           </View>
         </View>
+        <Button title={'LogOut'} onPress={() => dispatch(logoutThunk())}></Button>
+
         <View style={{ alignSelf: 'center' }}>
           <Text style={stylesIn.groupSubtitle}>
             ציטוט מונפש ({pending.length + review.length + done.length})
