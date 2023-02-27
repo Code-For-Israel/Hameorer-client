@@ -6,19 +6,16 @@ export const styles = StyleSheet.create({
   bottomScrollContainer: { marginBottom: 20, width: '100%' },
   image: { flex: 1, resizeMode: 'cover' },
   loginSubTextView: {
-    
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
     width: 180,
   },
   loginSubText: {
-    
     fontSize: 12,
     color: '#000',
   },
   loginBtnText: {
-    
     color: '#FFF',
     fontSize: 14,
   },
@@ -32,14 +29,11 @@ export const styles = StyleSheet.create({
     margin: 4,
   },
   cardComponentTextWhite: {
-    
-
     color: 'white',
     fontSize: 18,
     fontWeight: '400',
   },
   cardComponentTextblack: {
-    
     color: 'black',
     paddingLeft: 3,
     fontSize: 14,
@@ -57,7 +51,6 @@ export const styles = StyleSheet.create({
     marginRight: 10,
   },
   cardComponentTextBlack: {
-    
     color: 'black',
     fontSize: 16,
 
@@ -81,7 +74,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginRight: 5,
     flexDirection: 'row',
-    
+
     fontWeight: '400',
   },
   cardComponentCInsideContainer: {
@@ -121,7 +114,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     padding: 10,
     textAlign: 'right',
-    
+
     borderRadius: 6,
     width: 180,
     color: '#8B8787',
@@ -155,7 +148,6 @@ export const styles = StyleSheet.create({
     padding: 10,
   },
   buttonText: {
-    
     fontSize: 24,
   },
 });

@@ -22,7 +22,7 @@ const HorizonteScrollCards = ({ list }) => {
                     yearDeath={card?.dateDeath}
                     yearBorn={card?.dateBirth}
                     onPress={() => {
-                      navigation.navigate('ViewDID', card.story )
+                      navigation.navigate('ViewDID', card.story);
                       // console.log(card.story);
                     }}
                   ></GuideCard>

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {removeDataLocal, setDataLocal} from '../hooks/LocalStorage/AsyncStorage';
+import { removeDataLocal, setDataLocal } from '../hooks/LocalStorage/AsyncStorage';
 import GetSiteUrl from '../utils/GetSiteUrl';
 
 const baseUrl = GetSiteUrl();
@@ -46,12 +46,8 @@ export const refreshAccess = createAsyncThunk('refresh', async (refresh) => {
 
 //logout
 export const logoutThunk = createAsyncThunk('logoutAsyncThunk', () => {
-  removeDataLocal('refreshToken').then(() =>
-      console.log('remove Refresh token'),
-  );
-  removeDataLocal('accessToken').then(() =>
-      console.log('remove access token'),
-  );
+  removeDataLocal('refreshToken').then(() => console.log('remove Refresh token'));
+  removeDataLocal('accessToken').then(() => console.log('remove access token'));
 });
 
 export const LoginSlice = createSlice({
@@ -121,7 +117,6 @@ export const LoginSlice = createSlice({
       state.loading = false;
       state.error = null;
       state.is_guide = null;
-
     });
     builder.addCase(logoutThunk.pending, (state) => {
       state.loading = true;

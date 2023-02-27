@@ -125,7 +125,6 @@ const stylesIn = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   groupSubtitle: {
-    
     fontStyle: 'normal',
     fontWeight: '700',
     fontSize: 24,

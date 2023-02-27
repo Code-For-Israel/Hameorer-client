@@ -11,7 +11,6 @@ export const setDataLocal = async (key, value) => {
   }
 };
 
-
 export const removeDataLocal = async (key) => {
   try {
     await AsyncStorage.removeItem(key);

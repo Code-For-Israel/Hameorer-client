@@ -5,53 +5,56 @@ import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 
 const ViewDID = ({ route }) => {
-  const data = route.params
-  return ( route && data &&
-    <Provider>
-      <ScrollView style={styles.container}>
-        {/* headSection - name dates and + button*/}
-        <View style={styles.HeadSection}>
-          <View style={styles.ImageContainer}>
-            {/* <Icon name="add" size={30} color={"#fff"} /> */}
-            <ImageViewer
-              placeholderImageSource={PlaceholderImage}
-              selectedImage={data.media?.image}
-            />
-          </View>
-          <View style={styles.detailsContainer}>
-            <Text style={styles.h1}>{data.subject.subject}</Text>
-            <Text style={styles.textBody}>{data.body.qoute_location}</Text>
+  const data = route.params;
+  return (
+    route &&
+    data && (
+      <Provider>
+        <ScrollView style={styles.container}>
+          {/* headSection - name dates and + button*/}
+          <View style={styles.HeadSection}>
+            <View style={styles.ImageContainer}>
+              {/* <Icon name="add" size={30} color={"#fff"} /> */}
+              <ImageViewer
+                placeholderImageSource={PlaceholderImage}
+                selectedImage={data.media?.image}
+              />
+            </View>
+            <View style={styles.detailsContainer}>
+              <Text style={styles.h1}>{data.subject.subject}</Text>
+              <Text style={styles.textBody}>{data.body.qoute_location}</Text>
 
-            <Text style={styles.textSubTitle}>תאריך לידה: {data.body.birth_date}</Text>
-            <Text style={styles.textSubTitle}>תאריך פטירה: {data.body.death_date}</Text>
+              <Text style={styles.textSubTitle}>תאריך לידה: {data.body.birth_date}</Text>
+              <Text style={styles.textSubTitle}>תאריך פטירה: {data.body.death_date}</Text>
+            </View>
           </View>
-        </View>
-        {/* end of head Section */}
+          {/* end of head Section */}
 
-        {/* quote */}
-        {
+          {/* quote */}
+          {
+            <View style={styles.TextInputContainer}>
+              <TextInput
+                disabled={true}
+                direction="rtl"
+                multiline={true}
+                style={[styles.input, styles.inputBig]}
+                value={data.body.qoute}
+              />
+            </View>
+          }
+          {/* origin */}
           <View style={styles.TextInputContainer}>
             <TextInput
               disabled={true}
               direction="rtl"
-              multiline={true}
-              style={[styles.input, styles.inputBig]}
-              value={data.body.qoute}
+              style={styles.input}
+              value={data.body.quote_source}
             />
           </View>
-        }
-        {/* origin */}
-        <View style={styles.TextInputContainer}>
-          <TextInput
-            disabled={true}
-            direction="rtl"
-            style={styles.input}
-            value={data.body.quote_source}
-          />
-        </View>
-        {/* send btn */}
-      </ScrollView>
-    </Provider>
+          {/* send btn */}
+        </ScrollView>
+      </Provider>
+    )
     // end of sound
   );
 };
