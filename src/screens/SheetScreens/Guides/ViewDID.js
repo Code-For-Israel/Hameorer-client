@@ -5,8 +5,10 @@ import mock from './mock.json';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 
-const ViewDID = () => {
-  console.log(mock);
+const ViewDID = ({ route }) => {
+  // console.log(mock);
+  console.log(route);
+
   return (
     <Provider>
       <ScrollView style={styles.container}>
@@ -16,15 +18,15 @@ const ViewDID = () => {
             {/* <Icon name="add" size={30} color={"#fff"} /> */}
             <ImageViewer
               placeholderImageSource={PlaceholderImage}
-              selectedImage={mock.media?.image}
+              selectedImage={route.params.media?.image}
             />
           </View>
           <View style={styles.detailsContainer}>
-            <Text style={styles.h1}>{mock.subject.subject}</Text>
-            <Text style={styles.textBody}>{mock.body.qoute_location}</Text>
+            <Text style={styles.h1}>{route.params.subject.subject}</Text>
+            <Text style={styles.textBody}>{route.params.body.qoute_location}</Text>
 
-            <Text style={styles.textSubTitle}>תאריך לידה: {mock.body.birth_date}</Text>
-            <Text style={styles.textSubTitle}>תאריך פטירה: {mock.body.death_date}</Text>
+            <Text style={styles.textSubTitle}>תאריך לידה: {route.params.body.birth_date}</Text>
+            <Text style={styles.textSubTitle}>תאריך פטירה: {route.params.body.death_date}</Text>
           </View>
         </View>
         {/* end of head Section */}
@@ -37,7 +39,7 @@ const ViewDID = () => {
               direction="rtl"
               multiline={true}
               style={[styles.input, styles.inputBig]}
-              value={mock.body.qoute}
+              value={route.params.body.qoute}
             />
           </View>
         }
@@ -47,7 +49,7 @@ const ViewDID = () => {
             disabled={true}
             direction="rtl"
             style={styles.input}
-            value={mock.body.quote_source}
+            value={route.params.body.quote_source}
           />
         </View>
         {/* send btn */}
