@@ -122,12 +122,12 @@ const stylesIn = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     alignSelf: 'flex-end',
-    justifyContent: 'right',
+    justifyContent: 'flex-end',
   },
   groupSubtitle: {
-    fontFamily: 'Assistant',
+    
     fontStyle: 'normal',
-    fontWeight: 700,
+    fontWeight: '700',
     fontSize: 24,
     lineHeight: 31,
     textAlign: 'right',

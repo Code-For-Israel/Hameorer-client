@@ -55,12 +55,12 @@ export default guideCard;
 const stylesIn = StyleSheet.create({
   cardComponent: { width: 278, height: 203, backgroundColor: '#072F5F', margin: 2 },
   cardComponentTextWhite: {
-    fontFamily: 'Assistant',
+    
     color: 'white',
     fontSize: 14,
-    fontWeight: 400,
+    fontWeight: '400',
   },
-  cardComponentTextBlack: { fontFamily: 'Assistant', color: 'black', fontSize: 16, paddingTop: 5 },
+  cardComponentTextBlack: {  color: 'black', fontSize: 16, paddingTop: 5 },
   cardComponentTopPart: { flexDirection: 'row', display: 'flex', justifyContent: 'space-between' },
   cardComponentInsideTextArea: {
     flexDirection: 'row',
@@ -71,9 +71,9 @@ const stylesIn = StyleSheet.create({
   },
   cardComponentTextSize: {
     fontSize: 12,
-    fontWeight: 400,
+    fontWeight: '400',
     textAlign: 'right',
-    fontFamily: 'Assistant',
+    
   },
   cardComponentCInsideContainer: { width: 100, padding: 1, aspectRatio: 1, alignSelf: 'center' },
   cardComponentImage: { width: '100%', aspectRatio: 1 },

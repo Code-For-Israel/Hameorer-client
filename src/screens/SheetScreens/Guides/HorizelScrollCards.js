@@ -41,7 +41,7 @@ const stylesIn = StyleSheet.create({
   HeadSection: {
     padding: 0,
     flexDirection: 'row',
-    alignSelf: 'normal',
+    alignSelf: 'flex-end',
     justifyContent: 'space-between',
   },
 });

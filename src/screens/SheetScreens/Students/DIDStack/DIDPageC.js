@@ -103,7 +103,6 @@ const DIDPageC = ({ navigation, route }) => {
       };
       dispatch(setStory({ access, story }));
     }
-    navigation.navigate('Profile');
   };
 
   return (
@@ -113,6 +112,7 @@ const DIDPageC = ({ navigation, route }) => {
           visible={visible}
           onDismiss={() => {
             dispatch(hideModal());
+            navigation.navigate('Profile');
           }}
           contentContainerStyle={containerStyle}
         >
@@ -127,6 +127,7 @@ const DIDPageC = ({ navigation, route }) => {
               <Pressable
                 onPress={() => {
                   dispatch(hideModal());
+                  navigation.navigate('Profile');
                 }}
               >
                 <CloseIcon />
@@ -138,7 +139,7 @@ const DIDPageC = ({ navigation, route }) => {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginBottom: '10px',
+                marginBottom: 10,
               }}
             >
               <Text>עבודה טובה !</Text>

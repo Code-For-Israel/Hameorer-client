@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: '45vh',
+    height: 150,
     alignSelf: 'center',
   },
   textContainer: {

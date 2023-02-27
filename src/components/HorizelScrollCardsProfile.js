@@ -30,7 +30,7 @@ const stylesIn = StyleSheet.create({
   HeadSection: {
     padding: 5,
     flexDirection: 'row',
-    alignSelf: 'normal',
+    alignSelf: 'flex-end',
     justifyContent: 'space-between',
   },
 });

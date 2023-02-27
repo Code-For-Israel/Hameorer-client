@@ -5,7 +5,7 @@ import CustomBg from '../components/CustomBg';
 
 //icons
 import UserIcon from '../components/IconsSvg/UserIcon';
-import MyGroup from './SheetScreens/Guides/MyGroups';
+import MyGroup from './SheetScreens/Guides/MyGroup';
 import MapIcon from '../components/IconsSvg/MapIcon';
 import ViewDID from './SheetScreens/Guides/ViewDID';
 
