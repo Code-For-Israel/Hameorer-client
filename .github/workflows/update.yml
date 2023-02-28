@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16.x
-          cache: yarn
+          cache: npm
 
       - name: Setup Expo
         uses: expo/expo-github-action@v7
@@ -24,19 +24,19 @@ jobs:
           eas-version: latest
           token: 'W8c5l5HwhgPgi9UVcUPFB6jtn-1W8H1UkwVsZOoG'
 
-      - name: Find yarn cache
-        id: yarn-cache-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Find npm cache
+        id: npm-cache-path
+        run: echo "::set-output name=dir::$(npm cache dir)"
 
       - name: Restore cache
         uses: actions/cache@v2
         with:
-          path: ${{ steps.yarn-cache-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
+          path: ${{ steps.npm-cache-path.outputs.dir }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/npm.lock') }}
+          restore-keys: ${{ runner.os }}-npm-
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: npm install --immutable
 
       - name: Publish update
         run: eas update --auto
