@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { removeDataLocal, setDataLocal } from '../hooks/LocalStorage/AsyncStorage';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {removeDataLocal, setDataLocal} from '../hooks/LocalStorage/AsyncStorage';
 import GetSiteUrl from '../utils/GetSiteUrl';
 
 const baseUrl = GetSiteUrl();
@@ -35,13 +35,19 @@ export const refreshAccess = createAsyncThunk('refresh', async (refresh) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({ refresh }),
-  });
+  }) .then((response) => response.json())
+      .then((json) => console.log(json.access))
+      .catch(() => () => console.log("error"))
+      .finally(() => setLoading(false));
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const data = await response.json();
-  await setDataLocal('accessToken', data.access);
-  return data;
+  else {
+    const data = await response.json();
+    await setDataLocal('accessToken', data.access);
+    console.log(data.access)
+    return data;
+  }
 });
 
 //logout
@@ -88,6 +94,8 @@ export const LoginSlice = createSlice({
     builder.addCase(loginThunk.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
+      state.refresh = '';
+      state.access = '';
       console.log('LOG-IN error:', state.error.message);
       // notify(state.error.message);
     });
@@ -107,6 +115,8 @@ export const LoginSlice = createSlice({
     builder.addCase(refreshAccess.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error;
+      removeDataLocal('refreshToken').then(() => console.log('remove Refresh token'));
+      removeDataLocal('accessToken').then(() => console.log('remove access token'));
       console.log('LOG-IN error:', state.error.message);
       // notify(state.error.message);
     });
