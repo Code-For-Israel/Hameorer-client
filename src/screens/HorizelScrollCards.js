@@ -16,6 +16,7 @@ const HorizonteScrollCards = ({ list }) => {
                   studentName={card.fullName}
                   yearDeath={card.dateDeath}
                   yearBorn={card.birthDate}
+                  image={card?.image}
                   onPress={() => console.log('ok')}
                 ></GuideCard>
               );

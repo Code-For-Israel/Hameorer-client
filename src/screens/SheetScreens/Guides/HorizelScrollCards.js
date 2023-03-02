@@ -21,6 +21,7 @@ const HorizonteScrollCards = ({ list }) => {
                     studentName={card?.fullName}
                     yearDeath={card?.dateDeath}
                     yearBorn={card?.dateBirth}
+                    image={card?.image}
                     onPress={() => {
                       navigation.navigate('ViewDID', card.story);
                       // console.log(card.story);
