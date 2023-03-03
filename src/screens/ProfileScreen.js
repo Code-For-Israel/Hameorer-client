@@ -69,7 +69,7 @@ export default function ProfileScreen() {
             <Image source={PlaceholderImage} style={styles.image}/>
 
             <View style={{marginBottom: 20, paddingTop: 5}}>
-                <Text style={styles.h1}>הודעות</Text>
+                <Text style={styles.h1} numberOfLines={1} adjustsFontSizeToFit>הודעות</Text>
             </View>
             <View style={{marginRight: 20, marginBottom: 20}}>
                 <Text>מאת עמית-12:00</Text>

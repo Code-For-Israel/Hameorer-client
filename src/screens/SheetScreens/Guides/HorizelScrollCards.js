@@ -24,7 +24,6 @@ const HorizonteScrollCards = ({ list }) => {
                     image={card?.image}
                     onPress={() => {
                       navigation.navigate('ViewDID', card);
-                      // console.log(card.story);
                     }}
                   ></GuideCard>
                 );

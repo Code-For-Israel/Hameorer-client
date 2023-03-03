@@ -38,6 +38,7 @@ const DIDPageC = ({navigation, route}) => {
     const [recordingData, setRecordingData] = useState(undefined);
     const [textQuote, setTextQuote] = useState('');
     const [textOrigin, setTextOrigin] = useState('');
+    const [loading, setLoading] = useState(false);
     const [checkedVoiceOrText, setCheckedVoiceOrText] = useState('quote');
     const [checkedVoiceType, setCheckedVoiceType] = useState('men');
     let selectedImage = null;
@@ -59,12 +60,13 @@ const DIDPageC = ({navigation, route}) => {
     };
 
     const handleSend = () => {
-        if (checkedVoiceOrText === 'voice') {
+        setLoading(true)
+        if (checkedVoiceOrText === 'voice' && recordingData && recordingData.type) {
             let recording = new FormData();
             recording.append('type', recordingData.type);
             recording.append('file', recordingData);
             dispatch(setRecording({access, recording, bucket, recordingFileName}));
-        } else {
+        } else if (figure && textOrigin && textQuote) {
             const story = {
                 subject: {
                     type: 'figure',
@@ -94,6 +96,8 @@ const DIDPageC = ({navigation, route}) => {
                 },
             };
             dispatch(setStory({access, story}));
+        } else {
+            console.log("please fill all fields")
         }
     };
 
@@ -120,6 +124,7 @@ const DIDPageC = ({navigation, route}) => {
                                 onPress={() => {
                                     dispatch(hideModal());
                                     navigation.navigate('Profile');
+                                    setLoading(false)
                                 }}
                             >
                                 <CloseIcon/>
@@ -230,8 +235,8 @@ const DIDPageC = ({navigation, route}) => {
                         <TouchableOpacity onPress={pickAudio}>
                             <View style={styles.TextInputContainer}>
                                 <Text style={[styles.input, styles.inputSound]}>
-                                    {recordingFileName !== '' ? recordingFileName : 'העלה הקלטת ציטוט'}
                                     <UploadIcon/>
+                                    {recordingFileName !== '' ? recordingFileName : 'העלה הקלטת ציטוט'}
                                 </Text>
                             </View>
                         </TouchableOpacity>
@@ -248,11 +253,12 @@ const DIDPageC = ({navigation, route}) => {
 
                 <View style={styles.footerContainer}>
                     <View style={styles.send}>
-                        <NextButton title={'שליחה'} onPress={handleSend}/>
+                        <NextButton loading={loading} title={'שליחה'} onPress={handleSend}/>
                     </View>
                     <Text style={styles.headText}>שלב 2 מתוך 2</Text>
-                    <View style={{width: 100}}>
+                    <View style={styles.send}>
                         <NextButton
+                            loading={loading}
                             title="הקודם"
                             onPress={() => {
                                 navigation.navigate('DIDPageB', figure.tags);
@@ -347,6 +353,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 5,
     },
+
     TextInputContainer: {
         width: '100%',
         paddingHorizontal: 15,
@@ -369,7 +376,7 @@ const styles = StyleSheet.create({
     inputSound: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
     },
     send: {
