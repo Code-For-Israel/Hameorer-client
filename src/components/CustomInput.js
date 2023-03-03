@@ -4,29 +4,29 @@ import { Controller } from 'react-hook-form';
 
 const CustomInput = ({ control, name, placeholder, secureTextEntry }) => {
   return (
-      <Controller
-          control={control}
-          name={name}
-          render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
-              <>
-                <View style={[styles.container, { borderColor: error ? 'red' : 'white' }]}>
-                  <TextInput
-                      style={styles.text}
-                      defaultValue={value} //in the future change to value after testing done
-                      onChangeText={onChange}
-                      onBlur={onBlur}
-                      placeholder={placeholder}
-                      secureTextEntry={secureTextEntry}
-                  />
-                </View>
-                {error && (
-                    <Text style={{ color: 'red', alignSelf: 'center', alignContent: 'center' }}>
-                      {error.message || 'Error'}
-                    </Text>
-                )}
-              </>
+    <Controller
+      control={control}
+      name={name}
+      render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => (
+        <>
+          <View style={[styles.container, { borderColor: error ? 'red' : 'white' }]}>
+            <TextInput
+              style={styles.text}
+              defaultValue={value} //in the future change to value after testing done
+              onChangeText={onChange}
+              onBlur={onBlur}
+              placeholder={placeholder}
+              secureTextEntry={secureTextEntry}
+            />
+          </View>
+          {error && (
+            <Text style={{ color: 'red', alignSelf: 'center', alignContent: 'center' }}>
+              {error.message || 'Error'}
+            </Text>
           )}
-      />
+        </>
+      )}
+    />
   );
 };
 

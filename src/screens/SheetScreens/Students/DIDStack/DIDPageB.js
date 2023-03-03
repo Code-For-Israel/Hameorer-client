@@ -20,7 +20,7 @@ const DIDPageB = ({ navigation }) => {
     if (access) {
       dispatch(getSubjects(access));
     }
-  }, [access,dispatch]);
+  }, [access, dispatch]);
 
   useEffect(() => {
     if (figures.length) {

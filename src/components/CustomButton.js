@@ -3,20 +3,20 @@ import { Pressable, StyleSheet, Text } from 'react-native';
 
 const CustomButton = ({ onPress, text, bgColor, fgColor, type = 'PRIMARY', disable = false }) => {
   return (
-      <Pressable
-          disabled={disable}
-          onPress={onPress}
-          style={[
-            styles.container,
-            styles[`container_${type}`],
-            bgColor ? { backgroundColor: bgColor } : {},
-            disable ? { backgroundColor: 'grey' } : {},
-          ]}
-      >
-        <Text style={[styles.text, styles[`text_${type}`], fgColor ? { color: fgColor } : {}]}>
-          {text}
-        </Text>
-      </Pressable>
+    <Pressable
+      disabled={disable}
+      onPress={onPress}
+      style={[
+        styles.container,
+        styles[`container_${type}`],
+        bgColor ? { backgroundColor: bgColor } : {},
+        disable ? { backgroundColor: 'grey' } : {},
+      ]}
+    >
+      <Text style={[styles.text, styles[`text_${type}`], fgColor ? { color: fgColor } : {}]}>
+        {text}
+      </Text>
+    </Pressable>
   );
 };
 
