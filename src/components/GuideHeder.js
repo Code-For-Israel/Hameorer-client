@@ -69,10 +69,6 @@ const styles = StyleSheet.create({
         left: 20,
         position: 'absolute',
     },
-    img: {
-        borderRadius: 50,
-        alignContent: 'center',
-    },
     circle: {
         height: 50,
         flexDirection: 'column',

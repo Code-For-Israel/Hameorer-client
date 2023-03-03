@@ -25,9 +25,11 @@ const Login = () => {
         if (type === 'guide') {
             setEmail('hameorer1@com.com')
             setPassword('itizk12345')
+            handleLogin()
         } else {
             setEmail('hameorer2@com.com')
             setPassword('shlomi12345')
+            handleLogin()
         }
     }
 

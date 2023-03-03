@@ -29,7 +29,7 @@ const MyGroup = () => {
                 .catch((error) => console.error(error))
                 .finally(() => setLoading(false));
         }
-    }, [access]);
+    }, [access,baseUrl]);
 
     let pending = [];
     let review = [];
@@ -110,9 +110,7 @@ const MyGroup = () => {
 export default MyGroup;
 
 const stylesIn = StyleSheet.create({
-    HeadSection: {
-        padding: 5, flexDirection: 'row', alignSelf: 'flex-end', justifyContent: 'space-between',
-    }, HeaderSection: {
+     HeaderSection: {
         padding: 0, width: '100%', flexDirection: 'row', alignSelf: 'flex-end', justifyContent: 'flex-end',
     }, groupSubtitle: {
         fontStyle: 'normal', fontWeight: '700', fontSize: 24, lineHeight: 31, textAlign: 'right', color: '#000000',

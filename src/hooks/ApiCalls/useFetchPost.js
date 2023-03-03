@@ -22,7 +22,7 @@ export default function UseFetchPost(url, body) {
         .catch(() => dispatch(logoutThunk()))
         .finally(() => setLoading(false));
     }
-  }, []);
+  }, [access,body,url,dispatch]);
 
   return { data, isLoading };
 }

@@ -20,7 +20,7 @@ const DIDPageB = ({ navigation }) => {
     if (access) {
       dispatch(getSubjects(access));
     }
-  }, []);
+  }, [access,dispatch]);
 
   useEffect(() => {
     if (figures.length) {
@@ -154,27 +154,27 @@ const styles = StyleSheet.create({
   SearchbarStyle: {
     textAlign: 'right',
   },
-  tagsContainer: {
-    flexDirection: 'row-reverse',
-    flexWrap: 'wrap',
-    padding: 10,
-    marginTop: 20,
-  },
-  tagBox: {
-    backgroundColor: '#FCBF49',
-    paddingVertical: 10,
-    paddingHorizontal: 8,
-    opacity: 0.9,
-    marginLeft: 10,
-    marginBottom: 10,
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  tagText: {
-    fontSize: 18,
-    color: '#fff',
-  },
+  // tagsContainer: {
+  //   flexDirection: 'row-reverse',
+  //   flexWrap: 'wrap',
+  //   padding: 10,
+  //   marginTop: 20,
+  // },
+  // tagBox: {
+  //   backgroundColor: '#FCBF49',
+  //   paddingVertical: 10,
+  //   paddingHorizontal: 8,
+  //   opacity: 0.9,
+  //   marginLeft: 10,
+  //   marginBottom: 10,
+  //   borderRadius: 10,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // tagText: {
+  //   fontSize: 18,
+  //   color: '#fff',
+  // },
   figuresContainer: {
     padding: 10,
   },
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   figureBody: {
     color: 'black',
   },
-  prevText: {
-    opacity: 0,
-  },
+  // prevText: {
+  //   opacity: 0,
+  // },
 });

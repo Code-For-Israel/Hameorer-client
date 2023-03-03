@@ -58,7 +58,6 @@ const stylesIn = StyleSheet.create({
     cardComponentTextWhite: {
         color: 'white', fontSize: 14, fontWeight: '400',
     },
-    cardComponentTextBlack: {color: 'black', fontSize: 16, paddingTop: 5},
     cardComponentTopPart: {flexDirection: 'row', display: 'flex', justifyContent: 'space-between'},
     cardComponentInsideTextArea: {
         flexDirection: 'row',

@@ -291,9 +291,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 20,
     },
-    nextText: {
-        opacity: 0,
-    },
+    // nextText: {
+    //     opacity: 0,
+    // },
     headText: {
         fontSize: 16,
     },
@@ -313,27 +313,27 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
-    plusContainer: {
-        fontSize: 24,
-        backgroundColor: '#FCBF49',
-        width: 67,
-        height: 67,
-        borderRadius: 67,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        // shadow
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
-    },
+    // plusContainer: {
+    //     fontSize: 24,
+    //     backgroundColor: '#FCBF49',
+    //     width: 67,
+    //     height: 67,
+    //     borderRadius: 67,
+    //     display: 'flex',
+    //     flexDirection: 'column',
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //     // shadow
+    //     shadowColor: '#000',
+    //     shadowOffset: {
+    //         width: 0,
+    //         height: 2,
+    //     },
+    //     shadowOpacity: 0.25,
+    //     shadowRadius: 3.84,
+    //
+    //     elevation: 5,
+    // },
     detailsContainer: {
         display: 'flex',
         flexDirection: 'column',

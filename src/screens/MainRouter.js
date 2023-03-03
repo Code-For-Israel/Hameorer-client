@@ -15,20 +15,20 @@ const MainRouter = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const getLocal = async () => {
-            try {
-                const value = await AsyncStorage.getItem('refreshToken');
-                if (value !== null) {
-                    dispatch(refreshAccess(value));
-                    dispatch(setLoading(false));
-                } else {
-                    dispatch(setLoading(false));
-                    throw 'Local Storage is without a refresh token';
-                }
-            } catch (e) {
-                console.log(e);
-            }
-        };
+        // const getLocal = async () => {
+        //     try {
+        //         const value = await AsyncStorage.getItem('refreshToken');
+        //         if (value !== null) {
+        //             dispatch(refreshAccess(value));
+        //             dispatch(setLoading(false));
+        //         } else {
+        //             dispatch(setLoading(false));
+        //             throw 'Local Storage is without a refresh token';
+        //         }
+        //     } catch (e) {
+        //         console.log(e);
+        //     }
+        // };
         const getEmailPassword = async () => {
             try {
                 const email = await AsyncStorage.getItem('email');
@@ -46,7 +46,7 @@ const MainRouter = () => {
         };
         // getLocal();
         getEmailPassword();
-    }, []);
+    }, [dispatch]);
 
     if (loading) {
         return <Loading/>;

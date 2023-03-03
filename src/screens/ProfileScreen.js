@@ -114,10 +114,6 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1, position: 'relative',
-    }, image1: {
-        flex: 1,
-    }, detailsContainer: {
-        display: 'flex', flexDirection: 'column',
     }, h1: {
         fontSize: 24,
         color: '#072F5F',
@@ -128,7 +124,5 @@ const styles = StyleSheet.create({
         paddingTop: 10,
     }, image: {
         width: '100%', height: 150, alignSelf: 'center',
-    }, textContainer: {
-        paddingHorizontal: 20, paddingTop: 10,
-    },
+    }
 });

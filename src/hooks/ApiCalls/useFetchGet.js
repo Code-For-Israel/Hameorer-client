@@ -23,7 +23,7 @@ export default function UseFetchGet(url) {
         .catch(() => dispatch(logoutThunk()))
         .finally(() => setLoading(false));
     }
-  }, []);
+  }, [access,url,dispatch]);
 
   return { data, isLoading };
 }
