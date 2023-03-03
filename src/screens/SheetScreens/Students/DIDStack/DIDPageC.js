@@ -147,7 +147,8 @@ const DIDPageC = ({navigation, route}) => {
                 <View style={styles.HeadSection}>
                     <View style={styles.ImageContainer}>
                         {/* <Icon name="add" size={30} color={"#fff"} /> */}
-                        <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage}/>
+                        <ImageViewer placeholderImageSource={PlaceholderImage} selectedImage={selectedImage}
+                                     width={130}/>
                     </View>
                     <View style={styles.detailsContainer}>
                         <Text style={styles.h1}>{figure.subject}</Text>
