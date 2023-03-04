@@ -4,9 +4,9 @@ import {Checkbox, Provider} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 import {styles} from "../../../styles/PagesStyle";
-import mock_audio from "./mock_audio.json"
 import PlayAudioIcon from "../../../components/IconsSvg/PlayAudioIcon";
-
+import mock_audio from './mock_audio.json'
+import SoundPlayer from "../../../components/SoundPlayer/SoundPlayer";
 const width = Dimensions.get('window').width; //full width
 
 const ViewDID = ({route}) => {
@@ -66,17 +66,9 @@ const ViewDID = ({route}) => {
                     }}/>
                 </View>
                 <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                    <TouchableOpacity
-                        value={mock_audio.http_link}
+                    <SoundPlayer audioFile={''}></SoundPlayer>
 
-                        onPress={()=>{
-                            console.log(mock_audio.http_link)
-                        }}
-                    >
-                        <PlayAudioIcon></PlayAudioIcon>
-                    </TouchableOpacity>
-
-                    <Checkbox.Item label="Xאישור אודיוX" status={checkedVoice ? 'checked' : 'unchecked'} onPress={() => {
+                    <Checkbox.Item label="אישור אודיו - כרגע זמני" status={checkedVoice ? 'checked' : 'unchecked'} onPress={() => {
                         setCheckedVoice(!checkedVoice);
                     }}/>
                 </View>

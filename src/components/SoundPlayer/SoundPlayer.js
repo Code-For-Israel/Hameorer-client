@@ -1,7 +1,8 @@
 import {Audio} from 'expo-av';
 import {useEffect, useState} from "react";
-import {Button, View} from "react-native";
-import {styles} from "../../styles/PagesStyle";
+import {TouchableOpacity} from "react-native";
+import PlayAudioIcon from "../IconsSvg/PlayAudioIcon";
+import mock_audio from "../../screens/SheetScreens/Guides/mock_audio.json";
 
 export default function SoundPlayer({audioFile}) {
     const [sound, setSound] = useState();
@@ -27,7 +28,12 @@ export default function SoundPlayer({audioFile}) {
 
 
     return (
-        <View style={styles.container}>
-            <Button title="Play Sound" onPress={playSound}/>
-        </View>);
+        <>
+            <TouchableOpacity
+                value={mock_audio.http_link}
+                onPress={playSound}>
+                <PlayAudioIcon></PlayAudioIcon>
+            </TouchableOpacity>
+        </>
+    );
 }
