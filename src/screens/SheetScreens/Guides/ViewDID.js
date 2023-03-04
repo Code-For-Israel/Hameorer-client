@@ -5,7 +5,7 @@ import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 
 const ViewDID = ({route}) => {
-    const data = route.params.story;
+    const data = route.params?.story;
     return (
         route &&
         data && (

@@ -71,13 +71,13 @@ const MyGroupSummaryByUser = () => {
                 <View style={{alignSelf: 'center'}}>
                     <Text style={stylesIn.groupSubtitle}>דו"ח משימות</Text>
                 </View>
-                <View style={{flexDirection: 'row'}}>
+                <View style={{flexDirection: 'row-reverse'}}>
                     <ThreeDotCircleIcon></ThreeDotCircleIcon>
-                    <Text>הוחזר לתיקונים</Text>
+                    <Text style={{paddingLeft: 10}}>הוחזר לתיקונים</Text>
                     <ReturnIcon></ReturnIcon>
-                    <Text>טרם הוגש</Text>
+                    <Text style={{paddingLeft: 10}}>טרם הוגש</Text>
                     <ApproveIcon></ApproveIcon>
-                    <Text>אושר</Text>
+                    <Text style={{paddingLeft: 10}}>אושר</Text>
                 </View>
                 <View>
                     <DataTableByUser data={[...pending, ...review, ...done]}></DataTableByUser>
