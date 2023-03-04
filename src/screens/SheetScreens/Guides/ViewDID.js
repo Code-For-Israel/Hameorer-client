@@ -6,11 +6,11 @@ import ImageViewer from '../../../components/ImageViewer';
 import {styles} from "../../../styles/PagesStyle";
 import mock_audio from "./mock_audio.json"
 import PlayAudioIcon from "../../../components/IconsSvg/PlayAudioIcon";
-// import Sound from 'react-native-sound';
 
 const width = Dimensions.get('window').width; //full width
 
 const ViewDID = ({route}) => {
+
     const [checkedQuote, setCheckedQuote] = useState(false);
     const [checkedVoice, setCheckedVoice] = useState(false);
     const [guideNote, setGuideNote] = useState('');
@@ -71,8 +71,6 @@ const ViewDID = ({route}) => {
 
                         onPress={()=>{
                             console.log(mock_audio.http_link)
-                            // let sound = new Sound(mock_audio.http_link);
-                            // sound.play()
                         }}
                     >
                         <PlayAudioIcon></PlayAudioIcon>
