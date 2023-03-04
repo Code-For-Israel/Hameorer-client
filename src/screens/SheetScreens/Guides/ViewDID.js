@@ -6,7 +6,7 @@ import ImageViewer from '../../../components/ImageViewer';
 import {styles} from "../../../styles/PagesStyle";
 import mock_audio from "./mock_audio.json"
 import PlayAudioIcon from "../../../components/IconsSvg/PlayAudioIcon";
-import Sound from 'react-native-sound';
+// import Sound from 'react-native-sound';
 
 const width = Dimensions.get('window').width; //full width
 
