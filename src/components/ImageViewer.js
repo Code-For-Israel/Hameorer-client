@@ -6,7 +6,7 @@ export default function ImageViewer({placeholderImageSource, selectedImage, widt
             ? {uri: selectedImage}
             : placeholderImageSource;
 
-    return <Image source={imageSource} style={[styles.image, {width: width}]} />;
+    return <Image source={imageSource} style={[styles.image, {width: width, height: width}]} />;
 }
 
 const styles = StyleSheet.create({
