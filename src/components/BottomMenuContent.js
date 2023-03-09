@@ -9,25 +9,30 @@ const sheetLinks = [
         id: '1',
         title: 'הדרכה עצמית',
         screen: 'SelfGuide',
+        disable: true
     },
     {
         id: '2',
         title: 'הכנת טקס',
         screen: 'Ceremony',
+        disable: true
     },
     {
         id: '3',
         title: 'זכרון משפחתי',
         screen: 'FamilyMem',
-    }, // {
-    //     id: "4",
-    //     title: "יומן אישי",
-    //     screen: "PersonalDiary",
-    // },
+        disable: true
+    }, {
+        id: "4",
+        title: "יומן אישי",
+        screen: "PersonalDiary",
+        disable: true
+    },
     {
         id: '5',
-        title: 'דמות',
+        title: 'דמות מונפשת',
         screen: 'DID',
+        disable: false
     },
 ];
 
@@ -39,6 +44,7 @@ export default function BottomMenuContent({onClose}) {
             {sheetLinks.map((item) => {
                 return (
                     <TouchableOpacity
+                        disabled={item.disable}
                         key={item.id}
                         onPress={() => {
                             //this is if the screens are inside the another stack like More in the plusScreen.js
@@ -48,7 +54,8 @@ export default function BottomMenuContent({onClose}) {
                         }}
                     >
                         <View style={styles.bottomMenuButton}>
-                            <Text style={styles.buttonText}>{item.title}</Text>
+                            {!item.disable && <Text style={styles.buttonText}>{item.title}</Text>}
+                            {item.disable && <Text style={styles.buttonTextDisable}>{item.title}</Text>}
                         </View>
                     </TouchableOpacity>
                 );
