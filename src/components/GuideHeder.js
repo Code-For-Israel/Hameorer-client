@@ -8,9 +8,9 @@ const GuideHeader = (userDelegation) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.h1} numberOfLines={1} adjustsFontSizeToFit>
-                    משלחת רוגוזין 2023
-                </Text>
+                {/*<Text style={styles.h1} numberOfLines={1} adjustsFontSizeToFit>*/}
+                {/*    משלחת רוגוזין 2023*/}
+                {/*</Text>*/}
                 <Text style={styles.h2} numberOfLines={1} adjustsFontSizeToFit>
                     {userDelegation?.userDelegation?.group_name}
                 </Text>

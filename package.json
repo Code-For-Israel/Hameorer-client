@@ -24,6 +24,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
     "expo": "~47.0.8",
+    "expo-av": "~13.0.3",
     "expo-document-picker": "~11.0.1",
     "expo-image-picker": "~14.0.2",
     "expo-status-bar": "~1.4.2",
@@ -43,8 +44,7 @@
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.9",
     "react-redux": "^8.0.5",
-    "xlsx": "^0.18.5",
-    "expo-av": "~13.0.3"
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

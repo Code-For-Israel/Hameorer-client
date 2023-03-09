@@ -8,6 +8,7 @@ import PlaceholderImage from "../../../../assets/fallbackImage.png";
 import SoundPlayer from "../../../components/SoundPlayer/SoundPlayer";
 import {styles} from "../../../styles/PagesStyle";
 import {useNavigation} from "@react-navigation/native";
+import VideoPlayer from "../Guides/VideoPlayer";
 
 const width = Dimensions.get('window').width; //full width
 
@@ -66,15 +67,7 @@ const ViewTask = ({route}) => {
                     />
                 </View>}
                 {/* origin */}
-                <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                    <Text style={[stylesIn.input, {fontWeight: 'bold'}]}> מקור </Text>
-                    <TextInput
-                        disabled={true}
-                        direction="rtl"
-                        style={stylesIn.input}
-                        value={data.body.quote_source}
-                    />
-                </View>
+
                 <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                     <SoundPlayer audioFile={''}></SoundPlayer>
 
@@ -95,13 +88,10 @@ const ViewTask = ({route}) => {
                 </View>
 
                 {data.status === 'done' && <>
+                    {/*todo confirm real link works*/}
+                    <VideoPlayer url={data}></VideoPlayer>
                     <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                        <Text
-                            value={"video"}
-                        />
-                    </View>
-                    <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                        <Text style={[stylesIn.input, {fontWeight: 'bold'}]}> מקור </Text>
+                        <Text style={[stylesIn.input, {fontWeight: 'bold'}]}> מקור ציטוט </Text>
                         <TextInput
                             disabled={true}
                             direction="rtl"
@@ -109,8 +99,7 @@ const ViewTask = ({route}) => {
                             value={data.body.quote_source}
                         />
                     </View>
-                </>
-                }
+                </>}
                 {/* send btn */}
                 <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelSend}>
                     <Text style={styles.cardComponentTextWhite}>חזרה</Text>

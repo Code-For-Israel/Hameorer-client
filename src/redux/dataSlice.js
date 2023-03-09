@@ -64,7 +64,22 @@ export const setStory = createAsyncThunk('setStoryThunk', async ({access, story}
         },
         body: JSON.stringify(story),
     });
-    return await response.json();
+    const json = await response.json();
+    return json
+});
+
+export const updateStory = createAsyncThunk('updateStoryThunk', async ({access, story, id}) => {
+    const response = await fetch(`${baseUrl}v1/stories/${id}`, {
+        method: 'PATCH',
+        headers: {
+            accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${access}`,
+        },
+        body: JSON.stringify(story),
+    });
+    const json = await response.json();
+    return json
 });
 
 export const dataSlice = createSlice({
@@ -123,6 +138,22 @@ export const dataSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(setStory.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error;
+            console.log('getData error:', state.error.message);
+            // notify(state.error.message);
+        });
+
+        builder.addCase(updateStory.fulfilled, (state, action) => {
+            console.log(action.payload);
+            state.visible = true;
+            state.loading = false;
+            state.error = null;
+        });
+        builder.addCase(updateStory.pending, (state) => {
+            state.loading = true;
+        });
+        builder.addCase(updateStory.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error;
             console.log('getData error:', state.error.message);

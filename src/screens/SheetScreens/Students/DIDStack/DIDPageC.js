@@ -4,11 +4,12 @@ import NextButton from '../../../../components/NextButton';
 import {Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
 import * as DocumentPicker from 'expo-document-picker';
 import ImageViewer from '../../../../components/ImageViewer';
-import {hideModal, selectVisable, setRecording, setStory} from '../../../../redux/dataSlice';
+import {hideModal, selectVisable, setStory} from '../../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../../redux/userSlice';
 import CloseIcon from '../../../../components/IconsSvg/CloseIcon';
 import UploadIcon from '../../../../components/IconsSvg/UploadIcon';
+import GetSiteUrl from "../../../../utils/GetSiteUrl";
 
 const PlaceholderImage = require('../../../../../assets/fallbackImage.png');
 const containerStyle = {
@@ -41,6 +42,7 @@ const DIDPageC = ({navigation, route}) => {
     const [loading, setLoading] = useState(false);
     const [checkedVoiceOrText, setCheckedVoiceOrText] = useState('quote');
     const [checkedVoiceType, setCheckedVoiceType] = useState('men');
+
     let selectedImage = null;
     const figure = route.params;
     if (figure.media) {
@@ -59,14 +61,24 @@ const DIDPageC = ({navigation, route}) => {
         }
     };
 
-    const handleSend = () => {
+    const handleSend = async () => {
         setLoading(true);
+        let response
         if (checkedVoiceOrText === 'voice' && recordingData && recordingData.type) {
             let recording = new FormData();
             recording.append('type', recordingData.type);
             recording.append('file', recordingData);
-            dispatch(setRecording({access, recording, bucket, recordingFileName}));
-        } else if (figure && textOrigin && textQuote) {
+            const baseUrl = GetSiteUrl();
+            response = await fetch(`${baseUrl}v1/media/${bucket}/${recordingFileName}/`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${access}`,
+                },
+                body: recording,
+            }).then((response) => (response.json()))
+            console.log(response)
+        }
+        if (figure && textOrigin && (checkedVoiceOrText === 'voice' ||(checkedVoiceOrText === 'quote' && textQuote))) {
             const story = {
                 subject: {
                     type: 'figure',
@@ -79,22 +91,26 @@ const DIDPageC = ({navigation, route}) => {
                     background: '',
                     quote_date: '',
                     quote_source: textOrigin,
-                    qoute_location: figure.address,
-                    qoute_title: '',
-                    qoute: textQuote,
+                    quote_location: figure.address,
+                    quote_title: '',
+                    quote: textQuote,
                 },
-                // created_by: "None",
                 comments: {
                     one: '',
                 },
                 status: 'pending',
                 media: {
                     image: selectedImage ? selectedImage : 'none',
-                    sound: recordingFileName ? recordingFileName : 'none',
-                    soundType: checkedVoiceOrText === 'quote' ? checkedVoiceType : 'none',
+                    soundBucket: response ? response.bucket : 'none',
+                    soundHttpLink: response ? response.http_link : 'none',
+                    soundName: response ? response.name : 'none',
+                    soundS3Link: response ? response.s3_link : 'none',
+                    soundType: response ? response.type : 'none',
+                    soundId: response ? response._id : 'none',
                 },
             };
             dispatch(setStory({access, story}));
+            console.log("dispatched")
         } else {
             console.log('please fill all fields');
         }

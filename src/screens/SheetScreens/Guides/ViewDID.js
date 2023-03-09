@@ -5,16 +5,22 @@ import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 import {styles} from "../../../styles/PagesStyle";
 import SoundPlayer from "../../../components/SoundPlayer/SoundPlayer";
+import {updateStory} from "../../../redux/dataSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {selectAccess} from "../../../redux/userSlice";
+import {useNavigation} from "@react-navigation/native";
 
 const width = Dimensions.get('window').width; //full width
 
 const ViewDID = ({route}) => {
+    const dispatch = useDispatch();
+    const access = useSelector(selectAccess);
+    const navigation = useNavigation();
 
-    // const [checkedQuote, setCheckedQuote] = useState(false);
     const [checkedApproved, setCheckedApproved] = useState(false);
     const [guideNote, setGuideNote] = useState('');
     const data = route.params?.story;
-
+    console.log(data)
 
     useEffect(() => {
         if (data && data.comments && data.comments.one) {
@@ -30,7 +36,13 @@ const ViewDID = ({route}) => {
             data.status = "done";
         else
             data.status = "review";
-        console.log(data)
+        const id=data._id
+        delete data._id
+        console.log("sending", data)
+        dispatch(updateStory({access, story: data, id}));
+        console.log("navigate")
+        navigation.navigate('MyGroup');
+        // todo block if approved in the past
     }
 
     return (route && data && (<Provider>
@@ -47,7 +59,7 @@ const ViewDID = ({route}) => {
                     </View>
                     <View style={stylesIn.detailsContainer}>
                         <Text style={stylesIn.h1}>{data.subject.subject}</Text>
-                        <Text style={stylesIn.textBody}>{data.body.qoute_location}</Text>
+                        <Text style={stylesIn.textBody}>{data.body.quote_location}</Text>
 
                         <Text style={stylesIn.textSubTitle}>
                             תאריך לידה: {route.params.dateBirth}
@@ -66,7 +78,7 @@ const ViewDID = ({route}) => {
                         direction="rtl"
                         multiline={true}
                         style={[stylesIn.input, stylesIn.inputBig]}
-                        value={data.body.qoute}
+                        value={data.body.quote}
                     />
                 </View>}
                 {/* origin */}
