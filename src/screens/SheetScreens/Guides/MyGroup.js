@@ -46,7 +46,7 @@ const MyGroup = () => {
                     let storyObj = {
                         fullName: user.firstname + ' ' + user.lastname,
                         subject: story.subject.subject,
-                        location: story.body.qoute_location,
+                        location: story.body.quote_location,
                         dateBirth: 1902,
                         dateDeath: 1954,
                         _id: story._id,

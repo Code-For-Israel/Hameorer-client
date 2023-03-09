@@ -15,6 +15,7 @@ import TimelineIcon from '../components/IconsSvg/TimelineIcon';
 import TopicsIcon from '../components/IconsSvg/TopicsIcon';
 import MapIcon from '../components/IconsSvg/MapIcon';
 import PageNotReady from './BottomNavBarScreens/PageNotReady';
+import ViewTask from "./SheetScreens/Students/ViewTask";
 
 const Tab = createBottomTabNavigator();
 
@@ -89,6 +90,18 @@ const HomeTabs = () => {
                 options={{
                     headerTitle: 'מפה',
                     tabBarLabel: 'מפה',
+                    headerTitleAlign: 'center',
+                    headerBackground: CustomBg,
+                    headerTintColor: '#fff',
+                    tabBarIcon: ({color, size}) => <MapIcon name="map" color={color} size={size} />,
+                }}
+            />
+            <Tab.Screen
+                name="ViewTask"
+                component={ViewTask}
+                options={{
+                    headerTitle: 'צפה במשימה',
+                    tabBarLabel: 'צפיה במשימה',
                     headerTitleAlign: 'center',
                     headerBackground: CustomBg,
                     headerTintColor: '#fff',

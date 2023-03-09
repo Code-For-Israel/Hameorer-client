@@ -1,7 +1,10 @@
 import {ScrollView, StyleSheet, View} from 'react-native';
 import ProfileCard from '../components/ProfileCard';
+import {useNavigation} from "@react-navigation/native";
 
 const HorizonteScrollCardsProfile = ({list}) => {
+    const navigation = useNavigation();
+
     return (
         <ScrollView horizontal={true}>
             {list && list.length > 0 && (
@@ -17,7 +20,9 @@ const HorizonteScrollCardsProfile = ({list}) => {
                                     key={key}
                                     title={subject_type}
                                     status={story_status}
-                                    onPress={() => console.log('ok')}
+                                    onPress={() => {
+                                        navigation.navigate('ViewTask', card?._id );
+                                    }}
                                 ></ProfileCard>
                             );
                         })}

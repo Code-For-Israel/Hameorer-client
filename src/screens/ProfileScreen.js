@@ -17,7 +17,7 @@ export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [userInfo, setUserInfo] = useState([]);
     const [userDelegation, setUserDelegation] = useState([]);
-    const url = GetSiteUrl() + 'v1/authentication/userinfo';
+    const [url, setUrl] = useState(GetSiteUrl() + 'v1/authentication/userinfo');
     const {data} = UseFetchGet(url);
     const dispatch = useDispatch();
 
@@ -35,6 +35,15 @@ export default function ProfileScreen() {
     const onModalClose = () => {
         setIsModalVisible(false);
     };
+
+    const handleRefresh = () => {
+        setUrl(null)
+        setUserInfo([])
+
+        setTimeout(() => {
+            setUrl(GetSiteUrl() + 'v1/authentication/userinfo')
+        }, 1000);
+    }
 
     return (
         <>
@@ -70,9 +79,9 @@ export default function ProfileScreen() {
                 </View>
             </TouchableOpacity>
             <ScrollView style={styles.container}>
-                <GuideHeader userDelegation={userDelegation} />
+                <GuideHeader userDelegation={userDelegation}/>
 
-                <Image source={PlaceholderImage} style={styles.image} />
+                <Image source={PlaceholderImage} style={styles.image}/>
 
                 <View style={{marginBottom: 20, paddingTop: 5}}>
                     <Text style={styles.h1} numberOfLines={1} adjustsFontSizeToFit>
@@ -82,20 +91,27 @@ export default function ProfileScreen() {
                 <View style={{marginRight: 20, marginBottom: 20}}>
                     <Text>מאת עמית - 13.3.2023</Text>
                     <Text>
-                        {''}היום נעבור בתערוכת "יד לילד", תערוכת "גטו ורשה הלוחם", סדנת "החייאת מרד מחדש" ועדות של הלינה בירנבאום
+                        {''}היום נעבור בתערוכת "יד לילד", תערוכת "גטו ורשה הלוחם", סדנת "החייאת מרד מחדש" ועדות של הלינה
+                        בירנבאום
                         בהצלחה ביום ותודה
                     </Text>
                 </View>
 
                 <View
                     style={{
-                        width: 200,
-                        marginLeft: 20,
-                        paddingBottom: 20,
-                        paddingTop: 10,
+                        width: "90%",
+                        margin: 10,
+                        padding: 10,
+                        flexDirection: 'row',
+                        justifyContent: 'space-evenly',
+                        alignSelf: "center"
+
                     }}
                 >
-                    <PrevButton onPress={() => console.log(userInfo)} title="לחץ לכל ההודעות" />
+                    <PrevButton title={'התנתק'} onPress={() => dispatch(logoutThunk())}></PrevButton>
+                    <PrevButton title={"רענן מידע"} onPress={handleRefresh}></PrevButton>
+                    {/*<PrevButton onPress={() => console.log(userInfo)} title="לחץ לכל ההודעות"/>*/}
+
                 </View>
 
                 <View>
@@ -116,9 +132,8 @@ export default function ProfileScreen() {
                 ></View>
 
                 <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
-                    <BottomMenuContent onClose={onModalClose} />
+                    <BottomMenuContent onClose={onModalClose}/>
                 </BottomSheet>
-                <Button title={'LogOut'} onPress={() => dispatch(logoutThunk())}></Button>
             </ScrollView>
         </>
     );

@@ -37,14 +37,14 @@
 //     const handleSend = () => {
 //         const story = {
 //             subject: {
-//                 type: 'figure', subject: figure.fullName, date_birth: figure.birthDate, date_death: figure.deathDate,
+//                 type: 'figure', subject: figure.fullName, birth_date: figure.birthDate, death_date: figure.deathDate,
 //             }, tags: ['_'], body: {
 //                 background: 'כאן צריך להיות רקע על הדמות',
 //                 quote_date: '1968',
 //                 quote_source: textOrigin,
-//                 qoute_location: figure.location,
-//                 qoute_title: 'בית ספר לרוח האדם',
-//                 qoute: text,
+//                 quote_location: figure.location,
+//                 quote_title: 'בית ספר לרוח האדם',
+//                 quote: text,
 //             }, // created_by: "None",
 //             comments: {
 //                 one: 'comment one', two: 'comment two',
