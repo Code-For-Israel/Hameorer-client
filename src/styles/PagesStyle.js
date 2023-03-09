@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
-    mainContainer: {flex: 1, paddingRight: 10, paddingLeft: 5},
+    mainContainer: {flex: 1, paddingRight: 5, paddingLeft: 5},
     container: {flex: 1, justifyContent: 'center', alignItems: 'center'},
     bottomScrollContainer: {marginBottom: 20, width: '100%'},
     image: {flex: 1, resizeMode: 'cover'},
@@ -149,5 +149,9 @@ export const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 24,
+    },
+    buttonTextDisable: {
+        fontSize: 24,
+        color: "grey"
     },
 });

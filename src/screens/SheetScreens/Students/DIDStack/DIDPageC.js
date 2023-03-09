@@ -1,12 +1,4 @@
-import {
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
 import {Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
@@ -93,10 +85,9 @@ const DIDPageC = ({navigation, route}) => {
                 },
                 // created_by: "None",
                 comments: {
-                    one: 'comment one',
-                    two: 'comment two',
+                    one: '',
                 },
-                status: 'review',
+                status: 'pending',
                 media: {
                     image: selectedImage ? selectedImage : 'none',
                     sound: recordingFileName ? recordingFileName : 'none',
@@ -135,7 +126,7 @@ const DIDPageC = ({navigation, route}) => {
                                     setLoading(false);
                                 }}
                             >
-                                <CloseIcon />
+                                <CloseIcon/>
                             </Pressable>
                         </View>
 
@@ -158,6 +149,13 @@ const DIDPageC = ({navigation, route}) => {
             <ScrollView style={styles.container}>
                 {/* headSection - name dates and + button*/}
                 <View style={styles.HeadSection}>
+                    <View style={styles.detailsContainer}>
+                        <Text style={styles.h1}>{figure.subject}</Text>
+                        <Text style={styles.textBody}>{figure.location}</Text>
+
+                        <Text style={styles.textSubTitle}>תאריך לידה: {figure.birth_date}</Text>
+                        <Text style={styles.textSubTitle}>תאריך פטירה: {figure.death_date}</Text>
+                    </View>
                     <View style={styles.ImageContainer}>
                         {/* <Icon name="add" size={30} color={"#fff"} /> */}
                         <ImageViewer
@@ -165,13 +163,6 @@ const DIDPageC = ({navigation, route}) => {
                             selectedImage={selectedImage}
                             width={130}
                         />
-                    </View>
-                    <View style={styles.detailsContainer}>
-                        <Text style={styles.h1}>{figure.subject}</Text>
-                        <Text style={styles.textBody}>{figure.location}</Text>
-
-                        <Text style={styles.textSubTitle}>תאריך לידה: {figure.birth_date}</Text>
-                        <Text style={styles.textSubTitle}>תאריך פטירה: {figure.death_date}</Text>
                     </View>
                 </View>
                 {/* end of head Section */}
@@ -248,7 +239,7 @@ const DIDPageC = ({navigation, route}) => {
                         <TouchableOpacity onPress={pickAudio}>
                             <View style={styles.TextInputContainer}>
                                 <Text style={[styles.input, styles.inputSound]}>
-                                    <UploadIcon />
+                                    <UploadIcon/>
                                     {recordingFileName !== ''
                                         ? recordingFileName
                                         : 'העלה הקלטת ציטוט'}
@@ -256,7 +247,7 @@ const DIDPageC = ({navigation, route}) => {
                             </View>
                         </TouchableOpacity>
                         <Text style={styles.greyText}>
-                            *יש להקליט את הציטוט בקול בקול ברור ולהעלות כקובץ
+                            *יש להקליט את הציטוט בקול ברור ובמקום שקט ולהעלות כקובץ
                         </Text>
                     </Fragment>
                 )}
@@ -265,12 +256,12 @@ const DIDPageC = ({navigation, route}) => {
 
                 <View style={styles.ProgressBarContainer}>
                     {/* note that the progress is reversed */}
-                    <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle} />
+                    <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle}/>
                 </View>
 
                 <View style={styles.footerContainer}>
                     <View style={styles.send}>
-                        <NextButton loading={loading} title={'שליחה'} onPress={handleSend} />
+                        <NextButton loading={loading} title={'שליחה'} onPress={handleSend}/>
                     </View>
                     <Text style={styles.headText}>שלב 2 מתוך 2</Text>
                     <View style={styles.send}>
