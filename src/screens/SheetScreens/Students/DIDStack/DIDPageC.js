@@ -101,6 +101,7 @@ const DIDPageC = ({navigation, route}) => {
                 status: 'pending',
                 media: {
                     image: selectedImage ? selectedImage : 'none',
+                    soundGender: checkedVoiceOrText === 'quote' ? checkedVoiceType : 'none',
                     soundBucket: response ? response.bucket : 'none',
                     soundHttpLink: response ? response.http_link : 'none',
                     soundName: response ? response.name : 'none',
