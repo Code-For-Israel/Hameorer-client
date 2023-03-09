@@ -1,21 +1,37 @@
 import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Checkbox, Provider} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 import {styles} from "../../../styles/PagesStyle";
-import PlayAudioIcon from "../../../components/IconsSvg/PlayAudioIcon";
-import mock_audio from './mock_audio.json'
 import SoundPlayer from "../../../components/SoundPlayer/SoundPlayer";
+
 const width = Dimensions.get('window').width; //full width
 
 const ViewDID = ({route}) => {
 
-    const [checkedQuote, setCheckedQuote] = useState(false);
-    const [checkedVoice, setCheckedVoice] = useState(false);
+    // const [checkedQuote, setCheckedQuote] = useState(false);
+    const [checkedApproved, setCheckedApproved] = useState(false);
     const [guideNote, setGuideNote] = useState('');
-
     const data = route.params?.story;
+
+
+    useEffect(() => {
+        if (data && data.comments && data.comments.one) {
+            console.log(data?.comments?.one)
+            setGuideNote(data.comments.one)
+        }
+
+    }, [data]);
+
+    const HandelSend = () => {
+        data.comments.one = guideNote
+        if (checkedApproved)
+            data.status = "done";
+        else
+            data.status = "review";
+        console.log(data)
+    }
 
     return (route && data && (<Provider>
             <ScrollView style={stylesIn.container}>
@@ -61,15 +77,15 @@ const ViewDID = ({route}) => {
                         style={stylesIn.input}
                         value={data.body.quote_source}
                     />
-                    <Checkbox.Item label="אישור ציטוט" status={checkedQuote ? 'checked' : 'unchecked'} onPress={() => {
-                        setCheckedQuote(!checkedQuote);
-                    }}/>
+                    {/*<Checkbox.Item label="אישור ציטוט" status={checkedQuote ? 'checked' : 'unchecked'} onPress={() => {*/}
+                    {/*    setCheckedQuote(!checkedQuote);*/}
+                    {/*}}/>*/}
                 </View>
                 <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                     <SoundPlayer audioFile={''}></SoundPlayer>
 
-                    <Checkbox.Item label="אישור אודיו - כרגע זמני" status={checkedVoice ? 'checked' : 'unchecked'} onPress={() => {
-                        setCheckedVoice(!checkedVoice);
+                    <Checkbox.Item label="אישור" status={checkedApproved ? 'checked' : 'unchecked'} onPress={() => {
+                        setCheckedApproved(!checkedApproved);
                     }}/>
                 </View>
                 {/*הערות מדריך*/}
@@ -84,10 +100,7 @@ const ViewDID = ({route}) => {
                     />
                 </View>
                 {/* send btn */}
-                <TouchableOpacity
-                    style={stylesIn.cardComponentButton}
-                    onPress={()=>console.log("ok")}
-                >
+                <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelSend}>
                     <Text style={styles.cardComponentTextWhite}>שלח משוב</Text>
                 </TouchableOpacity>
             </ScrollView>
@@ -129,12 +142,11 @@ const stylesIn = StyleSheet.create({
         }, shadowOpacity: 0.17, shadowRadius: 3.05, elevation: 4,
     }, greyText: {
         alignSelf: 'center', color: '#8B8787', marginBottom: 10,
-    },
-    cardComponentButton: {
+    }, cardComponentButton: {
         width: width * 0.4,
         backgroundColor: '#1261A0',
         justifyContent: 'center',
-        alignSelf:'center',
+        alignSelf: 'center',
         alignItems: 'center',
         flexDirection: 'row',
         padding: 6,
@@ -143,8 +155,7 @@ const stylesIn = StyleSheet.create({
         borderColor: '#000',
         shadowColor: '#000',
         shadowOffset: {
-            width: 1,
-            height: 2,
+            width: 1, height: 2,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
