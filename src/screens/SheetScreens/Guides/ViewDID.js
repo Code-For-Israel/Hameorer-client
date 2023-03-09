@@ -27,7 +27,6 @@ const ViewDID = ({route}) => {
             console.log(data?.comments?.one)
             setGuideNote(data.comments.one)
         }
-
     }, [data]);
 
     const HandelSend = () => {
@@ -36,7 +35,7 @@ const ViewDID = ({route}) => {
             data.status = "done";
         else
             data.status = "review";
-        const id=data._id
+        const id = data._id
         delete data._id
         console.log("sending", data)
         dispatch(updateStory({access, story: data, id}));

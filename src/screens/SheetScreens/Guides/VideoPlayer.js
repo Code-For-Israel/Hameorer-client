@@ -19,8 +19,9 @@ const VideoPlayer = (url) => {
             <Video
                 ref={video}
                 style={styles.video}
+                // todo change default video to the real link when i get from Roi
                 source={{
-                    uri: urlParse,
+                    uri: urlParse? urlParse:'http://did-files.s3.us-east-2.amazonaws.com/tlk_ZdFyhIGtQNAbybvx5maRB.mp4\n',
                 }}
                 useNativeControls
                 resizeMode="contain"

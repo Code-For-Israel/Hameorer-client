@@ -29,8 +29,6 @@ const ViewTask = ({route}) => {
 
     const HandelSend = () => {
         navigation.navigate('Profile')
-        // todo send the data to server
-        // todo block if approved in the past
     }
     return (data && data.body && (<Provider>
             <ScrollView style={stylesIn.container}>
@@ -88,7 +86,6 @@ const ViewTask = ({route}) => {
                 </View>
 
                 {data.status === 'done' && <>
-                    {/*todo confirm real link works*/}
                     <VideoPlayer url={data}></VideoPlayer>
                     <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                         <Text style={[stylesIn.input, {fontWeight: 'bold'}]}> מקור ציטוט </Text>
