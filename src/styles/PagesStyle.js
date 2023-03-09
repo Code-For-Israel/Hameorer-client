@@ -152,6 +152,6 @@ export const styles = StyleSheet.create({
     },
     buttonTextDisable: {
         fontSize: 24,
-        color: "grey"
+        color: 'grey',
     },
 });

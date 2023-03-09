@@ -5,13 +5,13 @@ export default function BottomSheet({isVisible, children, onClose}) {
     return (
         <Modal animationType="slide" transparent={true} visible={isVisible}>
             <ScrollView style={styles.modalContent}>
-                    <View style={styles.titleContainer}>
-                        <Text style={styles.title}></Text>
-                        <Pressable onPress={onClose}>
-                            <MaterialIcons name="close" color="#fff" size={22}/>
-                        </Pressable>
-                    </View>
-                    {children}
+                <View style={styles.titleContainer}>
+                    <Text style={styles.title}></Text>
+                    <Pressable onPress={onClose}>
+                        <MaterialIcons name="close" color="#fff" size={22} />
+                    </Pressable>
+                </View>
+                {children}
             </ScrollView>
         </Modal>
     );

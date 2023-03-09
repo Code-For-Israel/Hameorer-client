@@ -1,4 +1,12 @@
-import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
 import {Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
@@ -9,7 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../../redux/userSlice';
 import CloseIcon from '../../../../components/IconsSvg/CloseIcon';
 import UploadIcon from '../../../../components/IconsSvg/UploadIcon';
-import GetSiteUrl from "../../../../utils/GetSiteUrl";
+import GetSiteUrl from '../../../../utils/GetSiteUrl';
 
 const PlaceholderImage = require('../../../../../assets/fallbackImage.png');
 const containerStyle = {
@@ -63,7 +71,7 @@ const DIDPageC = ({navigation, route}) => {
 
     const handleSend = async () => {
         setLoading(true);
-        let response
+        let response;
         if (checkedVoiceOrText === 'voice' && recordingData && recordingData.type) {
             let recording = new FormData();
             recording.append('type', recordingData.type);
@@ -75,10 +83,14 @@ const DIDPageC = ({navigation, route}) => {
                     Authorization: `Bearer ${access}`,
                 },
                 body: recording,
-            }).then((response) => (response.json()))
-            console.log(response)
+            }).then((response) => response.json());
+            console.log(response);
         }
-        if (figure && textOrigin && (checkedVoiceOrText === 'voice' ||(checkedVoiceOrText === 'quote' && textQuote))) {
+        if (
+            figure &&
+            textOrigin &&
+            (checkedVoiceOrText === 'voice' || (checkedVoiceOrText === 'quote' && textQuote))
+        ) {
             const story = {
                 subject: {
                     type: 'figure',
@@ -111,7 +123,7 @@ const DIDPageC = ({navigation, route}) => {
                 },
             };
             dispatch(setStory({access, story}));
-            console.log("dispatched")
+            console.log('dispatched');
         } else {
             console.log('please fill all fields');
         }
@@ -143,7 +155,7 @@ const DIDPageC = ({navigation, route}) => {
                                     setLoading(false);
                                 }}
                             >
-                                <CloseIcon/>
+                                <CloseIcon />
                             </Pressable>
                         </View>
 
@@ -256,7 +268,7 @@ const DIDPageC = ({navigation, route}) => {
                         <TouchableOpacity onPress={pickAudio}>
                             <View style={styles.TextInputContainer}>
                                 <Text style={[styles.input, styles.inputSound]}>
-                                    <UploadIcon/>
+                                    <UploadIcon />
                                     {recordingFileName !== ''
                                         ? recordingFileName
                                         : 'העלה הקלטת ציטוט'}
@@ -273,12 +285,12 @@ const DIDPageC = ({navigation, route}) => {
 
                 <View style={styles.ProgressBarContainer}>
                     {/* note that the progress is reversed */}
-                    <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle}/>
+                    <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle} />
                 </View>
 
                 <View style={styles.footerContainer}>
                     <View style={styles.send}>
-                        <NextButton loading={loading} title={'שליחה'} onPress={handleSend}/>
+                        <NextButton loading={loading} title={'שליחה'} onPress={handleSend} />
                     </View>
                     <Text style={styles.headText}>שלב 2 מתוך 2</Text>
                     <View style={styles.send}>

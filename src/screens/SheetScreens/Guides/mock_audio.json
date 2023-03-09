@@ -1,8 +1,8 @@
 {
-  "_id": "64037dfea9e5bd07de178a22",
-  "name": "test.mp3",
-  "type": "audio/mp3",
-  "bucket": "hameorer-audio",
-  "s3_link": "s3://hameorer-audio/test.mp3",
-  "http_link": "http://hameorer-audio.s3.us-east-2.amazonaws.com/test.mp3"
+    "_id": "64037dfea9e5bd07de178a22",
+    "name": "test.mp3",
+    "type": "audio/mp3",
+    "bucket": "hameorer-audio",
+    "s3_link": "s3://hameorer-audio/test.mp3",
+    "http_link": "http://hameorer-audio.s3.us-east-2.amazonaws.com/test.mp3"
 }

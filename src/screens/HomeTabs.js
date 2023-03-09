@@ -15,7 +15,7 @@ import TimelineIcon from '../components/IconsSvg/TimelineIcon';
 import TopicsIcon from '../components/IconsSvg/TopicsIcon';
 import MapIcon from '../components/IconsSvg/MapIcon';
 import PageNotReady from './BottomNavBarScreens/PageNotReady';
-import ViewTask from "./SheetScreens/Students/ViewTask";
+import ViewTask from './SheetScreens/Students/ViewTask';
 
 const Tab = createBottomTabNavigator();
 

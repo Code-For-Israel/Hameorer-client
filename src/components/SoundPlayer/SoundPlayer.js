@@ -1,12 +1,12 @@
 import {Audio} from 'expo-av';
-import {useEffect, useState} from "react";
-import {TouchableOpacity} from "react-native";
-import PlayAudioIcon from "../IconsSvg/PlayAudioIcon";
-import mock_audio from "../../screens/SheetScreens/Guides/mock_audio.json";
+import {useEffect, useState} from 'react';
+import {TouchableOpacity} from 'react-native';
+import PlayAudioIcon from '../IconsSvg/PlayAudioIcon';
+import mock_audio from '../../screens/SheetScreens/Guides/mock_audio.json';
 
 export default function SoundPlayer({audioFile}) {
     const [sound, setSound] = useState();
-    console.log(audioFile)
+    console.log(audioFile);
 
     async function playSound() {
         console.log('Loading Sound');
@@ -20,18 +20,15 @@ export default function SoundPlayer({audioFile}) {
     useEffect(() => {
         return sound
             ? () => {
-                console.log('Unloading Sound');
-                sound.unloadAsync();
-            }
+                  console.log('Unloading Sound');
+                  sound.unloadAsync();
+              }
             : undefined;
     }, [sound]);
 
-
     return (
         <>
-            <TouchableOpacity
-                value={mock_audio.http_link}
-                onPress={playSound}>
+            <TouchableOpacity value={mock_audio.http_link} onPress={playSound}>
                 <PlayAudioIcon></PlayAudioIcon>
             </TouchableOpacity>
         </>

@@ -65,7 +65,7 @@ export const setStory = createAsyncThunk('setStoryThunk', async ({access, story}
         body: JSON.stringify(story),
     });
     const json = await response.json();
-    return json
+    return json;
 });
 
 export const updateStory = createAsyncThunk('updateStoryThunk', async ({access, story, id}) => {
@@ -79,7 +79,7 @@ export const updateStory = createAsyncThunk('updateStoryThunk', async ({access, 
         body: JSON.stringify(story),
     });
     const json = await response.json();
-    return json
+    return json;
 });
 
 export const dataSlice = createSlice({
