@@ -106,6 +106,7 @@ const ViewTask = ({route}) => {
                                     value={data.body.quote_source}
                                 />
                             </View>
+
                         </>
                     )}
                     {/* send btn */}

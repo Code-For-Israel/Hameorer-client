@@ -12,6 +12,7 @@ import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {useIsFocused} from "@react-navigation/native";
 
+
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [userInfo, setUserInfo] = useState([]);
@@ -34,6 +35,8 @@ export default function ProfileScreen() {
     const onModalClose = () => {
         setIsModalVisible(false);
     };
+
+
 
     const handleRefresh = () => {
         setUrl(null);
