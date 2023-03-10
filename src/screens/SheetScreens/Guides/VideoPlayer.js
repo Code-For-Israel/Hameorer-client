@@ -2,6 +2,7 @@ import * as React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Video} from 'expo-av';
 import PrevButton from '../../../components/PrevButton';
+import DownloadFile from "../../../components/DownloadFile/DownloadFile";
 
 const VideoPlayer = (url) => {
     const urlParse = url?.did?.http_link;
@@ -35,6 +36,7 @@ const VideoPlayer = (url) => {
                     isLooping
                     onPlaybackStatusUpdate={(status) => setStatus(() => status)}
                 />
+                <DownloadFile url={'http://did-files.s3.us-east-2.amazonaws.com/tlk_ZdFyhIGtQNAbybvx5maRB.mp4'}></DownloadFile>
             </View>
         )
     );
