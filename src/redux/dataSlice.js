@@ -12,7 +12,6 @@ const initialState = {
 };
 
 export const getStories = createAsyncThunk('getStoriesThunk', async (token) => {
-    console.log('using the token:', token);
     const response = await fetch(`${baseUrl}v1/stories/`, {
         method: 'GET',
         headers: {
@@ -25,7 +24,6 @@ export const getStories = createAsyncThunk('getStoriesThunk', async (token) => {
 });
 
 export const getSubjects = createAsyncThunk('getSubjectsThunk', async (token) => {
-    console.log('using the token:', token);
     const response = await fetch(`${baseUrl}v1/stories/subject/`, {
         method: 'GET',
         headers: {
@@ -52,8 +50,6 @@ export const setRecording = createAsyncThunk(
 );
 
 export const setStory = createAsyncThunk('setStoryThunk', async ({access, story}) => {
-    console.log('Create new story with token:', access);
-    console.log('Create new story with data:', story);
 
     const response = await fetch(`${baseUrl}v1/stories/`, {
         method: 'POST',
@@ -96,7 +92,6 @@ export const dataSlice = createSlice({
     extraReducers: (builder) => {
         //get stories
         builder.addCase(getStories.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.serverData = action.payload;
             state.loading = false;
             state.error = null;
@@ -112,7 +107,6 @@ export const dataSlice = createSlice({
         });
         //get Subjects
         builder.addCase(getSubjects.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.subjects = action.payload;
             state.loading = false;
             state.error = null;
@@ -129,7 +123,6 @@ export const dataSlice = createSlice({
 
         //POST story
         builder.addCase(setStory.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.visible = true;
             state.loading = false;
             state.error = null;
@@ -145,7 +138,6 @@ export const dataSlice = createSlice({
         });
 
         builder.addCase(updateStory.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.visible = true;
             state.loading = false;
             state.error = null;
@@ -162,7 +154,6 @@ export const dataSlice = createSlice({
 
         //POST recording
         builder.addCase(setRecording.fulfilled, (state, action) => {
-            console.log(action.payload);
             state.visible = true;
             state.loading = false;
             state.error = null;

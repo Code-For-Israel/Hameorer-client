@@ -3,7 +3,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const setDataLocal = async (key, value) => {
     try {
         await AsyncStorage.setItem(key, value);
-        console.log('Successfully saved to local storage');
         return true;
     } catch (e) {
         console.log(e);
@@ -14,7 +13,6 @@ export const setDataLocal = async (key, value) => {
 export const removeDataLocal = async (key) => {
     try {
         await AsyncStorage.removeItem(key);
-        console.log('Successfully removed from local storage');
         return true;
     } catch (e) {
         console.log(e);

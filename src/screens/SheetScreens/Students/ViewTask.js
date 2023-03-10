@@ -26,7 +26,6 @@ const ViewTask = ({route}) => {
     const id = route.params;
     const baseUrl = GetSiteUrl();
     const {data} = UseFetchGet(storyUrl);
-    console.log(data);
 
     useEffect(() => {
         if (id && baseUrl) {

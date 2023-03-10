@@ -46,9 +46,7 @@ const ViewDID = ({route}) => {
         else data.status = 'review';
         const id = data._id;
         delete data._id;
-        console.log('sending', data);
         dispatch(updateStory({access, story: data, id}));
-        console.log('navigate');
         navigation.navigate('MyGroup');
         // todo block if approved in the past
     };

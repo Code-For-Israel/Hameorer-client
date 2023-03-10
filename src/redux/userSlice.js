@@ -47,7 +47,6 @@ export const refreshAccess = createAsyncThunk('refresh', async (refresh) => {
     } else {
         const data = await response.json();
         await setDataLocal('accessToken', data.access);
-        console.log(data.access);
         return data;
     }
 });
@@ -103,7 +102,6 @@ export const LoginSlice = createSlice({
         });
         //refresh
         builder.addCase(refreshAccess.fulfilled, (state, action) => {
-            //console.log(action.payload);
             state.access = action.payload.access;
             state.loading = false;
             state.error = null;
