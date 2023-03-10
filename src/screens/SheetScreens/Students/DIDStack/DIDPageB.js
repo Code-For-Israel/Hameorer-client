@@ -114,7 +114,6 @@ const DIDPageB = ({navigation}) => {
                         width: '100%',
                         flexDirection: 'row',
                         justifyContent: 'space-between',
-                        alignItems: 'center',
                     }}
                 >
                     <View style={{width: 100}}>
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingBottom: 5,
+        paddingBottom: 10,
     },
     headText: {
         fontSize: 16,

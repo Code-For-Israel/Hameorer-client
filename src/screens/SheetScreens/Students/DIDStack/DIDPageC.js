@@ -1,12 +1,4 @@
-import {
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
 import {Banner, Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
@@ -81,7 +73,7 @@ const DIDPageC = ({navigation, route}) => {
 
     const handleSend = async () => {
         setLoading(true);
-        setTimeout(() => setLoading(false), 3000);
+        setTimeout(() => setLoading(false), 10000);
         let response;
         if (checkedVoiceOrText === 'voice' && recordingData && recordingData.type) {
             let recording = new FormData();
@@ -146,7 +138,10 @@ const DIDPageC = ({navigation, route}) => {
                     actions={[
                         {
                             label: 'אישור',
-                            onPress: () => setVisibleB(false),
+                            onPress: () => {
+                                setVisibleB(false)
+                                setLoading(false)
+                            },
                         },
                     ]}
                 >
@@ -175,7 +170,7 @@ const DIDPageC = ({navigation, route}) => {
                                     setLoading(false);
                                 }}
                             >
-                                <CloseIcon />
+                                <CloseIcon/>
                             </Pressable>
                         </View>
 
@@ -288,7 +283,7 @@ const DIDPageC = ({navigation, route}) => {
                         <TouchableOpacity onPress={pickAudio}>
                             <View style={styles.TextInputContainer}>
                                 <Text style={[styles.input, styles.inputSound]}>
-                                    <UploadIcon />
+                                    <UploadIcon/>
                                     {recordingFileName !== ''
                                         ? recordingFileName
                                         : 'העלה הקלטת ציטוט'}
@@ -303,27 +298,28 @@ const DIDPageC = ({navigation, route}) => {
                 {/* end sound */}
                 {/* send btn */}
 
-                <View style={styles.ProgressBarContainer}>
-                    {/* note that the progress is reversed */}
-                    <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle} />
-                </View>
-
-                <View style={styles.footerContainer}>
-                    <View style={styles.send}>
-                        <NextButton loading={loading} title={'שליחה'} onPress={handleSend} />
-                    </View>
-                    <Text style={styles.headText}>שלב 2 מתוך 2</Text>
-                    <View style={styles.send}>
-                        <NextButton
-                            loading={loading}
-                            title="הקודם"
-                            onPress={() => {
-                                navigation.navigate('DIDPageB', figure.tags);
-                            }}
-                        />
-                    </View>
-                </View>
             </ScrollView>
+
+            <View style={styles.ProgressBarContainer}>
+                {/* note that the progress is reversed */}
+                <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle}/>
+            </View>
+
+            <View style={styles.footerContainer}>
+                <View style={styles.send}>
+                    <NextButton loading={loading} title={'שליחה'} onPress={handleSend}/>
+                </View>
+                <Text style={styles.headText}>שלב 2 מתוך 2</Text>
+                <View style={styles.send}>
+                    <NextButton
+                        loading={loading}
+                        title="הקודם"
+                        onPress={() => {
+                            navigation.navigate('DIDPageB', figure.tags);
+                        }}
+                    />
+                </View>
+            </View>
         </Provider>
         // end of sound
     );
@@ -340,7 +336,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingBottom: 5,
+        paddingBottom: 10,
     },
     checkboxContainer: {
         marginTop: 10,
