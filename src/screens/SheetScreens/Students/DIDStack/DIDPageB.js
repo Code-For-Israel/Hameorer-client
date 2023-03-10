@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingBottom:5
+        paddingBottom: 5,
     },
     headText: {
         fontSize: 16,

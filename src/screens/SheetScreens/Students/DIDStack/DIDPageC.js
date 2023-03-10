@@ -1,4 +1,12 @@
-import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
 import {Banner, Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
@@ -37,7 +45,6 @@ const ALLOWED_TYPES = [
     'audio/amr',
     'audio/flac',
     'audio/vnd.wave',
-
 ];
 
 const DIDPageC = ({navigation, route}) => {
@@ -74,7 +81,7 @@ const DIDPageC = ({navigation, route}) => {
 
     const handleSend = async () => {
         setLoading(true);
-        setTimeout(() => setLoading(false),3000)
+        setTimeout(() => setLoading(false), 3000);
         let response;
         if (checkedVoiceOrText === 'voice' && recordingData && recordingData.type) {
             let recording = new FormData();
@@ -127,7 +134,7 @@ const DIDPageC = ({navigation, route}) => {
             };
             dispatch(setStory({access, story}));
         } else {
-            setVisibleB(true)
+            setVisibleB(true);
         }
     };
 
@@ -141,9 +148,9 @@ const DIDPageC = ({navigation, route}) => {
                             label: 'אישור',
                             onPress: () => setVisibleB(false),
                         },
-                    ]}>
-                    <Text style={{textAlign: "center"}}>                    נא למלא את כל השדות</Text>
-
+                    ]}
+                >
+                    <Text style={{textAlign: 'center'}}> נא למלא את כל השדות</Text>
                 </Banner>
                 <Modal
                     visible={visible}
@@ -333,7 +340,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingBottom:5
+        paddingBottom: 5,
     },
     checkboxContainer: {
         marginTop: 10,

@@ -50,7 +50,6 @@ export const setRecording = createAsyncThunk(
 );
 
 export const setStory = createAsyncThunk('setStoryThunk', async ({access, story}) => {
-
     const response = await fetch(`${baseUrl}v1/stories/`, {
         method: 'POST',
         headers: {
