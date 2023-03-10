@@ -1,32 +1,51 @@
-import {Text, TouchableOpacity, View} from "react-native";
-import React from "react";
+import {Text, TouchableOpacity, View} from 'react-native';
+import React from 'react';
 
-import {useNavigation} from "@react-navigation/native";
-import {styles} from "../styles/PagesStyle";
+import {useNavigation} from '@react-navigation/native';
+import {styles} from '../styles/PagesStyle';
 
-const sheetLinks = [{
-    id: "1", title: "הדרכה עצמית", screen: "SelfGuide",
-}, {
-    id: "2", title: "הכנת טקס", screen: "Ceremony",
-}, {
-    id: "3", title: "זכרון משפחתי", screen: "FamilyMem",
-}, // {
-    //     id: "4",
-    //     title: "יומן אישי",
-    //     screen: "PersonalDiary",
-    // },
+const sheetLinks = [
     {
-        id: "5", title: "דמות", screen: "DID",
+        id: '1',
+        title: 'הדרכה עצמית',
+        screen: 'SelfGuide',
+        disable: true,
     },
-
+    {
+        id: '2',
+        title: 'הכנת טקס',
+        screen: 'Ceremony',
+        disable: true,
+    },
+    {
+        id: '3',
+        title: 'זכרון משפחתי',
+        screen: 'FamilyMem',
+        disable: true,
+    },
+    {
+        id: '4',
+        title: 'יומן אישי',
+        screen: 'PersonalDiary',
+        disable: true,
+    },
+    {
+        id: '5',
+        title: 'דמות מונפשת',
+        screen: 'DID',
+        disable: false,
+    },
 ];
 
 export default function BottomMenuContent({onClose}) {
     const navigation = useNavigation();
 
-    return (<View style={styles.mainContainer}>
+    return (
+        <View style={styles.mainContainer}>
             {sheetLinks.map((item) => {
-                return (<TouchableOpacity
+                return (
+                    <TouchableOpacity
+                        disabled={item.disable}
                         key={item.id}
                         onPress={() => {
                             //this is if the screens are inside the another stack like More in the plusScreen.js
@@ -34,10 +53,16 @@ export default function BottomMenuContent({onClose}) {
                             navigation.navigate(item.screen);
                             onClose();
                         }}
-                    ><View style={styles.bottomMenuButton}>
-                        <Text style={styles.buttonText}>{item.title}</Text>
-                    </View>
-                    </TouchableOpacity>);
+                    >
+                        <View style={styles.bottomMenuButton}>
+                            {!item.disable && <Text style={styles.buttonText}>{item.title}</Text>}
+                            {item.disable && (
+                                <Text style={styles.buttonTextDisable}>{item.title}</Text>
+                            )}
+                        </View>
+                    </TouchableOpacity>
+                );
             })}
-        </View>);
+        </View>
+    );
 }

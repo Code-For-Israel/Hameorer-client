@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
 
 import NextButton from '../../../../components/NextButton';
@@ -20,12 +20,11 @@ const DIDPageD = ({navigation, route}) => {
         });
         if (!result.canceled) {
             setSelectedImage(result.assets[0].uri);
-
         } else {
             alert('You did not select any image.');
         }
     };
-    const tags = route.params;
+    // const tags = route.params;
     // const handleFigurePress = (props) => {
     //   navigation.navigate("DIDPageC",{...props, tags});
     // }
@@ -48,7 +47,7 @@ const DIDPageD = ({navigation, route}) => {
         <ScrollView style={styles.container}>
             <View style={styles.headContainer}>
                 <View style={{width: 100}}>
-                    <NextButton title="הבא" onPress={createFigure}/>
+                    <NextButton title="הבא" onPress={createFigure} />
                 </View>
                 <Text style={styles.headText}>שלב 1 מתוך 2</Text>
                 <View style={{width: 100}}>
@@ -62,11 +61,7 @@ const DIDPageD = ({navigation, route}) => {
             </View>
             <View style={styles.ProgressBarContainer}>
                 {/* note that the progress is reversed */}
-                <ProgressBar
-                    progress={0.5}
-                    color={'#D9D9D9'}
-                    style={styles.ProgressBarStyle}
-                />
+                <ProgressBar progress={0.5} color={'#D9D9D9'} style={styles.ProgressBarStyle} />
             </View>
 
             <View style={styles.textInputWide}>
@@ -85,11 +80,12 @@ const DIDPageD = ({navigation, route}) => {
                             <ImageViewer
                                 placeholderImageSource={PlaceholderImage}
                                 selectedImage={selectedImage}
+                                width={130}
                             />
                         </View>
                     ) : (
                         <View style={styles.plusContainer}>
-                            <Icon name="add" size={30} color={'#fff'}/>
+                            <Icon name="add" size={30} color={'#fff'} />
                         </View>
                     )}
                 </TouchableOpacity>
@@ -121,7 +117,7 @@ const DIDPageD = ({navigation, route}) => {
             </View>
             {/* end of input sections */}
             <View style={styles.btnView}>
-                <NextButton title={'צור דמות'} onPress={createFigure}/>
+                <NextButton title={'צור דמות'} onPress={createFigure} />
             </View>
         </ScrollView>
     );
@@ -190,8 +186,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
-        // shadow
+        alignItems: 'center', // shadow
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -211,4 +206,3 @@ const styles = StyleSheet.create({
         padding: 1,
     },
 });
-  

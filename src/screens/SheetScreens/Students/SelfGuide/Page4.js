@@ -1,11 +1,11 @@
-import {SafeAreaView, Text, TextInput, View,} from "react-native";
-import React, {useState} from "react";
-import PrevButton from "../../../../components/PrevButton";
-import NextButton from "../../../../components/NextButton";
-import {styles} from '../../../../styles/PagesStyle'
+import {SafeAreaView, Text, TextInput, View} from 'react-native';
+import React, {useState} from 'react';
+import PrevButton from '../../../../components/PrevButton';
+import NextButton from '../../../../components/NextButton';
+import {styles} from '../../../../styles/PagesStyle';
 
 const Page4 = ({navigation}) => {
-    const [text, setText] = useState("");
+    const [text, setText] = useState('');
 
     return (
         <SafeAreaView style={{flex: 1}}>
@@ -31,8 +31,8 @@ const Page4 = ({navigation}) => {
                         <NextButton
                             title="הבא"
                             onPress={() => {
-                                console.log("the text is:", text);
-                                navigation.navigate("Page5");
+                                console.log('the text is:', text);
+                                navigation.navigate('Page5');
                             }}
                         />
                     </View>
@@ -45,7 +45,7 @@ const Page4 = ({navigation}) => {
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
-                                navigation.navigate("Page3");
+                                navigation.navigate('Page3');
                             }}
                         />
                     </View>

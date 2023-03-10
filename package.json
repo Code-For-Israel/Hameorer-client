@@ -6,7 +6,9 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "check format": "prettier --check ./src",
+    "fix format": "npx prettier --write ./src"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -22,6 +24,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
     "expo": "~47.0.8",
+    "expo-av": "~13.0.3",
     "expo-document-picker": "~11.0.1",
     "expo-image-picker": "~14.0.2",
     "expo-status-bar": "~1.4.2",
@@ -45,7 +48,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@babel/plugin-proposal-export-namespace-from": "^7.18.9"
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "prettier": "^2.8.4"
   },
   "private": true
 }

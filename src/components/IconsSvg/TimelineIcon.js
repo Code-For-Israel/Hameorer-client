@@ -1,5 +1,5 @@
-import React from "react";
-import {Path, Svg} from "react-native-svg";
+import React from 'react';
+import {Path, Svg} from 'react-native-svg';
 
 const TimelineIcon = ({color, size}) => {
     return (

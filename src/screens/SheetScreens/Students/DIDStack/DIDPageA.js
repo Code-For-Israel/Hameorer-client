@@ -1,51 +1,51 @@
-import {ImageBackground, StyleSheet, Text, TouchableOpacity, View,} from "react-native";
-import React, {useState} from "react";
-import NextButton from "../../../../components/NextButton";
-import {ProgressBar} from "react-native-paper";
-import Icon from "react-native-vector-icons/MaterialIcons";
-import {styles} from "../../../../styles/PagesStyle";
+import {ImageBackground, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import React, {useState} from 'react';
+import NextButton from '../../../../components/NextButton';
+import {ProgressBar} from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import {styles} from '../../../../styles/PagesStyle';
 
-const image = require("../../../../../assets/bgdid.png");
+const image = require('../../../../../assets/bgdid.png');
 const tagsConst = [
     {
-        value: "#מרדות",
+        value: '#מרדות',
         isClicked: false,
     },
     {
-        value: "#חינוך",
+        value: '#חינוך',
         isClicked: false,
     },
     {
-        value: "#נשים",
+        value: '#נשים',
         isClicked: false,
     },
     {
-        value: "#פרטיזנים",
+        value: '#פרטיזנים',
         isClicked: false,
     },
     {
-        value: "#תיוג-נוסף",
+        value: '#תיוג-נוסף',
         isClicked: false,
     },
     {
-        value: "#2תיוג-נוסף",
+        value: '#2תיוג-נוסף',
         isClicked: false,
     },
     {
-        value: "#3תיוג-נוסף",
+        value: '#3תיוג-נוסף',
         isClicked: false,
     },
 
     {
-        value: "#4תיוג-נוסף",
+        value: '#4תיוג-נוסף',
         isClicked: false,
     },
     {
-        value: "#5תיוג-נוסף",
+        value: '#5תיוג-נוסף',
         isClicked: false,
     },
     {
-        value: "#6תיוג-נוסף",
+        value: '#6תיוג-נוסף',
         isClicked: false,
     },
 ];
@@ -67,7 +67,7 @@ const DIDPageA = ({navigation}) => {
                         <NextButton
                             title="הבא"
                             onPress={() => {
-                                navigation.navigate("DIDPageB", tags);
+                                navigation.navigate('DIDPageB', tags);
                             }}
                         />
                     </View>
@@ -80,18 +80,18 @@ const DIDPageA = ({navigation}) => {
                     {/* note that the progress is reversed */}
                     <ProgressBar
                         progress={0.66}
-                        color={"#D9D9D9"}
+                        color={'#D9D9D9'}
                         style={stylesIn.ProgressBarStyle}
                     />
                 </View>
                 {/* first, search figure */}
                 <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate("DIDPageB", tags);
+                        navigation.navigate('DIDPageB', tags);
                     }}
                 >
                     <View style={stylesIn.SearchbarStyleContainer}>
-                        <Icon name="search" size={28} color={"#000"}/>
+                        <Icon name="search" size={28} color={'#000'} />
                         <Text style={stylesIn.SearchStyle}>חפש דמות</Text>
                     </View>
                 </TouchableOpacity>
@@ -99,11 +99,11 @@ const DIDPageA = ({navigation}) => {
                 {/* second newFigure */}
                 <TouchableOpacity
                     onPress={() => {
-                        navigation.navigate("DIDPageD", tags);
+                        navigation.navigate('DIDPageD', tags);
                     }}
                 >
                     <View style={stylesIn.SearchbarStyleContainer}>
-                        <Icon name="add" size={28} color={"#000"}/>
+                        <Icon name="add" size={28} color={'#000'} />
                         <Text style={stylesIn.SearchStyle}>צור דמות חדשה</Text>
                     </View>
                 </TouchableOpacity>
@@ -117,13 +117,13 @@ const DIDPageA = ({navigation}) => {
                             <View
                                 style={[
                                     stylesIn.tagBox,
-                                    {backgroundColor: tag.isClicked ? "#FCBF49" : "#b4b6b9"},
+                                    {backgroundColor: tag.isClicked ? '#FCBF49' : '#b4b6b9'},
                                 ]}
                             >
                                 <Text
                                     style={[
                                         stylesIn.tagText,
-                                        {color: tag.isClicked ? "#fff" : "#000"},
+                                        {color: tag.isClicked ? '#fff' : '#000'},
                                     ]}
                                 >
                                     {tag.value}
@@ -142,12 +142,11 @@ const DIDPageA = ({navigation}) => {
 export default DIDPageA;
 
 const stylesIn = StyleSheet.create({
-
     headContainer: {
         // backgroundColor: "#d0b581",
         marginTop: 10,
-        flexDirection: "row",
-        justifyContent: "space-between",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         paddingHorizontal: 20,
     },
     headText: {
@@ -158,49 +157,49 @@ const stylesIn = StyleSheet.create({
     },
     ProgressBarContainer: {
         marginTop: 5,
-        width: "90%",
-        display: "flex",
-        marginLeft: "5%",
+        width: '90%',
+        display: 'flex',
+        marginLeft: '5%',
     },
     ProgressBarStyle: {
         height: 8,
-        backgroundColor: "#ADBCF2",
+        backgroundColor: '#ADBCF2',
     },
     SearchbarStyleContainer: {
         marginHorizontal: 8,
         marginTop: 20,
-        backgroundColor: "#c2c2c2",
+        backgroundColor: '#c2c2c2',
         borderRadius: 5,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         opacity: 0.5,
         padding: 10,
         paddingHorizontal: 15,
     },
     SearchStyle: {
         fontSize: 18,
-        color: "#000",
+        color: '#000',
     },
     tagsContainer: {
-        flexDirection: "row-reverse",
-        flexWrap: "wrap",
+        flexDirection: 'row-reverse',
+        flexWrap: 'wrap',
         padding: 20,
         marginTop: 40,
     },
     tagBox: {
-        backgroundColor: "#b4b6b9",
+        backgroundColor: '#b4b6b9',
         paddingVertical: 10,
         paddingHorizontal: 8,
         opacity: 0.9,
         marginLeft: 10,
         marginBottom: 10,
         borderRadius: 10,
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     tagText: {
         fontSize: 18,
-        color: "#000",
+        color: '#000',
     },
 });

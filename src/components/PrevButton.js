@@ -15,11 +15,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: 'center',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     buttonTitle: {
         color: '#1261A0',
-        fontWeight: "bold",
+        fontWeight: 'bold',
     },
 });
 

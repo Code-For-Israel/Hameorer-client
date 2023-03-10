@@ -1,25 +1,25 @@
-import {Modal, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Modal, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export default function BottomSheet({isVisible, children, onClose}) {
     return (
         <Modal animationType="slide" transparent={true} visible={isVisible}>
-            <View style={styles.modalContent}>
+            <ScrollView style={styles.modalContent}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title}></Text>
                     <Pressable onPress={onClose}>
-                        <MaterialIcons name="close" color="#fff" size={22}/>
+                        <MaterialIcons name="close" color="#fff" size={22} />
                     </Pressable>
                 </View>
                 {children}
-            </View>
+            </ScrollView>
         </Modal>
     );
 }
 
 const styles = StyleSheet.create({
     modalContent: {
-        height: '45%',
+        height: '36%',
         width: '100%',
         // backgroundColor: '#25292e',
         backgroundColor: '#fff',
