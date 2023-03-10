@@ -116,17 +116,17 @@ const DIDPageB = ({navigation}) => {
                         justifyContent: 'space-between',
                     }}
                 >
-                    <View style={{width: 100}}>
-                        <NextButton
-                            title="הבא"
-                            onPress={() => {
-                                handleFigurePress({
-                                    head: 'בחר דמות',
-                                    body: '',
-                                });
-                            }}
-                        />
-                    </View>
+                    {/*<View style={{width: 100}}>*/}
+                    {/*    <NextButton*/}
+                    {/*        title="הבא"*/}
+                    {/*        onPress={() => {*/}
+                    {/*            handleFigurePress({*/}
+                    {/*                head: 'בחר דמות',*/}
+                    {/*                body: '',*/}
+                    {/*            });*/}
+                    {/*        }}*/}
+                    {/*    />*/}
+                    {/*</View>*/}
                     <Text style={styles.headText}>שלב 1 מתוך 2</Text>
                     <View style={{width: 100}}>
                         <NextButton title="הקודם" onPress={() => navigation.goBack()} />

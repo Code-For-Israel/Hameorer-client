@@ -4,7 +4,7 @@ import {Card, Text} from 'react-native-paper';
 import {styles} from '../styles/PagesStyle';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
-const profileCard = ({title, status, onPress}) => {
+const profileCard = ({title, status, subject, onPress}) => {
     return (
         <>
             <View>
@@ -23,6 +23,9 @@ const profileCard = ({title, status, onPress}) => {
 
                         <View style={styles.cardComponentInsideTextArea}>
                             <View style={styles.cardComponentTextContainer}>
+                                <View style={styles.cardComponentSentIcon}>
+                                    <Text style={styles.cardComponentTextSize}>{subject}</Text>
+                                </View>
                                 <View style={styles.cardComponentSentIcon}>
                                     <Text style={styles.cardComponentTextSize}>{status}</Text>
                                     <MaterialIcons name="send" color="black" size={25} />

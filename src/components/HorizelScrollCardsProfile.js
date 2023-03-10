@@ -13,6 +13,8 @@ const HorizonteScrollCardsProfile = ({list}) => {
                         {list.map((card, key) => {
                             const subject_type =
                                 card?.subject_type === 'figure' ? 'דמות מונפשת' : 'לא ידוע';
+                            const subject_name =
+                                card?.subject_name ?? ''
                             const story_status =
                                 card?.story_status === 'pending'
                                     ? 'ממתין'
@@ -26,6 +28,7 @@ const HorizonteScrollCardsProfile = ({list}) => {
                                     key={key}
                                     title={subject_type}
                                     status={story_status}
+                                    subject={subject_name}
                                     onPress={() => {
                                         navigation.navigate('ViewTask', card?._id);
                                     }}
