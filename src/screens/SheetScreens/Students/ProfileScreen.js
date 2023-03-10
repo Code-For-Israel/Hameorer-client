@@ -12,6 +12,7 @@ import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {logoutThunk} from '../../../redux/userSlice';
 import {useDispatch} from 'react-redux';
+import {useIsFocused} from "@react-navigation/native";
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -20,12 +21,14 @@ export default function ProfileScreen() {
     const [url, setUrl] = useState(GetSiteUrl() + 'v1/authentication/userinfo');
     const {data} = UseFetchGet(url);
     const dispatch = useDispatch();
+    const isFocused = useIsFocused();
+
     useEffect(() => {
-        if (data) {
+        if (data&&isFocused) {
             setUserInfo(data);
             setUserDelegation(data.delegation);
         }
-    }, [data]);
+    }, [data,isFocused]);
 
     const PlaceholderImage = require('../../../../assets/fall.jpeg');
     const handlePress = () => {

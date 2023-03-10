@@ -9,6 +9,7 @@ import GetSiteUrl from '../../../utils/GetSiteUrl';
 import ReturnIcon from '../../../components/IconsSvg/ReturnIcon';
 import ApproveIcon from '../../../components/IconsSvg/ApproveIcon';
 import ThreeDotCircleIcon from '../../../components/IconsSvg/ThreeDotCircleIcon';
+import { useIsFocused } from '@react-navigation/native';
 
 const MyGroup = () => {
     const baseUrl = GetSiteUrl();
@@ -16,9 +17,10 @@ const MyGroup = () => {
     const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(true);
     const [groupInfo, setGroupInfo] = useState([]);
+    const isFocused = useIsFocused();
 
     useEffect(() => {
-        if (access) {
+        if (access && isFocused) {
             fetch(`${baseUrl}v1/authentication/groupinfo`, {
                 method: 'GET',
                 headers: {
@@ -32,7 +34,7 @@ const MyGroup = () => {
                 .catch((error) => console.error(error))
                 .finally(() => setLoading(false));
         }
-    }, [access, baseUrl]);
+    }, [access, baseUrl, isFocused]);
 
     let pending = [];
     let review = [];
