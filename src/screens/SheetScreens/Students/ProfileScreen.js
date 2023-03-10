@@ -10,8 +10,6 @@ import PrevButton from '../../../components/NextButton';
 import HorizelScrollCardsProfile from '../../../components/HorizelScrollCardsProfile';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
-import {logoutThunk} from '../../../redux/userSlice';
-import {useDispatch} from 'react-redux';
 import {useIsFocused} from "@react-navigation/native";
 
 export default function ProfileScreen() {
@@ -20,7 +18,6 @@ export default function ProfileScreen() {
     const [userDelegation, setUserDelegation] = useState([]);
     const [url, setUrl] = useState(GetSiteUrl() + 'v1/authentication/userinfo');
     const {data} = UseFetchGet(url);
-    const dispatch = useDispatch();
     const isFocused = useIsFocused();
 
     useEffect(() => {
@@ -108,10 +105,7 @@ export default function ProfileScreen() {
                         alignSelf: 'center',
                     }}
                 >
-                    <PrevButton
-                        title={'התנתק'}
-                        onPress={() => dispatch(logoutThunk())}
-                    ></PrevButton>
+
                     <PrevButton title={'רענן מידע'} onPress={handleRefresh}></PrevButton>
                     {/*<PrevButton onPress={() => console.log(userInfo)} title="לחץ לכל ההודעות"/>*/}
                 </View>

@@ -1,10 +1,15 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {logoutThunk} from "../redux/userSlice";
+import PrevButton from "./NextButton";
+import {useDispatch} from "react-redux";
 
 const PlaceholderImage = require('../../assets/fallbackImage.png');
 const NotificationIcon = require('../../assets/NotificationIcon.png');
 
 const GuideHeader = (userDelegation) => {
+    const dispatch = useDispatch();
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -14,6 +19,12 @@ const GuideHeader = (userDelegation) => {
                 <Text style={styles.h2} numberOfLines={1} adjustsFontSizeToFit>
                     {userDelegation?.userDelegation?.group_name}
                 </Text>
+            </View>
+            <View style={{top:70, right:130, height: 40, width: 120}}>
+            <PrevButton
+                title={'התנתק'}
+                onPress={() => dispatch(logoutThunk())}
+            ></PrevButton>
             </View>
             <View style={styles.notificationIconContainer}>
                 <Image source={NotificationIcon} style={styles.notificationIcon} />
@@ -43,6 +54,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 50,
         flexDirection: 'row',
         height: 150,
+        paddingTop: 20
     },
     header: {
         flexDirection: 'column',
@@ -79,7 +91,7 @@ const styles = StyleSheet.create({
         width: 50,
         borderRadius: 50,
         position: 'absolute',
-        top: 15,
+        top: 25,
         left: 15,
         elevation: 10,
         backgroundColor: 'white',
@@ -91,7 +103,7 @@ const styles = StyleSheet.create({
     },
     notificationIconContainer: {
         position: 'absolute',
-        top: 10,
+        top: 20,
         right: 10,
     },
     notificationIcon: {
