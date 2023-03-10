@@ -1,15 +1,7 @@
-import {
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
-import {Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
+import {Banner, Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
 import * as DocumentPicker from 'expo-document-picker';
 import ImageViewer from '../../../../components/ImageViewer';
 import {hideModal, selectVisable, setStory} from '../../../../redux/dataSlice';
@@ -36,6 +28,16 @@ const ALLOWED_TYPES = [
     'audio/3gpp',
     'audio/webm',
     'audio/wav',
+    'audio/m4a',
+    'audio/mpeg',
+    'audio/x-wav',
+    'audio/x-aiff',
+    'audio/x-m4a',
+    'audio/x-caf',
+    'audio/amr',
+    'audio/flac',
+    'audio/vnd.wave',
+
 ];
 
 const DIDPageC = ({navigation, route}) => {
@@ -50,6 +52,7 @@ const DIDPageC = ({navigation, route}) => {
     const [loading, setLoading] = useState(false);
     const [checkedVoiceOrText, setCheckedVoiceOrText] = useState('quote');
     const [checkedVoiceType, setCheckedVoiceType] = useState('men');
+    const [visibleB, setVisibleB] = useState(false);
 
     let selectedImage = null;
     const figure = route.params;
@@ -61,7 +64,7 @@ const DIDPageC = ({navigation, route}) => {
         let result = await DocumentPicker.getDocumentAsync({type: ALLOWED_TYPES});
         if (result.type === 'success') {
             if (ALLOWED_TYPES.includes(result.mimeType) === false)
-                console.log('wrong type of file - only csv and excel');
+                console.log('wrong type of file - only audio');
             else {
                 setRecordingFileName(result.file.name);
                 setRecordingData(result.file);
@@ -71,6 +74,7 @@ const DIDPageC = ({navigation, route}) => {
 
     const handleSend = async () => {
         setLoading(true);
+        setTimeout(() => setLoading(false),3000)
         let response;
         if (checkedVoiceOrText === 'voice' && recordingData && recordingData.type) {
             let recording = new FormData();
@@ -84,7 +88,6 @@ const DIDPageC = ({navigation, route}) => {
                 },
                 body: recording,
             }).then((response) => response.json());
-            console.log(response);
         }
         if (
             figure &&
@@ -123,15 +126,25 @@ const DIDPageC = ({navigation, route}) => {
                 },
             };
             dispatch(setStory({access, story}));
-            console.log('dispatched');
         } else {
-            console.log('please fill all fields');
+            setVisibleB(true)
         }
     };
 
     return (
         <Provider>
             <Portal>
+                <Banner
+                    visible={visibleB}
+                    actions={[
+                        {
+                            label: 'אישור',
+                            onPress: () => setVisibleB(false),
+                        },
+                    ]}>
+                    <Text style={{textAlign: "center"}}>                    נא למלא את כל השדות</Text>
+
+                </Banner>
                 <Modal
                     visible={visible}
                     onDismiss={() => {
@@ -317,10 +330,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     footerContainer: {
-        marginTop: 10,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
+        paddingBottom:5
     },
     checkboxContainer: {
         marginTop: 10,

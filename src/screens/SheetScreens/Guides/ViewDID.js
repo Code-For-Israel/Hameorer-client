@@ -27,13 +27,16 @@ const ViewDID = ({route}) => {
 
     const [checkedApproved, setCheckedApproved] = useState(false);
     const [guideNote, setGuideNote] = useState('');
+    let disableButton = false
     const data = route.params?.story;
-    console.log(data);
 
     useEffect(() => {
         if (data && data.comments && data.comments.one) {
-            console.log(data?.comments?.one);
             setGuideNote(data.comments.one);
+        }
+        if (data.status==="done") {
+            setCheckedApproved(true)
+            disableButton=true
         }
     }, [data]);
 
