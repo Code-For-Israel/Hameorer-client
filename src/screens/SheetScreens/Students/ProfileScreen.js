@@ -1,16 +1,16 @@
 import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useEffect, useState} from 'react';
 
-import BottomSheet from '../components/BottomSheet';
-import BottomMenuContent from '../components/BottomMenuContent';
+import BottomSheet from '../../../components/BottomSheet';
+import BottomMenuContent from '../../../components/BottomMenuContent';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
-import GuideHeader from '../components/GuideHeder';
-import PrevButton from '../components/NextButton';
-import HorizelScrollCardsProfile from '../components/HorizelScrollCardsProfile';
-import UseFetchGet from '../hooks/ApiCalls/useFetchGet';
-import GetSiteUrl from '../utils/GetSiteUrl';
-import {logoutThunk} from '../redux/userSlice';
+import GuideHeader from '../../../components/GuideHeder';
+import PrevButton from '../../../components/NextButton';
+import HorizelScrollCardsProfile from '../../../components/HorizelScrollCardsProfile';
+import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
+import GetSiteUrl from '../../../utils/GetSiteUrl';
+import {logoutThunk} from '../../../redux/userSlice';
 import {useDispatch} from 'react-redux';
 
 export default function ProfileScreen() {
@@ -20,7 +20,6 @@ export default function ProfileScreen() {
     const [url, setUrl] = useState(GetSiteUrl() + 'v1/authentication/userinfo');
     const {data} = UseFetchGet(url);
     const dispatch = useDispatch();
-
     useEffect(() => {
         if (data) {
             setUserInfo(data);
@@ -28,7 +27,7 @@ export default function ProfileScreen() {
         }
     }, [data]);
 
-    const PlaceholderImage = require('../../assets/fall.jpeg');
+    const PlaceholderImage = require('../../../../assets/fall.jpeg');
     const handlePress = () => {
         setIsModalVisible(true);
     };

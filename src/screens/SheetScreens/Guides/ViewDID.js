@@ -34,7 +34,7 @@ const ViewDID = ({route}) => {
         if (data && data.comments && data.comments.one) {
             setGuideNote(data.comments.one);
         }
-        if (data.status === 'done') {
+        if (data && data.status === 'done') {
             setCheckedApproved(true);
             disableButton = true;
         }

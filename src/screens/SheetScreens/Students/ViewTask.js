@@ -1,12 +1,4 @@
-import {
-    Dimensions,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider} from 'react-native-paper';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
@@ -77,25 +69,23 @@ const ViewTask = ({route}) => {
                     )}
                     {/* origin */}
 
-                    <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                        <SoundPlayer audioFile={''}></SoundPlayer>
-
-                        {/*<Checkbox.Item label="אישור" status={checkedApproved ? 'checked' : 'unchecked'} onPress={() => {*/}
-                        {/*    setCheckedApproved(!checkedApproved);*/}
-                        {/*}}/>*/}
-                    </View>
-                    {/*הערות מדריך*/}
-                    <View style={[stylesIn.TextInputContainer]}>
-                        <TextInput
-                            disabled={true}
-                            placeholder="הערות של מדריך"
-                            multiline={true}
-                            value={data.comments?.one}
-                            direction="rtl"
-                            style={[stylesIn.input, {height: 100, textAlignVertical: 'top'}]}
-                        />
-                    </View>
-
+                    {data.status !== 'done' && <>
+                        <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
+                            <SoundPlayer audioFile={''}></SoundPlayer>
+                        </View>
+                        {/*הערות מדריך*/}
+                        <View style={[stylesIn.TextInputContainer]}>
+                            <TextInput
+                                disabled={true}
+                                placeholder="הערות של מדריך"
+                                multiline={true}
+                                value={data.comments?.one}
+                                direction="rtl"
+                                style={[stylesIn.input, {height: 100, textAlignVertical: 'top'}]}
+                            />
+                        </View>
+                    </>
+                    }
                     {data.status === 'done' && (
                         <>
                             <VideoPlayer url={data}></VideoPlayer>
