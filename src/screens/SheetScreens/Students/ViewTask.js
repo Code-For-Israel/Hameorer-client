@@ -7,7 +7,7 @@ import ImageViewer from '../../../components/ImageViewer';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 import {styles} from '../../../styles/PagesStyle';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import VideoPlayer from '../Guides/VideoPlayer';
 
 const width = Dimensions.get('window').width; //full width
@@ -18,9 +18,11 @@ const ViewTask = ({route}) => {
     const id = route.params;
     const baseUrl = GetSiteUrl();
     const {data} = UseFetchGet(storyUrl);
+    const isFocused = useIsFocused();
 
     useEffect(() => {
-        if (id && baseUrl) {
+        if (id && isFocused) {
+            setStoryUrl('');
             setStoryUrl(baseUrl + 'v1/stories/' + id);
         }
     }, [id]);
