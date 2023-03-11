@@ -36,10 +36,7 @@ const DownloadFile = ({url}) => {
 
         try {
             const {uri} = await downloadResumable.downloadAsync();
-            if (Platform.OS === 'android')
-                saveAndroidFile(uri, fileName);
-            else
-                saveIosFile(uri);
+            if (Platform.OS === 'android') saveAndroidFile(uri, fileName); else saveIosFile(uri);
         } catch (e) {
             console.error('download error:', e);
         }
@@ -65,13 +62,12 @@ const DownloadFile = ({url}) => {
             } catch (e) {
                 throw new Error(e);
             }
-
         } catch (err) {
         }
     }
 
-    return (<View style={{width: width, alignItems:'center', padding:5}}>
-        <PrevButton  title={"הורד"} onPress={() => downloadFile(url)}></PrevButton>
+    return (<View style={{width: width, alignItems: 'center', padding: 5}}>
+        <PrevButton title={"הורד"} onPress={() => downloadFile(url)}></PrevButton>
         <Text style={{
             fontSize: 18,
             color: '#072F5F',

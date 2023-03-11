@@ -67,10 +67,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    h1: {
-        color: '#fff',
-        margin: 2,
-    },
+    // h1: {
+    //     color: '#fff',
+    //     margin: 2,
+    // },
     h2: {
         color: '#fff',
     },

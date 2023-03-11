@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from '../../../styles/PagesStyle';
 import {useDispatch, useSelector} from 'react-redux';
@@ -11,7 +11,6 @@ import DataTableExplain from '../../../components/DataTables/DataTableExplain';
 const MyGroupSummary = () => {
     const baseUrl = GetSiteUrl();
     const access = useSelector(selectAccess);
-    const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(true);
     const [groupInfo, setGroupInfo] = useState([]);
 
@@ -82,21 +81,3 @@ const MyGroupSummary = () => {
 };
 
 export default MyGroupSummary;
-
-const stylesIn = StyleSheet.create({
-    HeaderSection: {
-        padding: 0,
-        width: '100%',
-        flexDirection: 'row',
-        alignSelf: 'flex-end',
-        justifyContent: 'flex-end',
-    },
-    groupSubtitle: {
-        fontStyle: 'normal',
-        fontWeight: '700',
-        fontSize: 24,
-        lineHeight: 31,
-        textAlign: 'right',
-        color: '#000000',
-    },
-});

@@ -46,8 +46,5 @@ const styles = StyleSheet.create({
     container: {
         alignSelf: 'center',
         padding: 15,
-    },
-    tableHeader: {
-        backgroundColor: '#DCDCDC',
-    },
+    }
 });

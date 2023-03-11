@@ -40,8 +40,5 @@ export default DataTableExplain;
 const styles = StyleSheet.create({
     container: {
         padding: 15,
-    },
-    tableHeader: {
-        backgroundColor: '#DCDCDC',
-    },
+    }
 });

@@ -116,7 +116,7 @@ const ViewDID = ({route}) => {
                         />
                     </View>
                     {/*הערות מדריך*/}
-                    <View style={[stylesIn.TextInputContainer]}>
+                    <View style={stylesIn.TextInputContainer}>
                         <TextInput
                             placeholder="מקום להערה"
                             multiline={true}
