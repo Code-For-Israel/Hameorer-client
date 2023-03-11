@@ -94,12 +94,7 @@ const DIDPageC = ({navigation, route}) => {
             (checkedVoiceOrText === 'voice' || (checkedVoiceOrText === 'quote' && textQuote))
         ) {
             const story = {
-                subject: {
-                    type: 'figure',
-                    subject: figure.subject,
-                    date_birth: figure.birth_date,
-                    date_death: figure.death_date,
-                },
+                subject: figure,
                 tags: ['_'],
                 body: {
                     background: '',
