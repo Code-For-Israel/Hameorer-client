@@ -1,12 +1,4 @@
-import {
-    Dimensions,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Checkbox, Provider} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
@@ -15,8 +7,9 @@ import {styles} from '../../../styles/PagesStyle';
 import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 import {updateStory} from '../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
-import {selectAccess} from '../../../redux/userSlice';
+import {logoutThunk, selectAccess} from '../../../redux/userSlice';
 import {useNavigation} from '@react-navigation/native';
+import PrevButton from "../../../components/NextButton";
 
 const width = Dimensions.get('window').width; //full width
 
@@ -56,6 +49,12 @@ const ViewDID = ({route}) => {
         data && (
             <Provider>
                 <ScrollView style={stylesIn.container}>
+                    <PrevButton style={{
+                        margin: 10,
+                    }}
+                                title={'התנתק'}
+                                onPress={() => dispatch(logoutThunk())}
+                    ></PrevButton>
                     {/* headSection - name dates and + button*/}
                     <View style={stylesIn.HeadSection}>
                         <View style={stylesIn.ImageContainer}>

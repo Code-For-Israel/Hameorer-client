@@ -1,20 +1,20 @@
-import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {List, Provider} from 'react-native-paper';
+import {Provider} from 'react-native-paper';
 import {styles} from '../../../styles/PagesStyle';
 import HorizonteScrollCards from './HorizelScrollCards';
 import {useDispatch, useSelector} from 'react-redux';
-import {logoutThunk, selectAccess} from '../../../redux/userSlice';
+import {selectAccess} from '../../../redux/userSlice';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import ReturnIcon from '../../../components/IconsSvg/ReturnIcon';
 import ApproveIcon from '../../../components/IconsSvg/ApproveIcon';
 import ThreeDotCircleIcon from '../../../components/IconsSvg/ThreeDotCircleIcon';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
+import GuideHeader from "./GuideHeader";
 
 const MyGroup = () => {
     const baseUrl = GetSiteUrl();
     const access = useSelector(selectAccess);
-    const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(true);
     const [groupInfo, setGroupInfo] = useState([]);
     const isFocused = useIsFocused();
@@ -65,28 +65,7 @@ const MyGroup = () => {
     return (
         <Provider>
             <ScrollView style={styles.mainContainer}>
-                <View style={stylesIn.HeaderSection}>
-                    <View style={{width: '100%'}}>
-                        <List.Accordion
-                            style={{
-                                background: '#D9D9D9',
-                                height: 47,
-                                textAlignLast: 'right',
-                                borderRadius: 5,
-                            }}
-                            title={groupInfo?.group_name}
-                            left={(props) => <List.Icon {...props} icon="file-edit-outline" />}
-                        >
-                            <List.Item title="חלק 1 שנפתח" style={{textAlignLast: 'right'}} />
-                            <List.Item
-                                title="?חלק 2 שנפתח - מה שמים פה"
-                                style={{textAlignLast: 'right'}}
-                            />
-                        </List.Accordion>
-                    </View>
-                </View>
-                <Button title={'LogOut'} onPress={() => dispatch(logoutThunk())}></Button>
-
+                <GuideHeader groupInfo={groupInfo}></GuideHeader>
                 <View style={{alignSelf: 'center'}}>
                     <Text style={stylesIn.groupSubtitle}>
                         ציטוט מונפש ({pending.length + review.length + done.length})
