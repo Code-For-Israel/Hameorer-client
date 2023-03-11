@@ -2,7 +2,11 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 const NextButton = ({title, onPress, loading}) => (
-    <TouchableOpacity style={!loading ? styles.button : styles.buttonDisable } onPress={onPress} disabled={loading}>
+    <TouchableOpacity
+        style={!loading ? styles.button : styles.buttonDisable}
+        onPress={onPress}
+        disabled={loading}
+    >
         <Text style={styles.buttonTitle}>{title}</Text>
     </TouchableOpacity>
 );
@@ -16,7 +20,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         display: 'flex',
         flexDirection: 'row',
-    }, buttonDisable: {
+    },
+    buttonDisable: {
         backgroundColor: 'grey',
         paddingHorizontal: 10,
         paddingVertical: 10,

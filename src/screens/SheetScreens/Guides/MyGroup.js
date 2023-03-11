@@ -3,14 +3,14 @@ import React, {useEffect, useState} from 'react';
 import {Provider} from 'react-native-paper';
 import {styles} from '../../../styles/PagesStyle';
 import HorizonteScrollCards from './HorizelScrollCards';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import ReturnIcon from '../../../components/IconsSvg/ReturnIcon';
 import ApproveIcon from '../../../components/IconsSvg/ApproveIcon';
 import ThreeDotCircleIcon from '../../../components/IconsSvg/ThreeDotCircleIcon';
 import {useIsFocused} from '@react-navigation/native';
-import GuideHeader from "./GuideHeader";
+import GuideHeader from './GuideHeader';
 
 const MyGroup = () => {
     const baseUrl = GetSiteUrl();

@@ -7,7 +7,7 @@ import GetSiteUrl from '../../../utils/GetSiteUrl';
 import DataTableGuide from '../../../components/DataTables/DataTableGuide';
 import {Provider} from 'react-native-paper';
 import DataTableExplain from '../../../components/DataTables/DataTableExplain';
-import GuideHeader from "./GuideHeader";
+import GuideHeader from './GuideHeader';
 
 const MyGroupSummary = () => {
     const baseUrl = GetSiteUrl();

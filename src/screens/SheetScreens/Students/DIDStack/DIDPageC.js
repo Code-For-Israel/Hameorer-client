@@ -1,4 +1,12 @@
-import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
 import {Banner, Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
@@ -134,8 +142,8 @@ const DIDPageC = ({navigation, route}) => {
                         {
                             label: 'אישור',
                             onPress: () => {
-                                setVisibleB(false)
-                                setLoading(false)
+                                setVisibleB(false);
+                                setLoading(false);
                             },
                         },
                     ]}
@@ -165,7 +173,7 @@ const DIDPageC = ({navigation, route}) => {
                                     setLoading(false);
                                 }}
                             >
-                                <CloseIcon/>
+                                <CloseIcon />
                             </Pressable>
                         </View>
 
@@ -278,7 +286,7 @@ const DIDPageC = ({navigation, route}) => {
                         <TouchableOpacity onPress={pickAudio}>
                             <View style={styles.TextInputContainer}>
                                 <Text style={[styles.input, styles.inputSound]}>
-                                    <UploadIcon/>
+                                    <UploadIcon />
                                     {recordingFileName !== ''
                                         ? recordingFileName
                                         : 'העלה הקלטת ציטוט'}
@@ -292,17 +300,16 @@ const DIDPageC = ({navigation, route}) => {
                 )}
                 {/* end sound */}
                 {/* send btn */}
-
             </ScrollView>
 
             <View style={styles.ProgressBarContainer}>
                 {/* note that the progress is reversed */}
-                <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle}/>
+                <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle} />
             </View>
 
             <View style={styles.footerContainer}>
                 <View style={styles.send}>
-                    <NextButton loading={loading} title={'שליחה'} onPress={handleSend}/>
+                    <NextButton loading={loading} title={'שליחה'} onPress={handleSend} />
                 </View>
                 <Text style={styles.headText}>שלב 2 מתוך 2</Text>
                 <View style={styles.send}>

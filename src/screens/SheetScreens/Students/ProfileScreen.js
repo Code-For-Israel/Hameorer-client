@@ -10,8 +10,7 @@ import PrevButton from '../../../components/NextButton';
 import HorizelScrollCardsProfile from '../../../components/HorizelScrollCardsProfile';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
-import {useIsFocused} from "@react-navigation/native";
-
+import {useIsFocused} from '@react-navigation/native';
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -22,11 +21,11 @@ export default function ProfileScreen() {
     const isFocused = useIsFocused();
 
     useEffect(() => {
-        if (data&&isFocused) {
+        if (data && isFocused) {
             setUserInfo(data);
             setUserDelegation(data.delegation);
         }
-    }, [data,isFocused]);
+    }, [data, isFocused]);
 
     const PlaceholderImage = require('../../../../assets/fall.jpeg');
     const handlePress = () => {
@@ -35,8 +34,6 @@ export default function ProfileScreen() {
     const onModalClose = () => {
         setIsModalVisible(false);
     };
-
-
 
     const handleRefresh = () => {
         setUrl(null);
@@ -108,7 +105,6 @@ export default function ProfileScreen() {
                         alignSelf: 'center',
                     }}
                 >
-
                     <PrevButton title={'רענן מידע'} onPress={handleRefresh}></PrevButton>
                     {/*<PrevButton onPress={() => console.log(userInfo)} title="לחץ לכל ההודעות"/>*/}
                 </View>

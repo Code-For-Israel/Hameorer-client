@@ -84,7 +84,11 @@ const Navigation = () => {
                     ),
                 }}
             />
-            <Stack.Screen name="HomeTabs" component={StudentHomeTabs} options={{headerShown: false}} />
+            <Stack.Screen
+                name="HomeTabs"
+                component={StudentHomeTabs}
+                options={{headerShown: false}}
+            />
         </Stack.Navigator>
     );
 };
