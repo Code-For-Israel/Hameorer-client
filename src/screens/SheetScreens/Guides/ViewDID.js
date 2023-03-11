@@ -1,18 +1,9 @@
-import {
-    Dimensions,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider, Switch} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 import {styles} from '../../../styles/PagesStyle';
-import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 import {updateStory} from '../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {logoutThunk, selectAccess} from '../../../redux/userSlice';
@@ -27,7 +18,6 @@ const ViewDID = ({route}) => {
     const access = useSelector(selectAccess);
     const navigation = useNavigation();
 
-    const [checkedApproved, setCheckedApproved] = useState(false);
     const [guideNote, setGuideNote] = useState('');
     let disableButton = false;
     const data = route.params?.story;
@@ -38,14 +28,14 @@ const ViewDID = ({route}) => {
             setGuideNote(data.comments.one);
         }
         if (data && data.status === 'done') {
-            setCheckedApproved(true);
+            setIsSwitchApproved(true);
             disableButton = true;
         }
     }, [data]);
 
     const HandelSend = () => {
         data.comments.one = guideNote;
-        if (checkedApproved) data.status = 'done';
+        if (isSwitchApproved) data.status = 'done';
         else data.status = 'review';
         const id = data._id;
         delete data._id;
@@ -126,14 +116,15 @@ const ViewDID = ({route}) => {
                         <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                             {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
                             <PlayAudioIcon></PlayAudioIcon>
-
-                            <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale} />
-                            {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
-                            {!isSwitchApproved && (
-                                <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>
-                            )}
                         </View>
                     )}
+                    <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse', paddingVertical: 10}]}>
+                        <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale}/>
+                        {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
+                        {!isSwitchApproved && (
+                            <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>
+                        )}
+                    </View>
                     {/*הערות מדריך*/}
                     <View style={stylesIn.TextInputContainer}>
                         <TextInput
