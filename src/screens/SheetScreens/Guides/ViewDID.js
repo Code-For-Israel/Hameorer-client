@@ -1,4 +1,12 @@
-import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {
+    Dimensions,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider, Switch} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
@@ -118,12 +126,15 @@ const ViewDID = ({route}) => {
                             <PlayAudioIcon></PlayAudioIcon>
                         </View>
                     )}
-                    <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse', paddingVertical: 10}]}>
-                        <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale}/>
+                    <View
+                        style={[
+                            stylesIn.TextInputContainer,
+                            {flexDirection: 'row-reverse', paddingVertical: 10},
+                        ]}
+                    >
+                        <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale} />
                         {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
-                        {!isSwitchApproved && (
-                            <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>
-                        )}
+                        {!isSwitchApproved && <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>}
                     </View>
                     {/*הערות מדריך*/}
                     <View style={stylesIn.TextInputContainer}>
