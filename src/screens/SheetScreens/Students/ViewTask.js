@@ -15,8 +15,9 @@ import ImageViewer from '../../../components/ImageViewer';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 import {styles} from '../../../styles/PagesStyle';
-import {useNavigation} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 import VideoPlayer from '../Guides/VideoPlayer';
+import PlayAudioIcon from '../../../components/IconsSvg/PlayAudioIcon';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -26,12 +27,14 @@ const ViewTask = ({route}) => {
     const id = route.params;
     const baseUrl = GetSiteUrl();
     const {data} = UseFetchGet(storyUrl);
+    const isFocused = useIsFocused();
 
     useEffect(() => {
-        if (id && baseUrl) {
+        if (id && isFocused) {
+            setStoryUrl('');
             setStoryUrl(baseUrl + 'v1/stories/' + id);
         }
-    }, [id]);
+    }, [id, isFocused, baseUrl]);
 
     const HandelSend = () => {
         navigation.navigate('Profile');
@@ -51,13 +54,17 @@ const ViewTask = ({route}) => {
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
-                            <Text style={stylesIn.h1}>{data.subject.subject}</Text>
-                            <Text style={stylesIn.textBody}>{data.body.quote_location}</Text>
+                            <Text style={[stylesIn.h1, styles.textDirectionRTL]}>
+                                {data.subject.subject}
+                            </Text>
+                            <Text style={[stylesIn.textBody, styles.textDirectionRTL]}>
+                                {data.body.quote_location}
+                            </Text>
 
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
                                 תאריך לידה: {data.subject.birth_date}
                             </Text>
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
                                 תאריך פטירה: {data.subject.death_date}
                             </Text>
                         </View>
@@ -77,25 +84,33 @@ const ViewTask = ({route}) => {
                     )}
                     {/* origin */}
 
-                    <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                        <SoundPlayer audioFile={''}></SoundPlayer>
-
-                        {/*<Checkbox.Item label="אישור" status={checkedApproved ? 'checked' : 'unchecked'} onPress={() => {*/}
-                        {/*    setCheckedApproved(!checkedApproved);*/}
-                        {/*}}/>*/}
-                    </View>
-                    {/*הערות מדריך*/}
-                    <View style={[stylesIn.TextInputContainer]}>
-                        <TextInput
-                            disabled={true}
-                            placeholder="הערות של מדריך"
-                            multiline={true}
-                            value={data.comments?.one}
-                            direction="rtl"
-                            style={[stylesIn.input, {height: 100, textAlignVertical: 'top'}]}
-                        />
-                    </View>
-
+                    {data.status !== 'done' && (
+                        <>
+                            <View
+                                style={[
+                                    stylesIn.TextInputContainer,
+                                    {flexDirection: 'row-reverse'},
+                                ]}
+                            >
+                                {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
+                                <PlayAudioIcon></PlayAudioIcon>
+                            </View>
+                            {/*הערות מדריך*/}
+                            <View style={stylesIn.TextInputContainer}>
+                                <TextInput
+                                    disabled={true}
+                                    placeholder="הערות של מדריך"
+                                    multiline={true}
+                                    value={data.comments?.one}
+                                    direction="rtl"
+                                    style={[
+                                        stylesIn.input,
+                                        {height: 100, textAlignVertical: 'top'},
+                                    ]}
+                                />
+                            </View>
+                        </>
+                    )}
                     {data.status === 'done' && (
                         <>
                             <VideoPlayer url={data}></VideoPlayer>
@@ -165,7 +180,7 @@ const stylesIn = StyleSheet.create({
     },
     TextInputContainer: {
         width: '100%',
-        paddingHorizontal: 15,
+        paddingHorizontal: 5,
     },
     input: {
         marginBottom: 10,

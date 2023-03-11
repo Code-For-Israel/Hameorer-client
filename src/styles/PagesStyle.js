@@ -1,6 +1,11 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+    textDirectionRTL: {
+        textAlign: 'right',
+        writingDirection: 'rtl',
+    },
+    viewDirectionRTL: {flexDirection: 'row-reverse'},
     mainContainer: {flex: 1, paddingRight: 5, paddingLeft: 5},
     container: {flex: 1, justifyContent: 'center', alignItems: 'center'},
     bottomScrollContainer: {marginBottom: 20, width: '100%'},

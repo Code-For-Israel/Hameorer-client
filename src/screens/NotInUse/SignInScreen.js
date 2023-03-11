@@ -4,7 +4,7 @@
 // import CustomButton from "../../components/CustomButton";
 // import {useNavigation} from "@react-navigation/native";
 // import {useForm} from "react-hook-form";
-// import HomeTabs from "../HomeTabs";
+// import StudentHomeTabs from "../StudentHomeTabs";
 // import {getTokenAccessLogin} from "../../hooks/ApiCalls/";
 //
 // const SignInScreen = () => {
@@ -14,7 +14,7 @@
 //
 //     useEffect(() => {
 //         if (getUserToken.data) {
-//             navigation.navigate("HomeTabs");
+//             navigation.navigate("StudentHomeTabs");
 //         }
 //     }, [getUserToken]);
 //

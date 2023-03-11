@@ -8,6 +8,7 @@ import {getSubjects, selectSubjects} from '../../../../redux/dataSlice';
 import {selectAccess} from '../../../../redux/userSlice';
 import ImageViewer from '../../../../components/ImageViewer';
 import PlaceholderImage from '../../../../../assets/fallbackImage.png';
+import {styles} from '../../../../styles/PagesStyle';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -44,12 +45,12 @@ const DIDPageB = ({navigation}) => {
     };
     return (
         <>
-            <ScrollView style={styles.container}>
+            <ScrollView style={stylesIn.container}>
                 {/* first searchbar */}
-                <View style={styles.SearchbarStyleContainer}>
+                <View style={stylesIn.SearchbarStyleContainer}>
                     <Searchbar
                         placeholder="חפש דמות"
-                        inputStyle={styles.SearchbarStyle}
+                        inputStyle={stylesIn.SearchbarStyle}
                         iconColor="#000"
                         onChangeText={onChangeSearch}
                         value={figureQuery}
@@ -69,7 +70,7 @@ const DIDPageB = ({navigation}) => {
         })}
       </View>*/}
                 {/* end of tags */}
-                <View style={styles.figuresContainer}>
+                <View style={stylesIn.figuresContainer}>
                     {filteredFigure.map((item, index) => {
                         let selectedImage = null;
                         if (item.media) {
@@ -77,20 +78,26 @@ const DIDPageB = ({navigation}) => {
                         }
                         return (
                             <TouchableOpacity
-                                style={styles.figureBox}
+                                style={stylesIn.figureBox}
                                 key={index}
                                 onPress={() => handleFigurePress(item)}
                             >
                                 <View style={{width: width * 0.65}}>
-                                    <Text style={styles.figureHead}>{item.subject}</Text>
-                                    <Text style={styles.figureBody}>{item.body}</Text>
+                                    <Text style={[stylesIn.figureHead, styles.textDirectionRTL]}>
+                                        {item.subject}
+                                    </Text>
+                                    <Text style={[stylesIn.figureBody, styles.textDirectionRTL]}>
+                                        {item.body}
+                                    </Text>
                                     {item.birth_date && (
-                                        <Text style={styles.figureBody}>
+                                        <Text
+                                            style={[stylesIn.figureBody, styles.textDirectionRTL]}
+                                        >
                                             נולד ב: {item.birth_date} , וחי עד: {item.death_date}
                                         </Text>
                                     )}
                                 </View>
-                                <View style={styles.ImageContainer}>
+                                <View style={stylesIn.ImageContainer}>
                                     {/* <Icon name="add" size={30} color={"#fff"} /> */}
                                     <ImageViewer
                                         placeholderImageSource={PlaceholderImage}
@@ -104,9 +111,13 @@ const DIDPageB = ({navigation}) => {
                 </View>
             </ScrollView>
 
-            <View style={styles.footerContainer}>
-                <View style={styles.ProgressBarContainer}>
-                    <ProgressBar progress={0.5} color={'#D9D9D9'} style={styles.ProgressBarStyle} />
+            <View style={stylesIn.footerContainer}>
+                <View style={stylesIn.ProgressBarContainer}>
+                    <ProgressBar
+                        progress={0.5}
+                        color={'#D9D9D9'}
+                        style={stylesIn.ProgressBarStyle}
+                    />
                 </View>
 
                 <View
@@ -114,21 +125,20 @@ const DIDPageB = ({navigation}) => {
                         width: '100%',
                         flexDirection: 'row',
                         justifyContent: 'space-between',
-                        alignItems: 'center',
                     }}
                 >
-                    <View style={{width: 100}}>
-                        <NextButton
-                            title="הבא"
-                            onPress={() => {
-                                handleFigurePress({
-                                    head: 'בחר דמות',
-                                    body: '',
-                                });
-                            }}
-                        />
-                    </View>
-                    <Text style={styles.headText}>שלב 1 מתוך 2</Text>
+                    {/*<View style={{width: 100}}>*/}
+                    {/*    <NextButton*/}
+                    {/*        title="הבא"*/}
+                    {/*        onPress={() => {*/}
+                    {/*            handleFigurePress({*/}
+                    {/*                head: 'בחר דמות',*/}
+                    {/*                body: '',*/}
+                    {/*            });*/}
+                    {/*        }}*/}
+                    {/*    />*/}
+                    {/*</View>*/}
+                    <Text style={stylesIn.headText}>שלב 1 מתוך 2</Text>
                     <View style={{width: 100}}>
                         <NextButton title="הקודם" onPress={() => navigation.goBack()} />
                     </View>
@@ -140,7 +150,7 @@ const DIDPageB = ({navigation}) => {
 
 export default DIDPageB;
 
-const styles = StyleSheet.create({
+const stylesIn = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -150,7 +160,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingBottom: 5,
+        paddingBottom: 10,
     },
     headText: {
         fontSize: 16,

@@ -1,40 +1,49 @@
 import * as React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {Video} from 'expo-av';
 import PrevButton from '../../../components/PrevButton';
+import DownloadFile from '../../../components/DownloadFile/DownloadFile';
 
-const VideoPlayer = (url) => {
-    const urlParse = url?.did?.http_link;
+const VideoPlayer = ({url}) => {
+    const urlParse = url?.media?.did;
     const video = React.useRef(null);
     const [status, setStatus] = React.useState({});
+
     return (
         url && (
             <View style={styles.container}>
-                <View style={styles.buttons}>
-                    <PrevButton
-                        title={status.isPlaying ? 'עצור' : 'נגן'}
-                        onPress={() =>
-                            status.isPlaying
-                                ? video.current.pauseAsync()
-                                : video.current.playAsync()
-                        }
-                    />
-                </View>
-
-                <Video
-                    ref={video}
-                    style={styles.video}
-                    // todo change default video to the real link when i get from Roi
-                    source={{
-                        uri: urlParse
-                            ? urlParse
-                            : 'http://did-files.s3.us-east-2.amazonaws.com/tlk_ZdFyhIGtQNAbybvx5maRB.mp4\n',
-                    }}
-                    useNativeControls
-                    resizeMode="contain"
-                    isLooping
-                    onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-                />
+                {urlParse && (
+                    <>
+                        <View style={styles.buttons}>
+                            <PrevButton
+                                title={status.isPlaying ? 'עצור' : 'נגן'}
+                                onPress={() =>
+                                    status.isPlaying
+                                        ? video.current.pauseAsync()
+                                        : video.current.playAsync()
+                                }
+                            />
+                        </View>
+                        <Video
+                            ref={video}
+                            style={styles.video}
+                            source={{
+                                uri: urlParse,
+                            }}
+                            useNativeControls
+                            resizeMode="contain"
+                            isLooping={false}
+                            onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+                        />
+                        <DownloadFile url={urlParse}></DownloadFile>
+                    </>
+                )}
+                {!urlParse && (
+                    <Text style={[styles.textDirectionRTL, {fontSize: 24}]}>
+                        {' '}
+                        עוד לא קיים סרטון עבור דמות זו{' '}
+                    </Text>
+                )}
             </View>
         )
     );
@@ -50,10 +59,13 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: 320,
         height: 320,
+        borderRadius: 5,
+        padding: 5,
     },
     buttons: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 5,
     },
 });

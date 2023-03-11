@@ -1,17 +1,17 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from '../../../styles/PagesStyle';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import DataTableGuide from '../../../components/DataTables/DataTableGuide';
 import {Provider} from 'react-native-paper';
 import DataTableExplain from '../../../components/DataTables/DataTableExplain';
+import GuideHeader from './GuideHeader';
 
 const MyGroupSummary = () => {
     const baseUrl = GetSiteUrl();
     const access = useSelector(selectAccess);
-    const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(true);
     const [groupInfo, setGroupInfo] = useState([]);
 
@@ -62,6 +62,7 @@ const MyGroupSummary = () => {
     return (
         <Provider>
             <ScrollView style={styles.mainContainer}>
+                <GuideHeader groupInfo={groupInfo}></GuideHeader>
                 <View style={{flexDirection: 'row', alignSelf: 'flex-end', paddingTop: 5}}>
                     <Text style={styles.cardComponentTextBlack}>הכנה לטקס</Text>
                 </View>
@@ -82,21 +83,3 @@ const MyGroupSummary = () => {
 };
 
 export default MyGroupSummary;
-
-const stylesIn = StyleSheet.create({
-    HeaderSection: {
-        padding: 0,
-        width: '100%',
-        flexDirection: 'row',
-        alignSelf: 'flex-end',
-        justifyContent: 'flex-end',
-    },
-    groupSubtitle: {
-        fontStyle: 'normal',
-        fontWeight: '700',
-        fontSize: 24,
-        lineHeight: 31,
-        textAlign: 'right',
-        color: '#000000',
-    },
-});

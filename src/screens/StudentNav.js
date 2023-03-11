@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import HomeTabs from './HomeTabs';
+import StudentHomeTabs from './StudentHomeTabs';
 import SelfGuid from './SheetScreens/Students/SelfGuide';
 import Ceremony from './SheetScreens/Students/Ceremoney/Ceremony';
 import FamilyMem from './SheetScreens/Students/FamilyMemorey/FamilyMem';
@@ -11,10 +11,10 @@ import CustomBg from '../components/CustomBg';
 
 const Stack = createStackNavigator();
 
-const MainNav = () => {
+const StudentNav = () => {
     return (
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={HomeTabs} options={{headerShown: false}} />
+            <Stack.Screen name="Home" component={StudentHomeTabs} options={{headerShown: false}} />
             <Stack.Screen name="SelfGuide" component={SelfGuid} options={{headerShown: false}} />
             <Stack.Screen
                 name="Ceremony"
@@ -46,4 +46,4 @@ const MainNav = () => {
     );
 };
 
-export default MainNav;
+export default StudentNav;

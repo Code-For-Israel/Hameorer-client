@@ -1,17 +1,16 @@
 import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {useEffect, useState} from 'react';
 
-import BottomSheet from '../components/BottomSheet';
-import BottomMenuContent from '../components/BottomMenuContent';
+import BottomSheet from '../../../components/BottomSheet';
+import BottomMenuContent from '../../../components/BottomMenuContent';
 import {MaterialCommunityIcons} from '@expo/vector-icons';
 
-import GuideHeader from '../components/GuideHeder';
-import PrevButton from '../components/NextButton';
-import HorizelScrollCardsProfile from '../components/HorizelScrollCardsProfile';
-import UseFetchGet from '../hooks/ApiCalls/useFetchGet';
-import GetSiteUrl from '../utils/GetSiteUrl';
-import {logoutThunk} from '../redux/userSlice';
-import {useDispatch} from 'react-redux';
+import GuideHeader from '../../../components/GuideHeder';
+import PrevButton from '../../../components/NextButton';
+import HorizelScrollCardsProfile from '../../../components/HorizelScrollCardsProfile';
+import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
+import GetSiteUrl from '../../../utils/GetSiteUrl';
+import {styles} from '../../../styles/PagesStyle';
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -19,7 +18,6 @@ export default function ProfileScreen() {
     const [userDelegation, setUserDelegation] = useState([]);
     const [url, setUrl] = useState(GetSiteUrl() + 'v1/authentication/userinfo');
     const {data} = UseFetchGet(url);
-    const dispatch = useDispatch();
 
     useEffect(() => {
         if (data) {
@@ -28,7 +26,7 @@ export default function ProfileScreen() {
         }
     }, [data]);
 
-    const PlaceholderImage = require('../../assets/fall.jpeg');
+    const PlaceholderImage = require('../../../../assets/fall.jpeg');
     const handlePress = () => {
         setIsModalVisible(true);
     };
@@ -42,7 +40,7 @@ export default function ProfileScreen() {
 
         setTimeout(() => {
             setUrl(GetSiteUrl() + 'v1/authentication/userinfo');
-        }, 1000);
+        }, 200);
     };
 
     return (
@@ -78,22 +76,24 @@ export default function ProfileScreen() {
                     />
                 </View>
             </TouchableOpacity>
-            <ScrollView style={styles.container}>
+            <ScrollView style={stylesIn.container}>
                 <GuideHeader userDelegation={userDelegation} />
 
-                <Image source={PlaceholderImage} style={styles.image} />
+                <Image source={PlaceholderImage} style={stylesIn.image} />
 
                 <View style={{marginBottom: 20, paddingTop: 5}}>
-                    <Text style={styles.h1} numberOfLines={1} adjustsFontSizeToFit>
+                    <Text style={stylesIn.h1} numberOfLines={1} adjustsFontSizeToFit>
                         הודעות
                     </Text>
                 </View>
                 <View style={{marginRight: 20, marginBottom: 20}}>
-                    <Text>מאת עמית - 13.3.2023</Text>
-                    <Text>
-                        {''}היום נעבור בתערוכת "יד לילד", תערוכת "גטו ורשה הלוחם", סדנת "החייאת מרד
-                        מחדש" ועדות של הלינה בירנבאום בהצלחה ביום ותודה
+                    <Text style={styles.textDirectionRTL}>מאת עמית - 13.3.2023</Text>
+                    <Text style={styles.textDirectionRTL}>
+                        {' '}
+                        היום נעבור בתערוכת "יד לילד", תערוכת "גטו ורשה הלוחם", סדנת "החייאת מרד
+                        מחדש" ועדות של הלינה בירנבאום
                     </Text>
+                    <Text style={styles.textDirectionRTL}>בהצלחה ביום ותודה</Text>
                 </View>
 
                 <View
@@ -106,16 +106,12 @@ export default function ProfileScreen() {
                         alignSelf: 'center',
                     }}
                 >
-                    <PrevButton
-                        title={'התנתק'}
-                        onPress={() => dispatch(logoutThunk())}
-                    ></PrevButton>
                     <PrevButton title={'רענן מידע'} onPress={handleRefresh}></PrevButton>
                     {/*<PrevButton onPress={() => console.log(userInfo)} title="לחץ לכל ההודעות"/>*/}
                 </View>
 
                 <View>
-                    <Text style={styles.h1}>סטטוס משימות</Text>
+                    <Text style={stylesIn.h1}>סטטוס משימות</Text>
                 </View>
                 <View>
                     <HorizelScrollCardsProfile
@@ -139,7 +135,7 @@ export default function ProfileScreen() {
     );
 }
 
-const styles = StyleSheet.create({
+const stylesIn = StyleSheet.create({
     container: {
         flex: 1,
         position: 'relative',
@@ -147,11 +143,12 @@ const styles = StyleSheet.create({
     h1: {
         fontSize: 24,
         color: '#072F5F',
-        fontWeight: 'bold',
         marginBottom: 15,
         marginTop: 15,
         marginRight: 15,
         paddingTop: 10,
+        textAlign: 'right',
+        writingDirection: 'rtl',
     },
     image: {
         width: '100%',

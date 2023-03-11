@@ -8,15 +8,17 @@ import {
     View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {Checkbox, Provider} from 'react-native-paper';
+import {Provider, Switch} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 import {styles} from '../../../styles/PagesStyle';
 import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 import {updateStory} from '../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
-import {selectAccess} from '../../../redux/userSlice';
+import {logoutThunk, selectAccess} from '../../../redux/userSlice';
 import {useNavigation} from '@react-navigation/native';
+import PrevButton from '../../../components/NextButton';
+import PlayAudioIcon from '../../../components/IconsSvg/PlayAudioIcon';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -29,12 +31,13 @@ const ViewDID = ({route}) => {
     const [guideNote, setGuideNote] = useState('');
     let disableButton = false;
     const data = route.params?.story;
+    const [isSwitchApproved, setIsSwitchApproved] = React.useState(false);
 
     useEffect(() => {
         if (data && data.comments && data.comments.one) {
             setGuideNote(data.comments.one);
         }
-        if (data.status === 'done') {
+        if (data && data.status === 'done') {
             setCheckedApproved(true);
             disableButton = true;
         }
@@ -51,11 +54,22 @@ const ViewDID = ({route}) => {
         // todo block if approved in the past
     };
 
+    const onToggleSwitchMale = () => {
+        setIsSwitchApproved(!isSwitchApproved);
+    };
+
     return (
         route &&
         data && (
             <Provider>
                 <ScrollView style={stylesIn.container}>
+                    <PrevButton
+                        style={{
+                            margin: 10,
+                        }}
+                        title={'התנתק'}
+                        onPress={() => dispatch(logoutThunk())}
+                    ></PrevButton>
                     {/* headSection - name dates and + button*/}
                     <View style={stylesIn.HeadSection}>
                         <View style={stylesIn.ImageContainer}>
@@ -67,13 +81,17 @@ const ViewDID = ({route}) => {
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
-                            <Text style={stylesIn.h1}>{data.subject.subject}</Text>
-                            <Text style={stylesIn.textBody}>{data.body.quote_location}</Text>
+                            <Text style={[stylesIn.h1, styles.textDirectionRTL]}>
+                                {data.subject.subject}
+                            </Text>
+                            <Text style={[stylesIn.textBody, styles.textDirectionRTL]}>
+                                {data.body.quote_location}
+                            </Text>
 
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
                                 תאריך לידה: {route.params.dateBirth}
                             </Text>
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
                                 תאריך פטירה: {route.params.dateDeath}
                             </Text>
                         </View>
@@ -81,7 +99,7 @@ const ViewDID = ({route}) => {
                     {/* end of head Section */}
 
                     {/* quote */}
-                    {
+                    {data?.body?.quote !== '' && (
                         <View style={stylesIn.TextInputContainer}>
                             <TextInput
                                 disabled={true}
@@ -91,7 +109,7 @@ const ViewDID = ({route}) => {
                                 value={data.body.quote}
                             />
                         </View>
-                    }
+                    )}
                     {/* origin */}
                     <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                         <TextInput
@@ -104,19 +122,20 @@ const ViewDID = ({route}) => {
                         {/*    setCheckedQuote(!checkedQuote);*/}
                         {/*}}/>*/}
                     </View>
-                    <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                        <SoundPlayer audioFile={''}></SoundPlayer>
+                    {data.media.soundName != 'none' && (
+                        <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
+                            {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
+                            <PlayAudioIcon></PlayAudioIcon>
 
-                        <Checkbox.Item
-                            label="אישור"
-                            status={checkedApproved ? 'checked' : 'unchecked'}
-                            onPress={() => {
-                                setCheckedApproved(!checkedApproved);
-                            }}
-                        />
-                    </View>
+                            <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale} />
+                            {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
+                            {!isSwitchApproved && (
+                                <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>
+                            )}
+                        </View>
+                    )}
                     {/*הערות מדריך*/}
-                    <View style={[stylesIn.TextInputContainer]}>
+                    <View style={stylesIn.TextInputContainer}>
                         <TextInput
                             placeholder="מקום להערה"
                             multiline={true}
@@ -224,5 +243,9 @@ const stylesIn = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
+    },
+    TextCheckbox: {
+        alignSelf: 'center',
+        paddingHorizontal: 10,
     },
 });

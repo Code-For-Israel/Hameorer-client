@@ -1,7 +1,7 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {styles} from '../../../styles/PagesStyle';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import ReturnIcon from '../../../components/IconsSvg/ReturnIcon';
@@ -9,11 +9,11 @@ import ApproveIcon from '../../../components/IconsSvg/ApproveIcon';
 import ThreeDotCircleIcon from '../../../components/IconsSvg/ThreeDotCircleIcon';
 import {Provider} from 'react-native-paper';
 import DataTableByUser from '../../../components/DataTables/DataTableByUser';
+import GuideHeader from './GuideHeader';
 
 const MyGroupSummaryByUser = () => {
     const baseUrl = GetSiteUrl();
     const access = useSelector(selectAccess);
-    const dispatch = useDispatch();
     const [isLoading, setLoading] = useState(true);
     const [groupInfo, setGroupInfo] = useState([]);
     const [groupName, setGroupName] = useState(true);
@@ -68,6 +68,7 @@ const MyGroupSummaryByUser = () => {
     return (
         <Provider>
             <ScrollView style={styles.mainContainer}>
+                <GuideHeader groupInfo={groupInfo}></GuideHeader>
                 <View style={{alignSelf: 'center'}}>
                     <Text style={stylesIn.groupSubtitle}>דו"ח משימות</Text>
                 </View>
@@ -90,13 +91,6 @@ const MyGroupSummaryByUser = () => {
 export default MyGroupSummaryByUser;
 
 const stylesIn = StyleSheet.create({
-    HeaderSection: {
-        padding: 0,
-        width: '100%',
-        flexDirection: 'row',
-        alignSelf: 'flex-end',
-        justifyContent: 'flex-end',
-    },
     groupSubtitle: {
         fontStyle: 'normal',
         fontWeight: '700',

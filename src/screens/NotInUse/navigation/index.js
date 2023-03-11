@@ -1,7 +1,7 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import CustomBg from '../../../components/CustomBg';
-import HomeTabs from '../../HomeTabs';
+import StudentHomeTabs from '../../StudentHomeTabs';
 import SignInScreen from '../SignInScreen';
 import SignUpScreen from '../SignUpScreen';
 import ConfirmEmailScreen from '../ConfirmEmailScreen';
@@ -84,7 +84,11 @@ const Navigation = () => {
                     ),
                 }}
             />
-            <Stack.Screen name="HomeTabs" component={HomeTabs} options={{headerShown: false}} />
+            <Stack.Screen
+                name="HomeTabs"
+                component={StudentHomeTabs}
+                options={{headerShown: false}}
+            />
         </Stack.Navigator>
     );
 };

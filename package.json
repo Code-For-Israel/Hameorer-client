@@ -26,6 +26,7 @@
     "expo": "~47.0.8",
     "expo-av": "~13.0.3",
     "expo-document-picker": "~11.0.1",
+    "expo-file-system": "15.1.1",
     "expo-image-picker": "~14.0.2",
     "expo-status-bar": "~1.4.2",
     "expo-updates": "~0.15.6",
