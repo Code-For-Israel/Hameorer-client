@@ -292,7 +292,7 @@ const DIDPageC = ({navigation, route}) => {
                                     style={[
                                         stylesIn.input,
                                         stylesIn.inputSound,
-                                        style.textDirectionRTL,
+                                        styles.textDirectionRTL,
                                     ]}
                                 >
                                     <UploadIcon />
