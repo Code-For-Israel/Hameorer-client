@@ -10,7 +10,7 @@ import ImageViewer from '../../../../components/ImageViewer';
 
 const PlaceholderImage = require('../../../../../assets/fallbackImage.png');
 
-const DIDPageD = ({navigation, route}) => {
+const DIDPageD = ({navigation}) => {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const pickImageAsync = async () => {
