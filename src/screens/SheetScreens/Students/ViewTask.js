@@ -33,7 +33,7 @@ const ViewTask = ({route}) => {
             setStoryUrl('');
             setStoryUrl(baseUrl + 'v1/stories/' + id);
         }
-    }, [id]);
+    }, [id,isFocused]);
 
     const HandelSend = () => {
         navigation.navigate('Profile');
@@ -90,7 +90,7 @@ const ViewTask = ({route}) => {
                                 <SoundPlayer audioFile={''}></SoundPlayer>
                             </View>
                             {/*הערות מדריך*/}
-                            <View style={[stylesIn.TextInputContainer]}>
+                            <View style={stylesIn.TextInputContainer}>
                                 <TextInput
                                     disabled={true}
                                     placeholder="הערות של מדריך"

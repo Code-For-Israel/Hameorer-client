@@ -75,7 +75,9 @@ const DownloadFile = ({url}) => {
             } catch (e) {
                 throw new Error(e);
             }
-        } catch (err) {}
+        } catch (err) {
+            throw new Error(e);
+        }
     };
 
     return (

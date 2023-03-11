@@ -110,13 +110,6 @@ const MyGroup = () => {
 export default MyGroup;
 
 const stylesIn = StyleSheet.create({
-    HeaderSection: {
-        padding: 0,
-        width: '100%',
-        flexDirection: 'row',
-        alignSelf: 'flex-end',
-        justifyContent: 'flex-end',
-    },
     groupSubtitle: {
         fontStyle: 'normal',
         fontWeight: '700',

@@ -50,13 +50,5 @@ const stylesIn = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'flex-end',
         justifyContent: 'flex-end',
-    },
-    groupSubtitle: {
-        fontStyle: 'normal',
-        fontWeight: '700',
-        fontSize: 24,
-        lineHeight: 31,
-        textAlign: 'right',
-        color: '#000000',
-    },
+    }
 });
