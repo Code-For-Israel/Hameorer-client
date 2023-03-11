@@ -54,13 +54,13 @@ const ViewTask = ({route}) => {
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
-                            <Text style={[stylesIn.h1,style.textDirectionRTL]}>{data.subject.subject}</Text>
-                            <Text style={[stylesIn.textBody,style.textDirectionRTL]}>{data.body.quote_location}</Text>
+                            <Text style={[stylesIn.h1,styles.textDirectionRTL]}>{data.subject.subject}</Text>
+                            <Text style={[stylesIn.textBody,styles.textDirectionRTL]}>{data.body.quote_location}</Text>
 
-                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
+                            <Text style={[stylesIn.textSubTitle,styles.textDirectionRTL]}>
                                 תאריך לידה: {data.subject.birth_date}
                             </Text>
-                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
+                            <Text style={[stylesIn.textSubTitle,styles.textDirectionRTL]}>
                                 תאריך פטירה: {data.subject.death_date}
                             </Text>
                         </View>

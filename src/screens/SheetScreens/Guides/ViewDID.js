@@ -8,7 +8,7 @@ import {
     View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {Checkbox, Provider} from 'react-native-paper';
+import {Provider, Switch} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
 import ImageViewer from '../../../components/ImageViewer';
 import {styles} from '../../../styles/PagesStyle';
@@ -31,6 +31,7 @@ const ViewDID = ({route}) => {
     const [guideNote, setGuideNote] = useState('');
     let disableButton = false;
     const data = route.params?.story;
+    const [isSwitchApproved, setIsSwitchApproved] = React.useState(false);
 
     useEffect(() => {
         if (data && data.comments && data.comments.one) {
@@ -51,6 +52,10 @@ const ViewDID = ({route}) => {
         dispatch(updateStory({access, story: data, id}));
         navigation.navigate('MyGroup');
         // todo block if approved in the past
+    };
+
+    const onToggleSwitchMale = () => {
+        setIsSwitchApproved(!isSwitchApproved)
     };
 
     return (
@@ -76,13 +81,13 @@ const ViewDID = ({route}) => {
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
-                            <Text style={[stylesIn.h1,style.textDirectionRTL]}>{data.subject.subject}</Text>
-                            <Text style={[stylesIn.textBody,style.textDirectionRTL]}>{data.body.quote_location}</Text>
+                            <Text style={[stylesIn.h1,styles.textDirectionRTL]}>{data.subject.subject}</Text>
+                            <Text style={[stylesIn.textBody,styles.textDirectionRTL]}>{data.body.quote_location}</Text>
 
-                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
+                            <Text style={[stylesIn.textSubTitle,styles.textDirectionRTL]}>
                                 תאריך לידה: {route.params.dateBirth}
                             </Text>
-                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
+                            <Text style={[stylesIn.textSubTitle,styles.textDirectionRTL]}>
                                 תאריך פטירה: {route.params.dateDeath}
                             </Text>
                         </View>
@@ -90,7 +95,7 @@ const ViewDID = ({route}) => {
                     {/* end of head Section */}
 
                     {/* quote */}
-                    {
+                    {data?.body?.quote!=='' &&
                         <View style={stylesIn.TextInputContainer}>
                             <TextInput
                                 disabled={true}
@@ -113,18 +118,17 @@ const ViewDID = ({route}) => {
                         {/*    setCheckedQuote(!checkedQuote);*/}
                         {/*}}/>*/}
                     </View>
-                    <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                        {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
-                        <PlayAudioIcon></PlayAudioIcon>
+                    {data.media.soundName != 'none' &&
+                        <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
+                            {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
+                            <PlayAudioIcon></PlayAudioIcon>
 
-                        <Checkbox.Item
-                            label="אישור"
-                            status={checkedApproved ? 'checked' : 'unchecked'}
-                            onPress={() => {
-                                setCheckedApproved(!checkedApproved);
-                            }}
-                        />
-                    </View>
+                            <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale}/>
+                            {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
+                            {!isSwitchApproved && <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>}
+
+                        </View>
+                    }
                     {/*הערות מדריך*/}
                     <View style={stylesIn.TextInputContainer}>
                         <TextInput
@@ -234,5 +238,9 @@ const stylesIn = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,
+    },
+    TextCheckbox: {
+        alignSelf: 'center',
+        paddingHorizontal: 10
     },
 });
