@@ -33,7 +33,7 @@ const ViewTask = ({route}) => {
             setStoryUrl('');
             setStoryUrl(baseUrl + 'v1/stories/' + id);
         }
-    }, [id,isFocused]);
+    }, [id,isFocused,baseUrl]);
 
     const HandelSend = () => {
         navigation.navigate('Profile');
