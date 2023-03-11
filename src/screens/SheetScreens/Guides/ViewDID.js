@@ -18,6 +18,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {logoutThunk, selectAccess} from '../../../redux/userSlice';
 import {useNavigation} from '@react-navigation/native';
 import PrevButton from '../../../components/NextButton';
+import PlayAudioIcon from "../../../components/IconsSvg/PlayAudioIcon";
 
 const width = Dimensions.get('window').width; //full width
 
@@ -75,13 +76,13 @@ const ViewDID = ({route}) => {
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
-                            <Text style={stylesIn.h1}>{data.subject.subject}</Text>
-                            <Text style={stylesIn.textBody}>{data.body.quote_location}</Text>
+                            <Text style={[stylesIn.h1,style.textDirectionRTL]}>{data.subject.subject}</Text>
+                            <Text style={[stylesIn.textBody,style.textDirectionRTL]}>{data.body.quote_location}</Text>
 
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
                                 תאריך לידה: {route.params.dateBirth}
                             </Text>
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
                                 תאריך פטירה: {route.params.dateDeath}
                             </Text>
                         </View>
@@ -113,7 +114,8 @@ const ViewDID = ({route}) => {
                         {/*}}/>*/}
                     </View>
                     <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                        <SoundPlayer audioFile={''}></SoundPlayer>
+                        {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
+                        <PlayAudioIcon></PlayAudioIcon>
 
                         <Checkbox.Item
                             label="אישור"

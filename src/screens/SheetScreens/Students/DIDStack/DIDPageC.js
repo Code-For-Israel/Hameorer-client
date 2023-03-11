@@ -1,15 +1,7 @@
-import {
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
-import {Banner, Modal, Portal, ProgressBar, Provider, RadioButton} from 'react-native-paper';
+import {Banner, Modal, Portal, ProgressBar, Provider, Switch} from 'react-native-paper';
 import * as DocumentPicker from 'expo-document-picker';
 import ImageViewer from '../../../../components/ImageViewer';
 import {hideModal, selectVisable, setStory} from '../../../../redux/dataSlice';
@@ -18,6 +10,7 @@ import {selectAccess} from '../../../../redux/userSlice';
 import CloseIcon from '../../../../components/IconsSvg/CloseIcon';
 import UploadIcon from '../../../../components/IconsSvg/UploadIcon';
 import GetSiteUrl from '../../../../utils/GetSiteUrl';
+import {styles} from "../../../../styles/PagesStyle";
 
 const PlaceholderImage = require('../../../../../assets/fallbackImage.png');
 const containerStyle = {
@@ -60,6 +53,8 @@ const DIDPageC = ({navigation, route}) => {
     const [checkedVoiceOrText, setCheckedVoiceOrText] = useState('quote');
     const [checkedVoiceType, setCheckedVoiceType] = useState('men');
     const [visibleB, setVisibleB] = useState(false);
+    const [isSwitchText, setIsSwitchText] = React.useState(false);
+    const [isSwitchMale, setIsSwitchMale] = React.useState(true);
 
     let selectedImage = null;
     const figure = route.params;
@@ -133,6 +128,22 @@ const DIDPageC = ({navigation, route}) => {
         }
     };
 
+    const onToggleSwitch = () => {
+        setIsSwitchText(!isSwitchText)
+        if (isSwitchText)
+            setCheckedVoiceOrText('quote');
+        else
+            setCheckedVoiceOrText('voice');
+    };
+
+    const onToggleSwitchMale = () => {
+        setIsSwitchMale(!isSwitchMale)
+        if (!isSwitchMale)
+            setCheckedVoiceType('men');
+        else
+            setCheckedVoiceType('woman');
+    };
+
     return (
         <Provider>
             <Portal>
@@ -173,7 +184,7 @@ const DIDPageC = ({navigation, route}) => {
                                     setLoading(false);
                                 }}
                             >
-                                <CloseIcon />
+                                <CloseIcon/>
                             </Pressable>
                         </View>
 
@@ -185,25 +196,27 @@ const DIDPageC = ({navigation, route}) => {
                                 marginBottom: 10,
                             }}
                         >
-                            <Text>עבודה טובה !</Text>
-                            <Text>הציטוט שלך נשלח למשוב,</Text>
-                            <Text>תתקבל אצלך הודעה כשהוא יאושר.</Text>
+                            <Text style={styles.textDirectionRTL}>עבודה טובה !</Text>
+                            <Text style={styles.textDirectionRTL}>הציטוט שלך נשלח למשוב,</Text>
+                            <Text style={styles.textDirectionRTL}>תתקבל אצלך הודעה כשהוא יאושר.</Text>
                         </View>
                     </View>
                 </Modal>
             </Portal>
 
-            <ScrollView style={styles.container}>
+            <ScrollView style={stylesIn.container}>
                 {/* headSection - name dates and + button*/}
-                <View style={styles.HeadSection}>
-                    <View style={styles.detailsContainer}>
-                        <Text style={styles.h1}>{figure.subject}</Text>
-                        <Text style={styles.textBody}>{figure.location}</Text>
+                <View style={stylesIn.HeadSection}>
+                    <View style={stylesIn.detailsContainer}>
+                        <Text style={[stylesIn.h1, styles.textDirectionRTL]}>{figure.subject}</Text>
+                        <Text style={[stylesIn.textBody, styles.textDirectionRTL]}>{figure.location}</Text>
 
-                        <Text style={styles.textSubTitle}>תאריך לידה: {figure.birth_date}</Text>
-                        <Text style={styles.textSubTitle}>תאריך פטירה: {figure.death_date}</Text>
+                        <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>תאריך
+                            לידה: {figure.birth_date}</Text>
+                        <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>תאריך
+                            פטירה: {figure.death_date}</Text>
                     </View>
-                    <View style={styles.ImageContainer}>
+                    <View style={stylesIn.ImageContainer}>
                         {/* <Icon name="add" size={30} color={"#fff"} /> */}
                         <ImageViewer
                             placeholderImageSource={PlaceholderImage}
@@ -219,81 +232,62 @@ const DIDPageC = ({navigation, route}) => {
                 </Text>
                 <Text style={{alignSelf: 'center', fontSize: 16}}>מה ההעדפה שלך?</Text>
                 {/* RadioButton */}
-                <View style={styles.checkboxContainer}>
-                    {/* <Text style={styles.TextCheckbox}>סוג המדיה: </Text> */}
-                    <Text style={styles.TextCheckbox}>בכתב</Text>
-                    <RadioButton
-                        value="quote"
-                        status={checkedVoiceOrText === 'quote' ? 'checked' : 'unchecked'}
-                        onPress={() => setCheckedVoiceOrText('quote')}
-                    />
-                    <Text style={styles.TextCheckbox}>בהקלטה</Text>
-                    <RadioButton
-                        value="voice"
-                        status={checkedVoiceOrText === 'voice' ? 'checked' : 'unchecked'}
-                        onPress={() => setCheckedVoiceOrText('voice')}
-                    />
+                <View style={stylesIn.checkboxContainer}>
+                    <Switch value={isSwitchText} onValueChange={onToggleSwitch}/>
+                    { isSwitchText && <Text style={stylesIn.TextCheckbox}>בהקלטה</Text>}
+                    { !isSwitchText && <Text style={stylesIn.TextCheckbox}>בכתב</Text>}
                 </View>
-                <Text style={styles.greyText}>*ציטוט בכתב יונפש עם דגימת קול אוטומטית</Text>
+                <Text style={stylesIn.greyText}>*ציטוט בכתב יונפש עם דגימת קול אוטומטית</Text>
 
                 {/* quote */}
                 {checkedVoiceOrText === 'quote' && (
-                    <View style={styles.TextInputContainer}>
+                    <View style={stylesIn.TextInputContainer}>
                         <TextInput
                             placeholder="הוסף ציטוט"
                             direction="rtl"
                             multiline={true}
-                            style={[styles.input, styles.inputBig]}
+                            style={[stylesIn.input, stylesIn.inputBig]}
                             onChangeText={setTextQuote}
                             value={textQuote}
                         />
                     </View>
                 )}
                 {/* origin */}
-                <View style={styles.TextInputContainer}>
+                <View style={stylesIn.TextInputContainer}>
                     <TextInput
                         placeholder={'הוסף מקור'}
                         direction="rtl"
-                        style={styles.input}
+                        style={stylesIn.input}
                         onChangeText={setTextOrigin}
                         value={textOrigin}
                     />
                 </View>
-                <Text style={styles.greyText}>
+                <Text style={stylesIn.greyText}>
                     *יש להוסיף פה את מקור הציטוט: לינק לאתר / שם הספר ועמוד
                 </Text>
 
                 {checkedVoiceOrText === 'quote' && (
-                    <View style={styles.checkboxContainer}>
-                        {/* <Text style={styles.TextCheckbox}>סוג המדיה: </Text> */}
-                        <Text style={styles.TextCheckbox}>קול של גבר</Text>
-                        <RadioButton
-                            value="men"
-                            status={checkedVoiceType === 'men' ? 'checked' : 'unchecked'}
-                            onPress={() => setCheckedVoiceType('men')}
-                        />
-                        <Text style={styles.TextCheckbox}>קול של אישה</Text>
-                        <RadioButton
-                            value="woman"
-                            status={checkedVoiceType === 'woman' ? 'checked' : 'unchecked'}
-                            onPress={() => setCheckedVoiceType('woman')}
-                        />
+                    <View style={stylesIn.checkboxContainer}>
+
+                        <Switch value={isSwitchMale} onValueChange={onToggleSwitchMale}/>
+                        { isSwitchMale && <Text style={stylesIn.TextCheckbox}>קול של גבר</Text>}
+                        { !isSwitchMale && <Text style={stylesIn.TextCheckbox}>קול של אישה</Text>}
                     </View>
                 )}
                 {/* sound sample */}
                 {checkedVoiceOrText === 'voice' && (
                     <Fragment>
                         <TouchableOpacity onPress={pickAudio}>
-                            <View style={styles.TextInputContainer}>
-                                <Text style={[styles.input, styles.inputSound]}>
-                                    <UploadIcon />
+                            <View style={stylesIn.TextInputContainer}>
+                                <Text style={[stylesIn.input, stylesIn.inputSound,style.textDirectionRTL]}>
+                                    <UploadIcon/>
                                     {recordingFileName !== ''
                                         ? recordingFileName
                                         : 'העלה הקלטת ציטוט'}
                                 </Text>
                             </View>
                         </TouchableOpacity>
-                        <Text style={styles.greyText}>
+                        <Text style={stylesIn.greyText}>
                             *יש להקליט את הציטוט בקול ברור ובמקום שקט ולהעלות כקובץ
                         </Text>
                     </Fragment>
@@ -302,17 +296,17 @@ const DIDPageC = ({navigation, route}) => {
                 {/* send btn */}
             </ScrollView>
 
-            <View style={styles.ProgressBarContainer}>
+            <View style={stylesIn.ProgressBarContainer}>
                 {/* note that the progress is reversed */}
-                <ProgressBar progress={0} color={'#D9D9D9'} style={styles.ProgressBarStyle} />
+                <ProgressBar progress={0} color={'#D9D9D9'} style={stylesIn.ProgressBarStyle}/>
             </View>
 
-            <View style={styles.footerContainer}>
-                <View style={styles.send}>
-                    <NextButton loading={loading} title={'שליחה'} onPress={handleSend} />
+            <View style={stylesIn.footerContainer}>
+                <View style={stylesIn.send}>
+                    <NextButton loading={loading} title={'שליחה'} onPress={handleSend}/>
                 </View>
-                <Text style={styles.headText}>שלב 2 מתוך 2</Text>
-                <View style={styles.send}>
+                <Text style={stylesIn.headText}>שלב 2 מתוך 2</Text>
+                <View style={stylesIn.send}>
                     <NextButton
                         loading={loading}
                         title="הקודם"
@@ -329,7 +323,7 @@ const DIDPageC = ({navigation, route}) => {
 
 export default DIDPageC;
 
-const styles = StyleSheet.create({
+const stylesIn = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -415,6 +409,7 @@ const styles = StyleSheet.create({
     },
     TextCheckbox: {
         alignSelf: 'center',
+        paddingLeft: 22
     },
     input: {
         marginBottom: 10,

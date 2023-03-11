@@ -10,7 +10,7 @@ import PrevButton from '../../../components/NextButton';
 import HorizelScrollCardsProfile from '../../../components/HorizelScrollCardsProfile';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
-import {useIsFocused} from '@react-navigation/native';
+import {styles} from "../../../styles/PagesStyle";
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -74,22 +74,19 @@ export default function ProfileScreen() {
                 />
             </View>
         </TouchableOpacity>
-        <ScrollView style={styles.container}>
+        <ScrollView style={stylesIn.container}>
             <GuideHeader userDelegation={userDelegation}/>
 
-            <Image source={PlaceholderImage} style={styles.image}/>
+            <Image source={PlaceholderImage} style={stylesIn.image}/>
 
             <View style={{marginBottom: 20, paddingTop: 5}}>
-                <Text style={styles.h1} numberOfLines={1} adjustsFontSizeToFit>
-                    הודעות
-                </Text>
+                <Text style={stylesIn.h1} numberOfLines={1} adjustsFontSizeToFit>הודעות</Text>
             </View>
             <View style={{marginRight: 20, marginBottom: 20}}>
-                <Text>מאת עמית - 13.3.2023</Text>
-                <Text>
-                    {''}היום נעבור בתערוכת "יד לילד", תערוכת "גטו ורשה הלוחם", סדנת "החייאת מרד
-                    מחדש" ועדות של הלינה בירנבאום בהצלחה ביום ותודה
-                </Text>
+                <Text style={styles.textDirectionRTL}>מאת עמית - 13.3.2023</Text>
+                <Text style={styles.textDirectionRTL}> היום נעבור בתערוכת "יד לילד", תערוכת "גטו ורשה הלוחם", סדנת "החייאת מרד מחדש" ועדות של הלינה
+                    בירנבאום</Text>
+                <Text style={styles.textDirectionRTL}>בהצלחה ביום ותודה</Text>
             </View>
 
             <View
@@ -107,7 +104,7 @@ export default function ProfileScreen() {
             </View>
 
             <View>
-                <Text style={styles.h1}>סטטוס משימות</Text>
+                <Text style={stylesIn.h1}>סטטוס משימות</Text>
             </View>
             <View>
                 <HorizelScrollCardsProfile
@@ -128,17 +125,17 @@ export default function ProfileScreen() {
     </>);
 }
 
-const styles = StyleSheet.create({
+const stylesIn = StyleSheet.create({
     container: {
         flex: 1, position: 'relative',
     }, h1: {
         fontSize: 24,
         color: '#072F5F',
-        fontWeight: 'bold',
         marginBottom: 15,
         marginTop: 15,
         marginRight: 15,
         paddingTop: 10,
+        textAlign: 'right', writingDirection: 'rtl'
     }, image: {
         width: '100%', height: 150, alignSelf: 'center',
     },

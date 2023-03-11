@@ -38,7 +38,7 @@ const VideoPlayer = ({url}) => {
                         <DownloadFile url={urlParse}></DownloadFile>
                     </>
                 )}
-                {!urlParse && <Text style={{fontSize: 24}}> עוד לא קיים סרטון עבור דמות זו </Text>}
+                {!urlParse && <Text style={[style.textDirectionRTL,{fontSize: 24}]}> עוד לא קיים סרטון עבור דמות זו </Text>}
             </View>
         )
     );

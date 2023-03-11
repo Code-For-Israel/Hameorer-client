@@ -17,6 +17,7 @@ import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import VideoPlayer from '../Guides/VideoPlayer';
+import PlayAudioIcon from "../../../components/IconsSvg/PlayAudioIcon";
 
 const width = Dimensions.get('window').width; //full width
 
@@ -53,13 +54,13 @@ const ViewTask = ({route}) => {
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
-                            <Text style={stylesIn.h1}>{data.subject.subject}</Text>
-                            <Text style={stylesIn.textBody}>{data.body.quote_location}</Text>
+                            <Text style={[stylesIn.h1,style.textDirectionRTL]}>{data.subject.subject}</Text>
+                            <Text style={[stylesIn.textBody,style.textDirectionRTL]}>{data.body.quote_location}</Text>
 
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
                                 תאריך לידה: {data.subject.birth_date}
                             </Text>
-                            <Text style={stylesIn.textSubTitle}>
+                            <Text style={[stylesIn.textSubTitle,style.textDirectionRTL]}>
                                 תאריך פטירה: {data.subject.death_date}
                             </Text>
                         </View>
@@ -87,7 +88,9 @@ const ViewTask = ({route}) => {
                                     {flexDirection: 'row-reverse'},
                                 ]}
                             >
-                                <SoundPlayer audioFile={''}></SoundPlayer>
+                                {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
+                                <PlayAudioIcon></PlayAudioIcon>
+
                             </View>
                             {/*הערות מדריך*/}
                             <View style={stylesIn.TextInputContainer}>
