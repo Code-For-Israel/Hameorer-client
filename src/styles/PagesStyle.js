@@ -2,7 +2,8 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
     textDirectionRTL: {
-        textAlign: 'right', writingDirection: 'rtl'
+        textAlign: 'right',
+        writingDirection: 'rtl',
     },
     viewDirectionRTL: {flexDirection: 'row-reverse'},
     mainContainer: {flex: 1, paddingRight: 5, paddingLeft: 5},

@@ -50,5 +50,5 @@ const stylesIn = StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'flex-end',
         justifyContent: 'flex-end',
-    }
+    },
 });

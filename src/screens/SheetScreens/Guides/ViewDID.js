@@ -18,7 +18,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {logoutThunk, selectAccess} from '../../../redux/userSlice';
 import {useNavigation} from '@react-navigation/native';
 import PrevButton from '../../../components/NextButton';
-import PlayAudioIcon from "../../../components/IconsSvg/PlayAudioIcon";
+import PlayAudioIcon from '../../../components/IconsSvg/PlayAudioIcon';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -55,7 +55,7 @@ const ViewDID = ({route}) => {
     };
 
     const onToggleSwitchMale = () => {
-        setIsSwitchApproved(!isSwitchApproved)
+        setIsSwitchApproved(!isSwitchApproved);
     };
 
     return (
@@ -81,13 +81,17 @@ const ViewDID = ({route}) => {
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
-                            <Text style={[stylesIn.h1,styles.textDirectionRTL]}>{data.subject.subject}</Text>
-                            <Text style={[stylesIn.textBody,styles.textDirectionRTL]}>{data.body.quote_location}</Text>
+                            <Text style={[stylesIn.h1, styles.textDirectionRTL]}>
+                                {data.subject.subject}
+                            </Text>
+                            <Text style={[stylesIn.textBody, styles.textDirectionRTL]}>
+                                {data.body.quote_location}
+                            </Text>
 
-                            <Text style={[stylesIn.textSubTitle,styles.textDirectionRTL]}>
+                            <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
                                 תאריך לידה: {route.params.dateBirth}
                             </Text>
-                            <Text style={[stylesIn.textSubTitle,styles.textDirectionRTL]}>
+                            <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
                                 תאריך פטירה: {route.params.dateDeath}
                             </Text>
                         </View>
@@ -95,7 +99,7 @@ const ViewDID = ({route}) => {
                     {/* end of head Section */}
 
                     {/* quote */}
-                    {data?.body?.quote!=='' &&
+                    {data?.body?.quote !== '' && (
                         <View style={stylesIn.TextInputContainer}>
                             <TextInput
                                 disabled={true}
@@ -105,7 +109,7 @@ const ViewDID = ({route}) => {
                                 value={data.body.quote}
                             />
                         </View>
-                    }
+                    )}
                     {/* origin */}
                     <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                         <TextInput
@@ -118,17 +122,18 @@ const ViewDID = ({route}) => {
                         {/*    setCheckedQuote(!checkedQuote);*/}
                         {/*}}/>*/}
                     </View>
-                    {data.media.soundName != 'none' &&
+                    {data.media.soundName != 'none' && (
                         <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                             {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
                             <PlayAudioIcon></PlayAudioIcon>
 
-                            <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale}/>
+                            <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale} />
                             {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
-                            {!isSwitchApproved && <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>}
-
+                            {!isSwitchApproved && (
+                                <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>
+                            )}
                         </View>
-                    }
+                    )}
                     {/*הערות מדריך*/}
                     <View style={stylesIn.TextInputContainer}>
                         <TextInput
@@ -241,6 +246,6 @@ const stylesIn = StyleSheet.create({
     },
     TextCheckbox: {
         alignSelf: 'center',
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
     },
 });

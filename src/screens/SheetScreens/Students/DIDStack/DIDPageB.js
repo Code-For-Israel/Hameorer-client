@@ -8,7 +8,7 @@ import {getSubjects, selectSubjects} from '../../../../redux/dataSlice';
 import {selectAccess} from '../../../../redux/userSlice';
 import ImageViewer from '../../../../components/ImageViewer';
 import PlaceholderImage from '../../../../../assets/fallbackImage.png';
-import {styles} from "../../../../styles/PagesStyle";
+import {styles} from '../../../../styles/PagesStyle';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -83,10 +83,16 @@ const DIDPageB = ({navigation}) => {
                                 onPress={() => handleFigurePress(item)}
                             >
                                 <View style={{width: width * 0.65}}>
-                                    <Text style={[stylesIn.figureHead,styles.textDirectionRTL]}>{item.subject}</Text>
-                                    <Text style={[stylesIn.figureBody,styles.textDirectionRTL]}>{item.body}</Text>
+                                    <Text style={[stylesIn.figureHead, styles.textDirectionRTL]}>
+                                        {item.subject}
+                                    </Text>
+                                    <Text style={[stylesIn.figureBody, styles.textDirectionRTL]}>
+                                        {item.body}
+                                    </Text>
                                     {item.birth_date && (
-                                        <Text style={[stylesIn.figureBody,styles.textDirectionRTL]}>
+                                        <Text
+                                            style={[stylesIn.figureBody, styles.textDirectionRTL]}
+                                        >
                                             נולד ב: {item.birth_date} , וחי עד: {item.death_date}
                                         </Text>
                                     )}
@@ -107,7 +113,11 @@ const DIDPageB = ({navigation}) => {
 
             <View style={stylesIn.footerContainer}>
                 <View style={stylesIn.ProgressBarContainer}>
-                    <ProgressBar progress={0.5} color={'#D9D9D9'} style={stylesIn.ProgressBarStyle} />
+                    <ProgressBar
+                        progress={0.5}
+                        color={'#D9D9D9'}
+                        style={stylesIn.ProgressBarStyle}
+                    />
                 </View>
 
                 <View

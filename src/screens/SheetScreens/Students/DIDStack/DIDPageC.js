@@ -1,4 +1,12 @@
-import {Pressable, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {
+    Pressable,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import React, {Fragment, useState} from 'react';
 import NextButton from '../../../../components/NextButton';
 import {Banner, Modal, Portal, ProgressBar, Provider, Switch} from 'react-native-paper';
@@ -10,7 +18,7 @@ import {selectAccess} from '../../../../redux/userSlice';
 import CloseIcon from '../../../../components/IconsSvg/CloseIcon';
 import UploadIcon from '../../../../components/IconsSvg/UploadIcon';
 import GetSiteUrl from '../../../../utils/GetSiteUrl';
-import {styles} from "../../../../styles/PagesStyle";
+import {styles} from '../../../../styles/PagesStyle';
 
 const PlaceholderImage = require('../../../../../assets/fallbackImage.png');
 const containerStyle = {
@@ -129,19 +137,15 @@ const DIDPageC = ({navigation, route}) => {
     };
 
     const onToggleSwitch = () => {
-        setIsSwitchText(!isSwitchText)
-        if (isSwitchText)
-            setCheckedVoiceOrText('quote');
-        else
-            setCheckedVoiceOrText('voice');
+        setIsSwitchText(!isSwitchText);
+        if (isSwitchText) setCheckedVoiceOrText('quote');
+        else setCheckedVoiceOrText('voice');
     };
 
     const onToggleSwitchMale = () => {
-        setIsSwitchMale(!isSwitchMale)
-        if (!isSwitchMale)
-            setCheckedVoiceType('men');
-        else
-            setCheckedVoiceType('woman');
+        setIsSwitchMale(!isSwitchMale);
+        if (!isSwitchMale) setCheckedVoiceType('men');
+        else setCheckedVoiceType('woman');
     };
 
     return (
@@ -184,7 +188,7 @@ const DIDPageC = ({navigation, route}) => {
                                     setLoading(false);
                                 }}
                             >
-                                <CloseIcon/>
+                                <CloseIcon />
                             </Pressable>
                         </View>
 
@@ -198,7 +202,9 @@ const DIDPageC = ({navigation, route}) => {
                         >
                             <Text style={styles.textDirectionRTL}>עבודה טובה !</Text>
                             <Text style={styles.textDirectionRTL}>הציטוט שלך נשלח למשוב,</Text>
-                            <Text style={styles.textDirectionRTL}>תתקבל אצלך הודעה כשהוא יאושר.</Text>
+                            <Text style={styles.textDirectionRTL}>
+                                תתקבל אצלך הודעה כשהוא יאושר.
+                            </Text>
                         </View>
                     </View>
                 </Modal>
@@ -209,12 +215,16 @@ const DIDPageC = ({navigation, route}) => {
                 <View style={stylesIn.HeadSection}>
                     <View style={stylesIn.detailsContainer}>
                         <Text style={[stylesIn.h1, styles.textDirectionRTL]}>{figure.subject}</Text>
-                        <Text style={[stylesIn.textBody, styles.textDirectionRTL]}>{figure.location}</Text>
+                        <Text style={[stylesIn.textBody, styles.textDirectionRTL]}>
+                            {figure.location}
+                        </Text>
 
-                        <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>תאריך
-                            לידה: {figure.birth_date}</Text>
-                        <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>תאריך
-                            פטירה: {figure.death_date}</Text>
+                        <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
+                            תאריך לידה: {figure.birth_date}
+                        </Text>
+                        <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
+                            תאריך פטירה: {figure.death_date}
+                        </Text>
                     </View>
                     <View style={stylesIn.ImageContainer}>
                         {/* <Icon name="add" size={30} color={"#fff"} /> */}
@@ -233,9 +243,9 @@ const DIDPageC = ({navigation, route}) => {
                 <Text style={{alignSelf: 'center', fontSize: 16}}>מה ההעדפה שלך?</Text>
                 {/* RadioButton */}
                 <View style={stylesIn.checkboxContainer}>
-                    <Switch value={isSwitchText} onValueChange={onToggleSwitch}/>
-                    { isSwitchText && <Text style={stylesIn.TextCheckbox}>בהקלטה</Text>}
-                    { !isSwitchText && <Text style={stylesIn.TextCheckbox}>בכתב</Text>}
+                    <Switch value={isSwitchText} onValueChange={onToggleSwitch} />
+                    {isSwitchText && <Text style={stylesIn.TextCheckbox}>בהקלטה</Text>}
+                    {!isSwitchText && <Text style={stylesIn.TextCheckbox}>בכתב</Text>}
                 </View>
                 <Text style={stylesIn.greyText}>*ציטוט בכתב יונפש עם דגימת קול אוטומטית</Text>
 
@@ -268,10 +278,9 @@ const DIDPageC = ({navigation, route}) => {
 
                 {checkedVoiceOrText === 'quote' && (
                     <View style={stylesIn.checkboxContainer}>
-
-                        <Switch value={isSwitchMale} onValueChange={onToggleSwitchMale}/>
-                        { isSwitchMale && <Text style={stylesIn.TextCheckbox}>קול של גבר</Text>}
-                        { !isSwitchMale && <Text style={stylesIn.TextCheckbox}>קול של אישה</Text>}
+                        <Switch value={isSwitchMale} onValueChange={onToggleSwitchMale} />
+                        {isSwitchMale && <Text style={stylesIn.TextCheckbox}>קול של גבר</Text>}
+                        {!isSwitchMale && <Text style={stylesIn.TextCheckbox}>קול של אישה</Text>}
                     </View>
                 )}
                 {/* sound sample */}
@@ -279,8 +288,14 @@ const DIDPageC = ({navigation, route}) => {
                     <Fragment>
                         <TouchableOpacity onPress={pickAudio}>
                             <View style={stylesIn.TextInputContainer}>
-                                <Text style={[stylesIn.input, stylesIn.inputSound,style.textDirectionRTL]}>
-                                    <UploadIcon/>
+                                <Text
+                                    style={[
+                                        stylesIn.input,
+                                        stylesIn.inputSound,
+                                        style.textDirectionRTL,
+                                    ]}
+                                >
+                                    <UploadIcon />
                                     {recordingFileName !== ''
                                         ? recordingFileName
                                         : 'העלה הקלטת ציטוט'}
@@ -298,12 +313,12 @@ const DIDPageC = ({navigation, route}) => {
 
             <View style={stylesIn.ProgressBarContainer}>
                 {/* note that the progress is reversed */}
-                <ProgressBar progress={0} color={'#D9D9D9'} style={stylesIn.ProgressBarStyle}/>
+                <ProgressBar progress={0} color={'#D9D9D9'} style={stylesIn.ProgressBarStyle} />
             </View>
 
             <View style={stylesIn.footerContainer}>
                 <View style={stylesIn.send}>
-                    <NextButton loading={loading} title={'שליחה'} onPress={handleSend}/>
+                    <NextButton loading={loading} title={'שליחה'} onPress={handleSend} />
                 </View>
                 <Text style={stylesIn.headText}>שלב 2 מתוך 2</Text>
                 <View style={stylesIn.send}>
@@ -409,7 +424,7 @@ const stylesIn = StyleSheet.create({
     },
     TextCheckbox: {
         alignSelf: 'center',
-        paddingLeft: 22
+        paddingLeft: 22,
     },
     input: {
         marginBottom: 10,
