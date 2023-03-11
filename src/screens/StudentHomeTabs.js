@@ -29,7 +29,7 @@ const tabScreens = [
     { name: 'ViewTask', component: ViewTask, title: 'צפה במשימה', label: 'צפיה במשימה', icon: MapIcon },
 ];
 
-const HomeTabs = () => {
+const StudentHomeTabs = () => {
     return (
         <Tab.Navigator initialRouteName="Profile" screenOptions={screenOptions}>
             {tabScreens.map((tabScreen) => (
@@ -44,4 +44,4 @@ const HomeTabs = () => {
     );
 };
 
-export default HomeTabs;
+export default StudentHomeTabs;

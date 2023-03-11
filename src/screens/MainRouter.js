@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import MainNav from './MainNav';
+import StudentNav from './StudentNav';
 import AuthRouter from './LoginStack/AuthRouter';
 import {
     loginThunk,
@@ -58,7 +58,7 @@ const MainRouter = () => {
         return <Loading />;
     }
     if (access) {
-        return isGuide ? <GuideNav /> : <MainNav />;
+        return isGuide ? <GuideNav /> : <StudentNav />;
     } else if (!access) {
         return <AuthRouter />;
     }
