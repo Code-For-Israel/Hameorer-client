@@ -156,7 +156,7 @@ const stylesIn = StyleSheet.create({
     },
     TextInputContainer: {
         width: '100%',
-        paddingHorizontal: 15,
+        paddingHorizontal: 5,
     },
     input: {
         marginBottom: 10,

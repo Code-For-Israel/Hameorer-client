@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Platform, Text, View} from 'react-native';
+import {Dimensions, Platform, Text, View} from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import PrevButton from "../PrevButton";
 
 const {StorageAccessFramework} = FileSystem;
+const width = Dimensions.get('window').width; //full width
 
 const DownloadFile = ({url}) => {
 
@@ -69,8 +70,8 @@ const DownloadFile = ({url}) => {
         }
     }
 
-    return (<View>
-        <PrevButton title={"הורד"} onPress={() => downloadFile(url)}></PrevButton>
+    return (<View style={{width: width, alignItems:'center', padding:5}}>
+        <PrevButton  title={"הורד"} onPress={() => downloadFile(url)}></PrevButton>
         <Text style={{
             fontSize: 18,
             color: '#072F5F',
