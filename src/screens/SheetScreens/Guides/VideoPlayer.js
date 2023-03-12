@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Video} from 'expo-av';
 import PrevButton from '../../../components/PrevButton';
 import DownloadFile from '../../../components/DownloadFile/DownloadFile';
+import ShareExample from '../../../components/ShareButton/ShareButton';
 
 const VideoPlayer = ({url}) => {
     const urlParse = url?.media?.did;
@@ -38,6 +39,8 @@ const VideoPlayer = ({url}) => {
                         />
                         {/*todo enable in the future*/}
                         {/*<DownloadFile url={urlParse}></DownloadFile>*/}
+                        <ShareExample></ShareExample>
+
                     </>
                 )}
                 {!urlParse && (
