@@ -1,4 +1,4 @@
-import {ImageBackground, Text, TextInput, View} from 'react-native';
+import {Image, ImageBackground, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import LoginHeader from '../../components/LoginHeader';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -7,6 +7,7 @@ import {loginThunk} from '../../redux/userSlice';
 import {styles} from '../../styles/PagesStyle';
 
 const image = require('../../../assets/loginbg.png');
+const MeorerIcon = require('../../../assets/logoM.png');
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -34,7 +35,7 @@ const Login = () => {
     return (
         <View style={styles.mainContainer}>
             <ImageBackground source={image} style={styles.image}>
-                <LoginHeader />
+                <LoginHeader/>
                 <View style={styles.container}>
                     <TextInput
                         placeholder="אימייל"
@@ -67,6 +68,12 @@ const Login = () => {
                             <Text style={styles.loginBtnText}>כניסה</Text>
                         </View>
                     </TouchableOpacity>
+                    <View style={{marginTop: 20}}>
+                        <Image source={MeorerIcon} style={{height: 60, width: 150}}/>
+                    </View>
+                    <View>
+                        <Text>Powered by Code for Israel</Text>
+                    </View>
                 </View>
             </ImageBackground>
         </View>
