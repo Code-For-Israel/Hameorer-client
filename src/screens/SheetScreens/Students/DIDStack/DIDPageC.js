@@ -102,35 +102,41 @@ const DIDPageC = ({navigation, route}) => {
         if (
             figure &&
             textOrigin &&
-            (checkedVoiceOrText === 'voice' || (checkedVoiceOrText === 'quote' && textQuote))
+            (checkedVoiceOrText === 'voice' && response || (checkedVoiceOrText === 'quote' && textQuote))
         ) {
             const story = {
-                subject: figure,
-                tags: ['_'],
-                body: {
-                    background: '',
-                    quote_date: '',
-                    quote_source: textOrigin,
+                subject:  figure,
+                tags:     ['_'],
+                body:     {
+                    background:     '',
+                    quote_date:     '',
+                    quote_source:   textOrigin,
                     quote_location: figure.address,
-                    quote_title: '',
-                    quote: textQuote,
+                    quote_title:    '',
+                    quote:          textQuote,
                 },
                 comments: {
                     one: '',
                 },
-                status: 'pending',
-                media: {
-                    image: selectedImage ? selectedImage : 'none',
-                    soundGender: checkedVoiceOrText === 'quote' ? checkedVoiceType : 'none',
-                    soundBucket: response ? response.bucket : 'none',
+                status:   'pending',
+                media:    {
+                    image:         selectedImage ? selectedImage : 'none',
+                    soundGender:   checkedVoiceOrText === 'quote' ? checkedVoiceType : 'none',
+                    soundBucket:   response ? response.bucket : 'none',
                     soundHttpLink: response ? response.http_link : 'none',
-                    soundName: response ? response.name : 'none',
-                    soundS3Link: response ? response.s3_link : 'none',
-                    soundType: response ? response.type : 'none',
-                    soundId: response ? response._id : 'none',
+                    soundName:     response ? response.name : 'none',
+                    soundS3Link:   response ? response.s3_link : 'none',
+                    soundType:     response ? response.type : 'none',
+                    soundId:       response ? response._id : 'none',
                 },
             };
-            dispatch(setStory({access, story}));
+            if(figure && textOrigin && (checkedVoiceOrText === 'voice' && response || (checkedVoiceOrText === 'quote' && textQuote))) {
+                console.log(story)
+                dispatch(setStory({
+                    access,
+                    story
+                }));
+            }
         } else {
             setVisibleB(true);
         }
