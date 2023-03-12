@@ -68,7 +68,7 @@ const Login = () => {
                             <Text style={styles.loginBtnText}>כניסה</Text>
                         </View>
                     </TouchableOpacity>
-                    <View style={{marginTop: 20}}>
+                    <View style={{marginTop: 40}}>
                         <Image source={MeorerIcon} style={{height: 60, width: 150}}/>
                     </View>
                     <View>
