@@ -24,24 +24,31 @@ const width = Dimensions.get('window').width; //full width
 const ViewTask = ({route}) => {
     const navigation = useNavigation();
     const [storyUrl, setStoryUrl] = useState();
+    const [storyData, setStoryData] = useState();
     const id = route.params;
-    const baseUrl = GetSiteUrl();
-    const {data} = UseFetchGet(storyUrl);
+    const baseUrl   = GetSiteUrl();
+    let {data}      = UseFetchGet(storyUrl);
     const isFocused = useIsFocused();
 
     useEffect(() => {
+        if (data) {
+            setStoryData(data);
+        }
+    }, [data]);
+
+    useEffect(() => {
         if (id && isFocused) {
-            setStoryUrl('');
             setStoryUrl(baseUrl + 'v1/stories/' + id);
         }
     }, [id, isFocused, baseUrl]);
 
     const HandelSend = () => {
+        setStoryData({})
         navigation.navigate('Profile');
     };
     return (
-        data &&
-        data.body && (
+        storyData &&
+        storyData.body && (
             <Provider>
                 <ScrollView style={stylesIn.container}>
                     {/* headSection - name dates and + button*/}
@@ -49,42 +56,42 @@ const ViewTask = ({route}) => {
                         <View style={stylesIn.ImageContainer}>
                             <ImageViewer
                                 placeholderImageSource={PlaceholderImage}
-                                selectedImage={data.media?.image}
+                                selectedImage={storyData.media?.image}
                                 width={130}
                             />
                         </View>
                         <View style={stylesIn.detailsContainer}>
                             <Text style={[stylesIn.h1, styles.textDirectionRTL]}>
-                                {data.subject.subject}
+                                {storyData.subject.subject}
                             </Text>
                             <Text style={[stylesIn.textBody, styles.textDirectionRTL]}>
-                                {data.body.quote_location}
+                                {storyData.body.quote_location}
                             </Text>
 
                             <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
-                                תאריך לידה: {data.subject.birth_date}
+                                תאריך לידה: {storyData.subject.birth_date}
                             </Text>
                             <Text style={[stylesIn.textSubTitle, styles.textDirectionRTL]}>
-                                תאריך פטירה: {data.subject.death_date}
+                                תאריך פטירה: {storyData.subject.death_date}
                             </Text>
                         </View>
                     </View>
                     {/* end of head Section */}
                     {/* quote */}
-                    {data.status !== 'done' && (
+                    {storyData.status !== 'done' && (
                         <View style={stylesIn.TextInputContainer}>
                             <TextInput
                                 disabled={true}
                                 direction="rtl"
                                 multiline={true}
                                 style={[stylesIn.input, stylesIn.inputBig]}
-                                value={data.body.quote}
+                                value={storyData.body.quote}
                             />
                         </View>
                     )}
                     {/* origin */}
 
-                    {data.status !== 'done' && (
+                    {storyData.status !== 'done' && (
                         <>
                             <View
                                 style={[
@@ -101,7 +108,7 @@ const ViewTask = ({route}) => {
                                     disabled={true}
                                     placeholder="הערות של מדריך"
                                     multiline={true}
-                                    value={data.comments?.one}
+                                    value={storyData.comments?.one}
                                     direction="rtl"
                                     style={[
                                         stylesIn.input,
@@ -111,9 +118,9 @@ const ViewTask = ({route}) => {
                             </View>
                         </>
                     )}
-                    {data.status === 'done' && (
+                    {storyData.status === 'done' && (
                         <>
-                            <VideoPlayer url={data}></VideoPlayer>
+                            <VideoPlayer url={storyData}></VideoPlayer>
                             <View
                                 style={[
                                     stylesIn.TextInputContainer,
@@ -128,7 +135,7 @@ const ViewTask = ({route}) => {
                                     disabled={true}
                                     direction="rtl"
                                     style={stylesIn.input}
-                                    value={data.body.quote_source}
+                                    value={storyData.body.quote_source}
                                 />
                             </View>
                         </>

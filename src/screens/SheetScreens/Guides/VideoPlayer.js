@@ -32,10 +32,11 @@ const VideoPlayer = ({url}) => {
                             }}
                             useNativeControls
                             resizeMode="contain"
-                            isLooping={false}
+                            isLooping={true}
                             onPlaybackStatusUpdate={(status) => setStatus(() => status)}
                         />
-                        <DownloadFile url={urlParse}></DownloadFile>
+                        {/*todo enable in the future*/}
+                        {/*<DownloadFile url={urlParse}></DownloadFile>*/}
                     </>
                 )}
                 {!urlParse && (
