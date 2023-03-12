@@ -40,7 +40,6 @@ const VideoPlayer = ({url}) => {
                         {/*todo enable in the future*/}
                         {/*<DownloadFile url={urlParse}></DownloadFile>*/}
                         <ShareExample></ShareExample>
-
                     </>
                 )}
                 {!urlParse && (
