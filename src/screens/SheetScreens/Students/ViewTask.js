@@ -18,6 +18,7 @@ import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import VideoPlayer from '../Guides/VideoPlayer';
 import PlayAudioIcon from '../../../components/IconsSvg/PlayAudioIcon';
+import ShareExample from "../../../components/ShareButton/ShareButton";
 
 const width = Dimensions.get('window').width; //full width
 
@@ -138,6 +139,8 @@ const ViewTask = ({route}) => {
                                     value={storyData.body.quote_source}
                                 />
                             </View>
+                            <ShareExample></ShareExample>
+
                         </>
                     )}
                     {/* send btn */}
