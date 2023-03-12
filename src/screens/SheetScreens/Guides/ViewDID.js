@@ -1,12 +1,4 @@
-import {
-    Dimensions,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider, Switch} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
@@ -42,12 +34,15 @@ const ViewDID = ({route}) => {
     }, [data]);
 
     const HandelSend = () => {
-        data.comments.one = guideNote;
-        if (isSwitchApproved) data.status = 'done';
-        else data.status = 'review';
+        let newData = {comments: {one: ''}, status: ''}
+        if (isSwitchApproved) {
+            newData.status = 'done';
+        } else {
+            newData.status = 'review'
+            newData.comments.one = guideNote;
+        }
         const id = data._id;
-        delete data._id;
-        dispatch(updateStory({access, story: data, id}));
+        dispatch(updateStory({access, story: newData, id}));
         navigation.navigate('MyGroup');
         // todo block if approved in the past
     };
@@ -132,7 +127,7 @@ const ViewDID = ({route}) => {
                             {flexDirection: 'row-reverse', paddingVertical: 10},
                         ]}
                     >
-                        <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale} />
+                        <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale}/>
                         {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
                         {!isSwitchApproved && <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>}
                     </View>
