@@ -24,7 +24,7 @@ For web :
 
 
 ## Expo snack preview for Android and IOS
-https://snack.expo.dev/@syahbes/hameorer-23-01-23
+https://snack.expo.dev/@itzikd1/11-3-23-new
 
 
 
