@@ -33,6 +33,7 @@ const VideoPlayer = ({url}) => {
                             useNativeControls
                             resizeMode="contain"
                             isLooping={true}
+                            shouldPlay={true}
                             onPlaybackStatusUpdate={(status) => setStatus(() => status)}
                         />
                         {/*todo enable in the future*/}
