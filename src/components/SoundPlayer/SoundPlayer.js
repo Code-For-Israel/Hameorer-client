@@ -1,20 +1,26 @@
 import {Audio} from 'expo-av';
 import {useEffect, useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity} from 'react-native';
 import PlayAudioIcon from '../IconsSvg/PlayAudioIcon';
-import mock_audio from '../../screens/SheetScreens/Guides/mock_audio.json';
+import GetSiteUrl from '../../utils/GetSiteUrl';
 
-export default function SoundPlayer({audioFile}) {
+export default function SoundPlayer({audioMedia}) {
     const [sound, setSound] = useState();
-    console.log(audioFile);
+    const [loading, setLoading] = useState(false);
+    const baseUrl = GetSiteUrl();
+
+    const mediaUrl = baseUrl + 'v1/media/hameorer-audio/' + audioMedia.soundName;
 
     async function playSound() {
         console.log('Loading Sound');
-        const {sound} = await Audio.Sound.createAsync(require('../../../assets/test.mp3'));
+        setLoading(true)
+        const {sound} = await Audio.Sound.createAsync({uri: mediaUrl});
         setSound(sound);
 
         console.log('Playing Sound');
         await sound.playAsync();
+        setLoading(false)
+
     }
 
     useEffect(() => {
@@ -28,7 +34,8 @@ export default function SoundPlayer({audioFile}) {
 
     return (
         <>
-            <TouchableOpacity value={mock_audio.http_link} onPress={playSound}>
+            <TouchableOpacity onPress={playSound}>
+                {!loading && <Text>loading...</Text>}
                 <PlayAudioIcon></PlayAudioIcon>
             </TouchableOpacity>
         </>

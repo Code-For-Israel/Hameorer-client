@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     buttonTitle: {
-        alignSelf:"center",
-        textAlign:"center",
+        alignSelf: 'center',
+        textAlign: 'center',
         color: '#1261A0',
         fontWeight: 'bold',
     },

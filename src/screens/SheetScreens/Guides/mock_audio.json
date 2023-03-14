@@ -1,8 +1,8 @@
 {
-    "_id": "64037dfea9e5bd07de178a22",
-    "name": "test.mp3",
-    "type": "audio/mp3",
+    "_id": "6410cc8cb480512207b83ce9",
+    "name": "test (1).mp3",
+    "type": "audio/mpeg",
     "bucket": "hameorer-audio",
-    "s3_link": "s3://hameorer-audio/test.mp3",
-    "http_link": "http://hameorer-audio.s3.us-east-2.amazonaws.com/test.mp3"
+    "s3_link": "s3://hameorer-audio/test (1).mp3",
+    "http_link": "http://masa-api-staging.meorer.co.il/api/v1/media/hameorer-audio/test%20(1).mp3/"
 }

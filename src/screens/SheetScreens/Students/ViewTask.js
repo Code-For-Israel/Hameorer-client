@@ -17,8 +17,7 @@ import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
 import VideoPlayer from '../Guides/VideoPlayer';
-import PlayAudioIcon from '../../../components/IconsSvg/PlayAudioIcon';
-import ShareExample from "../../../components/ShareButton/ShareButton";
+import ShareExample from '../../../components/ShareButton/ShareButton';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -27,8 +26,8 @@ const ViewTask = ({route}) => {
     const [storyUrl, setStoryUrl] = useState();
     const [storyData, setStoryData] = useState();
     const id = route.params;
-    const baseUrl   = GetSiteUrl();
-    let {data}      = UseFetchGet(storyUrl);
+    const baseUrl = GetSiteUrl();
+    let {data} = UseFetchGet(storyUrl);
     const isFocused = useIsFocused();
 
     useEffect(() => {
@@ -44,7 +43,7 @@ const ViewTask = ({route}) => {
     }, [id, isFocused, baseUrl]);
 
     const HandelSend = () => {
-        setStoryData({})
+        setStoryData({});
         navigation.navigate('Profile');
     };
     return (
@@ -100,8 +99,7 @@ const ViewTask = ({route}) => {
                                     {flexDirection: 'row-reverse'},
                                 ]}
                             >
-                                {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
-                                <PlayAudioIcon></PlayAudioIcon>
+                                <SoundPlayer audioMedia={storyData.media}></SoundPlayer>
                             </View>
                             {/*הערות מדריך*/}
                             <View style={stylesIn.TextInputContainer}>
@@ -140,7 +138,6 @@ const ViewTask = ({route}) => {
                                 />
                             </View>
                             <ShareExample></ShareExample>
-
                         </>
                     )}
                     {/* send btn */}

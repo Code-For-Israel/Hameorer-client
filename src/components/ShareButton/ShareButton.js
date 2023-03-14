@@ -8,8 +8,7 @@ const ShareExample = () => {
     const onShare = async () => {
         try {
             const result = await Share.share({
-                message:
-                    'React Native | A framework for building native apps using React',
+                message: 'React Native | A framework for building native apps using React',
             });
             if (result.action === Share.sharedAction) {
                 if (result.activityType) {
@@ -25,7 +24,7 @@ const ShareExample = () => {
         }
     };
     return (
-        <View style={{ padding: 5, marginBottom: 20, width: width, flexDirection:'row-reverse'}}>
+        <View style={{padding: 5, marginBottom: 20, width: width, flexDirection: 'row-reverse'}}>
             <Image source={ShareImage} style={stylesIn.image} />
             {/*<PrevButton onPress={onShare} title="שתף" />*/}
             <PrevButton title="שתף" />
@@ -35,10 +34,9 @@ const ShareExample = () => {
 
 export default ShareExample;
 
-
 const stylesIn = StyleSheet.create({
     image: {
-        width:  width*0.6,
-        height: 50
-    }
-})
+        width: width * 0.6,
+        height: 50,
+    },
+});

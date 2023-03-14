@@ -35,7 +35,7 @@ const Login = () => {
     return (
         <View style={styles.mainContainer}>
             <ImageBackground source={image} style={styles.image}>
-                <LoginHeader/>
+                <LoginHeader />
                 <View style={styles.container}>
                     <TextInput
                         placeholder="אימייל"
@@ -69,7 +69,7 @@ const Login = () => {
                         </View>
                     </TouchableOpacity>
                     <View style={{marginTop: 40}}>
-                        <Image source={MeorerIcon} style={{height: 60, width: 150}}/>
+                        <Image source={MeorerIcon} style={{height: 60, width: 150}} />
                     </View>
                     <View>
                         <Text>Powered by Code for Israel</Text>

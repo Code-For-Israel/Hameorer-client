@@ -4,7 +4,7 @@ import {Video, Audio} from 'expo-av';
 import PrevButton from '../../../components/PrevButton';
 import DownloadFile from '../../../components/DownloadFile/DownloadFile';
 import ShareExample from '../../../components/ShareButton/ShareButton';
-import {useEffect} from "react";
+import {useEffect} from 'react';
 
 const VideoPlayer = ({url}) => {
     const urlParse = url?.media?.did;
@@ -12,8 +12,8 @@ const VideoPlayer = ({url}) => {
     const [status, setStatus] = React.useState({});
 
     useEffect(() => {
-        Audio.setAudioModeAsync({playsInSilentModeIOS: true})
-     }, [])
+        Audio.setAudioModeAsync({playsInSilentModeIOS: true});
+    }, []);
 
     return (
         url && (
@@ -40,7 +40,7 @@ const VideoPlayer = ({url}) => {
                             resizeMode="contain"
                             isLooping={true}
                             ignoreSilentSwitch={'ignore'}
-                            playsInSilentLockedModeIOS={ true }
+                            playsInSilentLockedModeIOS={true}
                             shouldPlay={true}
                             onPlaybackStatusUpdate={(status) => setStatus(() => status)}
                         />

@@ -1,4 +1,12 @@
-import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {
+    Dimensions,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider, Switch} from 'react-native-paper';
 import PlaceholderImage from '../../../../assets/fallbackImage.png';
@@ -9,7 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {logoutThunk, selectAccess} from '../../../redux/userSlice';
 import {useNavigation} from '@react-navigation/native';
 import PrevButton from '../../../components/NextButton';
-import PlayAudioIcon from '../../../components/IconsSvg/PlayAudioIcon';
+import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -34,11 +42,11 @@ const ViewDID = ({route}) => {
     }, [data]);
 
     const HandelSend = () => {
-        let newData = {comments: {one: ''}, status: ''}
+        let newData = {comments: {one: ''}, status: ''};
         if (isSwitchApproved) {
             newData.status = 'done';
         } else {
-            newData.status = 'review'
+            newData.status = 'review';
             newData.comments.one = guideNote;
         }
         const id = data._id;
@@ -47,7 +55,7 @@ const ViewDID = ({route}) => {
         // todo block if approved in the past
     };
 
-    const onToggleSwitchMale = () => {
+    const onToggleSwitchApproved = () => {
         setIsSwitchApproved(!isSwitchApproved);
     };
 
@@ -115,10 +123,9 @@ const ViewDID = ({route}) => {
                         {/*    setCheckedQuote(!checkedQuote);*/}
                         {/*}}/>*/}
                     </View>
-                    {data.media.soundName != 'none' && (
+                    {data.media.soundHttpLink != 'none' && (
                         <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
-                            {/*<SoundPlayer audioFile={''}></SoundPlayer>*/}
-                            <PlayAudioIcon></PlayAudioIcon>
+                            <SoundPlayer audioMedia={data.media}></SoundPlayer>
                         </View>
                     )}
                     <View
@@ -127,7 +134,7 @@ const ViewDID = ({route}) => {
                             {flexDirection: 'row-reverse', paddingVertical: 10},
                         ]}
                     >
-                        <Switch value={isSwitchApproved} onValueChange={onToggleSwitchMale}/>
+                        <Switch value={isSwitchApproved} onValueChange={onToggleSwitchApproved} />
                         {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
                         {!isSwitchApproved && <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>}
                     </View>
