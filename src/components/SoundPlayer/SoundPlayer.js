@@ -35,7 +35,7 @@ export default function SoundPlayer({audioMedia}) {
     return (
         <>
             <TouchableOpacity onPress={playSound}>
-                {!loading && <Text>loading...</Text>}
+                {loading && <Text>טוען אודיו...</Text>}
                 <PlayAudioIcon></PlayAudioIcon>
             </TouchableOpacity>
         </>
