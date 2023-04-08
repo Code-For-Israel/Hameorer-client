@@ -2,37 +2,24 @@ import {SafeAreaView, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
-import {styles} from '../../../../styles/PagesStyle';
+import {styles} from './PagesStyles';
+import {PageTop} from "./PageTop";
 
-const Page4 = ({navigation}) => {
+const Page4 = ({route, navigation}) => {
     const [text, setText] = useState('');
+    const {textPage1,textPage2, textPage3} = route.params;
 
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                <View style={styles.TextContainer}>
-                    <Text style={styles.textThree}>
-                        סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה
-                    </Text>
-                </View>
-                <View style={styles.TextInputContainer}>
-                    <TextInput
-                        placeholder="מקום לטקסט"
-                        direction="rtl"
-                        multiline={true}
-                        style={styles.input}
-                        onChangeText={setText}
-                        value={text}
-                    />
-                </View>
+                {PageTop(setText, text, 'מרד גטו ורשה', '1943', 'סיכום', 'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ')}
 
                 <View style={styles.ButtonContainer}>
                     <View style={{width: 100}}>
                         <NextButton
                             title="הבא"
                             onPress={() => {
-                                console.log('the text is:', text);
-                                navigation.navigate('Page5');
+                                navigation.navigate('Page5', {textPage1: textPage1, textPage2: textPage2, textPage3: textPage3, textPage4: text});
                             }}
                         />
                     </View>
@@ -45,7 +32,7 @@ const Page4 = ({navigation}) => {
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
-                                navigation.navigate('Page3');
+                                navigation.navigate('Page3', {textPage1: textPage1, textPage2: textPage2, textPage3: textPage3});
                             }}
                         />
                     </View>

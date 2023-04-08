@@ -27,7 +27,7 @@ export default function SelfGuid() {
                 name="Page2"
                 component={Page2}
                 options={{
-                    headerTitle: 'לספר בסיפור את הנושא כולל היסטוריה וכו’...',
+                    headerTitle: 'הדרכה עצמית', // this is the part of custom background
                     headerTitleAlign: 'center',
                     headerBackground: CustomBg,
                     headerTintColor: '#fff',
@@ -37,7 +37,7 @@ export default function SelfGuid() {
                 name="Page3"
                 component={Page3}
                 options={{
-                    headerTitle: 'שאלה / דילמה ערכית מהותית',
+                    headerTitle: 'הדרכה עצמית', // this is the part of custom background
                     headerTitleAlign: 'center',
                     headerBackground: CustomBg,
                     headerTintColor: '#fff',
@@ -47,7 +47,7 @@ export default function SelfGuid() {
                 name="Page4"
                 component={Page4}
                 options={{
-                    headerTitle: 'סיכום',
+                    headerTitle: 'הדרכה עצמית', // this is the part of custom background
                     headerTitleAlign: 'center',
                     headerBackground: CustomBg,
                     headerTintColor: '#fff',
@@ -57,7 +57,7 @@ export default function SelfGuid() {
                 name="Page5"
                 component={Page5}
                 options={{
-                    headerTitle: 'הוספת תמונת וקבצים',
+                    headerTitle: 'הדרכה עצמית', // this is the part of custom background
                     headerTitleAlign: 'center',
                     headerBackground: CustomBg,
                     headerTintColor: '#fff',

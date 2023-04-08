@@ -1,21 +1,25 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, TextInput, View} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 
 import DropDownPicker from 'react-native-dropdown-picker';
 
 import NextButton from '../../../../components/NextButton';
-import {styles} from '../../../../styles/PagesStyle';
+import {styles} from './PagesStyles';
 import {MaterialBottomScroll} from '../../../../components/materialBottomScroll/MaterialBottomScroll';
+import {PageTop} from "./PageTop";
+
 
 const Page1 = ({navigation}) => {
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState('one');
     const [items, setItems] = useState([
         {label: 'יאנוש קורצק', value: 'one'},
         {label: 'כדורגל בשואה', value: 'two'},
         {label: 'משפט אייכמן', value: 'three'},
         {label: 'מרד גטו וארשה', value: 'four'},
     ]);
+    const dateEvent = 1943
+    const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>;
 
     const [text, setText] = useState('');
 
@@ -41,27 +45,8 @@ const Page1 = ({navigation}) => {
                         style={styles.DropDownLine}
                     />
                 </View>
-                <View style={styles.TextContainer}>
-                    <Text style={styles.TextOne}>שנת האירוע:</Text>
-                </View>
-                <View style={styles.TextContainer}>
-                    <Text style={styles.TextTwo}>פתיחה</Text>
-                </View>
-                <View style={styles.TextContainer}>
-                    <Text style={styles.textThree}>
-                        הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?
-                    </Text>
-                </View>
-                <View style={styles.TextInputContainer}>
-                    <TextInput
-                        placeholder="הסבירו על הנושא"
-                        direction="rtl"
-                        multiline={true}
-                        style={styles.input}
-                        onChangeText={setText}
-                        value={text}
-                    />
-                </View>
+
+                {PageTop(setText, text, 'מרד גטו ורשה', '1943', 'פתיחה', 'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?')}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 
@@ -72,7 +57,7 @@ const Page1 = ({navigation}) => {
                             onPress={() => {
                                 console.log('the sub is: ', value);
                                 console.log('the text is:', text);
-                                navigation.navigate('Page2');
+                                navigation.navigate('Page2', {textPage1: text});
                             }}
                         />
                     </View>

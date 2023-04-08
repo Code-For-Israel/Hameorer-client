@@ -2,20 +2,24 @@ import {SafeAreaView, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
-import {styles} from '../../../../styles/PagesStyle';
+import {styles} from './PagesStyles';
 
 //placeholder
 import TEMP_AddPhoto from '../../../../components/TEMP_AddPhoto';
 
-const Page4 = ({navigation}) => {
+const Page4 = ({route, navigation}) => {
     const [text, setText] = useState('');
+    const {textPage1, textPage2, textPage3, textPage4} = route.params;
+
+    console.log(textPage1, textPage2, textPage3, textPage4)
+
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
                 <View style={styles.TextContainer}>
                     <Text style={styles.textThree}>*הוסף עד 5 תמונות *קבצי jpg,png (עד 2 מגה)</Text>
                 </View>
-                <TEMP_AddPhoto />
+                <TEMP_AddPhoto/>
                 <View style={styles.TextContainer}>
                     <Text style={styles.TextOne}>הוסף לינק ליו-טיוב</Text>
                 </View>

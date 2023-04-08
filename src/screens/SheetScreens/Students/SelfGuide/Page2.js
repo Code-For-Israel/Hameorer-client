@@ -1,44 +1,19 @@
-import {SafeAreaView, Text, TextInput, View} from 'react-native';
+import {SafeAreaView, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
-import {styles} from '../../../../styles/PagesStyle';
+import {styles} from './PagesStyles';
 import {MaterialBottomScroll} from '../../../../components/materialBottomScroll/MaterialBottomScroll';
+import {PageTop} from "./PageTop";
 
-const Page2 = ({navigation}) => {
+const Page2 = ({route, navigation}) => {
     const [text, setText] = useState('');
-    const [text2, setText2] = useState('');
+    const {textPage1} = route.params;
 
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                <View style={styles.TextContainer}>
-                    <Text style={styles.textThree}>
-                        מומלץ להשתמש בעזרים : תמונה, עדות, קטע מעיתון ארכיון, שיר סרט או להכין פעולה
-                    </Text>
-                </View>
-                <View style={styles.TextInputContainer}>
-                    <TextInput
-                        placeholder="מקום לטקסט"
-                        direction="rtl"
-                        multiline={true}
-                        style={styles.input}
-                        onChangeText={setText}
-                        value={text}
-                    />
-                </View>
-                <View style={styles.TextContainer}>
-                    <Text style={styles.TextTwo}>הערת מדריך</Text>
-                </View>
-                <View style={styles.TextContainer}>
-                    <TextInput
-                        placeholder="הערת מדריך"
-                        direction="rtl"
-                        style={styles.input2}
-                        onChangeText={setText2}
-                        value={text2}
-                    ></TextInput>
-                </View>
+                {PageTop(setText, text, 'מרד גטו ורשה', '1943', '?ספרו במילים שלכם על הנושא שבחרתם ולמה', 'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.')}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 
@@ -47,9 +22,7 @@ const Page2 = ({navigation}) => {
                         <NextButton
                             title="הבא"
                             onPress={() => {
-                                console.log('the text is:', text);
-                                console.log('the text2 is:', text2);
-                                navigation.navigate('Page3');
+                                navigation.navigate('Page3', {textPage1: textPage1, textPage2: text});
                             }}
                         />
                     </View>
@@ -62,7 +35,7 @@ const Page2 = ({navigation}) => {
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
-                                navigation.navigate('Page1');
+                                navigation.navigate('Page1', {textPage1: textPage1});
                             }}
                         />
                     </View>
