@@ -3,9 +3,6 @@ import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
 import {styles} from './PagesStyles';
-
-//placeholder
-import TEMP_AddPhoto from '../../../../components/PhotoUpload';
 import PhotoUpload from "../../../../components/PhotoUpload";
 
 const Page4 = ({route, navigation}) => {
@@ -50,7 +47,7 @@ const Page4 = ({route, navigation}) => {
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
-                                navigation.navigate('Page4');
+                                navigation.navigate('Page4', {textPage1: textPage1, textPage2: textPage2, textPage3: textPage3, textPage4: textPage4});
                             }}
                         />
                     </View>
