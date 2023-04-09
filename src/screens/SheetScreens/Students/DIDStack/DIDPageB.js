@@ -74,7 +74,7 @@ const DIDPageB = ({navigation}) => {
                     {filteredFigure.map((item, index) => {
                         let selectedImage = null;
                         if (item.media) {
-                            selectedImage = item.media[0].http_link;
+                            selectedImage = item.media[0]?.http_link;
                         }
                         return (
                             <TouchableOpacity
