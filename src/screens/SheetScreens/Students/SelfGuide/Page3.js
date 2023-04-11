@@ -14,7 +14,7 @@ const Page3 = ({route, navigation}) => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                {PageTop(setText, text, selectedSub.subject, '1943', 'שאלה / דילמה ערכית מהותית', 'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.')}
+                {PageTop(setText, text, selectedSub, '1943', 'שאלה / דילמה ערכית מהותית', 'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.')}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 

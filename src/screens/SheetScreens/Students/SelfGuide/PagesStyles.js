@@ -3,7 +3,7 @@ import {StyleSheet} from "react-native";
 export const styles = StyleSheet.create({
     TextSubtitle: {
         fontStyle: "normal",
-        fontWeight: 700,
+        // fontWeight: "bold",
         fontSize: 18,
         lineHeight: 24,
         textAlign: 'right',
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
     },
     TextContainer: {
-        width: "9   0%",
+        width: "90%",
         flexDirection: "row",
         // alignItems: "end",
         justifyContent: "flex-end",
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
     },
     TextTwo: {
         fontSize: 22,
-        fontWeight: "bold",
+        // fontWeight: "bold",
         color: "#072F5F",
         marginBottom: 15,
     },
@@ -79,7 +79,7 @@ export const styles = StyleSheet.create({
     },
     TextStatus: {
         fontSize: 24,
-        fontWeight: "bold",
+        // fontWeight: "bold",
         marginLeft: 20,
     },
     StatusContainer: {
