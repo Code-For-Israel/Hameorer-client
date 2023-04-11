@@ -140,7 +140,7 @@ const DIDPageB = ({navigation}) => {
                     {/*</View>*/}
                     <Text style={stylesIn.headText}>שלב 1 מתוך 2</Text>
                     <View style={{width: 100}}>
-                        <NextButton title="הקודם" onPress={() => navigation.goBack()} />
+                        <NextButton title="הקודם" onPress={() => navigation.goBack()}/>
                     </View>
                 </View>
             </View>
