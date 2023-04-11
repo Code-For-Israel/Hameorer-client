@@ -9,7 +9,7 @@ const sheetLinks = [
         id: '1',
         title: 'הדרכה עצמית',
         screen: 'SelfGuide',
-        disable: true,
+        // disable: true,
     },
     {
         id: '2',

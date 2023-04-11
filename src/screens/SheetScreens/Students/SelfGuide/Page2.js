@@ -9,11 +9,12 @@ import {PageTop} from "./PageTop";
 const Page2 = ({route, navigation}) => {
     const [text, setText] = useState('');
     const {textPage1} = route.params;
+    const {selectedSub} = route.params;
 
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                {PageTop(setText, text, 'מרד גטו ורשה', '1943', '?ספרו במילים שלכם על הנושא שבחרתם ולמה', 'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.')}
+                {PageTop(setText, text, selectedSub, '1943', '?ספרו במילים שלכם על הנושא שבחרתם ולמה', 'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.')}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 
@@ -22,7 +23,7 @@ const Page2 = ({route, navigation}) => {
                         <NextButton
                             title="הבא"
                             onPress={() => {
-                                navigation.navigate('Page3', {textPage1: textPage1, textPage2: text});
+                                navigation.navigate('Page3', {selectedSub: selectedSub, textPage1: textPage1, textPage2: text});
                             }}
                         />
                     </View>
@@ -35,7 +36,7 @@ const Page2 = ({route, navigation}) => {
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
-                                navigation.navigate('Page1', {textPage1: textPage1});
+                                navigation.navigate('Page1', {selectedSub: selectedSub, textPage1: textPage1});
                             }}
                         />
                     </View>

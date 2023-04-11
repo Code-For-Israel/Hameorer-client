@@ -15,7 +15,7 @@ const width = Dimensions.get('window').width; //full width
 const DIDPageB = ({navigation}) => {
     const dispatch = useDispatch();
     const access = useSelector(selectAccess);
-    const figures = useSelector(selectSubjects);
+    const figures = useSelector(selectSubjects)
     const [filteredFigure, setFilteredFigure] = useState([]);
     const [figureQuery, setFigureQuery] = useState('');
 
@@ -29,9 +29,7 @@ const DIDPageB = ({navigation}) => {
 
     useEffect(() => {
         if (figures.length) {
-            let filterFigures = figures.filter((item) => item.type.toLowerCase().includes("figure"))
-            if (filterFigures)
-                setFilteredFigure(filterFigures);
+            setFilteredFigure(figures.filter(item => item.type == "figure"));
         }
     }, [figures]);
 

@@ -1,23 +1,23 @@
-import {SafeAreaView, Text, TextInput, View} from 'react-native';
-import React, {useState} from 'react';
+import { SafeAreaView, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
-import {styles} from './PagesStyles';
+import { styles } from './PagesStyles';
 import PhotoUpload from "../../../../components/PhotoUpload";
 
-const Page4 = ({route, navigation}) => {
+const Page4 = ({ route, navigation }) => {
     const [youtubeLink, setYoutubeLink] = useState('');
-    const {textPage1, textPage2, textPage3, textPage4} = route.params;
-
+    const { textPage1, textPage2, textPage3, textPage4 } = route.params;
+    const {selectedSub} = route.params;
     console.log(textPage1, textPage2, textPage3, textPage4)
 
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.pageContainer}>
                 <View style={styles.TextContainer}>
                     <Text style={styles.textThree}>*הוסף עד 5 תמונות *קבצי jpg,png (עד 2 מגה)</Text>
                 </View>
-                <PhotoUpload/>
+                <PhotoUpload />
                 <View style={styles.TextContainer}>
                     <Text style={styles.TextOne}>הוסף לינק ליו-טיוב</Text>
                 </View>
@@ -32,22 +32,22 @@ const Page4 = ({route, navigation}) => {
                     />
                 </View>
                 <View style={styles.ButtonContainer}>
-                    <View style={{width: 130}}>
+                    <View style={{ width: 130 }}>
                         <NextButton
                             title="שלח למדריך"
                             onPress={() => {
-                                console.log({textPage1, textPage2, textPage3, textPage4, youtubeLink});
+                                console.log({ selectedSub: selectedSub, textPage1, textPage2, textPage3, textPage4, youtubeLink });
                             }}
                         />
                     </View>
                     <View>
                         <Text>שלב 5 מתוך 5</Text>
                     </View>
-                    <View style={{width: 100}}>
+                    <View style={{ width: 100 }}>
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
-                                navigation.navigate('Page4', {textPage1: textPage1, textPage2: textPage2, textPage3: textPage3, textPage4: textPage4});
+                                navigation.navigate('Page4', {selectedSub: selectedSub, textPage1: textPage1, textPage2: textPage2, textPage3: textPage3, textPage4: textPage4 });
                             }}
                         />
                     </View>
