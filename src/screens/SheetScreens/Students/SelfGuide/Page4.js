@@ -13,7 +13,7 @@ const Page4 = ({route, navigation}) => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                {PageTop(setText, text, selectedSub.subject, '1943', 'סיכום', 'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ')}
+                {PageTop(setText, text, selectedSub, '1943', 'סיכום', 'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ')}
 
                 <View style={styles.ButtonContainer}>
                     <View style={{width: 100}}>
