@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
     cardComponentTextBlack: {
         color: 'black',
         fontSize: 16,
-
+        paddingRight: 15,
         alignItems: 'center',
     },
     cardComponentTopPart: {

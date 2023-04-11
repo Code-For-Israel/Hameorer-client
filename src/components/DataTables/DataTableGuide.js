@@ -20,14 +20,14 @@ const DataTableGuide = ({headers, data}) => {
 
     return (
         <DataTable style={styles.container}>
-            <DataTable.Row>
+            <DataTable.Row style={styles.row}>
                 <DataTable.Cell>{pendingFigure}</DataTable.Cell>
                 <DataTable.Cell>{headers[0]}</DataTable.Cell>
                 <DataTable.Cell>
                     <ThreeDotCircleIcon></ThreeDotCircleIcon>
                 </DataTable.Cell>
             </DataTable.Row>
-            <DataTable.Row>
+            <DataTable.Row style={styles.row}>
                 <DataTable.Cell>{reviewFigure}</DataTable.Cell>
                 <DataTable.Cell>{headers[1]}</DataTable.Cell>
                 <DataTable.Cell>
@@ -35,7 +35,7 @@ const DataTableGuide = ({headers, data}) => {
                     <ReturnIcon></ReturnIcon>
                 </DataTable.Cell>
             </DataTable.Row>
-            <DataTable.Row>
+            <DataTable.Row style={styles.row}>
                 <DataTable.Cell>{doneFigure}</DataTable.Cell>
                 <DataTable.Cell>{headers[2]}</DataTable.Cell>
                 <DataTable.Cell>
@@ -52,5 +52,10 @@ export default DataTableGuide;
 const styles = StyleSheet.create({
     container: {
         padding: 15,
+    },
+    row: {
+        borderWidth: 1,
+        borderColor: '#1261A0',
+        borderBottomColor:'#1261A0'
     },
 });

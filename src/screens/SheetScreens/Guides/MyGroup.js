@@ -53,7 +53,7 @@ const MyGroup = () => {
                         dateDeath: 1954,
                         _id: story._id,
                         story: story,
-                        image: story.media.image,
+                        image: story.media?.image,
                     };
                     if (story.status === 'done') done.push(storyObj);
                     if (story.status === 'review') review.push(storyObj);
