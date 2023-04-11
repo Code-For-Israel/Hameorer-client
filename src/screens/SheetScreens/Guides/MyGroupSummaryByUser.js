@@ -41,29 +41,28 @@ const MyGroupSummaryByUser = () => {
         }
     }, [access, baseUrl]);
 
-    let pending = [];
-    let review = [];
-    let done = [];
+    let storiesByUser = [];
 
     groupInfo &&
-        groupInfo.users &&
-        groupName &&
-        groupInfo.users.map((user) => {
-            if (user && user.stories.length > 0) {
-                user.stories.map((story) => {
-                    let storyObj = {
-                        fullName: user.firstname + ' ' + user.lastname,
-                        subjectType: story.subject.type,
-                        status: story.status,
-                        group: groupName,
-                    };
-
-                    if (story.status === 'done') done.push(storyObj);
-                    if (story.status === 'review') review.push(storyObj);
-                    if (story.status === 'pending') pending.push(storyObj);
-                });
-            }
-        });
+    groupInfo.users &&
+    groupName &&
+    groupInfo.users.map((user) => {
+        if (user && user.stories.length > 0) {
+            let storyObj = {
+                fullName: user.firstname + ' ' + user.lastname,
+                group: groupName,
+                statusDid: '',
+                statusPolinActivity: ''
+            };
+            user.stories.map((story) => {
+                if (story.subject.type === 'figure')
+                    storyObj.statusDid = story.status
+                else if (story.subject.type === 'polin-activity')
+                    storyObj.statusPolinActivity = story.status
+            });
+           storiesByUser.push(storyObj);
+        }
+    });
 
     return (
         <Provider>
@@ -81,7 +80,7 @@ const MyGroupSummaryByUser = () => {
                     <Text style={{paddingLeft: 10}}>אושר</Text>
                 </View>
                 <View>
-                    <DataTableByUser data={[...pending, ...review, ...done]}></DataTableByUser>
+                    <DataTableByUser storiesByUser={storiesByUser}></DataTableByUser>
                 </View>
             </ScrollView>
         </Provider>

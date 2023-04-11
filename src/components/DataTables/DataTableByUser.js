@@ -5,31 +5,47 @@ import ThreeDotCircleIcon from '../IconsSvg/ThreeDotCircleIcon';
 import ReturnIcon from '../IconsSvg/ReturnIcon';
 import ApproveIcon from '../IconsSvg/ApproveIcon';
 
-const DataTableByUser = ({data}) => {
+const DataTableByUser = ({storiesByUser}) => {
     return (
         <DataTable style={styles.container}>
             <DataTable.Header>
                 <DataTable.Title>שם מלא</DataTable.Title>
                 {/*<DataTable.Title>סוג</DataTable.Title>*/}
                 <DataTable.Title>שם קבוצה</DataTable.Title>
-                <DataTable.Title>סטטוס</DataTable.Title>
+                <DataTable.Title>ציטוט מונפש</DataTable.Title>
+                <DataTable.Title>הדרכה עצמית</DataTable.Title>
             </DataTable.Header>
-            {data.map((dataType, key) => (
+            {storiesByUser.map((userStory, key) => (
                 <DataTable.Row key={key}>
-                    <DataTable.Cell>{dataType.fullName}</DataTable.Cell>
+                    <DataTable.Cell>{userStory.fullName}</DataTable.Cell>
                     {/*<DataTable.Cell>{dataType.subjectType}</DataTable.Cell>*/}
-                    <DataTable.Cell>{dataType.group}</DataTable.Cell>
-                    {dataType.status === 'pending' && (
+                    <DataTable.Cell>{userStory.group}</DataTable.Cell>
+                    {userStory.statusDid === 'pending' && (
                         <DataTable.Cell>
                             <ThreeDotCircleIcon></ThreeDotCircleIcon>
                         </DataTable.Cell>
                     )}
-                    {dataType.status === 'review' && (
+                    {userStory.statusDid === 'review' && (
                         <DataTable.Cell>
                             <ReturnIcon></ReturnIcon>
                         </DataTable.Cell>
                     )}
-                    {dataType.status === 'done' && (
+                    {userStory.statusDid === 'done' && (
+                        <DataTable.Cell>
+                            <ApproveIcon></ApproveIcon>
+                        </DataTable.Cell>
+                    )}
+                    {userStory.statusPolinActivity === 'pending' && (
+                        <DataTable.Cell>
+                            <ThreeDotCircleIcon></ThreeDotCircleIcon>
+                        </DataTable.Cell>
+                    )}
+                    {userStory.statusPolinActivity === 'review' && (
+                        <DataTable.Cell>
+                            <ReturnIcon></ReturnIcon>
+                        </DataTable.Cell>
+                    )}
+                    {userStory.statusPolinActivity === 'done' && (
                         <DataTable.Cell>
                             <ApproveIcon></ApproveIcon>
                         </DataTable.Cell>
