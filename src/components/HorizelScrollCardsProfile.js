@@ -12,7 +12,7 @@ const HorizonteScrollCardsProfile = ({list}) => {
                     <View style={stylesIn.HeadSection}>
                         {list.map((card, key) => {
                             const subject_type =
-                                card?.subject_type === 'figure' ? 'דמות מונפשת' : 'לא ידוע';
+                                card?.subject_type === 'figure' ? 'דמות מונפשת' : card?.subject_type === 'polin-activity' ? 'הדרכה עצמית' : 'לא ידוע';
                             const subject_name = card?.subject_name ?? '';
                             const story_status =
                                 card?.story_status === 'pending'

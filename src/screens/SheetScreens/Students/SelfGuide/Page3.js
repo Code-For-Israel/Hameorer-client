@@ -1,33 +1,25 @@
-import { SafeAreaView, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import {SafeAreaView, Text, View} from 'react-native';
+import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
-import { styles } from './PagesStyles';
-import { MaterialBottomScroll } from '../../../../components/materialBottomScroll/MaterialBottomScroll';
-import { PageTop } from "./PageTop";
+import {styles} from './PagesStyles';
+import {MaterialBottomScroll} from '../../../../components/materialBottomScroll/MaterialBottomScroll';
+import {PageTop} from "./PageTop";
 
-const Page3 = ({ route, navigation }) => {
+const Page3 = ({route, navigation}) => {
     const [text, setText] = useState('');
-    const { textPage1, textPage2 } = route.params;
-    const { selectedSub } = route.params;
+    const {textPage1, textPage2} = route.params;
+    const {selectedSub} = route.params;
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                {PageTop(setText, text, selectedSub, '1943', 'שאלה / דילמה ערכית מהותית', 'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.')}
-
-                {/*<View style={styles.TextContainer}>*/}
-                {/*    <Text style={styles.TextTwo}>הערת מדריך</Text>*/}
-                {/*</View>*/}
-                {/*<View style={styles.StatusContainer}>*/}
-                {/*    <Text style={styles.TextStatus}>מאושר</Text>*/}
-                {/*    <GreenCircleIcon />*/}
-                {/*</View>*/}
+                {PageTop(setText, text, selectedSub.subject, '1943', 'שאלה / דילמה ערכית מהותית', 'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.')}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 
                 <View style={styles.ButtonContainer}>
-                    <View style={{ width: 100 }}>
+                    <View style={{width: 100}}>
                         <NextButton
                             title="הבא"
                             onPress={() => {
@@ -43,7 +35,7 @@ const Page3 = ({ route, navigation }) => {
                         <Text>שלב 3 מתוך 5</Text>
                     </View>
 
-                    <View style={{ width: 100 }}>
+                    <View style={{width: 100}}>
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
