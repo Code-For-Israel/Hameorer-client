@@ -10,8 +10,7 @@ import {PageTop} from "./PageTop";
 
 
 const Page1 = ({route, navigation}) => {
-    const selectedSub = route.params.subject;
-
+     const selectedSub = route.params.subject;
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('one');
     const [items, setItems] = useState([
@@ -21,7 +20,7 @@ const Page1 = ({route, navigation}) => {
         {label: 'מרד גטו וארשה', value: 'four'},
     ]);
     const dateEvent = 1943
-    const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>;
+    const B = (props) => <Text >{props.children}</Text>;
 
     const [text, setText] = useState('');
 

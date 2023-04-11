@@ -21,6 +21,8 @@ const SubjectBox = ({ subject }) => {
             <View style={styles.itemBoxView}>
                 <Text style={{
                     color: 'white',
+                    fontSize: 12,
+                    height: "100%",
                     // display: 'flex',
                     // flexWrap: 'wrap',
                     // justifyContent: 'center',
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
-        // height: 100,
+        height: 135,
         width: 100,
         borderWidth: 1,
         borderColor: '#1261a0',
