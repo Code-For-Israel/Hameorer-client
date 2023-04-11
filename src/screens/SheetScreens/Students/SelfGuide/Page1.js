@@ -9,7 +9,9 @@ import {MaterialBottomScroll} from '../../../../components/materialBottomScroll/
 import {PageTop} from "./PageTop";
 
 
-const Page1 = ({navigation}) => {
+const Page1 = ({route, navigation}) => {
+    const selectedSub = route.params.subject;
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('one');
     const [items, setItems] = useState([
@@ -26,7 +28,7 @@ const Page1 = ({navigation}) => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                <View style={styles.DropContainer}>
+                {/* <View style={styles.DropContainer}>
                     <DropDownPicker
                         onChangeValue={(value) => {
                             console.log('Chosen val is:', value);
@@ -44,9 +46,9 @@ const Page1 = ({navigation}) => {
                         dropDownContainerStyle={{backgroundColor: '#f5f5f5'}}
                         style={styles.DropDownLine}
                     />
-                </View>
+                </View> */}
 
-                {PageTop(setText, text, 'מרד גטו ורשה', '1943', 'פתיחה', 'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?')}
+                {PageTop(setText, text, selectedSub, '1943', 'פתיחה', 'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?')}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 
@@ -57,7 +59,7 @@ const Page1 = ({navigation}) => {
                             onPress={() => {
                                 console.log('the sub is: ', value);
                                 console.log('the text is:', text);
-                                navigation.navigate('Page2', {textPage1: text});
+                                navigation.navigate('Page2', {textPage1: text, selectedSub: selectedSub});
                             }}
                         />
                     </View>
