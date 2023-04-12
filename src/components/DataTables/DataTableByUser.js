@@ -4,6 +4,8 @@ import {DataTable} from 'react-native-paper';
 import ThreeDotCircleIcon from '../IconsSvg/ThreeDotCircleIcon';
 import ReturnIcon from '../IconsSvg/ReturnIcon';
 import ApproveIcon from '../IconsSvg/ApproveIcon';
+import Icon from '@mdi/react';
+import { mdiNoteAlertOutline } from '@mdi/js';
 
 const DataTableByUser = ({storiesByUser}) => {
     return (
@@ -35,6 +37,11 @@ const DataTableByUser = ({storiesByUser}) => {
                             <ApproveIcon></ApproveIcon>
                         </DataTable.Cell>
                     )}
+                    {userStory.statusDid !== 'done' && userStory.statusDid !== 'review' && userStory.statusDid !== 'pending' && (
+                        <DataTable.Cell>
+                            <Icon path={mdiNoteAlertOutline} size={1} />
+                        </DataTable.Cell>
+                    )}
                     {userStory.statusPolinActivity === 'pending' && (
                         <DataTable.Cell>
                             <ThreeDotCircleIcon></ThreeDotCircleIcon>
@@ -48,6 +55,13 @@ const DataTableByUser = ({storiesByUser}) => {
                     {userStory.statusPolinActivity === 'done' && (
                         <DataTable.Cell>
                             <ApproveIcon></ApproveIcon>
+                        </DataTable.Cell>
+                    )}
+                    {userStory.statusPolinActivity !== 'done' && userStory.statusPolinActivity !== 'review' && userStory.statusPolinActivity !== 'pending' && (
+                        <DataTable.Cell>
+
+
+                            <Icon path={mdiNoteAlertOutline} size={1} />
                         </DataTable.Cell>
                     )}
                 </DataTable.Row>
