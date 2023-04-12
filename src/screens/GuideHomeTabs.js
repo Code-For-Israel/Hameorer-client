@@ -6,6 +6,7 @@ import UserIcon from '../components/IconsSvg/UserIcon';
 import MyGroup from './SheetScreens/Guides/MyGroup';
 import ViewDID from './SheetScreens/Guides/ViewDID';
 import MyGroupSummaryByUser from './SheetScreens/Guides/MyGroupSummaryByUser';
+import MyTaskIcon from "../components/IconsSvg/MyTaskIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,13 +26,6 @@ const GuideHomeTabs = () => {
             icon: UserIcon,
         },
         {
-            name: 'ViewDID',
-            component: ViewDID,
-            label: 'צפיה במשימה',
-            title: 'צפיה במשימה',
-            icon: UserIcon,
-        },
-        {
             name: 'MyGroupSummary',
             component: MyGroupSummary,
             label: 'סיכום הקבוצה שלי',
@@ -45,6 +39,13 @@ const GuideHomeTabs = () => {
             title: 'דו"ח קבוצה',
             icon: UserIcon,
         },
+        {
+            name: 'ViewDID',
+            component: ViewDID,
+            label: 'צפיה במשימה',
+            title: 'צפיה במשימה',
+            icon: MyTaskIcon,
+        }
     ];
 
     return (
@@ -64,7 +65,7 @@ const GuideHomeTabs = () => {
                         ...commonOptions,
                         tabBarLabel: screen.label,
                         headerTitle: screen.title,
-                        tabBarIcon: ({color, size}) => <screen.icon color={color} size={size} />,
+                        tabBarIcon: ({color, size}) => <screen.icon color={color} size={size}/>,
                     }}
                 />
             ))}
