@@ -12,7 +12,7 @@ import ThreeDotCircleIcon from '../../../components/IconsSvg/ThreeDotCircleIcon'
 import {useIsFocused} from '@react-navigation/native';
 import GuideHeader from './GuideHeader';
 
-const MyGroup = () => {
+const MyGroupFigure = () => {
     const baseUrl = GetSiteUrl();
     const access = useSelector(selectAccess);
     const [isLoading, setLoading] = useState(true);
@@ -45,19 +45,21 @@ const MyGroup = () => {
         groupInfo.users.map((user) => {
             if (user && user.stories.length > 0) {
                 user.stories.map((story) => {
-                    let storyObj = {
-                        fullName: user.firstname + ' ' + user.lastname,
-                        subject: story.subject.subject,
-                        location: story.body.quote_location,
-                        dateBirth: 1902,
-                        dateDeath: 1954,
-                        _id: story._id,
-                        story: story,
-                        image: story.media?.image,
-                    };
-                    if (story.status === 'done') done.push(storyObj);
-                    if (story.status === 'review') review.push(storyObj);
-                    if (story.status === 'pending') pending.push(storyObj);
+                    if (story.subject.type === 'figure') {
+                        let storyObj = {
+                            fullName: user.firstname + ' ' + user.lastname,
+                            subject: story.subject.subject,
+                            location: story.body.quote_location,
+                            dateBirth: 1902,
+                            dateDeath: 1954,
+                            _id: story._id,
+                            story: story,
+                            image: story.media?.image,
+                        };
+                        if (story.status === 'done') done.push(storyObj);
+                        if (story.status === 'review') review.push(storyObj);
+                        if (story.status === 'pending') pending.push(storyObj);
+                    }
                 });
             }
         });
@@ -107,7 +109,7 @@ const MyGroup = () => {
     );
 };
 
-export default MyGroup;
+export default MyGroupFigure;
 
 const stylesIn = StyleSheet.create({
     groupSubtitle: {

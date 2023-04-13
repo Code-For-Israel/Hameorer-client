@@ -3,10 +3,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CustomBg from '../components/CustomBg';
 import MyGroupSummary from './SheetScreens/Guides/MyGroupSummary';
 import UserIcon from '../components/IconsSvg/UserIcon';
-import MyGroup from './SheetScreens/Guides/MyGroup';
+import MyGroupFigure from './SheetScreens/Guides/MyGroupFigure';
 import ViewDID from './SheetScreens/Guides/ViewDID';
 import MyGroupSummaryByUser from './SheetScreens/Guides/MyGroupSummaryByUser';
 import MyTaskIcon from "../components/IconsSvg/MyTaskIcon";
+import MyGroupPolinActivity from "./SheetScreens/Guides/MyGroupPolinActivity";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,10 +20,17 @@ const GuideHomeTabs = () => {
 
     const screens = [
         {
-            name: 'MyGroup',
-            component: MyGroup,
-            label: 'הקבוצה שלי',
-            title: 'הקבוצה שלי',
+            name: 'MyGroupFigure',
+            component: MyGroupFigure,
+            label: 'DID',
+            title: 'DID',
+            icon: UserIcon,
+        },
+        {
+            name: 'MyGroupPolinActivity',
+            component: MyGroupPolinActivity,
+            label: 'הדרכה עצמית',
+            title: 'הדרכה עצמית',
             icon: UserIcon,
         },
         {
@@ -50,7 +58,7 @@ const GuideHomeTabs = () => {
 
     return (
         <Tab.Navigator
-            initialRouteName="MyGroup"
+            initialRouteName="MyGroupFigure"
             screenOptions={{
                 tabBarActiveTintColor: '#1261A0',
                 tabBarIconStyle: {width: 25, paddingLeft: 5},
