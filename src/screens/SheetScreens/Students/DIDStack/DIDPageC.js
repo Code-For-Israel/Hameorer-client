@@ -137,7 +137,6 @@ const DIDPageC = ({navigation, route}) => {
                 ((checkedVoiceOrText === 'voice' && response) ||
                     (checkedVoiceOrText === 'quote' && textQuote))
             ) {
-                console.log(story);
                 dispatch(
                     setStory({
                         access,

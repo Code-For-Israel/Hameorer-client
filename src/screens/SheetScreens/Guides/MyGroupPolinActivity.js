@@ -47,7 +47,6 @@ const MyGroupPolinActivity = () => {
             if (user && user.stories.length > 0) {
                 user.stories.map((story) => {
                     if (story.subject.type === 'polin-activity') {
-                        console.log(story)
                         let storyObj = {
                             fullName: user.firstname + ' ' + user.lastname,
                             subject: story.subject.subject,
