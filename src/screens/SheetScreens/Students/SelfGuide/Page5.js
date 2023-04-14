@@ -8,7 +8,7 @@ import {setStory} from "../../../../redux/dataSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAccess} from "../../../../redux/userSlice";
 
-const Page4 = ({route, navigation}) => {
+const Page5 = ({route, navigation}) => {
     const [youtubeLink, setYoutubeLink] = useState('');
     const {textPage1, textPage2, textPage3, textPage4} = route.params;
     const {selectedSub} = route.params;
@@ -27,7 +27,11 @@ const Page4 = ({route, navigation}) => {
                 youtubeLink: youtubeLink
             },
             comments: {
-                one: '',
+                textPage1Admin: '',
+                textPage2Admin: '',
+                textPage3Admin: '',
+                textPage4Admin: '',
+                youtubeLinkAdmin: '',
             },
             status: 'pending',
         };
@@ -84,4 +88,4 @@ const Page4 = ({route, navigation}) => {
         </View>
     </SafeAreaView>);
 };
-export default Page4;
+export default Page5;
