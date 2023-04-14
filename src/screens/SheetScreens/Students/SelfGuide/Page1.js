@@ -5,10 +5,13 @@ import NextButton from '../../../../components/NextButton';
 import {styles} from './PagesStyles';
 import {MaterialBottomScroll} from '../../../../components/materialBottomScroll/MaterialBottomScroll';
 import {PageTop} from './PageTop';
+import {useNavigation} from "@react-navigation/native";
 
-const Page1 = ({route, navigation}) => {
+const Page1 = ({route}) => {
+    const navigation = useNavigation();
+
     const selectedSub = route.params;
-
+    console.log(selectedSub)
     const dateEvent = 1943
     const B = (props) => <Text>{props.children}</Text>;
 
@@ -17,7 +20,8 @@ const Page1 = ({route, navigation}) => {
     return (<SafeAreaView style={{flex: 1}}>
         <View style={styles.pageContainer}>
 
-            {PageTop(setText, text, selectedSub.subject, '1943', 'פתיחה', 'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?')}
+
+            {PageTop(setText, text, selectedSub?.subject, '1943', 'פתיחה', 'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?')}
 
             <MaterialBottomScroll></MaterialBottomScroll>
 

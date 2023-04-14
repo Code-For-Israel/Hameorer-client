@@ -51,6 +51,7 @@ export const styles = StyleSheet.create({
     },
     TextInputContainer: {
         width: "90%",
+        alignSelf: "center"
     },
     input: {
         height: 280,

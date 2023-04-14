@@ -28,8 +28,7 @@ const HorizonteScrollCardsProfile = ({list}) => {
                                     title={subject_type}
                                     status={story_status}
                                     subject={subject_name}
-                                    onPress={() => {
-                                        navigation.navigate('ViewTask', card?._id);
+                                    onPress={() => {card?.subject_type === 'figure'? navigation.navigate('ViewTask', card?._id) : navigation.navigate('ViewTaskPolinActivity', card?._id);
                                     }}
                                 ></ProfileCard>
                             );

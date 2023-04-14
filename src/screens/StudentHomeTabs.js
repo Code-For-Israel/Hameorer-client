@@ -30,7 +30,7 @@ const tabScreens = [
         icon: UserIcon,
     },
     {
-        name: 'MyContent',
+        name: 'SelfGuide',
         component: SelfGuid,
         title: 'התוכן שלי',
         label: 'התוכן שלי',
