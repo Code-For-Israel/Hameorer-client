@@ -51,12 +51,22 @@ export const styles = StyleSheet.create({
     },
     TextInputContainer: {
         width: "90%",
-        alignSelf: "center"
+        alignSelf: "center",
+        backgroundColor: '#ffffff'
     },
     input: {
         height: 280,
         padding: 10,
         backgroundColor: "#f5f5f5",
+        borderRadius: 10,
+        marginBottom: 30,
+        textAlign: "right",
+        textAlignVertical: 'top'
+    },
+    inputT: {
+        height: 120,
+        padding: 10,
+        backgroundColor: "#fffff",
         borderRadius: 10,
         marginBottom: 30,
         textAlign: "right",

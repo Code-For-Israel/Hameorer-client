@@ -29,7 +29,7 @@ export function StudentViewPagePolinActivity(setText, text, subtitleText, explai
                 placeholder="אין הערות"
                 direction="rtl"
                 multiline={true}
-                style={styles.input}
+                style={styles.inputT}
                 value={adminText}
             />
         </View>
