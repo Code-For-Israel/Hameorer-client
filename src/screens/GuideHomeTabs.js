@@ -9,7 +9,7 @@ import MyGroupSummaryByUser from './SheetScreens/Guides/MyGroupSummaryByUser';
 import MyTaskIcon from "../components/IconsSvg/MyTaskIcon";
 import MyGroupPolinActivity from "./SheetScreens/Guides/MyGroupPolinActivity";
 import MyContentIcon from "../components/IconsSvg/MyContentIcon";
-import SelfGuidAdmin from "./SheetScreens/Guides/SelfGuide";
+import SelfGuidAdmin from "./SheetScreens/Guides/SelfGuidAdmin";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,18 +29,11 @@ const GuideHomeTabs = () => {
             icon: UserIcon,
         },
         {
-            name: 'MyGroupPolinActivity',
-            component: MyGroupPolinActivity,
+            name: 'SelfGuidAdmin',
+            component: SelfGuidAdmin,
             label: 'הדרכה עצמית',
             title: 'הדרכה עצמית',
             icon: UserIcon,
-        },
-        {
-            name: 'check',
-            component: SelfGuidAdmin,
-            title: 'check',
-            label: 'check',
-            icon: MyContentIcon,
         },
         {
             name: 'MyGroupSummary',
@@ -62,7 +55,7 @@ const GuideHomeTabs = () => {
             label: 'צפיה במשימה',
             title: 'צפיה במשימה',
             icon: MyTaskIcon,
-        }
+        },
     ];
 
     return (

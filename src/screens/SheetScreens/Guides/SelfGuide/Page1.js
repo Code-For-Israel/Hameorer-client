@@ -6,11 +6,10 @@ import {styles} from './PagesStyles';
 import {PageTop} from './PageTop';
 import {useNavigation} from "@react-navigation/native";
 
-const Page1 = () => {
-    const customData = require('./mockStory.json');
-
+const Page1 = ({route}) => {
     const navigation = useNavigation();
-    const selectedSub = customData.stories[0];
+    const selectedPolinActivity = route.params;
+    const selectedSub = selectedPolinActivity.story;
 
     const pageText = selectedSub.body.textPage1
     const [text, setText] = useState(selectedSub.comments.textPage1Admin);

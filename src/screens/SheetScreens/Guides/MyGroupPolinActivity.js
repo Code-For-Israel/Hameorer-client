@@ -11,7 +11,6 @@ import ApproveIcon from '../../../components/IconsSvg/ApproveIcon';
 import ThreeDotCircleIcon from '../../../components/IconsSvg/ThreeDotCircleIcon';
 import {useIsFocused} from '@react-navigation/native';
 import GuideHeader from './GuideHeader';
-import SelfGuidAdmin from "./SelfGuide";
 
 const MyGroupPolinActivity = () => {
     const baseUrl = GetSiteUrl();
@@ -83,7 +82,7 @@ const MyGroupPolinActivity = () => {
                             <ThreeDotCircleIcon></ThreeDotCircleIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={pending} navigateTo={'SelfGuidAdmin'}></HorizonteScrollCards>
+                    <HorizonteScrollCards list={pending} navigateTo={'Page1'}></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
@@ -94,7 +93,7 @@ const MyGroupPolinActivity = () => {
                             <ReturnIcon></ReturnIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={review} navigateTo={'SelfGuidAdmin'}></HorizonteScrollCards>
+                    <HorizonteScrollCards list={review} navigateTo={'Page1'}></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
@@ -103,7 +102,7 @@ const MyGroupPolinActivity = () => {
                             <ApproveIcon></ApproveIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={done} navigateTo={'SelfGuidAdmin'}></HorizonteScrollCards>
+                    <HorizonteScrollCards list={done} navigateTo={'Page1'}></HorizonteScrollCards>
                 </View>
             </ScrollView>
         </Provider>
