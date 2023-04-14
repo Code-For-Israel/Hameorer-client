@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import GuideCard from '../../../components/GuideCard';
 
-const HorizonteScrollCards = ({list}) => {
+const HorizonteScrollCards = ({list,navigateTo}) => {
     const navigation = useNavigation();
 
     return (
@@ -23,7 +23,7 @@ const HorizonteScrollCards = ({list}) => {
                                         yearBorn={card?.dateBirth}
                                         image={card?.image}
                                         onPress={() => {
-                                            navigation.navigate('ViewDID', card);
+                                            navigation.navigate(navigateTo, card);
                                         }}
                                     ></GuideCard>
                                 );

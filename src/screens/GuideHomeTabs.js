@@ -8,6 +8,8 @@ import ViewDID from './SheetScreens/Guides/ViewDID';
 import MyGroupSummaryByUser from './SheetScreens/Guides/MyGroupSummaryByUser';
 import MyTaskIcon from "../components/IconsSvg/MyTaskIcon";
 import MyGroupPolinActivity from "./SheetScreens/Guides/MyGroupPolinActivity";
+import MyContentIcon from "../components/IconsSvg/MyContentIcon";
+import SelfGuidAdmin from "./SheetScreens/Guides/SelfGuide";
 
 const Tab = createBottomTabNavigator();
 
@@ -32,6 +34,13 @@ const GuideHomeTabs = () => {
             label: 'הדרכה עצמית',
             title: 'הדרכה עצמית',
             icon: UserIcon,
+        },
+        {
+            name: 'check',
+            component: SelfGuidAdmin,
+            title: 'check',
+            label: 'check',
+            icon: MyContentIcon,
         },
         {
             name: 'MyGroupSummary',

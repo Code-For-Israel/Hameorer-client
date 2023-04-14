@@ -11,6 +11,7 @@ import ApproveIcon from '../../../components/IconsSvg/ApproveIcon';
 import ThreeDotCircleIcon from '../../../components/IconsSvg/ThreeDotCircleIcon';
 import {useIsFocused} from '@react-navigation/native';
 import GuideHeader from './GuideHeader';
+import SelfGuidAdmin from "./SelfGuide";
 
 const MyGroupPolinActivity = () => {
     const baseUrl = GetSiteUrl();
@@ -50,7 +51,7 @@ const MyGroupPolinActivity = () => {
                         let storyObj = {
                             fullName: user.firstname + ' ' + user.lastname,
                             subject: story.subject.subject,
-                            location: story.body.quote_location,
+                            location: story.body.address,
                             dateBirth: 1902,
                             dateDeath: 1954,
                             _id: story._id,
@@ -83,7 +84,7 @@ const MyGroupPolinActivity = () => {
                             <ThreeDotCircleIcon></ThreeDotCircleIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={pending}></HorizonteScrollCards>
+                    <HorizonteScrollCards list={pending} navigateTo={'SelfGuidAdmin'}></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
@@ -94,7 +95,7 @@ const MyGroupPolinActivity = () => {
                             <ReturnIcon></ReturnIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={review}></HorizonteScrollCards>
+                    <HorizonteScrollCards list={review} navigateTo={'SelfGuidAdmin'}></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
@@ -103,7 +104,7 @@ const MyGroupPolinActivity = () => {
                             <ApproveIcon></ApproveIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={done}></HorizonteScrollCards>
+                    <HorizonteScrollCards list={done} navigateTo={'SelfGuidAdmin'}></HorizonteScrollCards>
                 </View>
             </ScrollView>
         </Provider>
