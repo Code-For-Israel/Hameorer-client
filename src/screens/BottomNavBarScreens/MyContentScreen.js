@@ -49,8 +49,6 @@ const MyContentScreen = () => {
             <Text>-</Text>
             <Button title="get info" onPress={handlePress} />
             <Text>-</Text>
-            <Text>-</Text>
-            <Button title="Post story" onPress={handlePost} />
         </View>
     );
 };

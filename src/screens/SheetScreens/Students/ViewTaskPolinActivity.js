@@ -82,6 +82,7 @@ const ViewTaskPolinActivity = ({route}) => {
                     {StudentViewPagePolinActivity(setText5, text5, 'Youtube', 'Youtube Link', adminText5)}
 
                     {storyData.status !== 'done' &&
+                        // todo send button after edit
                         <Text style={styles.cardComponentTextWhite}>Send button while status is not Done</Text>
                     }
                     {/* send btn */}

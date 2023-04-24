@@ -13,10 +13,8 @@ export default function PhotoUpload({imageList, setImageList}) {
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            aspect: [4, 3],
+            allowsEditing: false,
             quality: 1,
-            multiple: true, // allow selection of multiple images
         });
 
         if (!result.cancelled) {
