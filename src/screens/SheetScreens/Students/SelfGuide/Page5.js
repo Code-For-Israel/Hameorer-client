@@ -7,6 +7,7 @@ import PhotoUpload from "../../../../components/PhotoUpload";
 import {setStory} from "../../../../redux/dataSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {selectAccess} from "../../../../redux/userSlice";
+import GetSiteUrl from "../../../../utils/GetSiteUrl";
 
 const Page5 = ({route, navigation}) => {
     const [youtubeLink, setYoutubeLink] = useState('');
@@ -14,6 +15,8 @@ const Page5 = ({route, navigation}) => {
     const {selectedSub} = route.params;
     const dispatch = useDispatch();
     const access = useSelector(selectAccess);
+    const [imageList, setImageList] = useState([]);
+
 
     const handleSend = () => {
         const story = {
@@ -44,7 +47,7 @@ const Page5 = ({route, navigation}) => {
             <View style={styles.TextContainer}>
                 <Text style={styles.textThree}>*הוסף עד 5 תמונות *קבצי jpg,png (עד 2 מגה)</Text>
             </View>
-            <PhotoUpload/>
+            <PhotoUpload imageList={imageList} setImageList={setImageList} />
             <View style={styles.TextContainer}>
                 <Text style={styles.TextOne}>הוסף לינק ליו-טיוב</Text>
             </View>
