@@ -10,6 +10,7 @@ import MapIcon from '../components/IconsSvg/MapIcon';
 import PageNotReady from './BottomNavBarScreens/PageNotReady';
 import ViewTask from './SheetScreens/Students/ViewTask';
 import SelfGuid from "./SheetScreens/Students/SelfGuide";
+import MyContentScreen from "./BottomNavBarScreens/MyContentScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,8 +31,8 @@ const tabScreens = [
         icon: UserIcon,
     },
     {
-        name: 'SelfGuide',
-        component: SelfGuid,
+        name: 'MyContentScreen',
+        component: MyContentScreen,
         title: 'התוכן שלי',
         label: 'התוכן שלי',
         icon: MyContentIcon,

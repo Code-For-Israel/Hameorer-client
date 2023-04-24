@@ -13,27 +13,27 @@ const sheetLinks = [
     },
     {
         id: '2',
+        title: 'דמות מונפשת',
+        screen: 'DID',
+        disable: false,
+    },
+    {
+        id: '3',
         title: 'הכנת טקס',
         screen: 'Ceremony',
         disable: true,
     },
     {
-        id: '3',
+        id: '4',
         title: 'זכרון משפחתי',
         screen: 'FamilyMem',
         disable: true,
     },
     {
-        id: '4',
+        id: '5',
         title: 'יומן אישי',
         screen: 'PersonalDiary',
         disable: true,
-    },
-    {
-        id: '5',
-        title: 'דמות מונפשת',
-        screen: 'DID',
-        disable: false,
     },
 ];
 
