@@ -23,6 +23,7 @@
     "@react-navigation/stack": "^6.3.5",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",
+    "date-fns": "^2.29.3",
     "expo": "~47.0.8",
     "expo-av": "~13.0.3",
     "expo-document-picker": "~11.0.1",

@@ -5,6 +5,7 @@ import GetSiteUrl from '../../../../utils/GetSiteUrl';
 import {styles} from '../../../../styles/PagesStyle';
 import {useSelector} from "react-redux";
 import {selectAccess} from "../../../../redux/userSlice";
+import {format} from 'date-fns';
 
 export default function News() {
     const access = useSelector(selectAccess);
@@ -30,13 +31,15 @@ export default function News() {
         </View>
         <View style={{maxHeight: 100}}>
             <ScrollView style={stylesIn.container}>
-                {notifications && notifications.map((note) => (
-                    <View style={{marginRight: 20, marginBottom: 20}}>
-                        <Text style={styles.textDirectionRTL}>מאת עמית - {note.publish_date}</Text>
+                {notifications && notifications.map((note) => {
+                    const date = (format(new Date(note.publish_date), 'dd/LL/yyyy'));
+                    return (
+                    <View key={note.id} style={{marginRight: 20, marginBottom: 20}}>
+                        <Text style={styles.textDirectionRTL}>מאת עמית - {date}</Text>
                         <Text style={stylesIn.notificationTitle}>{note.title}</Text>
                         <Text style={styles.textDirectionRTL}>{note.message}</Text>
                     </View>
-                ))}
+                )})}
             </ScrollView>
         </View>
     </>);
