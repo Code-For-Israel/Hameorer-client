@@ -35,7 +35,6 @@ export default function News() {
                         <Text style={styles.textDirectionRTL}>מאת עמית - {note.publish_date}</Text>
                         <Text style={stylesIn.notificationTitle}>{note.title}</Text>
                         <Text style={styles.textDirectionRTL}>{note.message}</Text>
-                        <Text style={styles.textDirectionRTL}>בהצלחה ביום ותודה</Text>
                     </View>
                 ))}
             </ScrollView>
