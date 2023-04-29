@@ -7,11 +7,11 @@ import { useEffect } from 'react';
 const PlaceholderImage = require('../../../../../assets/fallback2.png');
 import NextButton from '../../../../components/NextButton';
 
-const SubjectBox = ({ subject }) => {
+const SubjectBox = ({ item }) => {
     return (
         <View style={styles.itemBox}>
             <Image
-                source={PlaceholderImage}
+                source={item&& item.media ? item.media[0].http_link : PlaceholderImage}
                 style={{
                     width: 90,
                     height: 90,
@@ -28,7 +28,7 @@ const SubjectBox = ({ subject }) => {
                     // justifyContent: 'center',
                     // alignItems: 'center',
                     // flexDirection: 'row'
-                }}>{subject}</Text>
+                }}>{item.subject}</Text>
             </View>
         </View>
 
@@ -58,11 +58,13 @@ const IndexPage = ({ navigation }) => {
                         subjects
                             .filter(item => item.type == "polin-activity")
                             .map((item) => {
+                                console.log(item)
+
                                 return (
                                     <TouchableOpacity key={item._id}
                                         onPress={() => { navigation.navigate('Page1', item); }}
                                     >
-                                        <SubjectBox subject={item.subject} />
+                                        <SubjectBox item={item} />
                                     </TouchableOpacity>
                                 )
                             })
