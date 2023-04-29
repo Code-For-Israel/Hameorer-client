@@ -10,7 +10,7 @@ import PrevButton from '../../../components/NextButton';
 import HorizelScrollCardsProfile from '../../../components/HorizelScrollCardsProfile';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
-import {styles} from '../../../styles/PagesStyle';
+import News from "./News/News";
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -43,8 +43,7 @@ export default function ProfileScreen() {
         }, 200);
     };
 
-    return (
-        <>
+    return (<>
             <TouchableOpacity
                 onPress={handlePress}
                 style={{position: 'absolute', bottom: 20, right: 20, zIndex: 2}}
@@ -60,8 +59,7 @@ export default function ProfileScreen() {
                         color: '#fff',
                         shadowColor: '#000',
                         shadowOffset: {
-                            width: 0,
-                            height: 2,
+                            width: 0, height: 2,
                         },
                         shadowOpacity: 0.25,
                         shadowRadius: 3.84,
@@ -77,24 +75,11 @@ export default function ProfileScreen() {
                 </View>
             </TouchableOpacity>
             <ScrollView style={stylesIn.container}>
-                <GuideHeader userDelegation={userDelegation} />
+                <GuideHeader userDelegation={userDelegation}/>
 
-                <Image source={PlaceholderImage} style={stylesIn.image} />
+                <Image source={PlaceholderImage} style={stylesIn.image}/>
 
-                <View style={{marginBottom: 20, paddingTop: 5}}>
-                    <Text style={stylesIn.h1} numberOfLines={1} adjustsFontSizeToFit>
-                        הודעות
-                    </Text>
-                </View>
-                <View style={{marginRight: 20, marginBottom: 20}}>
-                    <Text style={styles.textDirectionRTL}>מאת עמית - 13.3.2023</Text>
-                    <Text style={styles.textDirectionRTL}>
-                        {' '}
-                        היום נעבור בתערוכת "יד לילד", תערוכת "גטו ורשה הלוחם", סדנת "החייאת מרד
-                        מחדש" ועדות של הלינה בירנבאום
-                    </Text>
-                    <Text style={styles.textDirectionRTL}>בהצלחה ביום ותודה</Text>
-                </View>
+                <News></News>
 
                 <View
                     style={{
@@ -121,26 +106,21 @@ export default function ProfileScreen() {
                 </View>
                 <View
                     style={{
-                        width: '100%',
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',
+                        width: '100%', flexDirection: 'row', justifyContent: 'flex-end',
                     }}
                 ></View>
 
                 <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
-                    <BottomMenuContent onClose={onModalClose} />
+                    <BottomMenuContent onClose={onModalClose}/>
                 </BottomSheet>
             </ScrollView>
-        </>
-    );
+        </>);
 }
 
 const stylesIn = StyleSheet.create({
     container: {
-        flex: 1,
-        position: 'relative',
-    },
-    h1: {
+        flex: 1, position: 'relative',
+    }, h1: {
         fontSize: 24,
         color: '#072F5F',
         marginBottom: 15,
@@ -149,10 +129,7 @@ const stylesIn = StyleSheet.create({
         paddingTop: 10,
         textAlign: 'right',
         writingDirection: 'rtl',
-    },
-    image: {
-        width: '100%',
-        height: 150,
-        alignSelf: 'center',
+    }, image: {
+        width: '100%', height: 150, alignSelf: 'center',
     },
 });
