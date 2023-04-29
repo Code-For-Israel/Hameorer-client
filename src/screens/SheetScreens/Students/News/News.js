@@ -6,11 +6,14 @@ import {styles} from '../../../../styles/PagesStyle';
 import {useSelector} from "react-redux";
 import {selectAccess} from "../../../../redux/userSlice";
 import {format} from 'date-fns';
+import PrevButton from "../../../../components/NextButton";
+import {useNavigation} from "@react-navigation/native";
 
 export default function News() {
     const access = useSelector(selectAccess);
     const [notifications, setNotifications] = useState();
     const notificationUrl = GetSiteUrl() + 'v1/authentication/notification/';
+    const navigation = useNavigation();
 
     useEffect(() => {
         fetch(notificationUrl, {
@@ -29,18 +32,29 @@ export default function News() {
                 הודעות
             </Text>
         </View>
-        <View style={{maxHeight: 100}}>
-            <ScrollView style={stylesIn.container}>
-                {notifications && notifications.map((note) => {
-                    const date = (format(new Date(note.publish_date), 'dd/LL/yyyy'));
-                    return (
-                    <View key={note.id} style={{marginRight: 20, marginBottom: 20}}>
-                        <Text style={styles.textDirectionRTL}>מאת עמית - {date}</Text>
-                        <Text style={stylesIn.notificationTitle}>{note.title}</Text>
-                        <Text style={styles.textDirectionRTL}>{note.message}</Text>
-                    </View>
-                )})}
-            </ScrollView>
+        <ScrollView style={stylesIn.container}>
+            {notifications && notifications.length > 0 && (<View style={{marginRight: 20, marginBottom: 20}}>
+                <Text style={styles.textDirectionRTL}>
+                    מאת עמית - {format(new Date(notifications[0].publish_date), 'dd/LL/yyyy')}
+                </Text>
+                <Text style={stylesIn.notificationTitle}>{notifications[0].title}</Text>
+                <Text style={styles.textDirectionRTL}>{notifications[0].message}</Text>
+            </View>)}
+        </ScrollView>
+        <View
+            style={{
+                width: '90%',
+                margin: 10,
+                padding: 10,
+                flexDirection: 'row',
+                justifyContent: 'space-evenly',
+                alignSelf: 'center',
+            }}
+        >
+
+            <PrevButton title={'לכל ההודעות'}  onPress={() => {
+                navigation.navigate("NewsPage", notifications);
+            }}></PrevButton>
         </View>
     </>);
 }
@@ -58,12 +72,7 @@ const stylesIn = StyleSheet.create({
         textAlign: 'right',
         writingDirection: 'rtl',
     }, notificationTitle: {
-        fontSize: 18,
-        color: '#072F5F',
-        marginBottom: 2,
-        marginTop: 2,
-        textAlign: 'right',
-        writingDirection: 'rtl',
+        fontSize: 18, color: '#072F5F', marginBottom: 2, marginTop: 2, textAlign: 'right', writingDirection: 'rtl',
     }, image: {
         width: '100%', height: 150, alignSelf: 'center',
     },

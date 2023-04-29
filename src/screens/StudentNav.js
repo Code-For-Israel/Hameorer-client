@@ -9,6 +9,7 @@ import PersonalDiary from './SheetScreens/Students/PersonalDiary/PersonalDiary';
 import DID from './SheetScreens/Students/DID';
 import CustomBg from '../components/CustomBg';
 import ViewTaskPolinActivity from "./SheetScreens/Students/ViewTaskPolinActivity";
+import NewsPage from "./SheetScreens/Students/News/NewsPage";
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const StudentNav = () => {
             <Stack.Screen name="ViewTaskPolinActivity" component={ViewTaskPolinActivity} options={{headerShown: false}}/>
             <Stack.Screen name="Ceremony" component={Ceremony} options={{headerTitle: 'כותרת הכנת טקס'}}/>
             <Stack.Screen name="FamilyMem" component={FamilyMem} options={{headerTitle: 'כותרת זכרון משפחתי'}}/>
+            <Stack.Screen name="NewsPage" component={NewsPage} options={{headerShown: false}}/>
             <Stack.Screen name="PersonalDiary" component={PersonalDiary} options={{headerTitle: 'כותרת יומן אישי'}}/>
             <Stack.Screen name="DID" component={DID} options={{
                 headerTitle: 'הוספת דמות', // this is the part of custom background
