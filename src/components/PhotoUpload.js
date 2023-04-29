@@ -28,7 +28,7 @@ export default function PhotoUpload({imageList, setImageList}) {
             <Button title="בחר תמונות" onPress={pickImage}/>
 
             <View style={styles.imageList}>
-                {imageList.map((img) => (
+                {imageList && imageList.map((img) => (
                     <Image key={img.uri} source={{uri: img.uri}} style={styles.image}/>
                 ))}
             </View>
