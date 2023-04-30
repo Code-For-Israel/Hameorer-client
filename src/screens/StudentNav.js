@@ -21,7 +21,13 @@ const StudentNav = () => {
             <Stack.Screen name="ViewTaskPolinActivity" component={ViewTaskPolinActivity} options={{headerShown: false}}/>
             <Stack.Screen name="Ceremony" component={Ceremony} options={{headerTitle: 'כותרת הכנת טקס'}}/>
             <Stack.Screen name="FamilyMem" component={FamilyMem} options={{headerTitle: 'כותרת זכרון משפחתי'}}/>
-            <Stack.Screen name="NewsPage" component={NewsPage} options={{headerShown: false}}/>
+            <Stack.Screen name="NewsPage" component={NewsPage} options={{
+                headerTitle: 'כל-ההודעות-פה',
+                headerTitleAlign: 'center',
+                headerBackground: CustomBg,
+                headerTintColor: '#fff',
+                // headerLeft: '', //
+                }}/>
             <Stack.Screen name="PersonalDiary" component={PersonalDiary} options={{headerTitle: 'כותרת יומן אישי'}}/>
             <Stack.Screen name="DID" component={DID} options={{
                 headerTitle: 'הוספת דמות', // this is the part of custom background
