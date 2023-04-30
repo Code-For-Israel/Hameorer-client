@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
     textDirectionRTL: {
         textAlign: 'right',
         writingDirection: 'rtl',
+        padding: 3
     },
     viewDirectionRTL: {flexDirection: 'row-reverse'},
     mainContainer: {flex: 1, paddingRight: 5, paddingLeft: 5},
