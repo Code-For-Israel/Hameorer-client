@@ -1,19 +1,19 @@
-import {
-    Dimensions,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
-} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider} from 'react-native-paper';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {StudentViewPagePolinActivity} from './StudentViewPagePolinActivity';
+import {
+    StudentViewPagePolinActivityComponent
+} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
+import {
+    StudentViewPagePolinActivityYoutubeComponent
+} from "../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent";
+import {updateStory} from "../../../redux/dataSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {selectAccess} from "../../../redux/userSlice";
 
 const width = Dimensions.get('window').width; //full width
 
@@ -21,9 +21,9 @@ const ViewTaskPolinActivity = ({route}) => {
     const navigation = useNavigation();
     const [storyUrl, setStoryUrl] = useState();
     const [storyData, setStoryData] = useState();
+    const dispatch = useDispatch();
+    const access = useSelector(selectAccess);
     const id = route.params;
-    console.log('im inside');
-    console.log(id);
     const baseUrl = GetSiteUrl();
     let {data} = UseFetchGet(storyUrl);
     const isFocused = useIsFocused();
@@ -64,8 +64,27 @@ const ViewTaskPolinActivity = ({route}) => {
         }
     }, [id, isFocused, baseUrl]);
 
+    const HandelBack = () => {
+        navigation.navigate('Profile');
+    }
+
     const HandelSend = () => {
-        setStoryData({});
+        console.log('sending..');
+        const story = {
+            subject: data.subject,
+            tags: ['_'],
+            body: {
+                textPage1: text1,
+                textPage2: text2,
+                textPage3: text3,
+                textPage4: text4,
+                youtubeLink: text5,
+            },
+            comments: data.comments,
+            status: 'review',
+        };
+        const id = data._id;
+        dispatch(updateStory({access, story: story, id}));
         navigation.navigate('Profile');
     };
     console.log(storyData);
@@ -87,35 +106,35 @@ const ViewTaskPolinActivity = ({route}) => {
                             <Text style={stylesIn.TextOne}>שנת האירוע: {'1943'}</Text>
                         </View>
                     </View>
-                    {StudentViewPagePolinActivity(
+                    {StudentViewPagePolinActivityComponent(
                         setText1,
                         text1,
                         'פתיחה',
                         'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?',
                         adminText1,
                     )}
-                    {StudentViewPagePolinActivity(
+                    {StudentViewPagePolinActivityComponent(
                         setText2,
                         text2,
                         '?ספרו במילים שלכם על הנושא שבחרתם ולמה',
                         'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.',
                         adminText2,
                     )}
-                    {StudentViewPagePolinActivity(
+                    {StudentViewPagePolinActivityComponent(
                         setText3,
                         text3,
                         'שאלה / דילמה ערכית מהותית',
                         'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.',
                         adminText3,
                     )}
-                    {StudentViewPagePolinActivity(
+                    {StudentViewPagePolinActivityComponent(
                         setText4,
                         text4,
                         'סיכום',
                         'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ',
                         adminText4,
                     )}
-                    {StudentViewPagePolinActivity(
+                    {StudentViewPagePolinActivityYoutubeComponent(
                         setText5,
                         text5,
                         'Youtube',
@@ -123,16 +142,18 @@ const ViewTaskPolinActivity = ({route}) => {
                         adminText5,
                     )}
 
-                    {storyData.status !== 'done' && (
-                        // todo send button after edit
-                        <Text style={styles.cardComponentTextWhite}>
-                            Send button while status is not Done
-                        </Text>
-                    )}
-                    {/* send btn */}
-                    <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelSend}>
-                        <Text style={styles.cardComponentTextWhite}>חזרה</Text>
-                    </TouchableOpacity>
+                    <View style={{
+                        flexDirection: 'row', alignSelf: 'center', width: "100%", display: "flex", justifyContent: "space-around", paddingBottom:5
+                    }}>
+                        {storyData.status !== 'done' && (
+                            <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelSend}>
+                                <Text style={styles.cardComponentTextWhite}>שלח</Text>
+                            </TouchableOpacity>
+                        )}
+                        <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelBack}>
+                            <Text style={styles.cardComponentTextWhite}>חזרה</Text>
+                        </TouchableOpacity>
+                    </View>
                 </ScrollView>
             </Provider>
         )

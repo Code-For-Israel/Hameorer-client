@@ -3,19 +3,26 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../../redux/userSlice';
 import {getSubjects, selectSubjects} from '../../../../redux/dataSlice';
 import {useEffect} from 'react';
+import NextButton from '../../../../components/NextButton';
 // import ImageViewer from '../../../../components/ImageViewer';
 const PlaceholderImage = require('../../../../../assets/fallback2.png');
-import NextButton from '../../../../components/NextButton';
 
 const SubjectBox = ({item}) => {
+    let selectedImage = null;
+    if (item && item.media) {
+        selectedImage = {uri: item.media[0].http_link};
+    }
+
     return (
         <View style={styles.itemBox}>
+
             <Image
-                source={item && item.media ? item.media[0].http_link : PlaceholderImage}
+                source={item && item.media ? selectedImage : PlaceholderImage}
                 style={{
-                    width: 90,
-                    height: 90,
-                    resizeMode: 'contain',
+                    width: "100%",
+                    height: "60%",
+                    borderRadius: 20,
+                    margin: 2
                 }}
             />
             <View style={styles.itemBoxView}>
@@ -70,7 +77,7 @@ const IndexPage = ({navigation}) => {
                                             navigation.navigate('Page1', item);
                                         }}
                                     >
-                                        <SubjectBox item={item} />
+                                        <SubjectBox item={item}/>
                                     </TouchableOpacity>
                                 );
                             })
@@ -81,7 +88,7 @@ const IndexPage = ({navigation}) => {
             </ScrollView>
             <View style={styles.btnView}>
                 <View style={{width: 100}}>
-                    <NextButton title="הקודם" onPress={() => navigation.goBack()} />
+                    <NextButton title="הקודם" onPress={() => navigation.goBack()}/>
                 </View>
             </View>
         </View>

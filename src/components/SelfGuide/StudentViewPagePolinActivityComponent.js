@@ -1,7 +1,7 @@
 import {Text, TextInput, View} from 'react-native';
-import {styles} from './SelfGuide/PagesStyles';
+import {styles} from '../../screens/SheetScreens/Students/SelfGuide/PagesStyles';
 
-export function StudentViewPagePolinActivity(setText, text, subtitleText, explainText, adminText) {
+export function StudentViewPagePolinActivityComponent(setText, text, subtitleText, explainText, adminText) {
     return (
         <>
             <View style={[styles.TextContainer, {marginTop: 20}]}>
