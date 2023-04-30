@@ -9,7 +9,7 @@ import TopicsIcon from '../components/IconsSvg/TopicsIcon';
 import MapIcon from '../components/IconsSvg/MapIcon';
 import PageNotReady from './BottomNavBarScreens/PageNotReady';
 import ViewTask from './SheetScreens/Students/ViewTask';
-import MyContentScreen from "./BottomNavBarScreens/MyContentScreen";
+import MyContentScreen from './BottomNavBarScreens/MyContentScreen';
 
 const Tab = createBottomTabNavigator();
 

@@ -12,7 +12,11 @@ const HorizonteScrollCardsProfile = ({list}) => {
                     <View style={stylesIn.HeadSection}>
                         {list.map((card, key) => {
                             const subject_type =
-                                card?.subject_type === 'figure' ? 'דמות מונפשת' : card?.subject_type === 'polin-activity' ? 'הדרכה עצמית' : 'לא ידוע';
+                                card?.subject_type === 'figure'
+                                    ? 'דמות מונפשת'
+                                    : card?.subject_type === 'polin-activity'
+                                    ? 'הדרכה עצמית'
+                                    : 'לא ידוע';
                             const subject_name = card?.subject_name ?? '';
                             const story_status =
                                 card?.story_status === 'pending'
@@ -28,7 +32,13 @@ const HorizonteScrollCardsProfile = ({list}) => {
                                     title={subject_type}
                                     status={story_status}
                                     subject={subject_name}
-                                    onPress={() => {card?.subject_type === 'figure'? navigation.navigate('ViewTask', card?._id) : navigation.navigate('ViewTaskPolinActivity', card?._id);
+                                    onPress={() => {
+                                        card?.subject_type === 'figure'
+                                            ? navigation.navigate('ViewTask', card?._id)
+                                            : navigation.navigate(
+                                                  'ViewTaskPolinActivity',
+                                                  card?._id,
+                                              );
                                     }}
                                 ></ProfileCard>
                             );

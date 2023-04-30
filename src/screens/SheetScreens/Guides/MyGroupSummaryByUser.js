@@ -44,25 +44,24 @@ const MyGroupSummaryByUser = () => {
     let storiesByUser = [];
 
     groupInfo &&
-    groupInfo.users &&
-    groupName &&
-    groupInfo.users.map((user) => {
-        if (user && user.stories.length > 0) {
-            let storyObj = {
-                fullName: user.firstname + ' ' + user.lastname,
-                group: groupName,
-                statusDid: '',
-                statusPolinActivity: ''
-            };
-            user.stories.map((story) => {
-                if (story.subject.type === 'figure')
-                    storyObj.statusDid = story.status
-                else if (story.subject.type === 'polin-activity')
-                    storyObj.statusPolinActivity = story.status
-            });
-           storiesByUser.push(storyObj);
-        }
-    });
+        groupInfo.users &&
+        groupName &&
+        groupInfo.users.map((user) => {
+            if (user && user.stories.length > 0) {
+                let storyObj = {
+                    fullName: user.firstname + ' ' + user.lastname,
+                    group: groupName,
+                    statusDid: '',
+                    statusPolinActivity: '',
+                };
+                user.stories.map((story) => {
+                    if (story.subject.type === 'figure') storyObj.statusDid = story.status;
+                    else if (story.subject.type === 'polin-activity')
+                        storyObj.statusPolinActivity = story.status;
+                });
+                storiesByUser.push(storyObj);
+            }
+        });
 
     return (
         <Provider>

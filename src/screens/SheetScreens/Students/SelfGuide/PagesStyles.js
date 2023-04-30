@@ -1,39 +1,40 @@
-import {StyleSheet} from "react-native";
+import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
     TextSubtitle: {
-        fontStyle: "normal",
+        fontStyle: 'normal',
         // fontWeight: "bold",
         fontSize: 18,
         lineHeight: 24,
         textAlign: 'right',
-        color: '#3E5991'
+        color: '#3E5991',
     },
     pageContainer: {
         flex: 1,
-        alignItems: "center",
+        alignItems: 'center',
         // marginTop: 15,
         paddingTop: 15,
-        backgroundColor: "#FFFF",
+        backgroundColor: '#FFFF',
     },
     DropContainer: {
-        width: "90%",
+        width: '90%',
         // marginBottom: 20,
         zIndex: 100,
     },
     DropDownLine: {
-        backgroundColor: "#f5f5f5",
+        backgroundColor: '#f5f5f5',
         marginBottom: 20,
     },
     TextContainer: {
-        width: "90%",
-        flexDirection: "row",
+        width: '90%',
+        flexDirection: 'row',
         // alignItems: "end",
-        justifyContent: "flex-end",
-    }, TextContainerFull: {
-        flexDirection: "row",
+        justifyContent: 'flex-end',
+    },
+    TextContainerFull: {
+        flexDirection: 'row',
         // alignItems: "end",
-        justifyContent: "flex-end",
+        justifyContent: 'flex-end',
     },
     TextOne: {
         fontSize: 16,
@@ -41,50 +42,50 @@ export const styles = StyleSheet.create({
     TextTwo: {
         fontSize: 22,
         // fontWeight: "bold",
-        color: "#072F5F",
+        color: '#072F5F',
         marginBottom: 15,
     },
     textThree: {
         fontSize: 12,
-        color: "#8B8787",
+        color: '#8B8787',
         marginBottom: 8,
     },
     TextInputContainer: {
-        width: "90%",
-        alignSelf: "center",
-        backgroundColor: '#ffffff'
+        width: '90%',
+        alignSelf: 'center',
+        backgroundColor: '#ffffff',
     },
     input: {
         height: 280,
         padding: 10,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: '#f5f5f5',
         borderRadius: 10,
         marginBottom: 30,
-        textAlign: "right",
-        textAlignVertical: 'top'
+        textAlign: 'right',
+        textAlignVertical: 'top',
     },
     inputT: {
         height: 120,
         padding: 10,
-        backgroundColor: "#fffff",
+        backgroundColor: '#fffff',
         borderRadius: 10,
         marginBottom: 30,
-        textAlign: "right",
-        textAlignVertical: 'top'
+        textAlign: 'right',
+        textAlignVertical: 'top',
     },
     input2: {
-        width: "100%",
+        width: '100%',
         padding: 10,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: '#f5f5f5',
         borderRadius: 10,
         marginBottom: 30,
-        textAlign: "right",
+        textAlign: 'right',
     },
     ButtonContainer: {
-        width: "95%",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+        width: '95%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         // position: "absolute",
         // bottom: 12
     },
@@ -94,10 +95,10 @@ export const styles = StyleSheet.create({
         marginLeft: 20,
     },
     StatusContainer: {
-        width: "90%",
-        flexDirection: "row-reverse",
-        justifyContent: "flex-start",
-        alignItems: "center",
+        width: '90%',
+        flexDirection: 'row-reverse',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
         marginBottom: 20,
     },
 });

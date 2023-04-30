@@ -82,7 +82,10 @@ const MyGroupFigure = () => {
                             <ThreeDotCircleIcon></ThreeDotCircleIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={pending} navigateTo={'ViewDID'}></HorizonteScrollCards>
+                    <HorizonteScrollCards
+                        list={pending}
+                        navigateTo={'ViewDID'}
+                    ></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>
@@ -93,7 +96,10 @@ const MyGroupFigure = () => {
                             <ReturnIcon></ReturnIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={review} navigateTo={'ViewDID'}></HorizonteScrollCards>
+                    <HorizonteScrollCards
+                        list={review}
+                        navigateTo={'ViewDID'}
+                    ></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>

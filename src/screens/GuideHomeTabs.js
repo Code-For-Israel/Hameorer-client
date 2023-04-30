@@ -6,10 +6,10 @@ import UserIcon from '../components/IconsSvg/UserIcon';
 import MyGroupFigure from './SheetScreens/Guides/MyGroupFigure';
 import ViewDID from './SheetScreens/Guides/ViewDID';
 import MyGroupSummaryByUser from './SheetScreens/Guides/MyGroupSummaryByUser';
-import MyTaskIcon from "../components/IconsSvg/MyTaskIcon";
-import MyGroupPolinActivity from "./SheetScreens/Guides/MyGroupPolinActivity";
-import MyContentIcon from "../components/IconsSvg/MyContentIcon";
-import SelfGuidAdmin from "./SheetScreens/Guides/SelfGuidAdmin";
+import MyTaskIcon from '../components/IconsSvg/MyTaskIcon';
+import MyGroupPolinActivity from './SheetScreens/Guides/MyGroupPolinActivity';
+import MyContentIcon from '../components/IconsSvg/MyContentIcon';
+import SelfGuidAdmin from './SheetScreens/Guides/SelfGuidAdmin';
 
 const Tab = createBottomTabNavigator();
 
@@ -75,7 +75,7 @@ const GuideHomeTabs = () => {
                         ...commonOptions,
                         tabBarLabel: screen.label,
                         headerTitle: screen.title,
-                        tabBarIcon: ({color, size}) => <screen.icon color={color} size={size}/>,
+                        tabBarIcon: ({color, size}) => <screen.icon color={color} size={size} />,
                     }}
                 />
             ))}

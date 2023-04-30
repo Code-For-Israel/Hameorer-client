@@ -82,7 +82,10 @@ const MyGroupPolinActivity = () => {
                             <ThreeDotCircleIcon></ThreeDotCircleIcon>
                         </View>
                     </View>
-                    <HorizonteScrollCards list={pending} navigateTo={'Page1'}></HorizonteScrollCards>
+                    <HorizonteScrollCards
+                        list={pending}
+                        navigateTo={'Page1'}
+                    ></HorizonteScrollCards>
                 </View>
                 <View>
                     <View style={{flexDirection: 'row', alignSelf: 'flex-end'}}>

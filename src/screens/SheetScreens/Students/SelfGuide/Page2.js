@@ -4,7 +4,7 @@ import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
 import {styles} from './PagesStyles';
 import {MaterialBottomScroll} from '../../../../components/materialBottomScroll/MaterialBottomScroll';
-import {PageTop} from "./PageTop";
+import {PageTop} from './PageTop';
 
 const Page2 = ({route, navigation}) => {
     const [text, setText] = useState('');
@@ -14,7 +14,14 @@ const Page2 = ({route, navigation}) => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                {PageTop(setText, text, selectedSub.subject, '1943', '?ספרו במילים שלכם על הנושא שבחרתם ולמה', 'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.')}
+                {PageTop(
+                    setText,
+                    text,
+                    selectedSub.subject,
+                    '1943',
+                    '?ספרו במילים שלכם על הנושא שבחרתם ולמה',
+                    'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.',
+                )}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 
@@ -26,7 +33,7 @@ const Page2 = ({route, navigation}) => {
                                 navigation.navigate('Page3', {
                                     selectedSub: selectedSub,
                                     textPage1: textPage1,
-                                    textPage2: text
+                                    textPage2: text,
                                 });
                             }}
                         />
@@ -40,7 +47,10 @@ const Page2 = ({route, navigation}) => {
                         <PrevButton
                             title="הקודם"
                             onPress={() => {
-                                navigation.navigate('Page1', {selectedSub: selectedSub, textPage1: textPage1});
+                                navigation.navigate('Page1', {
+                                    selectedSub: selectedSub,
+                                    textPage1: textPage1,
+                                });
                             }}
                         />
                     </View>

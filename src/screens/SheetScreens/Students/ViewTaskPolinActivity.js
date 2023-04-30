@@ -1,11 +1,19 @@
-import {Dimensions, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View,} from 'react-native';
+import {
+    Dimensions,
+    ScrollView,
+    StyleSheet,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider} from 'react-native-paper';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {StudentViewPagePolinActivity} from "./StudentViewPagePolinActivity";
+import {StudentViewPagePolinActivity} from './StudentViewPagePolinActivity';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -14,8 +22,8 @@ const ViewTaskPolinActivity = ({route}) => {
     const [storyUrl, setStoryUrl] = useState();
     const [storyData, setStoryData] = useState();
     const id = route.params;
-    console.log("im inside")
-    console.log(id)
+    console.log('im inside');
+    console.log(id);
     const baseUrl = GetSiteUrl();
     let {data} = UseFetchGet(storyUrl);
     const isFocused = useIsFocused();
@@ -33,20 +41,20 @@ const ViewTaskPolinActivity = ({route}) => {
     useEffect(() => {
         if (data) {
             setStoryData(data);
-            setText1(data.body?.textPage1)
-            setAdminText2(data.comments?.textPage2Admin)
-            setText2(data.body?.textPage2)
-            setAdminText3(data.comments?.textPage3Admin)
-            setText3(data.body?.textPage3)
-            setAdminText4(data.comments?.textPage4Admin)
-            setText4(data.body?.textPage4)
-            setAdminText5(data.comments?.youtubeLinkAdmin)
-            setText5(data.body?.youtubeLink)
-            setAdminText1(data.comments?.textPage1Admin)
-            setText1(data.body?.textPage1)
-            setAdminText1(data.comments?.textPage1Admin)
-            setText1(data.body?.textPage1)
-            setAdminText1(data.comments?.textPage1Admin)
+            setText1(data.body?.textPage1);
+            setAdminText2(data.comments?.textPage2Admin);
+            setText2(data.body?.textPage2);
+            setAdminText3(data.comments?.textPage3Admin);
+            setText3(data.body?.textPage3);
+            setAdminText4(data.comments?.textPage4Admin);
+            setText4(data.body?.textPage4);
+            setAdminText5(data.comments?.youtubeLinkAdmin);
+            setText5(data.body?.youtubeLink);
+            setAdminText1(data.comments?.textPage1Admin);
+            setText1(data.body?.textPage1);
+            setAdminText1(data.comments?.textPage1Admin);
+            setText1(data.body?.textPage1);
+            setAdminText1(data.comments?.textPage1Admin);
         }
     }, [data]);
 
@@ -60,31 +68,67 @@ const ViewTaskPolinActivity = ({route}) => {
         setStoryData({});
         navigation.navigate('Profile');
     };
-    console.log(storyData)
+    console.log(storyData);
     return (
         storyData &&
         storyData.body && (
             <Provider>
                 <ScrollView style={stylesIn.container}>
-
                     <View style={{width: '100%'}}>
-                        <View style={[stylesIn.TextContainerFull, {marginTop: 20, justifyContent: 'center'}]}>
+                        <View
+                            style={[
+                                stylesIn.TextContainerFull,
+                                {marginTop: 20, justifyContent: 'center'},
+                            ]}
+                        >
                             <Text style={stylesIn.TextSubtitle}>{storyData?.subject.subject}</Text>
                         </View>
                         <View style={[stylesIn.TextContainerFull, {justifyContent: 'center'}]}>
-                            <Text style={stylesIn.TextOne}>שנת האירוע: {"1943"}</Text>
+                            <Text style={stylesIn.TextOne}>שנת האירוע: {'1943'}</Text>
                         </View>
                     </View>
-                    {StudentViewPagePolinActivity(setText1, text1, 'פתיחה', 'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?', adminText1)}
-                    {StudentViewPagePolinActivity(setText2, text2, '?ספרו במילים שלכם על הנושא שבחרתם ולמה', 'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.', adminText2)}
-                    {StudentViewPagePolinActivity(setText3, text3, 'שאלה / דילמה ערכית מהותית', 'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.', adminText3)}
-                    {StudentViewPagePolinActivity(setText4, text4, 'סיכום', 'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ', adminText4)}
-                    {StudentViewPagePolinActivity(setText5, text5, 'Youtube', 'Youtube Link', adminText5)}
+                    {StudentViewPagePolinActivity(
+                        setText1,
+                        text1,
+                        'פתיחה',
+                        'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?',
+                        adminText1,
+                    )}
+                    {StudentViewPagePolinActivity(
+                        setText2,
+                        text2,
+                        '?ספרו במילים שלכם על הנושא שבחרתם ולמה',
+                        'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.',
+                        adminText2,
+                    )}
+                    {StudentViewPagePolinActivity(
+                        setText3,
+                        text3,
+                        'שאלה / דילמה ערכית מהותית',
+                        'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.',
+                        adminText3,
+                    )}
+                    {StudentViewPagePolinActivity(
+                        setText4,
+                        text4,
+                        'סיכום',
+                        'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ',
+                        adminText4,
+                    )}
+                    {StudentViewPagePolinActivity(
+                        setText5,
+                        text5,
+                        'Youtube',
+                        'Youtube Link',
+                        adminText5,
+                    )}
 
-                    {storyData.status !== 'done' &&
+                    {storyData.status !== 'done' && (
                         // todo send button after edit
-                        <Text style={styles.cardComponentTextWhite}>Send button while status is not Done</Text>
-                    }
+                        <Text style={styles.cardComponentTextWhite}>
+                            Send button while status is not Done
+                        </Text>
+                    )}
                     {/* send btn */}
                     <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelSend}>
                         <Text style={styles.cardComponentTextWhite}>חזרה</Text>
@@ -184,38 +228,39 @@ const stylesIn = StyleSheet.create({
         elevation: 5,
     },
     TextSubtitle: {
-        fontStyle: "normal",
+        fontStyle: 'normal',
         // fontWeight: "bold",
         fontSize: 18,
         lineHeight: 24,
         textAlign: 'right',
-        color: '#3E5991'
+        color: '#3E5991',
     },
     pageContainer: {
         flex: 1,
-        alignItems: "center",
+        alignItems: 'center',
         // marginTop: 15,
         paddingTop: 15,
-        backgroundColor: "#FFFF",
+        backgroundColor: '#FFFF',
     },
     DropContainer: {
-        width: "90%",
+        width: '90%',
         // marginBottom: 20,
         zIndex: 100,
     },
     DropDownLine: {
-        backgroundColor: "#f5f5f5",
+        backgroundColor: '#f5f5f5',
         marginBottom: 20,
     },
     TextContainer: {
-        width: "90%",
-        flexDirection: "row",
+        width: '90%',
+        flexDirection: 'row',
         // alignItems: "end",
-        justifyContent: "flex-end",
-    }, TextContainerFull: {
-        flexDirection: "row",
+        justifyContent: 'flex-end',
+    },
+    TextContainerFull: {
+        flexDirection: 'row',
         // alignItems: "end",
-        justifyContent: "flex-end",
+        justifyContent: 'flex-end',
     },
     TextOne: {
         fontSize: 16,
@@ -223,27 +268,27 @@ const stylesIn = StyleSheet.create({
     TextTwo: {
         fontSize: 22,
         // fontWeight: "bold",
-        color: "#072F5F",
+        color: '#072F5F',
         marginBottom: 15,
     },
     textThree: {
         fontSize: 12,
-        color: "#8B8787",
+        color: '#8B8787',
         marginBottom: 8,
     },
     input2: {
-        width: "100%",
+        width: '100%',
         padding: 10,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: '#f5f5f5',
         borderRadius: 10,
         marginBottom: 30,
-        textAlign: "right",
+        textAlign: 'right',
     },
     ButtonContainer: {
-        width: "95%",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+        width: '95%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         // position: "absolute",
         // bottom: 12
     },
@@ -253,10 +298,10 @@ const stylesIn = StyleSheet.create({
         marginLeft: 20,
     },
     StatusContainer: {
-        width: "90%",
-        flexDirection: "row-reverse",
-        justifyContent: "flex-start",
-        alignItems: "center",
+        width: '90%',
+        flexDirection: 'row-reverse',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
         marginBottom: 20,
     },
 });

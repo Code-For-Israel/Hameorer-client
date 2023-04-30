@@ -55,12 +55,12 @@ const MyGroupSummary = () => {
                         subjectType: story.subject.type,
                         status: story.status,
                     };
-                    if(storyObj.subjectType==='figure') {
+                    if (storyObj.subjectType === 'figure') {
                         if (storyObj.status === 'done') doneDid.push(storyObj);
                         if (storyObj.status === 'review') reviewDid.push(storyObj);
                         if (storyObj.status === 'pending') pendingDid.push(storyObj);
                     }
-                    if(storyObj.subjectType==='polin-activity') {
+                    if (storyObj.subjectType === 'polin-activity') {
                         if (storyObj.status === 'done') donePolinActivity.push(storyObj);
                         if (storyObj.status === 'review') reviewPolinActivity.push(storyObj);
                         if (storyObj.status === 'pending') pendingPolinActivity.push(storyObj);
@@ -79,7 +79,14 @@ const MyGroupSummary = () => {
                 <DataTableExplain groupName={groupName}></DataTableExplain>
 
                 <View>
-                    <View style={{flexDirection: 'row', alignSelf: 'flex-end', paddingTop: 5, paddingRight: 15}}>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignSelf: 'flex-end',
+                            paddingTop: 5,
+                            paddingRight: 15,
+                        }}
+                    >
                         <Text style={styles.cardComponentTextBlack}>ציטוט מונפש</Text>
                     </View>
                     <DataTableGuide
@@ -89,12 +96,23 @@ const MyGroupSummary = () => {
                 </View>
 
                 <View>
-                    <View style={{flexDirection: 'row', alignSelf: 'flex-end', paddingTop: 5, paddingRight: 15}}>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignSelf: 'flex-end',
+                            paddingTop: 5,
+                            paddingRight: 15,
+                        }}
+                    >
                         <Text style={styles.cardComponentTextBlack}>הדרכה עצמית</Text>
                     </View>
                     <DataTableGuide
                         headers={['ממתין למשוב', 'הוחזר לתיקונים', 'אושר']}
-                        data={[...pendingPolinActivity, ...reviewPolinActivity, ...donePolinActivity]}
+                        data={[
+                            ...pendingPolinActivity,
+                            ...reviewPolinActivity,
+                            ...donePolinActivity,
+                        ]}
                     ></DataTableGuide>
                 </View>
             </ScrollView>

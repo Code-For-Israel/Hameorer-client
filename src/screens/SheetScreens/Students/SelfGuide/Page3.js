@@ -4,7 +4,7 @@ import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
 import {styles} from './PagesStyles';
 import {MaterialBottomScroll} from '../../../../components/materialBottomScroll/MaterialBottomScroll';
-import {PageTop} from "./PageTop";
+import {PageTop} from './PageTop';
 
 const Page3 = ({route, navigation}) => {
     const [text, setText] = useState('');
@@ -14,7 +14,14 @@ const Page3 = ({route, navigation}) => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                {PageTop(setText, text, selectedSub.subject, '1943', 'שאלה / דילמה ערכית מהותית', 'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.')}
+                {PageTop(
+                    setText,
+                    text,
+                    selectedSub.subject,
+                    '1943',
+                    'שאלה / דילמה ערכית מהותית',
+                    'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.',
+                )}
 
                 <MaterialBottomScroll></MaterialBottomScroll>
 
@@ -25,7 +32,9 @@ const Page3 = ({route, navigation}) => {
                             onPress={() => {
                                 navigation.navigate('Page4', {
                                     selectedSub: selectedSub,
-                                    textPage1: textPage1, textPage2: textPage2, textPage3: text
+                                    textPage1: textPage1,
+                                    textPage2: textPage2,
+                                    textPage3: text,
                                 });
                             }}
                         />
@@ -41,7 +50,8 @@ const Page3 = ({route, navigation}) => {
                             onPress={() => {
                                 navigation.navigate('Page2', {
                                     selectedSub: selectedSub,
-                                    textPage1: textPage1, textPage2: text
+                                    textPage1: textPage1,
+                                    textPage2: text,
                                 });
                             }}
                         />

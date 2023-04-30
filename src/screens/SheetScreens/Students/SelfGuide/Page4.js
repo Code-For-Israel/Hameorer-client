@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
 import {styles} from './PagesStyles';
-import {PageTop} from "./PageTop";
+import {PageTop} from './PageTop';
 
 const Page4 = ({route, navigation}) => {
     const [text, setText] = useState('');
@@ -13,7 +13,14 @@ const Page4 = ({route, navigation}) => {
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.pageContainer}>
-                {PageTop(setText, text, selectedSub.subject, '1943', 'סיכום', 'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ')}
+                {PageTop(
+                    setText,
+                    text,
+                    selectedSub.subject,
+                    '1943',
+                    'סיכום',
+                    'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ',
+                )}
 
                 <View style={styles.ButtonContainer}>
                     <View style={{width: 100}}>
@@ -22,7 +29,10 @@ const Page4 = ({route, navigation}) => {
                             onPress={() => {
                                 navigation.navigate('Page5', {
                                     selectedSub: selectedSub,
-                                    textPage1: textPage1, textPage2: textPage2, textPage3: textPage3, textPage4: text
+                                    textPage1: textPage1,
+                                    textPage2: textPage2,
+                                    textPage3: textPage3,
+                                    textPage4: text,
                                 });
                             }}
                         />
@@ -38,7 +48,9 @@ const Page4 = ({route, navigation}) => {
                             onPress={() => {
                                 navigation.navigate('Page3', {
                                     selectedSub: selectedSub,
-                                    textPage1: textPage1, textPage2: textPage2, textPage3: textPage3
+                                    textPage1: textPage1,
+                                    textPage2: textPage2,
+                                    textPage3: textPage3,
                                 });
                             }}
                         />

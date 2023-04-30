@@ -15,7 +15,7 @@ const width = Dimensions.get('window').width; //full width
 const DIDPageB = ({navigation}) => {
     const dispatch = useDispatch();
     const access = useSelector(selectAccess);
-    const figures = useSelector(selectSubjects)
+    const figures = useSelector(selectSubjects);
     const [filteredFigure, setFilteredFigure] = useState([]);
     const [figureQuery, setFigureQuery] = useState('');
 
@@ -29,7 +29,7 @@ const DIDPageB = ({navigation}) => {
 
     useEffect(() => {
         if (figures.length) {
-            setFilteredFigure(figures.filter(item => item.type == "figure"));
+            setFilteredFigure(figures.filter((item) => item.type == 'figure'));
         }
     }, [figures]);
 
@@ -140,7 +140,7 @@ const DIDPageB = ({navigation}) => {
                     {/*</View>*/}
                     <Text style={stylesIn.headText}>שלב 1 מתוך 2</Text>
                     <View style={{width: 100}}>
-                        <NextButton title="הקודם" onPress={() => navigation.goBack()}/>
+                        <NextButton title="הקודם" onPress={() => navigation.goBack()} />
                     </View>
                 </View>
             </View>

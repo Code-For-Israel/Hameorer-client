@@ -8,8 +8,8 @@ import FamilyMem from './SheetScreens/Students/FamilyMemorey/FamilyMem';
 import PersonalDiary from './SheetScreens/Students/PersonalDiary/PersonalDiary';
 import DID from './SheetScreens/Students/DID';
 import CustomBg from '../components/CustomBg';
-import ViewTaskPolinActivity from "./SheetScreens/Students/ViewTaskPolinActivity";
-import NewsPage from "./SheetScreens/Students/News/NewsPage";
+import ViewTaskPolinActivity from './SheetScreens/Students/ViewTaskPolinActivity';
+import NewsPage from './SheetScreens/Students/News/NewsPage';
 
 const Stack = createStackNavigator();
 

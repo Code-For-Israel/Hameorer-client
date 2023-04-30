@@ -10,7 +10,7 @@ import PrevButton from '../../../components/NextButton';
 import HorizelScrollCardsProfile from '../../../components/HorizelScrollCardsProfile';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
-import News from "./News/News";
+import News from './News/News';
 
 export default function ProfileScreen() {
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -43,7 +43,8 @@ export default function ProfileScreen() {
         }, 200);
     };
 
-    return (<>
+    return (
+        <>
             <TouchableOpacity
                 onPress={handlePress}
                 style={{position: 'absolute', bottom: 20, right: 20, zIndex: 2}}
@@ -59,7 +60,8 @@ export default function ProfileScreen() {
                         color: '#fff',
                         shadowColor: '#000',
                         shadowOffset: {
-                            width: 0, height: 2,
+                            width: 0,
+                            height: 2,
                         },
                         shadowOpacity: 0.25,
                         shadowRadius: 3.84,
@@ -75,9 +77,9 @@ export default function ProfileScreen() {
                 </View>
             </TouchableOpacity>
             <ScrollView style={stylesIn.container}>
-                <GuideHeader userDelegation={userDelegation}/>
+                <GuideHeader userDelegation={userDelegation} />
 
-                <Image source={PlaceholderImage} style={stylesIn.image}/>
+                <Image source={PlaceholderImage} style={stylesIn.image} />
 
                 <News></News>
 
@@ -106,21 +108,26 @@ export default function ProfileScreen() {
                 </View>
                 <View
                     style={{
-                        width: '100%', flexDirection: 'row', justifyContent: 'flex-end',
+                        width: '100%',
+                        flexDirection: 'row',
+                        justifyContent: 'flex-end',
                     }}
                 ></View>
 
                 <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
-                    <BottomMenuContent onClose={onModalClose}/>
+                    <BottomMenuContent onClose={onModalClose} />
                 </BottomSheet>
             </ScrollView>
-        </>);
+        </>
+    );
 }
 
 const stylesIn = StyleSheet.create({
     container: {
-        flex: 1, position: 'relative',
-    }, h1: {
+        flex: 1,
+        position: 'relative',
+    },
+    h1: {
         fontSize: 24,
         color: '#072F5F',
         marginBottom: 15,
@@ -129,7 +136,10 @@ const stylesIn = StyleSheet.create({
         paddingTop: 10,
         textAlign: 'right',
         writingDirection: 'rtl',
-    }, image: {
-        width: '100%', height: 150, alignSelf: 'center',
+    },
+    image: {
+        width: '100%',
+        height: 150,
+        alignSelf: 'center',
     },
 });

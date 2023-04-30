@@ -42,6 +42,6 @@ const styles = StyleSheet.create({
     row: {
         borderWidth: 1,
         borderColor: '#1261A0',
-        borderBottomColor:'#1261A0'
+        borderBottomColor: '#1261A0',
     },
 });

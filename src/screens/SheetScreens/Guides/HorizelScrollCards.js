@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import GuideCard from '../../../components/GuideCard';
 
-const HorizonteScrollCards = ({list,navigateTo}) => {
+const HorizonteScrollCards = ({list, navigateTo}) => {
     const navigation = useNavigation();
 
     return (

@@ -13,14 +13,13 @@ export default function SoundPlayer({audioMedia}) {
 
     async function playSound() {
         console.log('Loading Sound');
-        setLoading(true)
-        const {sound} = await Audio.Sound.createAsync({uri: mediaUrl},{ shouldPlay: true } );
+        setLoading(true);
+        const {sound} = await Audio.Sound.createAsync({uri: mediaUrl}, {shouldPlay: true});
         setSound(sound);
 
         console.log('Playing Sound');
         await sound.playAsync();
-        setLoading(false)
-
+        setLoading(false);
     }
 
     useEffect(() => {

@@ -3,12 +3,9 @@ import {Button, Image, StyleSheet, View} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function PhotoUpload({imageList, setImageList}) {
-
-
     useEffect(() => {
         console.log(imageList);
     }, [imageList]);
-
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -18,19 +15,20 @@ export default function PhotoUpload({imageList, setImageList}) {
         });
 
         if (!result.cancelled) {
-            console.log(result)
+            console.log(result);
             setImageList([...imageList, result.assets[0]]);
         }
     };
 
     return (
         <View style={styles.container}>
-            <Button title="בחר תמונות" onPress={pickImage}/>
+            <Button title="בחר תמונות" onPress={pickImage} />
 
             <View style={styles.imageList}>
-                {imageList && imageList.map((img) => (
-                    <Image key={img.uri} source={{uri: img.uri}} style={styles.image}/>
-                ))}
+                {imageList &&
+                    imageList.map((img) => (
+                        <Image key={img.uri} source={{uri: img.uri}} style={styles.image} />
+                    ))}
             </View>
         </View>
     );
