@@ -1,19 +1,15 @@
-import {Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View,} from 'react-native';
+import {Dimensions, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Provider} from 'react-native-paper';
 import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {
-    StudentViewPagePolinActivityComponent
-} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
-import {
-    StudentViewPagePolinActivityYoutubeComponent
-} from "../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent";
-import {updateStory} from "../../../redux/dataSlice";
-import {useDispatch, useSelector} from "react-redux";
-import {selectAccess} from "../../../redux/userSlice";
+import {StudentViewPagePolinActivityComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
+import {StudentViewPagePolinActivityYoutubeComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent';
+import {updateStory} from '../../../redux/dataSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {selectAccess} from '../../../redux/userSlice';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -66,10 +62,9 @@ const ViewTaskPolinActivity = ({route}) => {
 
     const HandelBack = () => {
         navigation.navigate('Profile');
-    }
+    };
 
     const HandelSend = () => {
-        console.log('sending..');
         const story = {
             subject: data.subject,
             tags: ['_'],
@@ -87,7 +82,6 @@ const ViewTaskPolinActivity = ({route}) => {
         dispatch(updateStory({access, story: story, id}));
         navigation.navigate('Profile');
     };
-    console.log(storyData);
     return (
         storyData &&
         storyData.body && (
@@ -142,11 +136,21 @@ const ViewTaskPolinActivity = ({route}) => {
                         adminText5,
                     )}
 
-                    <View style={{
-                        flexDirection: 'row', alignSelf: 'center', width: "100%", display: "flex", justifyContent: "space-around", paddingBottom:5
-                    }}>
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            alignSelf: 'center',
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'space-around',
+                            paddingBottom: 5,
+                        }}
+                    >
                         {storyData.status !== 'done' && (
-                            <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelSend}>
+                            <TouchableOpacity
+                                style={stylesIn.cardComponentButton}
+                                onPress={HandelSend}
+                            >
                                 <Text style={styles.cardComponentTextWhite}>שלח</Text>
                             </TouchableOpacity>
                         )}

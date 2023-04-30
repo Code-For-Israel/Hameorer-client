@@ -1,7 +1,13 @@
 import {Text, TextInput, View} from 'react-native';
 import {styles} from '../../screens/SheetScreens/Students/SelfGuide/PagesStyles';
 
-export function StudentViewPagePolinActivityYoutubeComponent(setText, text, subtitleText, explainText, adminText) {
+export function StudentViewPagePolinActivityYoutubeComponent(
+    setText,
+    text,
+    subtitleText,
+    explainText,
+    adminText,
+) {
     return (
         <>
             <View style={[styles.TextContainer, {marginTop: 20}]}>
@@ -14,13 +20,15 @@ export function StudentViewPagePolinActivityYoutubeComponent(setText, text, subt
                 <TextInput
                     placeholder="הסבירו על הנושא"
                     direction="rtl"
-                    style={{height: 44,
+                    style={{
+                        height: 44,
                         padding: 10,
                         backgroundColor: '#f5f5f5',
                         borderRadius: 10,
                         marginBottom: 30,
                         textAlign: 'right',
-                        textAlignVertical: 'top',}}
+                        textAlignVertical: 'top',
+                    }}
                     onChangeText={setText}
                     value={text}
                 />
@@ -39,7 +47,8 @@ export function StudentViewPagePolinActivityYoutubeComponent(setText, text, subt
                         borderRadius: 10,
                         marginBottom: 30,
                         textAlign: 'right',
-                        textAlignVertical: 'top',}}
+                        textAlignVertical: 'top',
+                    }}
                     value={adminText}
                 />
             </View>

@@ -18,7 +18,6 @@ const Page5 = ({route}) => {
     const access = useSelector(selectAccess);
 
     const handleSend = () => {
-        console.log('sending..');
         const story = {
             subject: selectedSub.subject,
             tags: ['_'],

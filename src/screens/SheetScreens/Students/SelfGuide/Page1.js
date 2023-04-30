@@ -11,7 +11,6 @@ const Page1 = ({route}) => {
     const navigation = useNavigation();
 
     const selectedSub = route.params;
-    console.log(selectedSub);
     const dateEvent = 1943;
     const B = (props) => <Text>{props.children}</Text>;
 

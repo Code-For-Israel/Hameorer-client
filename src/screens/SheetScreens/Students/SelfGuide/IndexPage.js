@@ -15,14 +15,13 @@ const SubjectBox = ({item}) => {
 
     return (
         <View style={styles.itemBox}>
-
             <Image
                 source={item && item.media ? selectedImage : PlaceholderImage}
                 style={{
-                    width: "100%",
-                    height: "60%",
+                    width: '100%',
+                    height: '60%',
                     borderRadius: 20,
-                    margin: 2
+                    margin: 2,
                 }}
             />
             <View style={styles.itemBoxView}>
@@ -68,8 +67,6 @@ const IndexPage = ({navigation}) => {
                         subjects
                             .filter((item) => item.type == 'polin-activity')
                             .map((item) => {
-                                console.log(item);
-
                                 return (
                                     <TouchableOpacity
                                         key={item._id}
@@ -77,7 +74,7 @@ const IndexPage = ({navigation}) => {
                                             navigation.navigate('Page1', item);
                                         }}
                                     >
-                                        <SubjectBox item={item}/>
+                                        <SubjectBox item={item} />
                                     </TouchableOpacity>
                                 );
                             })
@@ -88,7 +85,7 @@ const IndexPage = ({navigation}) => {
             </ScrollView>
             <View style={styles.btnView}>
                 <View style={{width: 100}}>
-                    <NextButton title="הקודם" onPress={() => navigation.goBack()}/>
+                    <NextButton title="הקודם" onPress={() => navigation.goBack()} />
                 </View>
             </View>
         </View>

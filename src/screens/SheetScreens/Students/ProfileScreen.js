@@ -94,7 +94,6 @@ export default function ProfileScreen() {
                     }}
                 >
                     <PrevButton title={'רענן מידע'} onPress={handleRefresh}></PrevButton>
-                    {/*<PrevButton onPress={() => console.log(userInfo)} title="לחץ לכל ההודעות"/>*/}
                 </View>
 
                 <View>
