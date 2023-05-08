@@ -7,6 +7,7 @@ import ShareExample from '../../../components/ShareButton/ShareButton';
 import {useEffect} from 'react';
 
 const VideoPlayer = ({url}) => {
+
     const urlParse = url?.media?.did;
     const video = React.useRef(null);
     const [status, setStatus] = React.useState({});
@@ -45,7 +46,7 @@ const VideoPlayer = ({url}) => {
                             onPlaybackStatusUpdate={(status) => setStatus(() => status)}
                         />
                         {/*todo enable in the future*/}
-                        {/*<DownloadFile url={urlParse}></DownloadFile>*/}
+                        <DownloadFile url={urlParse}></DownloadFile>
                     </>
                 )}
                 {!urlParse && (

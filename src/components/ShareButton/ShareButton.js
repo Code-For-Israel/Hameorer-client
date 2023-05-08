@@ -25,9 +25,8 @@ const ShareExample = () => {
     };
     return (
         <View style={{padding: 5, marginBottom: 20, width: width, flexDirection: 'row-reverse'}}>
-            <Image source={ShareImage} style={stylesIn.image} />
-            {/*<PrevButton onPress={onShare} title="שתף" />*/}
-            <PrevButton title="שתף" />
+            <Image onPress={onShare} source={ShareImage} style={stylesIn.image} />
+            <PrevButton onPress={onShare} title="שתף" />
         </View>
     );
 };
