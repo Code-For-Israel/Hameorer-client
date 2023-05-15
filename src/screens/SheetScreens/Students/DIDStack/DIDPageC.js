@@ -76,8 +76,8 @@ const DIDPageC = ({navigation, route}) => {
             if (ALLOWED_TYPES.includes(result.mimeType) === false)
                 console.log('wrong type of file - only audio');
             else {
-                setRecordingFileName(result.file.name);
-                setRecordingData(result.file);
+                setRecordingFileName(result.name);
+                setRecordingData(result);
             }
         }
     };
@@ -86,10 +86,14 @@ const DIDPageC = ({navigation, route}) => {
         setLoading(true);
         setTimeout(() => setLoading(false), 10000);
         let response;
-        if (checkedVoiceOrText === 'voice' && recordingData && recordingData.type) {
+        if (checkedVoiceOrText === 'voice' && recordingData && recordingData.mimeType) {
             let recording = new FormData();
-            recording.append('type', recordingData.type);
-            recording.append('file', recordingData);
+            recording.append('type', recordingData.mimeType);
+            recording.append('file', {
+                uri: recordingData.uri,
+                name: recordingData.name,
+                type: recordingData.mimeType
+            });
             const baseUrl = GetSiteUrl();
             response = await fetch(`${baseUrl}v1/media/${bucket}/${recordingFileName}/`, {
                 method: 'POST',
