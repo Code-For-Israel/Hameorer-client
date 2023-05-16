@@ -7,6 +7,7 @@ import PhotoUpload from '../../../../components/PhotoUpload';
 import {setStory} from '../../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../../redux/userSlice';
+import GetSiteUrl from "../../../../utils/GetSiteUrl";
 
 const Page5 = ({route, navigation}) => {
     const [youtubeLink, setYoutubeLink] = useState('');
@@ -16,11 +17,47 @@ const Page5 = ({route, navigation}) => {
     const access = useSelector(selectAccess);
     const [imageList, setImageList] = useState([]);
     const [respondsList, setRespondsList] = useState([]);
+    const bucket = 'hameorer-img';
+    const baseUrl = GetSiteUrl();
 
-    const handleSend = () => {
+    const upload = async () => {
+        setRespondsList([]);
+        let formData = new FormData();
+        if (imageList && imageList.length > 0) {
+            const uploadPromises = imageList.map(async (img) => {
+                formData.append('type', img.mimeType);
+                formData.append('file', {
+                    uri: img.uri,
+                    name: img.name,
+                    type: img.mimeType,
+                });
+
+                const response = await fetch(`${baseUrl}v1/media/${bucket}/${img.name}/`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${access}`,
+                    },
+                    body: formData,
+                });
+
+                return response.json();
+            });
+
+            const responses = await Promise.all(uploadPromises);
+
+            await setRespondsList([...respondsList, ...responses]);
+
+            handleSend(responses);
+        }
+    };
+
+    const handleSend = (responses) => {
+        const test = Object.assign({}, responses);
+        console.log(test)
         const story = {
             subject: selectedSub,
             tags: ['_'],
+            media: responses,
             body: {
                 textPage1: textPage1,
                 textPage2: textPage2,
@@ -37,6 +74,7 @@ const Page5 = ({route, navigation}) => {
             },
             status: 'pending',
         };
+        console.log(story)
         dispatch(setStory({access, story}));
         navigation.navigate('Profile');
     };
@@ -67,7 +105,7 @@ const Page5 = ({route, navigation}) => {
                         <NextButton
                             title="שלח למדריך"
                             onPress={() => {
-                                handleSend();
+                                upload();
                             }}
                         />
                     </View>
