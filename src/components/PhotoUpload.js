@@ -1,54 +1,68 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Button, Image, StyleSheet, View} from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
 import GetSiteUrl from "../utils/GetSiteUrl";
 import {useSelector} from "react-redux";
 import {selectAccess} from "../redux/userSlice";
+import * as DocumentPicker from "expo-document-picker";
 
-export default function PhotoUpload({imageList, setImageList}) {
+export default function PhotoUpload({imageList, setImageList, respondsList, setRespondsList}) {
     const access = useSelector(selectAccess);
-
-    useEffect(() => {
-        console.log(imageList);
-    }, [imageList]);
+    const ALLOWED_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
+    const bucket = 'hameorer-img';
+    const baseUrl = GetSiteUrl();
 
     const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: false,
-            quality: 1,
-        });
-
-        if (!result.cancelled) {
-            console.log(result);
-            setImageList([...imageList, result.assets[0]]);
+        let result = await DocumentPicker.getDocumentAsync({type: ALLOWED_TYPES});
+        if (result.type === 'success') {
+            if (ALLOWED_TYPES.includes(result.mimeType) === false)
+                console.log('wrong type of file - only img');
+            else {
+                setImageList([...imageList, result]);
+            }
         }
     };
+
     const upload = async () => {
-        let response;
-        console.log(imageList)
-        const bucket = 'hameorer-img';
-        const baseUrl = GetSiteUrl();
-        response = await fetch(`${baseUrl}v1/media/${bucket}/${'test.jpg'}/`, {
-            method: 'POST',
-            headers: {
-                Authorization: `Bearer ${access}`,
-            },
-            body: imageList[0],
-        }).then((response) => response.json());
-        console.log(response)
-    }
+        let formData = new FormData();
+        if (imageList && imageList.length > 0) {
+            const uploadPromises = imageList.map(async (img) => {
+                formData.append('type', img.mimeType);
+                formData.append('file', {
+                    uri: img.uri,
+                    name: img.name,
+                    type: img.mimeType,
+                });
+
+                const response = await fetch(`${baseUrl}v1/media/${bucket}/${img.name}/`, {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${access}`,
+                    },
+                    body: formData,
+                });
+
+                return response.json();
+            });
+
+            const responses = await Promise.all(uploadPromises);
+
+            setRespondsList([...respondsList, ...responses]);
+            console.log('ok');
+        }
+    };
+
 
     return (
         <View style={styles.container}>
-            <Button title="בחר תמונות" onPress={pickImage} />
+            <Button title="בחר תמונות" onPress={pickImage}/>
 
-            <Button title="שלח" onPress={upload} />
+            <Button title="העלה תמונות" onPress={upload}/>
+
 
             <View style={styles.imageList}>
                 {imageList &&
                     imageList.map((img) => (
-                        <Image key={img.uri} source={{uri: img.uri}} style={styles.image} />
+                        <Image key={img.uri} source={{uri: img.uri}} style={styles.image}/>
                     ))}
             </View>
         </View>
