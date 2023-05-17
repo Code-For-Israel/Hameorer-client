@@ -64,10 +64,5 @@ const stylesIn = StyleSheet.create({
         textAlign: 'right',
         writingDirection: 'rtl',
         padding: 3,
-    },
-    image: {
-        width: '100%',
-        height: 150,
-        alignSelf: 'center',
-    },
+    }
 });

@@ -91,10 +91,5 @@ const stylesIn = StyleSheet.create({
         marginTop: 2,
         textAlign: 'right',
         writingDirection: 'rtl',
-    },
-    image: {
-        width: '100%',
-        height: 150,
-        alignSelf: 'center',
-    },
+    }
 });
