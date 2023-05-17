@@ -17,11 +17,13 @@ const Page5 = ({route, navigation}) => {
     const access = useSelector(selectAccess);
     const [imageList, setImageList] = useState([]);
     const [respondsList, setRespondsList] = useState([]);
+    const [loading, setLoading] = useState(false);
     const bucket = 'hameorer-img';
     const baseUrl = GetSiteUrl();
 
     const upload = async () => {
         setRespondsList([]);
+        setLoading(true)
         let formData = new FormData();
         if (imageList && imageList.length > 0) {
             const uploadPromises = imageList.map(async (img) => {
@@ -79,8 +81,8 @@ const Page5 = ({route, navigation}) => {
             status: 'pending',
         };
 
-        console.log(story)
         dispatch(setStory({access, story}));
+        setLoading(false)
         navigation.navigate('Profile');
     };
 
@@ -112,6 +114,7 @@ const Page5 = ({route, navigation}) => {
                             onPress={() => {
                                 upload();
                             }}
+                            loading={loading}
                         />
                     </View>
                     <View>

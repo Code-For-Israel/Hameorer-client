@@ -9,6 +9,7 @@ import {updateStory} from '../../../../redux/dataSlice';
 import {useNavigation} from '@react-navigation/native';
 import ImageViewer from "../../../../components/ImageViewer";
 import PlaceholderImage from "../../../../../assets/fallbackImage.png";
+import {Switch} from "react-native-paper";
 
 const Page5 = ({route}) => {
     const navigation = useNavigation();
@@ -19,19 +20,30 @@ const Page5 = ({route}) => {
     const dispatch = useDispatch();
     const access = useSelector(selectAccess);
     const [imageList, setImageList] = useState('');
+    const [isSwitchApproved, setIsSwitchApproved] = React.useState(false);
 
     useEffect(() => {
         if (media) {
-
             const mappedArray = Object.entries(media).map(([key, value]) => {
                 return value;
             });
-
             setImageList(mappedArray)
         }
     }, [media]);
 
+    const onToggleSwitchApproved = () => {
+        setIsSwitchApproved(!isSwitchApproved);
+    };
+
     const handleSend = () => {
+        let status='review'
+
+        if (isSwitchApproved) {
+            // todo fix here and change to done when it works
+            status = 'review';
+        } else {
+            status = 'review';
+        }
         const story = {
             subject: selectedSub.subject, tags: ['_'], body: selectedSub.body, comments: {
                 textPage1Admin: textPage1Admin,
@@ -39,9 +51,10 @@ const Page5 = ({route}) => {
                 textPage3Admin: textPage3Admin,
                 textPage4Admin: textPage4Admin,
                 youtubeLink: youtubeLinkAdmin,
-            }, status: 'review',
+            }, status: status,
         };
         const id = selectedSub._id;
+        console.log(story)
         dispatch(updateStory({access, story: story, id}));
         navigation.navigate('MyGroupSummary');
     };
@@ -86,6 +99,10 @@ const Page5 = ({route}) => {
                             value={youtubeLinkAdmin}
                         />
                     </View>
+
+                    <Switch value={isSwitchApproved} onValueChange={onToggleSwitchApproved} />
+                    {isSwitchApproved && <Text style={stylesIn.TextCheckbox}>מאושר</Text>}
+                    {!isSwitchApproved && <Text style={stylesIn.TextCheckbox}>לא מאושר</Text>}
                     <View style={styles.ButtonContainer}>
                         <View style={{width: 130}}>
                             <NextButton
@@ -126,5 +143,9 @@ const stylesIn = StyleSheet.create({
         borderRadius: 65, shadowColor: '#000000', shadowOffset: {
             width: 0, height: 3,
         }, shadowOpacity: 0.17, shadowRadius: 3.05, elevation: 4, marginHorizontal: 10
+    },
+    TextCheckbox: {
+        alignSelf: 'center',
+        paddingHorizontal: 10,
     },
 })
