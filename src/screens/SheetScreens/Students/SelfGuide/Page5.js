@@ -1,4 +1,4 @@
-import {SafeAreaView, Text, TextInput, View} from 'react-native';
+import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
@@ -52,12 +52,16 @@ const Page5 = ({route, navigation}) => {
     };
 
     const handleSend = (responses) => {
-        const test = Object.assign({}, responses);
-        console.log(test)
+        const links = responses.flatMap((response) =>response["http_link"]);
+        const mediaImages = {}
+        for (let i = 0; i < links.length; i++) {
+            const key = "image" + (i + 1);
+            mediaImages[key] = links[i];
+        }
         const story = {
             subject: selectedSub,
             tags: ['_'],
-            media: responses,
+            media: mediaImages,
             body: {
                 textPage1: textPage1,
                 textPage2: textPage2,
@@ -74,6 +78,7 @@ const Page5 = ({route, navigation}) => {
             },
             status: 'pending',
         };
+
         console.log(story)
         dispatch(setStory({access, story}));
         navigation.navigate('Profile');
@@ -86,7 +91,7 @@ const Page5 = ({route, navigation}) => {
                     <Text style={styles.textThree}>*הוסף עד 5 תמונות *קבצי jpg,png (עד 2 מגה)</Text>
                 </View>
                 <PhotoUpload imageList={imageList} setImageList={setImageList} respondsList={respondsList}
-                             setRespondsList={setRespondsList} />
+                             setRespondsList={setRespondsList}/>
                 <View style={styles.TextContainer}>
                     <Text style={styles.TextOne}>הוסף לינק ליו-טיוב</Text>
                 </View>
@@ -100,7 +105,7 @@ const Page5 = ({route, navigation}) => {
                         value={youtubeLink}
                     />
                 </View>
-                <View style={styles.ButtonContainer}>
+                <View style={stylesIn.ButtonContainer}>
                     <View style={{width: 130}}>
                         <NextButton
                             title="שלח למדריך"
@@ -131,4 +136,16 @@ const Page5 = ({route, navigation}) => {
         </SafeAreaView>
     );
 };
+
+
 export default Page5;
+
+const stylesIn = StyleSheet.create({
+    ButtonContainer: {
+        width: '95%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 10
+    },
+})

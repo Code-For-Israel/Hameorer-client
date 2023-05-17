@@ -5,11 +5,17 @@ import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {StudentViewPagePolinActivityComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
-import {StudentViewPagePolinActivityYoutubeComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent';
+import {
+    StudentViewPagePolinActivityComponent
+} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
+import {
+    StudentViewPagePolinActivityYoutubeComponent
+} from '../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent';
 import {updateStory} from '../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
+import ImageViewer from "../../../components/ImageViewer";
+import PlaceholderImage from "../../../../assets/fallbackImage.png";
 
 const width = Dimensions.get('window').width; //full width
 
@@ -33,6 +39,8 @@ const ViewTaskPolinActivity = ({route}) => {
     const [adminText4, setAdminText4] = useState('');
     const [text5, setText5] = useState('');
     const [adminText5, setAdminText5] = useState('');
+    const [media, setMedia] = useState('');
+    const [imageList, setImageList] = useState('');
 
     useEffect(() => {
         if (data) {
@@ -51,8 +59,21 @@ const ViewTaskPolinActivity = ({route}) => {
             setAdminText1(data.comments?.textPage1Admin);
             setText1(data.body?.textPage1);
             setAdminText1(data.comments?.textPage1Admin);
+
+            setMedia(data?.media);
         }
     }, [data]);
+
+    useEffect(() => {
+        if (media) {
+
+            const mappedArray = Object.entries(media).map(([value]) => {
+                return value;
+            });
+
+            setImageList(mappedArray)
+        }
+    }, [media]);
 
     useEffect(() => {
         if (id && isFocused) {
@@ -128,6 +149,21 @@ const ViewTaskPolinActivity = ({route}) => {
                         'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ',
                         adminText4,
                     )}
+                    <ScrollView horizontal={true}>
+                        {imageList &&
+                            imageList.map((img) => (
+                                <View style={[styles.container,{flexDirection: 'row'}]}>
+                                    <View style={stylesIn.ImageContainer}>
+                                        {/* <Icon name="add" size={30} color={"#fff"} /> */}
+                                        <ImageViewer
+                                            placeholderImageSource={PlaceholderImage}
+                                            selectedImage={img}
+                                            width={100}
+                                        />
+                                    </View>
+                                </View>
+                            ))}
+                    </ScrollView>
                     {StudentViewPagePolinActivityYoutubeComponent(
                         setText5,
                         text5,
@@ -226,6 +262,7 @@ const stylesIn = StyleSheet.create({
         shadowOpacity: 0.17,
         shadowRadius: 3.05,
         elevation: 4,
+        marginHorizontal: 10
     },
     greyText: {
         alignSelf: 'center',
