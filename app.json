@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "tabs-nav",
-    "slug": "hameorer2",
+    "name": "יומן מסע",
+    "slug": "yoman-masa",
+    "owner": "meorer",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,27 +19,35 @@
       "**/*"
     ],
     "ios": {
+      "buildNumber": "1.0.0",
+      "bundleIdentifier": "com.meorer.yomanmasa",
       "supportsTablet": true,
       "infoPlist": {
-        "NSMicrophoneUsageDescription": "This app needs access to the microphone to record audio."
+        "NSMicrophoneUsageDescription": "This app needs access to the microphone to record audio",
+        "NSPhotoLibraryUsageDescriptio": "This app needs access to the photo library",
+        "NSAppleMusicUsageDescription": "This app needs access to the audio files"
       }
     },
     "android": {
+      "versionCode": 1,
       "permissions": [
-        "RECORD_AUDIO"
+        "RECORD_AUDIO",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_AUDIO",
+        "READ_EXTERNAL_STORAGE"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.syahbes.hameorer2"
+      "package": "com.meorer.yomanmasa"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "ac6f8357-4af6-48ab-8487-946ec5a18a2d"
+        "projectId": "f8fc8467-1e39-423c-a8ca-2bc429066840"
       }
     }
   }
