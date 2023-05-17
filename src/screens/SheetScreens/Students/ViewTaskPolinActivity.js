@@ -67,7 +67,7 @@ const ViewTaskPolinActivity = ({route}) => {
     useEffect(() => {
         if (media) {
 
-            const mappedArray = Object.entries(media).map(([value]) => {
+            const mappedArray = Object.entries(media).map(([key, value]) => {
                 return value;
             });
 

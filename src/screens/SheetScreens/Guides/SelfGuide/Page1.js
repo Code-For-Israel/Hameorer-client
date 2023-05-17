@@ -11,8 +11,8 @@ const Page1 = ({route}) => {
     const selectedPolinActivity = route.params;
     const selectedSub = selectedPolinActivity.story;
 
-    const pageText = selectedSub.body.textPage1;
-    const [text, setText] = useState(selectedSub.comments.textPage1Admin);
+    const pageText = selectedSub?.body?.textPage1;
+    const [text, setText] = useState(selectedSub?.comments?.textPage1Admin);
 
     return (
         <ScrollView style={{flexDirection: 'column'}}>
