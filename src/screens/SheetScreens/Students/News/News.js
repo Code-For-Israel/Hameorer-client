@@ -31,11 +31,7 @@ export default function News() {
 
     return (
         <>
-            <View style={{marginBottom: 20, paddingTop: 5}}>
-                <Text style={stylesIn.h1} numberOfLines={1} adjustsFontSizeToFit>
-                    הודעות
-                </Text>
-            </View>
+
             <ScrollView style={stylesIn.container}>
                 {notifications && notifications.length > 0 && (
                     <View style={{marginRight: 20, marginBottom: 20}}>

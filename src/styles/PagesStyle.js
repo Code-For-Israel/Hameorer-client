@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         padding: 3,
     },
     viewDirectionRTL: {flexDirection: 'row-reverse'},
-    mainContainer: {flex: 1, paddingRight: 5, paddingLeft: 5},
+    mainContainer: {flex: 1},
     container: {flex: 1, justifyContent: 'center', alignItems: 'center'},
     bottomScrollContainer: {marginBottom: 20, width: '100%'},
     image: {flex: 1, resizeMode: 'cover'},
@@ -27,8 +27,6 @@ export const styles = StyleSheet.create({
     },
 
     cardComponent: {
-        width: 230,
-        height: 213,
         backgroundColor: '#072F5F',
         justifyContent: 'center',
         alignItems: 'center',
@@ -49,8 +47,7 @@ export const styles = StyleSheet.create({
     },
     cardComponentSentIcon: {
         backgroundColor: 'white',
-        borderRadius: 50,
-        padding: 12,
+        marginHorizontal: 6,
         alignSelf: 'center',
         textAlign: 'center',
         flexDirection: 'row',
@@ -72,8 +69,8 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
         backgroundColor: 'white',
-        height: 155,
-        borderRadius: 10,
+        height: 160,
+        borderRadius: 1,
     },
     cardComponentTextSize: {
         fontSize: 18,
@@ -91,7 +88,7 @@ export const styles = StyleSheet.create({
     },
     cardComponentImage: {width: '100%', aspectRatio: 1},
     cardComponentTextContainer: {
-        width: 200,
+        width: 220,
         display: 'flex',
         justifyContent: 'space-around',
         alignItems: 'flex-end',
@@ -99,20 +96,13 @@ export const styles = StyleSheet.create({
     cardComponentButton: {
         backgroundColor: 'white',
         width: 160,
+        height: 40,
         alignSelf: 'center',
         flexDirection: 'row',
-
-        borderRadius: 15,
+        borderRadius: 10,
         borderWidth: 2,
         borderColor: '#000',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
+
     },
     loginInput: {
         backgroundColor: '#fff',

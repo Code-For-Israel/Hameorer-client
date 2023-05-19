@@ -77,27 +77,49 @@ export default function ProfileScreen() {
                 </View>
             </TouchableOpacity>
             <ScrollView style={stylesIn.container}>
-                <GuideHeader userDelegation={userDelegation} />
+                <GuideHeader userDelegation={userDelegation}/>
 
-                <Image source={PlaceholderImage} style={stylesIn.image} />
-
+                <Image source={PlaceholderImage} style={stylesIn.image}/>
+                <View style={{
+                    width: '100%',
+                    justifyContent: 'space-evenly',
+                    flexDirection: 'row',
+                    marginBottom: 5,
+                    textAlign: 'right',
+                    writingDirection: 'rtl'
+                }}>
+                    <View style={{}}>
+                        <Text style={stylesIn.h1} numberOfLines={1} adjustsFontSizeToFit>
+                            הודעות
+                        </Text>
+                    </View>
+                </View>
                 <News></News>
-
                 <View
                     style={{
                         width: '90%',
-                        margin: 10,
-                        padding: 10,
+                        marginBottom: 5,
                         flexDirection: 'row',
                         justifyContent: 'space-evenly',
                         alignSelf: 'center',
                     }}
                 >
-                    <PrevButton title={'רענן מידע'} onPress={handleRefresh}></PrevButton>
                 </View>
 
-                <View>
-                    <Text style={stylesIn.h1}>סטטוס משימות</Text>
+                <View style={{
+                    width: '100%',
+                    justifyContent: 'space-evenly',
+                    flexDirection: 'row',
+                    marginBottom: 5,
+                    textAlign: 'right',
+                    writingDirection: 'rtl'
+                }}>
+                    <View style={{width: 120}}>
+                        <PrevButton title={'רענן מידע'} onPress={handleRefresh}></PrevButton>
+                    </View>
+                    <View>
+                        <Text style={stylesIn.h1}>סטטוס משימות</Text>
+                    </View>
                 </View>
                 <View>
                     <HorizelScrollCardsProfile
@@ -105,16 +127,10 @@ export default function ProfileScreen() {
                         list={userInfo.stories}
                     ></HorizelScrollCardsProfile>
                 </View>
-                <View
-                    style={{
-                        width: '100%',
-                        flexDirection: 'row',
-                        justifyContent: 'flex-end',
-                    }}
-                ></View>
+
 
                 <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
-                    <BottomMenuContent onClose={onModalClose} />
+                    <BottomMenuContent onClose={onModalClose}/>
                 </BottomSheet>
             </ScrollView>
         </>
@@ -129,10 +145,6 @@ const stylesIn = StyleSheet.create({
     h1: {
         fontSize: 24,
         color: '#072F5F',
-        marginBottom: 15,
-        marginTop: 15,
-        marginRight: 15,
-        paddingTop: 10,
         textAlign: 'right',
         writingDirection: 'rtl',
     },
