@@ -6,7 +6,7 @@ import {styles} from './PagesStyles';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../../redux/userSlice';
 import {updateStory} from '../../../../redux/dataSlice';
-import {useNavigation} from '@react-navigation/native';
+import {CommonActions, useNavigation} from '@react-navigation/native';
 import ImageViewer from "../../../../components/ImageViewer";
 import PlaceholderImage from "../../../../../assets/fallbackImage.png";
 import {Switch} from "react-native-paper";
@@ -39,8 +39,7 @@ const Page5 = ({route}) => {
         let status='review'
 
         if (isSwitchApproved) {
-            // todo fix here and change to done when it works
-            status = 'review';
+            status = 'done';
         } else {
             status = 'review';
         }
@@ -56,7 +55,10 @@ const Page5 = ({route}) => {
         const id = selectedSub._id;
         console.log(story)
         dispatch(updateStory({access, story: story, id}));
-        navigation.navigate('MyGroupSummary');
+        navigation.dispatch( CommonActions.reset({
+            index: 0,
+            routes: [{ name: 'SelfGuidAdmin' }],
+        }));
     };
 
     return (<ScrollView style={{flexDirection: 'column'}}>

@@ -50,7 +50,7 @@ const ViewDID = ({route}) => {
         }
         const id = data._id;
         dispatch(updateStory({access, story: newData, id}));
-        navigation.navigate('MyGroup');
+        navigation.navigate('MyGroupFigure');
         // todo block if approved in the past
     };
 
