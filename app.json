@@ -5,10 +5,10 @@
     "owner": "meorer",
     "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo-yoman-masa.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash-yoman-masa.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
