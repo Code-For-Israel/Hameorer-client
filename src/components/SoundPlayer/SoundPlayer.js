@@ -13,14 +13,6 @@ export default function SoundPlayer({ audioMedia }) {
 
     const mediaUrl = baseUrl + 'v1/media/hameorer-audio/' + audioMedia.soundName;
 
-    const isSoundPlaying = async () => {
-        if (sound !== null) {
-            const status = await sound.getStatusAsync();
-            return status.isPlaying;
-        }
-        return false;
-    };
-
     const playSound = async () => {
         try {
             console.log('Loading Sound');
