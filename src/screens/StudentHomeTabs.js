@@ -37,7 +37,7 @@ const tabScreens = [{
 }, {
     name: 'Map', component: PageNotReady, title: 'מפה', label: 'מפה', icon: MapIcon, disabled: true
 }, {
-    name: 'ViewTask', component: ViewTask, title: 'צפה במשימה', label: 'צפיה במשימה', icon: MapIcon, disabled: false
+    name: 'ViewTask', component: ViewTask, title: 'צפה במשימה', label: 'צפיה במשימה', icon: MyContentIcon, disabled: false
 },];
 
 const StudentHomeTabs = () => {
