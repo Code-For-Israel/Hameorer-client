@@ -16,7 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
 import ImageViewer from "../../../components/ImageViewer";
 import PlaceholderImage from "../../../../assets/fallbackImage.png";
-import YoutubePlayer from 'react-native-youtube-iframe';
+// import YoutubePlayer from 'react-native-youtube-iframe';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -163,13 +163,13 @@ const ViewTaskPolinActivity = ({route}) => {
                             'Youtube Link',
                             adminText5,
                         )}
-                        <View>
-                            <YoutubePlayer
-                                height={300}
-                                play={false}
-                                videoId={matchYoutubeUrl(text5)}
-                            />
-                        </View>
+                        {/*<View>*/}
+                        {/*    <YoutubePlayer*/}
+                        {/*        height={300}*/}
+                        {/*        play={false}*/}
+                        {/*        videoId={matchYoutubeUrl(text5)}*/}
+                        {/*    />*/}
+                        {/*</View>*/}
                         <ScrollView horizontal={true} style={{marginVertical: 20}}>
                             {imageList &&
                                 imageList.map((img, key) => (

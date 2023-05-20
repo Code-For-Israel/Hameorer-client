@@ -10,6 +10,7 @@ import MapIcon from '../components/IconsSvg/MapIcon';
 import PageNotReady from './BottomNavBarScreens/PageNotReady';
 import ViewTask from './SheetScreens/Students/ViewTask';
 import MyContentScreen from './BottomNavBarScreens/MyContentScreen';
+import WatchTaskIcon from "../components/IconsSvg/WatchTaskIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -37,7 +38,7 @@ const tabScreens = [{
 }, {
     name: 'Map', component: PageNotReady, title: 'מפה', label: 'מפה', icon: MapIcon, disabled: true
 }, {
-    name: 'ViewTask', component: ViewTask, title: 'צפה במשימה', label: 'צפיה במשימה', icon: MyContentIcon, disabled: false
+    name: 'ViewTask', component: ViewTask, title: 'צפה במשימה', label: 'צפיה במשימה', icon: WatchTaskIcon, disabled: false
 },];
 
 const StudentHomeTabs = () => {

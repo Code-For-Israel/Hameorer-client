@@ -6,7 +6,6 @@ import {selectAccess} from '../../../redux/userSlice';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import DataTableGuide from '../../../components/DataTables/DataTableGuide';
 import {Provider} from 'react-native-paper';
-import DataTableExplain from '../../../components/DataTables/DataTableExplain';
 import GuideHeader from './GuideHeader';
 
 const MyGroupSummary = () => {
@@ -73,10 +72,6 @@ const MyGroupSummary = () => {
         <Provider>
             <ScrollView style={styles.mainContainer}>
                 <GuideHeader groupInfo={groupInfo}></GuideHeader>
-                <View style={{flexDirection: 'row', alignSelf: 'flex-end', paddingTop: 5}}>
-                    <Text style={styles.cardComponentTextBlack}>הכנה לטקס</Text>
-                </View>
-                <DataTableExplain groupName={groupName}></DataTableExplain>
 
                 <View>
                     <View
@@ -115,6 +110,11 @@ const MyGroupSummary = () => {
                         ]}
                     ></DataTableGuide>
                 </View>
+
+                {/*<View style={{flexDirection: 'row', alignSelf: 'flex-end', paddingTop: 5}}>*/}
+                {/*    <Text style={styles.cardComponentTextBlack}>הכנה לטקס</Text>*/}
+                {/*</View>*/}
+                {/*<DataTableExplain groupName={groupName}></DataTableExplain>*/}
             </ScrollView>
         </Provider>
     );

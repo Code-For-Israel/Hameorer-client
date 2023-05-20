@@ -14,9 +14,8 @@ import ImageViewer from '../../../components/ImageViewer';
 import {styles} from '../../../styles/PagesStyle';
 import {updateStory} from '../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
-import {logoutThunk, selectAccess} from '../../../redux/userSlice';
+import {selectAccess} from '../../../redux/userSlice';
 import {useNavigation} from '@react-navigation/native';
-import PrevButton from '../../../components/NextButton';
 import SoundPlayer from '../../../components/SoundPlayer/SoundPlayer';
 
 const width = Dimensions.get('window').width; //full width
@@ -64,14 +63,6 @@ const ViewDID = ({route}) => {
         data && (
             <Provider>
                 <ScrollView style={stylesIn.container}>
-                    <PrevButton
-                        style={{
-                            margin: 10,
-                        }}
-                        title={'התנתק'}
-                        onPress={() => dispatch(logoutThunk())}
-                    ></PrevButton>
-                    {/* headSection - name dates and + button*/}
                     <View style={stylesIn.HeadSection}>
                         <View style={stylesIn.ImageContainer}>
                             {/* <Icon name="add" size={30} color={"#fff"} /> */}
@@ -123,7 +114,7 @@ const ViewDID = ({route}) => {
                         {/*    setCheckedQuote(!checkedQuote);*/}
                         {/*}}/>*/}
                     </View>
-                    {data.media.soundHttpLink != 'none' && (
+                    {data.media.soundHttpLink !== 'none' && (
                         <View style={[stylesIn.TextInputContainer, {flexDirection: 'row-reverse'}]}>
                             <SoundPlayer audioMedia={data.media}></SoundPlayer>
                         </View>
