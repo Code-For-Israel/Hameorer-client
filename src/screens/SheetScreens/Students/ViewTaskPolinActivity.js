@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
 import ImageViewer from "../../../components/ImageViewer";
 import PlaceholderImage from "../../../../assets/fallbackImage.png";
+import YoutubePlayer from 'react-native-youtube-iframe';
 
 const width = Dimensions.get('window').width; //full width
 
@@ -41,6 +42,11 @@ const ViewTaskPolinActivity = ({route}) => {
     const [adminText5, setAdminText5] = useState('');
     const [media, setMedia] = useState('');
     const [imageList, setImageList] = useState('');
+
+    function matchYoutubeUrl(url){
+        let p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+        return (url.match(p)) ? RegExp.$1 : false ;
+    }
 
     useEffect(() => {
         if (data) {
@@ -157,6 +163,13 @@ const ViewTaskPolinActivity = ({route}) => {
                             'Youtube Link',
                             adminText5,
                         )}
+                        <View>
+                            <YoutubePlayer
+                                height={300}
+                                play={false}
+                                videoId={matchYoutubeUrl(text5)}
+                            />
+                        </View>
                         <ScrollView horizontal={true} style={{marginVertical: 20}}>
                             {imageList &&
                                 imageList.map((img, key) => (
