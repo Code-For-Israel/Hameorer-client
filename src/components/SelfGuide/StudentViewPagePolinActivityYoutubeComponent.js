@@ -18,7 +18,6 @@ export function StudentViewPagePolinActivityYoutubeComponent(
             </View>
             <View style={styles.TextInputContainer}>
                 <TextInput
-                    placeholder="הסבירו על הנושא"
                     direction="rtl"
                     style={{
                         height: 44,
@@ -37,7 +36,7 @@ export function StudentViewPagePolinActivityYoutubeComponent(
                 <Text style={styles.TextSubtitle}>הערות מדריך</Text>
             </View>
             <View style={styles.TextInputContainer}>
-                <TextInput
+                <Text
                     placeholder="אין הערות"
                     direction="rtl"
                     style={{
@@ -49,8 +48,7 @@ export function StudentViewPagePolinActivityYoutubeComponent(
                         textAlign: 'right',
                         textAlignVertical: 'top',
                     }}
-                    value={adminText}
-                />
+                >{adminText}</Text>
             </View>
         </>
     );

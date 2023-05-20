@@ -107,94 +107,93 @@ const ViewTaskPolinActivity = ({route}) => {
         storyData &&
         storyData.body && (
             <Provider>
-                <ScrollView style={stylesIn.container}>
-                    <View style={{width: '100%'}}>
-                        <View
-                            style={[
-                                stylesIn.TextContainerFull,
-                                {marginTop: 20, justifyContent: 'center'},
-                            ]}
-                        >
-                            <Text style={stylesIn.TextSubtitle}>{storyData?.subject.subject}</Text>
+                <>
+                    <ScrollView style={stylesIn.container}>
+                        <View style={{width: '100%'}}>
+                            <View
+                                style={[
+                                    stylesIn.TextContainerFull,
+                                    {marginTop: 20, justifyContent: 'center'},
+                                ]}
+                            >
+                                <Text style={stylesIn.TextSubtitle}>{storyData?.subject.subject}</Text>
+                            </View>
+                            <View style={[stylesIn.TextContainerFull, {justifyContent: 'center'}]}>
+                                <Text style={stylesIn.TextOne}>שנת האירוע: {'1943'}</Text>
+                            </View>
                         </View>
-                        <View style={[stylesIn.TextContainerFull, {justifyContent: 'center'}]}>
-                            <Text style={stylesIn.TextOne}>שנת האירוע: {'1943'}</Text>
-                        </View>
-                    </View>
-                    {StudentViewPagePolinActivityComponent(
-                        setText1,
-                        text1,
-                        'פתיחה',
-                        'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?',
-                        adminText1,
-                    )}
-                    {StudentViewPagePolinActivityComponent(
-                        setText2,
-                        text2,
-                        '?ספרו במילים שלכם על הנושא שבחרתם ולמה',
-                        'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.',
-                        adminText2,
-                    )}
-                    {StudentViewPagePolinActivityComponent(
-                        setText3,
-                        text3,
-                        'שאלה / דילמה ערכית מהותית',
-                        'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.',
-                        adminText3,
-                    )}
-                    {StudentViewPagePolinActivityComponent(
-                        setText4,
-                        text4,
-                        'סיכום',
-                        'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ',
-                        adminText4,
-                    )}
-                    <ScrollView horizontal={true}>
-                        {imageList &&
-                            imageList.map((img) => (
-                                <View style={[styles.container,{flexDirection: 'row'}]}>
-                                    <View style={stylesIn.ImageContainer}>
-                                        {/* <Icon name="add" size={30} color={"#fff"} /> */}
+                        {StudentViewPagePolinActivityComponent(
+                            setText1,
+                            text1,
+                            'פתיחה',
+                            'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?',
+                            adminText1,
+                        )}
+                        {StudentViewPagePolinActivityComponent(
+                            setText2,
+                            text2,
+                            '?ספרו במילים שלכם על הנושא שבחרתם ולמה',
+                            'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.',
+                            adminText2,
+                        )}
+                        {StudentViewPagePolinActivityComponent(
+                            setText3,
+                            text3,
+                            'שאלה / דילמה ערכית מהותית',
+                            'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.',
+                            adminText3,
+                        )}
+                        {StudentViewPagePolinActivityComponent(
+                            setText4,
+                            text4,
+                            'סיכום',
+                            'סיכום אישי שלכם את ההדרכה, תובנה שלכם, מסר שלכם לקבוצה. ',
+                            adminText4,
+                        )}
+                        {StudentViewPagePolinActivityYoutubeComponent(
+                            setText5,
+                            text5,
+                            'Youtube',
+                            'Youtube Link',
+                            adminText5,
+                        )}
+                        <ScrollView horizontal={true} style={{marginVertical: 20}}>
+                            {imageList &&
+                                imageList.map((img, key) => (
+                                    <View key={key}
+                                          style={[styles.container, {flexDirection: 'row', marginHorizontal: 10}]}>
                                         <ImageViewer
                                             placeholderImageSource={PlaceholderImage}
                                             selectedImage={img}
-                                            width={100}
+                                            width={width-20}
                                         />
                                     </View>
-                                </View>
-                            ))}
-                    </ScrollView>
-                    {StudentViewPagePolinActivityYoutubeComponent(
-                        setText5,
-                        text5,
-                        'Youtube',
-                        'Youtube Link',
-                        adminText5,
-                    )}
-
-                    <View
-                        style={{
-                            flexDirection: 'row',
-                            alignSelf: 'center',
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'space-around',
-                            paddingBottom: 5,
-                        }}
-                    >
-                        {storyData.status !== 'done' && (
-                            <TouchableOpacity
-                                style={stylesIn.cardComponentButton}
-                                onPress={HandelSend}
-                            >
-                                <Text style={styles.cardComponentTextWhite}>שלח</Text>
+                                ))}
+                        </ScrollView>
+                        <View
+                            style={{
+                                flexDirection: 'row',
+                                alignSelf: 'center',
+                                width: '100%',
+                                display: 'flex',
+                                justifyContent: 'space-around',
+                                paddingBottom: 5,
+                            }}
+                        >
+                            {storyData.status !== 'done' && (
+                                <TouchableOpacity
+                                    style={stylesIn.cardComponentButton}
+                                    onPress={HandelSend}
+                                >
+                                    <Text style={styles.cardComponentTextWhite}>שלח</Text>
+                                </TouchableOpacity>
+                            )}
+                            <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelBack}>
+                                <Text style={styles.cardComponentTextWhite}>חזרה</Text>
                             </TouchableOpacity>
-                        )}
-                        <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelBack}>
-                            <Text style={styles.cardComponentTextWhite}>חזרה</Text>
-                        </TouchableOpacity>
-                    </View>
-                </ScrollView>
+                        </View>
+                    </ScrollView>
+                </>
             </Provider>
         )
         // end of sound

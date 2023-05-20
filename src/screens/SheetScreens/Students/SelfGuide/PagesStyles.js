@@ -10,7 +10,6 @@ export const styles = StyleSheet.create({
         color: '#3E5991',
     },
     pageContainer: {
-
         flex: 1,
         alignItems: 'center',
         // marginTop: 15,

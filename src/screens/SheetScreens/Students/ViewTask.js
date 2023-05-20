@@ -102,18 +102,19 @@ const ViewTask = ({route}) => {
                                 <SoundPlayer audioMedia={storyData.media}></SoundPlayer>
                             </View>
                             {/*הערות מדריך*/}
-                            <View style={stylesIn.TextInputContainer}>
-                                <TextInput
+                            <Text style={stylesIn.textSubtitleGuide}>הערות מדריך</Text>
+
+                            <View>
+                                <Text
                                     disabled={true}
                                     placeholder="הערות של מדריך"
                                     multiline={true}
-                                    value={storyData.comments?.one}
                                     direction="rtl"
                                     style={[
                                         stylesIn.input,
                                         {height: 100, textAlignVertical: 'top'},
                                     ]}
-                                />
+                                >{storyData.comments?.one}</Text>
                             </View>
                         </>
                     )}
@@ -158,7 +159,16 @@ const stylesIn = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
-
+    textSubtitleGuide:{
+        marginRight: 10,
+        marginTop: 10,
+        fontStyle: 'normal',
+        // fontWeight: "bold",
+        fontSize: 18,
+        lineHeight: 24,
+        textAlign: 'right',
+        color: '#3E5991',
+    },
     HeadSection: {
         padding: 20,
         marginTop: 20,
@@ -187,7 +197,7 @@ const stylesIn = StyleSheet.create({
     },
     TextInputContainer: {
         width: '100%',
-        paddingHorizontal: 5,
+        paddingHorizontal: 10,
     },
     input: {
         marginBottom: 10,

@@ -30,13 +30,12 @@ export function StudentViewPagePolinActivityComponent(
                 <Text style={styles.TextSubtitle}>הערות מדריך</Text>
             </View>
             <View style={styles.TextInputContainer}>
-                <TextInput
+                <Text
                     placeholder="אין הערות"
                     direction="rtl"
-                    multiline={true}
                     style={styles.inputT}
-                    value={adminText}
-                />
+
+                >{adminText}</Text>
             </View>
         </>
     );

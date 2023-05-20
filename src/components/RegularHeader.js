@@ -7,40 +7,32 @@ import {useDispatch} from 'react-redux';
 const PlaceholderImage = require('../../assets/fallbackImage.png');
 const NotificationIcon = require('../../assets/NotificationIcon.png');
 
-const GuideHeader = (userDelegation) => {
+const RegularHeader = ({title}) => {
     const dispatch = useDispatch();
 
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.h2} numberOfLines={1} adjustsFontSizeToFit>
-                    {userDelegation?.userDelegation?.group_name}
-                </Text>
+        <>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.h2} numberOfLines={1} adjustsFontSizeToFit>
+                        {title}
+                    </Text>
+                </View>
+                <View style={{top: 70, right: 130, height: 40, width: 120}}>
+                    <PrevButton title={'התנתק'} onPress={() => dispatch(logoutThunk())}></PrevButton>
+                </View>
+                <View style={styles.notificationIconContainer}>
+                    <Image source={NotificationIcon} style={styles.notificationIcon}/>
+                </View>
+                <View style={styles.circle}>
+                    <Image source={PlaceholderImage} style={styles.image}/>
+                </View>
             </View>
-            <View style={{top: 70, right: 130, height: 40, width: 120}}>
-                <PrevButton title={'התנתק'} onPress={() => dispatch(logoutThunk())}></PrevButton>
-            </View>
-            <View style={styles.notificationIconContainer}>
-                <Image source={NotificationIcon} style={styles.notificationIcon} />
-            </View>
-            <View style={styles.circle}>
-                <Image source={PlaceholderImage} style={styles.image} />
-            </View>
-            <View style={styles.name}>
-                <Text style={styles.h3}>
-                    {' '}
-                    {userDelegation.userDelegation?.guides?.length > 0
-                        ? userDelegation.userDelegation.guides[0].firstname +
-                          ' ' +
-                          userDelegation.userDelegation.guides[0].lastname
-                        : ''}
-                </Text>
-            </View>
-        </View>
+        </>
     );
 };
 
-export default GuideHeader;
+export default RegularHeader;
 
 const styles = StyleSheet.create({
     container: {
@@ -66,6 +58,7 @@ const styles = StyleSheet.create({
     //     margin: 2,
     // },
     h2: {
+        fontSize: 18,
         color: '#fff',
     },
     h3: {

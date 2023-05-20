@@ -35,6 +35,12 @@ const sheetLinks = [
         screen: 'PersonalDiary',
         disable: true,
     },
+    {
+        id: '6',
+        title: 'משימת צוות',
+        screen: 'TeamMission',
+        disable: true,
+    },
 ];
 
 export default function BottomMenuContent({onClose}) {
