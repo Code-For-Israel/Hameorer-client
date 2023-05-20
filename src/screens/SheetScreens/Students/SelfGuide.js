@@ -6,33 +6,13 @@ import Page3 from './SelfGuide/Page3';
 import Page4 from './SelfGuide/Page4';
 import Page5 from './SelfGuide/Page5';
 import IndexPage from './SelfGuide/IndexPage';
-import {useDispatch} from "react-redux";
-import {View} from "react-native";
-import PrevButton from "../../../components/NextButton";
-import {logoutThunk} from "../../../redux/userSlice";
 
 
 const SelfGuideStack = createStackNavigator();
 
 export default function SelfGuid() {
-    const dispatch = useDispatch();
-
-    const TopToolbar = () => (
-        <View style={{marginRight: 10}}>
-            <PrevButton title={'התנתק'} onPress={() => dispatch(logoutThunk())}/>
-        </View>
-    );
-
     const screenOptions = {
-        headerStyle: {
-            height: 200,
-            backgroundColor: '#072F5F',
-            borderBottomLeftRadius: 40,
-        },
-        headerTitle: 'הדרכה עצמית',
-        headerTitleAlign: 'center',
-        headerTintColor: '#fff',
-        headerRight: () => <TopToolbar/>,
+        headerShown: false,
     };
 
     const screens = [

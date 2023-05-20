@@ -8,7 +8,6 @@ import Ceremony from './SheetScreens/Students/Ceremoney/Ceremony';
 import FamilyMem from './SheetScreens/Students/FamilyMemorey/FamilyMem';
 import PersonalDiary from './SheetScreens/Students/PersonalDiary/PersonalDiary';
 import DID from './SheetScreens/Students/DID';
-import CustomBg from '../components/CustomBg';
 import ViewTaskPolinActivity from './SheetScreens/Students/ViewTaskPolinActivity';
 import NewsPage from './SheetScreens/Students/News/NewsPage';
 import {logoutThunk} from "../redux/userSlice";
@@ -33,12 +32,27 @@ const StudentNav = () => {
 
     return (<Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={StudentHomeTabs} options={{headerShown: false}}/>
-        <Stack.Screen name="SelfGuide" component={SelfGuid} options={{headerShown: false}}/>
+        <Stack.Screen name="SelfGuide" component={SelfGuid}  options={{
+            headerStyle: {
+                height: 200, backgroundColor: '#072F5F', borderBottomLeftRadius: 40,
+            },
+            headerTitle: 'הדרכה עצמית',
+            headerTitleAlign: 'center',
+            headerTintColor: '#fff',
+            headerRight: () => TopToolbar()
+        }}        />
         <Stack.Screen
             name="ViewTaskPolinActivity"
             component={ViewTaskPolinActivity}
-            options={{headerShown: false, headerRight: () => TopToolbar()}}
-        />
+            options={{
+                headerStyle: {
+                    height: 200, backgroundColor: '#072F5F', borderBottomLeftRadius: 40,
+                },
+                headerTitle: 'צפיה במשימה',
+                headerTitleAlign: 'center',
+                headerTintColor: '#fff',
+                headerRight: () => TopToolbar()
+            }}        />
         <Stack.Screen
             name="Ceremony"
             component={Ceremony}
@@ -79,8 +93,13 @@ const StudentNav = () => {
             name="DID"
             component={DID}
             options={{
-                headerTitle: 'הוספת דמות', // this is the part of custom background
-                headerTitleAlign: 'center', headerBackground: CustomBg, headerTintColor: '#fff', headerLeft: '', //end of custom background
+                headerStyle: {
+                    height: 200, backgroundColor: '#072F5F', borderBottomLeftRadius: 40,
+                },
+                headerTitle: 'הוספת דמות',
+                headerTitleAlign: 'center',
+                headerTintColor: '#fff',
+                headerRight: () => TopToolbar()
             }}
         />
     </Stack.Navigator>);
