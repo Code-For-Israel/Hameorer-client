@@ -1,4 +1,4 @@
-import {SafeAreaView, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
@@ -11,7 +11,7 @@ const Page4 = ({route, navigation}) => {
     const {selectedSub} = route.params;
 
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}>
             <View style={styles.pageContainer}>
                 {PageTop(
                     setText,
@@ -57,7 +57,7 @@ const Page4 = ({route, navigation}) => {
                     </View>
                 </View>
             </View>
-        </SafeAreaView>
+        </ScrollView>
     );
 };
 

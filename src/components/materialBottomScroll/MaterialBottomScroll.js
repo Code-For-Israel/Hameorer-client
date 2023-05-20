@@ -32,8 +32,8 @@ export function MaterialBottomScroll() {
     };
 
     return (
-        <View style={styles.bottomScrollContainer}>
-            <Text style={{marginBottom: 2, width: '95%'}}>עזרים הדרכה</Text>
+        <View style={[styles.bottomScrollContainer]}>
+            <Text style={[styles.textDirectionRTL,{marginBottom: 2, width: '95%'}]}>עזרים להדרכה</Text>
             <ScrollView horizontal={true}>{showIcons()}</ScrollView>
         </View>
     );

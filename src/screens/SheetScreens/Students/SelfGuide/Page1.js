@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 
 import NextButton from '../../../../components/NextButton';
 import {styles} from './PagesStyles';
@@ -17,7 +17,7 @@ const Page1 = ({route}) => {
     const [text, setText] = useState('');
 
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}>
             <View style={styles.pageContainer}>
                 {PageTop(
                     setText,
@@ -48,7 +48,7 @@ const Page1 = ({route}) => {
                     </View>
                 </View>
             </View>
-        </SafeAreaView>
+        </ScrollView>
     );
 };
 

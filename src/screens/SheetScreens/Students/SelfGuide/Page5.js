@@ -1,4 +1,4 @@
-import {SafeAreaView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import PrevButton from '../../../../components/PrevButton';
 import NextButton from '../../../../components/NextButton';
@@ -87,7 +87,7 @@ const Page5 = ({route, navigation}) => {
     };
 
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <ScrollView style={{flex: 1}}>
             <View style={styles.pageContainer}>
                 <View style={styles.TextContainer}>
                     <Text style={styles.textThree}>*הוסף עד 5 תמונות *קבצי jpg,png (עד 2 מגה)</Text>
@@ -136,7 +136,7 @@ const Page5 = ({route, navigation}) => {
                     </View>
                 </View>
             </View>
-        </SafeAreaView>
+        </ScrollView>
     );
 };
 
