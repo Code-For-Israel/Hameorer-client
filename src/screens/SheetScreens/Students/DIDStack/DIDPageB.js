@@ -29,7 +29,7 @@ const DIDPageB = ({navigation}) => {
 
     useEffect(() => {
         if (figures.length) {
-            setFilteredFigure(figures.filter((item) => item.type == 'figure'));
+            setFilteredFigure(figures.filter((item) => item.type === 'figure'));
         }
     }, [figures]);
 

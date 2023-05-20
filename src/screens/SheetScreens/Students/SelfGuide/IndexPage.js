@@ -65,7 +65,7 @@ const IndexPage = ({navigation}) => {
                 <View style={styles.itemBoxContainer}>
                     {subjects ? (
                         subjects
-                            .filter((item) => item.type == 'polin-activity')
+                            .filter((item) => item.type === 'polin-activity')
                             .map((item) => {
                                 return (
                                     <TouchableOpacity
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        height: 500,
+        height: "100%",
     },
     itemBox: {
         flexDirection: 'column',

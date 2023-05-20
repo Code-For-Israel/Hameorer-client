@@ -44,9 +44,6 @@ const Page5 = ({route}) => {
             status = 'review';
         }
         const story = {
-            subject: selectedSub.subject,
-            tags: ['_'],
-            body: selectedSub.body,
             comments: {
                 textPage1Admin: textPage1Admin,
                 textPage2Admin: textPage2Admin,

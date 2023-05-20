@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Share, View, Button, Image, StyleSheet, Dimensions} from 'react-native';
+import {Alert, Share, View, Image, StyleSheet, Dimensions} from 'react-native';
 import PrevButton from '../PrevButton';
 const ShareImage = require('../../../assets/tiktok.png');
 const width = Dimensions.get('window').width; //full width
