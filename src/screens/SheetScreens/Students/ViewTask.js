@@ -114,7 +114,9 @@ const ViewTask = ({route}) => {
                                         stylesIn.input,
                                         {height: 100, textAlignVertical: 'top'},
                                     ]}
-                                >{storyData.comments?.one}</Text>
+                                >
+                                    {storyData.comments?.one}
+                                </Text>
                             </View>
                         </>
                     )}
@@ -159,7 +161,7 @@ const stylesIn = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
-    textSubtitleGuide:{
+    textSubtitleGuide: {
         marginRight: 10,
         marginTop: 10,
         fontStyle: 'normal',

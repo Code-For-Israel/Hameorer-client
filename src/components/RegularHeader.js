@@ -19,13 +19,16 @@ const RegularHeader = ({title}) => {
                     </Text>
                 </View>
                 <View style={{top: 70, right: 130, height: 40, width: 120}}>
-                    <PrevButton title={'התנתק'} onPress={() => dispatch(logoutThunk())}></PrevButton>
+                    <PrevButton
+                        title={'התנתק'}
+                        onPress={() => dispatch(logoutThunk())}
+                    ></PrevButton>
                 </View>
                 <View style={styles.notificationIconContainer}>
-                    <Image source={NotificationIcon} style={styles.notificationIcon}/>
+                    <Image source={NotificationIcon} style={styles.notificationIcon} />
                 </View>
                 <View style={styles.circle}>
-                    <Image source={PlaceholderImage} style={styles.image}/>
+                    <Image source={PlaceholderImage} style={styles.image} />
                 </View>
             </View>
         </>

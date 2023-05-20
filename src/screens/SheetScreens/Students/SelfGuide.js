@@ -7,7 +7,6 @@ import Page4 from './SelfGuide/Page4';
 import Page5 from './SelfGuide/Page5';
 import IndexPage from './SelfGuide/IndexPage';
 
-
 const SelfGuideStack = createStackNavigator();
 
 export default function SelfGuid() {

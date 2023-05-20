@@ -5,39 +5,42 @@ import MyGroupFigure from './SheetScreens/Guides/MyGroupFigure';
 import ViewDID from './SheetScreens/Guides/ViewDID';
 import MyGroupSummaryByUser from './SheetScreens/Guides/MyGroupSummaryByUser';
 import SelfGuidAdmin from './SheetScreens/Guides/SelfGuidAdmin';
-import {useDispatch} from "react-redux";
-import {View} from "react-native";
-import PrevButton from "../components/NextButton";
-import {logoutThunk} from "../redux/userSlice";
-import GroupSummaryIcon from "../components/IconsSvg/GroupSummaryIcon";
-import AdminDidIcon from "../components/IconsSvg/AdminDidIcon";
-import SelfGuideIcon from "../components/IconsSvg/SelfGuideIcon";
-import AdminTeamReportIcon from "../components/IconsSvg/AdminTeamReportIcon";
+import {useDispatch} from 'react-redux';
+import {View} from 'react-native';
+import PrevButton from '../components/NextButton';
+import {logoutThunk} from '../redux/userSlice';
+import GroupSummaryIcon from '../components/IconsSvg/GroupSummaryIcon';
+import AdminDidIcon from '../components/IconsSvg/AdminDidIcon';
+import SelfGuideIcon from '../components/IconsSvg/SelfGuideIcon';
+import AdminTeamReportIcon from '../components/IconsSvg/AdminTeamReportIcon';
 
 const Tab = createBottomTabNavigator();
 
 const GuideHomeTabs = () => {
     const commonOptions = {
         headerStyle: {
-            height: 150, backgroundColor: '#072F5F', borderBottomLeftRadius: 40,
+            height: 150,
+            backgroundColor: '#072F5F',
+            borderBottomLeftRadius: 40,
         },
         headerTitleAlign: 'center',
         headerTintColor: '#fff',
-        headerRight: () => TopToolbar()
-
+        headerRight: () => TopToolbar(),
     };
 
     const dispatch = useDispatch();
 
     function TopToolbar() {
-        return <>
-            <View style={{marginRight: 10}}>
-                <PrevButton
-                    title={'התנתק'}
-                    onPress={() => dispatch(logoutThunk())}
-                ></PrevButton>
-            </View>
-        </>;
+        return (
+            <>
+                <View style={{marginRight: 10}}>
+                    <PrevButton
+                        title={'התנתק'}
+                        onPress={() => dispatch(logoutThunk())}
+                    ></PrevButton>
+                </View>
+            </>
+        );
     }
 
     const screens = [

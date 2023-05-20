@@ -2,12 +2,10 @@ import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Provider} from 'react-native-paper';
 const GuideHeader = ({groupInfo}) => {
-
     return (
         <Provider>
             <View style={stylesIn.HeaderSection}>
-                <View style={{width: '100%', margin: 10}}>
-                </View>
+                <View style={{width: '100%', margin: 10}}></View>
             </View>
         </Provider>
     );

@@ -92,7 +92,7 @@ const DIDPageC = ({navigation, route}) => {
             recording.append('file', {
                 uri: recordingData.uri,
                 name: recordingData.name,
-                type: recordingData.mimeType
+                type: recordingData.mimeType,
             });
             const baseUrl = GetSiteUrl();
             response = await fetch(`${baseUrl}v1/media/${bucket}/${recordingFileName}/`, {

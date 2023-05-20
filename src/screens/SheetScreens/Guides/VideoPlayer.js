@@ -3,11 +3,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Video, Audio} from 'expo-av';
 import PrevButton from '../../../components/PrevButton';
 import DownloadFile from '../../../components/DownloadFile/DownloadFile';
-import ShareMedia from '../../../components/ShareButton/ShareButton';
 import {useEffect} from 'react';
 
 const VideoPlayer = ({url}) => {
-
     const urlParse = url?.media?.did;
     const video = React.useRef(null);
     const [status, setStatus] = React.useState({});

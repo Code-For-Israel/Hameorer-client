@@ -1,7 +1,6 @@
 import React from 'react';
 import {Path, Svg} from 'react-native-svg';
 
-
 const WatchTaskIcon = ({color, size}) => {
     return (
         <Svg

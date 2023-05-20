@@ -48,7 +48,9 @@ export function StudentViewPagePolinActivityYoutubeComponent(
                         textAlign: 'right',
                         textAlignVertical: 'top',
                     }}
-                >{adminText}</Text>
+                >
+                    {adminText}
+                </Text>
             </View>
         </>
     );
