@@ -7,7 +7,7 @@ import PhotoUpload from '../../../../components/PhotoUpload';
 import {setStory} from '../../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../../redux/userSlice';
-import GetSiteUrl from "../../../../utils/GetSiteUrl";
+import GetSiteUrl from '../../../../utils/GetSiteUrl';
 
 const Page5 = ({route, navigation}) => {
     const [youtubeLink, setYoutubeLink] = useState('');
@@ -23,7 +23,7 @@ const Page5 = ({route, navigation}) => {
 
     const upload = async () => {
         setRespondsList([]);
-        setLoading(true)
+        setLoading(true);
         let formData = new FormData();
         if (imageList && imageList.length > 0) {
             const uploadPromises = imageList.map(async (img) => {
@@ -54,10 +54,10 @@ const Page5 = ({route, navigation}) => {
     };
 
     const handleSend = (responses) => {
-        const links = responses.flatMap((response) =>response["http_link"]);
-        const mediaImages = {}
+        const links = responses.flatMap((response) => response['http_link']);
+        const mediaImages = {};
         for (let i = 0; i < links.length; i++) {
-            const key = "image" + (i + 1);
+            const key = 'image' + (i + 1);
             mediaImages[key] = links[i];
         }
         const story = {
@@ -82,7 +82,7 @@ const Page5 = ({route, navigation}) => {
         };
 
         dispatch(setStory({access, story}));
-        setLoading(false)
+        setLoading(false);
         navigation.navigate('Profile');
     };
 
@@ -92,8 +92,12 @@ const Page5 = ({route, navigation}) => {
                 <View style={styles.TextContainer}>
                     <Text style={styles.textThree}>*הוסף עד 5 תמונות *קבצי jpg,png (עד 2 מגה)</Text>
                 </View>
-                <PhotoUpload imageList={imageList} setImageList={setImageList} respondsList={respondsList}
-                             setRespondsList={setRespondsList}/>
+                <PhotoUpload
+                    imageList={imageList}
+                    setImageList={setImageList}
+                    respondsList={respondsList}
+                    setRespondsList={setRespondsList}
+                />
                 <View style={styles.TextContainer}>
                     <Text style={styles.TextOne}>הוסף לינק ליו-טיוב</Text>
                 </View>
@@ -140,7 +144,6 @@ const Page5 = ({route, navigation}) => {
     );
 };
 
-
 export default Page5;
 
 const stylesIn = StyleSheet.create({
@@ -149,6 +152,6 @@ const stylesIn = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 10
+        marginBottom: 10,
     },
-})
+});

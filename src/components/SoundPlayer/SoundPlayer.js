@@ -1,11 +1,11 @@
-import { Audio } from 'expo-av';
-import { useEffect, useState } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import {Audio} from 'expo-av';
+import {useEffect, useState} from 'react';
+import {Text, TouchableOpacity} from 'react-native';
 import PlayAudioIcon from '../IconsSvg/PlayAudioIcon';
 import StopAudioIcon from '../IconsSvg/StopAudioIcon';
 import GetSiteUrl from '../../utils/GetSiteUrl';
 
-export default function SoundPlayer({ audioMedia }) {
+export default function SoundPlayer({audioMedia}) {
     const [sound, setSound] = useState(null);
     const [loading, setLoading] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -17,9 +17,9 @@ export default function SoundPlayer({ audioMedia }) {
         try {
             console.log('Loading Sound');
             setLoading(true);
-            const { sound: audioSound } = await Audio.Sound.createAsync(
-                { uri: mediaUrl },
-                { shouldPlay: true }
+            const {sound: audioSound} = await Audio.Sound.createAsync(
+                {uri: mediaUrl},
+                {shouldPlay: true},
             );
             setSound(audioSound);
             setIsPlaying(true);

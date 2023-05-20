@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         padding: 3,
     },
     viewDirectionRTL: {flexDirection: 'row-reverse'},
-    mainContainer: {flex: 1, marginBottom: 15, borderRadius:20},
+    mainContainer: {flex: 1, marginBottom: 15, borderRadius: 20},
     container: {flex: 1, justifyContent: 'center', alignItems: 'center'},
     bottomScrollContainer: {marginBottom: 20, width: '100%'},
     image: {flex: 1, resizeMode: 'cover'},
@@ -102,7 +102,6 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         borderWidth: 2,
         borderColor: '#000',
-
     },
     loginInput: {
         backgroundColor: '#fff',
@@ -142,7 +141,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         marginVertical: 1,
         padding: 8,
-        borderRadius: 5
+        borderRadius: 5,
     },
     buttonText: {
         fontSize: 24,

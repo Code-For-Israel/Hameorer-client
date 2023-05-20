@@ -77,17 +77,19 @@ export default function ProfileScreen() {
                 </View>
             </TouchableOpacity>
             <ScrollView style={stylesIn.container}>
-                <GuideHeader userDelegation={userDelegation}/>
+                <GuideHeader userDelegation={userDelegation} />
 
-                <Image source={PlaceholderImage} style={stylesIn.image}/>
-                <View style={{
-                    width: '100%',
-                    justifyContent: 'space-evenly',
-                    flexDirection: 'row',
-                    marginBottom: 5,
-                    textAlign: 'right',
-                    writingDirection: 'rtl'
-                }}>
+                <Image source={PlaceholderImage} style={stylesIn.image} />
+                <View
+                    style={{
+                        width: '100%',
+                        justifyContent: 'space-evenly',
+                        flexDirection: 'row',
+                        marginBottom: 5,
+                        textAlign: 'right',
+                        writingDirection: 'rtl',
+                    }}
+                >
                     <View style={{}}>
                         <Text style={stylesIn.h1} numberOfLines={1} adjustsFontSizeToFit>
                             הודעות
@@ -103,17 +105,18 @@ export default function ProfileScreen() {
                         justifyContent: 'space-evenly',
                         alignSelf: 'center',
                     }}
-                >
-                </View>
+                ></View>
 
-                <View style={{
-                    width: '100%',
-                    justifyContent: 'space-evenly',
-                    flexDirection: 'row',
-                    marginBottom: 5,
-                    textAlign: 'right',
-                    writingDirection: 'rtl'
-                }}>
+                <View
+                    style={{
+                        width: '100%',
+                        justifyContent: 'space-evenly',
+                        flexDirection: 'row',
+                        marginBottom: 5,
+                        textAlign: 'right',
+                        writingDirection: 'rtl',
+                    }}
+                >
                     <View style={{width: 120}}>
                         <PrevButton title={'רענן מידע'} onPress={handleRefresh}></PrevButton>
                     </View>
@@ -128,9 +131,8 @@ export default function ProfileScreen() {
                     ></HorizelScrollCardsProfile>
                 </View>
 
-
                 <BottomSheet isVisible={isModalVisible} onClose={onModalClose}>
-                    <BottomMenuContent onClose={onModalClose}/>
+                    <BottomMenuContent onClose={onModalClose} />
                 </BottomSheet>
             </ScrollView>
         </>

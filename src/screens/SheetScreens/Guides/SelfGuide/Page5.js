@@ -7,16 +7,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../../redux/userSlice';
 import {updateStory} from '../../../../redux/dataSlice';
 import {CommonActions, useNavigation} from '@react-navigation/native';
-import ImageViewer from "../../../../components/ImageViewer";
-import PlaceholderImage from "../../../../../assets/fallbackImage.png";
-import {Switch} from "react-native-paper";
+import ImageViewer from '../../../../components/ImageViewer';
+import PlaceholderImage from '../../../../../assets/fallbackImage.png';
+import {Switch} from 'react-native-paper';
 
 const Page5 = ({route}) => {
     const navigation = useNavigation();
     const [youtubeLinkAdmin, setYoutubeLinkAdmin] = useState('');
     const {textPage1Admin, textPage2Admin, textPage3Admin, textPage4Admin} = route.params;
     const {selectedSub} = route.params;
-    const media = (selectedSub?.media)
+    const media = selectedSub?.media;
     const dispatch = useDispatch();
     const access = useSelector(selectAccess);
     const [imageList, setImageList] = useState('');
@@ -27,7 +27,7 @@ const Page5 = ({route}) => {
             const mappedArray = Object.entries(media).map(([key, value]) => {
                 return value;
             });
-            setImageList(mappedArray)
+            setImageList(mappedArray);
         }
     }, [media]);
 
@@ -36,7 +36,7 @@ const Page5 = ({route}) => {
     };
 
     const handleSend = () => {
-        let status='review'
+        let status = 'review';
 
         if (isSwitchApproved) {
             status = 'done';
@@ -44,38 +44,47 @@ const Page5 = ({route}) => {
             status = 'review';
         }
         const story = {
-            subject: selectedSub.subject, tags: ['_'], body: selectedSub.body, comments: {
+            subject: selectedSub.subject,
+            tags: ['_'],
+            body: selectedSub.body,
+            comments: {
                 textPage1Admin: textPage1Admin,
                 textPage2Admin: textPage2Admin,
                 textPage3Admin: textPage3Admin,
                 textPage4Admin: textPage4Admin,
                 youtubeLink: youtubeLinkAdmin,
-            }, status: status,
+            },
+            status: status,
         };
         const id = selectedSub._id;
-        console.log(story)
+        console.log(story);
         dispatch(updateStory({access, story: story, id}));
-        navigation.dispatch( CommonActions.reset({
-            index: 0,
-            routes: [{ name: 'SelfGuidAdmin' }],
-        }));
+        navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [{name: 'SelfGuidAdmin'}],
+            }),
+        );
     };
 
-    return (<ScrollView style={{flexDirection: 'column'}}>
+    return (
+        <ScrollView style={{flexDirection: 'column'}}>
             <SafeAreaView style={{flex: 1}}>
                 <View style={styles.pageContainer}>
-
                     <ScrollView horizontal={true}>
-                        {imageList && imageList.map((img) => (<View style={[styles.container, {flexDirection: 'row'}]}>
-                                <View style={stylesIn.ImageContainer}>
-                                    {/* <Icon name="add" size={30} color={"#fff"} /> */}
-                                    <ImageViewer
-                                        placeholderImageSource={PlaceholderImage}
-                                        selectedImage={img}
-                                        width={100}
-                                    />
+                        {imageList &&
+                            imageList.map((img) => (
+                                <View style={[styles.container, {flexDirection: 'row'}]}>
+                                    <View style={stylesIn.ImageContainer}>
+                                        {/* <Icon name="add" size={30} color={"#fff"} /> */}
+                                        <ImageViewer
+                                            placeholderImageSource={PlaceholderImage}
+                                            selectedImage={img}
+                                            width={100}
+                                        />
+                                    </View>
                                 </View>
-                            </View>))}
+                            ))}
                     </ScrollView>
 
                     <View style={styles.TextContainer}>
@@ -134,7 +143,8 @@ const Page5 = ({route}) => {
                     </View>
                 </View>
             </SafeAreaView>
-        </ScrollView>);
+        </ScrollView>
+    );
 };
 export default Page5;
 
@@ -142,12 +152,19 @@ const stylesIn = StyleSheet.create({
     ImageContainer: {
         // flex: 1,
         // padding: 1,
-        borderRadius: 65, shadowColor: '#000000', shadowOffset: {
-            width: 0, height: 3,
-        }, shadowOpacity: 0.17, shadowRadius: 3.05, elevation: 4, marginHorizontal: 10
+        borderRadius: 65,
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.17,
+        shadowRadius: 3.05,
+        elevation: 4,
+        marginHorizontal: 10,
     },
     TextCheckbox: {
         alignSelf: 'center',
         paddingHorizontal: 10,
     },
-})
+});

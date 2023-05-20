@@ -15,24 +15,24 @@ export default function NewsPage({route}) {
             <ScrollView style={stylesIn.container}>
                 {notifications &&
                     notifications.length > 0 &&
-    notifications.map((note, index) => {
+                    notifications.map((note, index) => {
                         const date = format(new Date(note.publish_date), 'dd/LL/yyyy');
                         return (
-                                <View
-          key={index}
-                                    style={{
-                                        marginBottom: 10,
-                                        padding: 5,
-                                        borderRadius: 10,
-                                        borderWidth: 1,
-                                        borderColor: '#1261A0',
-                                        borderBottomColor: '#1261A0',
-                                    }}
-                                >
-                                    <Text style={styles.textDirectionRTL}>מאת עמית - {date}</Text>
-                                    <Text style={stylesIn.notificationTitle}>{note.title}</Text>
-                                    <Text style={styles.textDirectionRTL}>{note.message}</Text>
-                                </View>
+                            <View
+                                key={index}
+                                style={{
+                                    marginBottom: 10,
+                                    padding: 5,
+                                    borderRadius: 10,
+                                    borderWidth: 1,
+                                    borderColor: '#1261A0',
+                                    borderBottomColor: '#1261A0',
+                                }}
+                            >
+                                <Text style={styles.textDirectionRTL}>מאת עמית - {date}</Text>
+                                <Text style={stylesIn.notificationTitle}>{note.title}</Text>
+                                <Text style={styles.textDirectionRTL}>{note.message}</Text>
+                            </View>
                         );
                     })}
             </ScrollView>
@@ -64,5 +64,5 @@ const stylesIn = StyleSheet.create({
         textAlign: 'right',
         writingDirection: 'rtl',
         padding: 3,
-    }
+    },
 });

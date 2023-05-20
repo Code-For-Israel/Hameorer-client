@@ -31,7 +31,6 @@ export default function News() {
 
     return (
         <>
-
             <ScrollView style={stylesIn.container}>
                 {notifications && notifications.length > 0 && (
                     <View style={{marginRight: 20, marginBottom: 20}}>
@@ -87,5 +86,5 @@ const stylesIn = StyleSheet.create({
         marginTop: 2,
         textAlign: 'right',
         writingDirection: 'rtl',
-    }
+    },
 });

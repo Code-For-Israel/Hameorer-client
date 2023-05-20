@@ -5,17 +5,13 @@ import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {
-    StudentViewPagePolinActivityComponent
-} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
-import {
-    StudentViewPagePolinActivityYoutubeComponent
-} from '../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent';
+import {StudentViewPagePolinActivityComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
+import {StudentViewPagePolinActivityYoutubeComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent';
 import {updateStory} from '../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
-import ImageViewer from "../../../components/ImageViewer";
-import PlaceholderImage from "../../../../assets/fallbackImage.png";
+import ImageViewer from '../../../components/ImageViewer';
+import PlaceholderImage from '../../../../assets/fallbackImage.png';
 // import YoutubePlayer from 'react-native-youtube-iframe';
 
 const width = Dimensions.get('window').width; //full width
@@ -43,9 +39,10 @@ const ViewTaskPolinActivity = ({route}) => {
     const [media, setMedia] = useState('');
     const [imageList, setImageList] = useState('');
 
-    function matchYoutubeUrl(url){
-        let p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-        return (url.match(p)) ? RegExp.$1 : false ;
+    function matchYoutubeUrl(url) {
+        let p =
+            /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+        return url.match(p) ? RegExp.$1 : false;
     }
 
     useEffect(() => {
@@ -72,12 +69,11 @@ const ViewTaskPolinActivity = ({route}) => {
 
     useEffect(() => {
         if (media) {
-
             const mappedArray = Object.entries(media).map(([key, value]) => {
                 return value;
             });
 
-            setImageList(mappedArray)
+            setImageList(mappedArray);
         }
     }, [media]);
 
@@ -122,7 +118,9 @@ const ViewTaskPolinActivity = ({route}) => {
                                     {marginTop: 20, justifyContent: 'center'},
                                 ]}
                             >
-                                <Text style={stylesIn.TextSubtitle}>{storyData?.subject.subject}</Text>
+                                <Text style={stylesIn.TextSubtitle}>
+                                    {storyData?.subject.subject}
+                                </Text>
                             </View>
                             <View style={[stylesIn.TextContainerFull, {justifyContent: 'center'}]}>
                                 <Text style={stylesIn.TextOne}>שנת האירוע: {'1943'}</Text>
@@ -173,12 +171,17 @@ const ViewTaskPolinActivity = ({route}) => {
                         <ScrollView horizontal={true} style={{marginVertical: 20}}>
                             {imageList &&
                                 imageList.map((img, key) => (
-                                    <View key={key}
-                                          style={[styles.container, {flexDirection: 'row', marginHorizontal: 10}]}>
+                                    <View
+                                        key={key}
+                                        style={[
+                                            styles.container,
+                                            {flexDirection: 'row', marginHorizontal: 10},
+                                        ]}
+                                    >
                                         <ImageViewer
                                             placeholderImageSource={PlaceholderImage}
                                             selectedImage={img}
-                                            width={width-20}
+                                            width={width - 20}
                                         />
                                     </View>
                                 ))}
@@ -201,7 +204,10 @@ const ViewTaskPolinActivity = ({route}) => {
                                     <Text style={styles.cardComponentTextWhite}>שלח</Text>
                                 </TouchableOpacity>
                             )}
-                            <TouchableOpacity style={stylesIn.cardComponentButton} onPress={HandelBack}>
+                            <TouchableOpacity
+                                style={stylesIn.cardComponentButton}
+                                onPress={HandelBack}
+                            >
                                 <Text style={styles.cardComponentTextWhite}>חזרה</Text>
                             </TouchableOpacity>
                         </View>
@@ -274,7 +280,7 @@ const stylesIn = StyleSheet.create({
         shadowOpacity: 0.17,
         shadowRadius: 3.05,
         elevation: 4,
-        marginHorizontal: 10
+        marginHorizontal: 10,
     },
     greyText: {
         alignSelf: 'center',
