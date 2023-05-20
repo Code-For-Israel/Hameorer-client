@@ -13,6 +13,7 @@ import GroupSummaryIcon from '../components/IconsSvg/GroupSummaryIcon';
 import AdminDidIcon from '../components/IconsSvg/AdminDidIcon';
 import SelfGuideIcon from '../components/IconsSvg/SelfGuideIcon';
 import AdminTeamReportIcon from '../components/IconsSvg/AdminTeamReportIcon';
+import AdminWatchTaskIcon from "../components/IconsSvg/AdminWatchTaskIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -77,7 +78,7 @@ const GuideHomeTabs = () => {
             component: ViewDID,
             label: 'צפיה במשימה',
             title: 'צפיה במשימה',
-            icon: AdminDidIcon,
+            icon: AdminWatchTaskIcon,
         },
     ];
 

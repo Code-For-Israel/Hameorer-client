@@ -80,22 +80,7 @@ export default function ProfileScreen() {
                 <GuideHeader userDelegation={userDelegation} />
 
                 <Image source={PlaceholderImage} style={stylesIn.image} />
-                <View
-                    style={{
-                        width: '100%',
-                        justifyContent: 'space-evenly',
-                        flexDirection: 'row',
-                        marginBottom: 5,
-                        textAlign: 'right',
-                        writingDirection: 'rtl',
-                    }}
-                >
-                    <View style={{}}>
-                        <Text style={stylesIn.h1} numberOfLines={1} adjustsFontSizeToFit>
-                            הודעות
-                        </Text>
-                    </View>
-                </View>
+
                 <News></News>
                 <View
                     style={{
