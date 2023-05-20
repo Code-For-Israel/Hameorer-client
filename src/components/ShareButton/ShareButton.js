@@ -4,11 +4,13 @@ import PrevButton from '../PrevButton';
 const ShareImage = require('../../../assets/tiktok.png');
 const width = Dimensions.get('window').width; //full width
 
-const ShareExample = () => {
+const ShareMedia = ({url}) => {
+    const videoLink = url?.media?.did;
+
     const onShare = async () => {
         try {
             const result = await Share.share({
-                message: 'React Native | A framework for building native apps using React',
+                message: videoLink,
             });
             if (result.action === Share.sharedAction) {
                 if (result.activityType) {
@@ -31,7 +33,7 @@ const ShareExample = () => {
     );
 };
 
-export default ShareExample;
+export default ShareMedia;
 
 const stylesIn = StyleSheet.create({
     image: {

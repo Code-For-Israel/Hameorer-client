@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Video, Audio} from 'expo-av';
 import PrevButton from '../../../components/PrevButton';
 import DownloadFile from '../../../components/DownloadFile/DownloadFile';
-import ShareExample from '../../../components/ShareButton/ShareButton';
+import ShareMedia from '../../../components/ShareButton/ShareButton';
 import {useEffect} from 'react';
 
 const VideoPlayer = ({url}) => {
