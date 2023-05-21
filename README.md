@@ -1,10 +1,7 @@
 # Hameorer App
-
 Some key features include:
 - Self Guide - הדרכה עצמית
 - DID - דמות
-- Feature 3 (TBD)
-- Feature 4 (TBD)
 
 ## Installation and Setup
 
@@ -16,54 +13,18 @@ To install and set up Hameorer Client, follow these steps:
 4. Navigate to the `Hameorer-client` directory and install the app dependencies with `npm install`.
 
 ## Usage
-For web :
+npx expo start
 
+npx start on android emulator - "expo start --android"
 
+npx start on ios emulator - "expo start --ios"
 
-                                                npx expo start -w
-
+npx start on web - "expo start --web"
 
 ## Expo snack preview for Android and IOS
 https://snack.expo.dev/@itzikd1/11-3-23-new
 
-
-
-
-
-
-</br>
-</br>
-</br>
-</br>
-</br>
-
 #### Notes
+publish to stores - "eas build"
 
-11/01
-to fix some issues had to :
-
-first :
-npx expo install react-native-reanimated
-
-then :
-npm install --save-dev @babel/plugin-proposal-export-namespace-from
-
-and add this to babel.config.js
-
-plugins: [    
-  '@babel/plugin-proposal-export-namespace-from',
-  'react-native-reanimated/plugin',
-],
-
-so it would look like this:
-module.exports = function(api) {
-  api.cache(true);
-  return {
-    presets: ['babel-preset-expo'],
-    plugins: [    
-      '@babel/plugin-proposal-export-namespace-from',
-      'react-native-reanimated/plugin',
-    ],
-    
-  };
-};
+this builds the app, once done you have the packed files and upload them threw the stores
