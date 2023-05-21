@@ -23,7 +23,7 @@ const Page3 = ({route, navigation}) => {
                     'מתוך ביקורת המציאות, בקשת עמדה ערכית ביחס לפעולה של דמות או ציבור בסיטואציה.',
                 )}
 
-                <MaterialBottomScroll></MaterialBottomScroll>
+                <MaterialBottomScroll media={selectedSub?.media}></MaterialBottomScroll>
 
                 <View style={styles.ButtonContainer}>
                     <View style={{width: 100}}>

@@ -5,8 +5,12 @@ import UseFetchGet from '../../../hooks/ApiCalls/useFetchGet';
 import GetSiteUrl from '../../../utils/GetSiteUrl';
 import {styles} from '../../../styles/PagesStyle';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
-import {StudentViewPagePolinActivityComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
-import {StudentViewPagePolinActivityYoutubeComponent} from '../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent';
+import {
+    StudentViewPagePolinActivityComponent
+} from '../../../components/SelfGuide/StudentViewPagePolinActivityComponent';
+import {
+    StudentViewPagePolinActivityYoutubeComponent
+} from '../../../components/SelfGuide/StudentViewPagePolinActivityYoutubeComponent';
 import {updateStory} from '../../../redux/dataSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {selectAccess} from '../../../redux/userSlice';
@@ -171,19 +175,17 @@ const ViewTaskPolinActivity = ({route}) => {
                         <ScrollView horizontal={true} style={{marginVertical: 20}}>
                             {imageList &&
                                 imageList.map((img, key) => (
-                                    <View
-                                        key={key}
-                                        style={[
-                                            styles.container,
-                                            {flexDirection: 'row', marginHorizontal: 10},
-                                        ]}
-                                    >
-                                        <ImageViewer
-                                            placeholderImageSource={PlaceholderImage}
-                                            selectedImage={img}
-                                            width={width - 20}
-                                        />
-                                    </View>
+                                    <>
+                                        <View
+                                            key={key}
+                                            style={[styles.container, {flexDirection: 'row', marginHorizontal: 10}]}>
+                                            <ImageViewer
+                                                placeholderImageSource={PlaceholderImage}
+                                                selectedImage={img}
+                                                width={width - 20}
+                                            />
+                                        </View>
+                                    </>
                                 ))}
                         </ScrollView>
                         <View

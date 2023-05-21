@@ -3,14 +3,14 @@
     "name": "יומן מסע",
     "slug": "yoman-masa",
     "owner": "meorer",
-    "version": "1.3.0",
+    "version": "1.4.0",
     "orientation": "portrait",
     "icon": "./assets/logo-yoman-masa.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash-yoman-masa.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#072F5F"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -19,7 +19,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "1.3.0",
+      "buildNumber": "1.4.0",
       "bundleIdentifier": "com.meorer.yomanmasa",
       "supportsTablet": true,
       "infoPlist": {
@@ -29,7 +29,7 @@
       }
     },
     "android": {
-      "versionCode": 4,
+      "versionCode": 5,
       "permissions": [
         "RECORD_AUDIO",
         "READ_MEDIA_IMAGES",
@@ -37,13 +37,13 @@
         "READ_EXTERNAL_STORAGE"
       ],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/logo-yoman-masa.png",
+        "backgroundColor": "#072F5F"
       },
       "package": "com.meorer.yomanmasa"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/logo-yoman-masa.png"
     },
     "extra": {
       "eas": {

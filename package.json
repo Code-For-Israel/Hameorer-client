@@ -7,8 +7,9 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "check format": "prettier --check ./src",
-    "fix format": "npx prettier --write ./src"
+    "check:format": "prettier --check ./src",
+    "fix:format": "npx prettier --write ./src",
+    "publish:expo": "eas build"
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",

@@ -23,7 +23,7 @@ const Page2 = ({route, navigation}) => {
                     'הוסיפו מידע היסטורי כמו מקומות וזמנים, כתבו במילים שלכם.',
                 )}
 
-                <MaterialBottomScroll></MaterialBottomScroll>
+                <MaterialBottomScroll media={selectedSub?.media}></MaterialBottomScroll>
 
                 <View style={styles.ButtonContainer}>
                     <View style={{width: 100}}>

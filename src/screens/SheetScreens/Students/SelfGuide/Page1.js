@@ -28,7 +28,7 @@ const Page1 = ({route}) => {
                     'הסבירו על הנושא שבחרתם במילים שלכם ומדוע בחרתם בו?',
                 )}
 
-                <MaterialBottomScroll></MaterialBottomScroll>
+                <MaterialBottomScroll media={selectedSub?.media}></MaterialBottomScroll>
 
                 <View style={styles.ButtonContainer}>
                     <View style={{width: 100}}>
